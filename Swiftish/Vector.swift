@@ -486,52 +486,40 @@ public func /<T: Arithmetic>(lhs: Vector4<T>, rhs: Vector4<T>) -> Vector4<T> {
 
 // MARK: - Negation
 
-public prefix func -<T: SignedArithmetic>(lhs: Vector2<T>) -> Vector2<T> {
+public prefix func -<T: SignedArithmetic>(v: Vector2<T>) -> Vector2<T> {
     return Vector2(
-        -lhs.x,
-        -lhs.y
+        -v.x,
+        -v.y
     )
 }
 
-public prefix func -<T: SignedArithmetic>(lhs: Vector3<T>) -> Vector3<T> {
+public prefix func -<T: SignedArithmetic>(v: Vector3<T>) -> Vector3<T> {
     return Vector3(
-        -lhs.x,
-        -lhs.y,
-        -lhs.z
+        -v.x,
+        -v.y,
+        -v.z
     )
 }
 
-public prefix func -<T: SignedArithmetic>(lhs: Vector4<T>) -> Vector4<T> {
+public prefix func -<T: SignedArithmetic>(v: Vector4<T>) -> Vector4<T> {
     return Vector4(
-        -lhs.x,
-        -lhs.y,
-        -lhs.z,
-        -lhs.w
+        -v.x,
+        -v.y,
+        -v.z,
+        -v.w
     )
 }
 
-public prefix func +<T: SignedArithmetic>(lhs: Vector2<T>) -> Vector2<T> {
-    return Vector2(
-        +lhs.x,
-        +lhs.y
-    )
+public prefix func +<T: SignedArithmetic>(v: Vector2<T>) -> Vector2<T> {
+    return v
 }
 
-public prefix func +<T: SignedArithmetic>(lhs: Vector3<T>) -> Vector3<T> {
-    return Vector3(
-        +lhs.x,
-        +lhs.y,
-        +lhs.z
-    )
+public prefix func +<T: SignedArithmetic>(v: Vector3<T>) -> Vector3<T> {
+    return v
 }
 
-public prefix func +<T: SignedArithmetic>(lhs: Vector4<T>) -> Vector4<T> {
-    return Vector4(
-        +lhs.x,
-        +lhs.y,
-        +lhs.z,
-        +lhs.w
-    )
+public prefix func +<T: SignedArithmetic>(v: Vector4<T>) -> Vector4<T> {
+    return v
 }
 
 // MARK: - Sum

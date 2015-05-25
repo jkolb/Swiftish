@@ -638,20 +638,20 @@ public func /<T: SignedArithmetic>(m1: Matrix3<T>, m2: Matrix3<T>) -> Matrix3<T>
 // MARK: - Inverse
 
 public func inverse<T: SignedArithmetic>(m: Matrix2<T>) -> Matrix2<T> {
-    let m00 = m.col0.x
-    let m10 = m.col1.x
-    let m01 = m.col0.y
-    let m11 = m.col1.y
+    let a = m.col0.x
+    let b = m.col1.x
+    let c = m.col0.y
+    let d = m.col1.y
     
-    let a = +(m00 * m11)
-    let b = -(m10 * m01)
+    let ad = a * d
+    let bc = b * c
     
-    let oneOverDeterminant = T.one / (a + b)
+    let oneOverDeterminant = T.one / (ad - bc)
     
-    let x0 = +m11 * oneOverDeterminant
-    let x1 = -m01 * oneOverDeterminant
-    let y0 = -m10 * oneOverDeterminant
-    let y1 = +m00 * oneOverDeterminant
+    let x0 = +d * oneOverDeterminant
+    let x1 = -b * oneOverDeterminant
+    let y0 = -c * oneOverDeterminant
+    let y1 = +a * oneOverDeterminant
     
     return Matrix2(
         x0, y0,
@@ -797,25 +797,13 @@ public prefix func -<T: SignedArithmetic>(m: Matrix4<T>) -> Matrix4<T> {
 }
 
 public prefix func +<T: SignedArithmetic>(m: Matrix2<T>) -> Matrix2<T> {
-    return Matrix2(
-        +m.col0,
-        +m.col1
-    )
+    return m
 }
 
 public prefix func +<T: SignedArithmetic>(m: Matrix3<T>) -> Matrix3<T> {
-    return Matrix3(
-        +m.col0,
-        +m.col1,
-        +m.col2
-    )
+    return m
 }
 
 public prefix func +<T: SignedArithmetic>(m: Matrix4<T>) -> Matrix4<T> {
-    return Matrix4(
-        +m.col0,
-        +m.col1,
-        +m.col2,
-        +m.col3
-    )
+    return m
 }

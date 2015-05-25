@@ -18,6 +18,7 @@
 		E52F45AC1B1220D9004F7444 /* Vector2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F45AB1B1220D9004F7444 /* Vector2Tests.swift */; };
 		E52F45AE1B125928004F7444 /* Vector3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F45AD1B125928004F7444 /* Vector3Tests.swift */; };
 		E52F45B01B125DFE004F7444 /* Vector4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F45AF1B125DFE004F7444 /* Vector4Tests.swift */; };
+		E55C63D01B139B4600E5D43E /* Matrix2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55C63CF1B139B4600E5D43E /* Matrix2Tests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		E52F45AB1B1220D9004F7444 /* Vector2Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector2Tests.swift; sourceTree = "<group>"; };
 		E52F45AD1B125928004F7444 /* Vector3Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3Tests.swift; sourceTree = "<group>"; };
 		E52F45AF1B125DFE004F7444 /* Vector4Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector4Tests.swift; sourceTree = "<group>"; };
+		E55C63CF1B139B4600E5D43E /* Matrix2Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix2Tests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 		E52F45921B121F4C004F7444 /* SwiftishTests */ = {
 			isa = PBXGroup;
 			children = (
+				E55C63CF1B139B4600E5D43E /* Matrix2Tests.swift */,
 				E52F45AB1B1220D9004F7444 /* Vector2Tests.swift */,
 				E52F45AD1B125928004F7444 /* Vector3Tests.swift */,
 				E52F45AF1B125DFE004F7444 /* Vector4Tests.swift */,
@@ -239,6 +242,7 @@
 			files = (
 				E52F45A31B121FD5004F7444 /* Arithmetic.swift in Sources */,
 				E52F45AE1B125928004F7444 /* Vector3Tests.swift in Sources */,
+				E55C63D01B139B4600E5D43E /* Matrix2Tests.swift in Sources */,
 				E52F45A71B121FD5004F7444 /* Vector.swift in Sources */,
 				E52F45A51B121FD5004F7444 /* Matrix.swift in Sources */,
 				E52F45AC1B1220D9004F7444 /* Vector2Tests.swift in Sources */,
@@ -428,6 +432,7 @@
 				E52F459B1B121F4C004F7444 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E52F459C1B121F4C004F7444 /* Build configuration list for PBXNativeTarget "SwiftishTests" */ = {
 			isa = XCConfigurationList;
@@ -436,6 +441,7 @@
 				E52F459E1B121F4C004F7444 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
