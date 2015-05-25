@@ -26,6 +26,14 @@ public struct Matrix2<T: Arithmetic> {
     
     private let col0, col1: ColType
     
+    private var row0: RowType {
+        return Vector2<T>(col0.x, col1.x)
+    }
+    
+    private var row1: RowType {
+        return Vector2<T>(col0.y, col1.y)
+    }
+    
     public init() {
         self.col0 = ColType(T.one, T.zero)
         self.col1 = ColType(T.zero, T.one)
@@ -64,6 +72,21 @@ public struct Matrix2<T: Arithmetic> {
             fatalError("Index out of range")
         }
     }
+    
+    public func col(index: Int) -> ColType {
+        return self[index]
+    }
+    
+    public func row(index: Int) -> RowType {
+        switch index {
+        case 0:
+            return row0
+        case 1:
+            return row1
+        default:
+            fatalError("Index out of range")
+        }
+    }
 }
 
 public struct Matrix3<T: Arithmetic> {
@@ -71,6 +94,18 @@ public struct Matrix3<T: Arithmetic> {
     typealias RowType = Vector3<T>
 
     private let col0, col1, col2: ColType
+    
+    private var row0: RowType {
+        return Vector3<T>(col0.x, col1.x, col2.x)
+    }
+    
+    private var row1: RowType {
+        return Vector3<T>(col0.y, col1.y, col2.y)
+    }
+    
+    private var row2: RowType {
+        return Vector3<T>(col0.z, col1.z, col2.z)
+    }
     
     public init() {
         self.col0 = ColType(T.one, T.zero, T.zero)
@@ -118,6 +153,23 @@ public struct Matrix3<T: Arithmetic> {
             fatalError("Index out of range")
         }
     }
+    
+    public func col(index: Int) -> ColType {
+        return self[index]
+    }
+    
+    public func row(index: Int) -> RowType {
+        switch index {
+        case 0:
+            return row0
+        case 1:
+            return row1
+        case 2:
+            return row2
+        default:
+            fatalError("Index out of range")
+        }
+    }
 }
 
 public struct Matrix4<T: Arithmetic> {
@@ -125,6 +177,22 @@ public struct Matrix4<T: Arithmetic> {
     typealias RowType = Vector4<T>
 
     private let col0, col1, col2, col3: ColType
+    
+    private var row0: RowType {
+        return Vector4<T>(col0.x, col1.x, col2.x, col3.x)
+    }
+    
+    private var row1: RowType {
+        return Vector4<T>(col0.y, col1.y, col2.y, col3.y)
+    }
+    
+    private var row2: RowType {
+        return Vector4<T>(col0.z, col1.z, col2.z, col3.z)
+    }
+    
+    private var row3: RowType {
+        return Vector4<T>(col0.w, col1.w, col2.w, col3.w)
+    }
     
     public init() {
         self.col0 = ColType(T.one, T.zero, T.zero, T.zero)
@@ -176,6 +244,25 @@ public struct Matrix4<T: Arithmetic> {
             return col2
         case 3:
             return col3
+        default:
+            fatalError("Index out of range")
+        }
+    }
+    
+    public func col(index: Int) -> ColType {
+        return self[index]
+    }
+    
+    public func row(index: Int) -> RowType {
+        switch index {
+        case 0:
+            return row0
+        case 1:
+            return row1
+        case 2:
+            return row2
+        case 3:
+            return row3
         default:
             fatalError("Index out of range")
         }
@@ -387,27 +474,27 @@ public func *<T: Arithmetic>(lhs: T, rhs: Matrix4<T>) -> Matrix4<T> {
 // MARK: - Multiplication
 
 public func *<T: Arithmetic>(m: Matrix2<T>, v: Vector2<T>) -> Vector2<T> {
-    let x = m[0][0] * v.x + m[1][0] * v.y
-    let y = m[0][1] * v.x + m[1][1] * v.y
+    let x = m.col0.x * v.x + m.col1.x * v.y
+    let y = m.col0.y * v.x + m.col1.y * v.y
     return Vector2(x, y)
 }
 
 public func *<T: Arithmetic>(v: Vector2<T>, m: Matrix2<T>) -> Vector2<T> {
-    let x = v.x * m[0][0] + v.y * m[0][1]
-    let y = v.x * m[1][0] + v.y * m[1][1]
+    let x = v.x * m.col0.x + v.y * m.col0.y
+    let y = v.x * m.col1.x + v.y * m.col1.y
     return Vector2(x, y)
 }
 
 public func *<T: Arithmetic>(m1: Matrix2<T>, m2: Matrix2<T>) -> Matrix2<T> {
-    let a00 = m1[0][0]
-    let a01 = m1[0][1]
-    let a10 = m1[1][0]
-    let a11 = m1[1][1]
+    let a00 = m1.col0.x
+    let a01 = m1.col0.y
+    let a10 = m1.col1.x
+    let a11 = m1.col1.y
     
-    let b00 = m2[0][0]
-    let b01 = m2[0][1]
-    let b10 = m2[1][0]
-    let b11 = m2[1][1]
+    let b00 = m2.col0.x
+    let b01 = m2.col0.y
+    let b10 = m2.col1.x
+    let b11 = m2.col1.y
     
     let x0 = a00 * b00 + a10 * b01
     let y0 = a01 * b00 + a11 * b01
@@ -421,39 +508,39 @@ public func *<T: Arithmetic>(m1: Matrix2<T>, m2: Matrix2<T>) -> Matrix2<T> {
 }
 
 public func *<T: Arithmetic>(m: Matrix3<T>, v: Vector3<T>) -> Vector3<T> {
-    let x = m[0][0] * v.x + m[1][0] * v.y + m[2][0] * v.z
-    let y = m[0][1] * v.x + m[1][1] * v.y + m[2][1] * v.z
-    let z = m[0][2] * v.x + m[1][2] * v.y + m[2][2] * v.z
+    let x = m.col0.x * v.x + m.col1.x * v.y + m.col2.x * v.z
+    let y = m.col0.y * v.x + m.col1.y * v.y + m.col2.y * v.z
+    let z = m.col0.z * v.x + m.col1.z * v.y + m.col2.z * v.z
     return Vector3(x, y, z)
 }
 
 public func *<T: Arithmetic>(v: Vector3<T>, m: Matrix3<T>) -> Vector3<T> {
-    let x = m[0][0] * v.x + m[0][1] * v.y + m[0][2] * v.z
-    let y = m[1][0] * v.x + m[1][1] * v.y + m[1][2] * v.z
-    let z = m[2][0] * v.x + m[2][1] * v.y + m[2][2] * v.z
+    let x = m.col0.x * v.x + m.col0.y * v.y + m.col0.z * v.z
+    let y = m.col1.x * v.x + m.col1.y * v.y + m.col1.z * v.z
+    let z = m.col2.x * v.x + m.col2.y * v.y + m.col2.z * v.z
     return Vector3(x, y, z)
 }
 
 public func *<T: Arithmetic>(m1: Matrix3<T>, m2: Matrix3<T>) -> Matrix3<T> {
-    let a00 = m1[0][0]
-    let a01 = m1[0][1]
-    let a02 = m1[0][2]
-    let a10 = m1[1][0]
-    let a11 = m1[1][1]
-    let a12 = m1[1][2]
-    let a20 = m1[2][0]
-    let a21 = m1[2][1]
-    let a22 = m1[2][2]
+    let a00 = m1.col0.x
+    let a01 = m1.col0.y
+    let a02 = m1.col0.z
+    let a10 = m1.col1.x
+    let a11 = m1.col1.y
+    let a12 = m1.col1.z
+    let a20 = m1.col2.x
+    let a21 = m1.col2.y
+    let a22 = m1.col2.z
 
-    let b00 = m2[0][0]
-    let b01 = m2[0][1]
-    let b02 = m2[0][2]
-    let b10 = m2[1][0]
-    let b11 = m2[1][1]
-    let b12 = m2[1][2]
-    let b20 = m2[2][0]
-    let b21 = m2[2][1]
-    let b22 = m2[2][2]
+    let b00 = m2.col0.x
+    let b01 = m2.col0.y
+    let b02 = m2.col0.z
+    let b10 = m2.col1.x
+    let b11 = m2.col1.y
+    let b12 = m2.col1.z
+    let b20 = m2.col2.x
+    let b21 = m2.col2.y
+    let b22 = m2.col2.z
 
     let x0 = a00 * b00 + a10 * b01 + a20 * b02
     let y0 = a01 * b00 + a11 * b01 + a21 * b02
@@ -551,10 +638,10 @@ public func /<T: SignedArithmetic>(m1: Matrix3<T>, m2: Matrix3<T>) -> Matrix3<T>
 // MARK: - Inverse
 
 public func inverse<T: SignedArithmetic>(m: Matrix2<T>) -> Matrix2<T> {
-    let m00 = m[0][0]
-    let m10 = m[1][0]
-    let m01 = m[0][1]
-    let m11 = m[1][1]
+    let m00 = m.col0.x
+    let m10 = m.col1.x
+    let m01 = m.col0.y
+    let m11 = m.col1.y
     
     let a = +(m00 * m11)
     let b = -(m10 * m01)
@@ -573,15 +660,15 @@ public func inverse<T: SignedArithmetic>(m: Matrix2<T>) -> Matrix2<T> {
 }
 
 public func inverse<T: SignedArithmetic>(m: Matrix3<T>) -> Matrix3<T> {
-    let m00 = m[0][0]
-    let m10 = m[1][0]
-    let m20 = m[2][0]
-    let m01 = m[0][1]
-    let m11 = m[1][1]
-    let m21 = m[2][1]
-    let m02 = m[0][2]
-    let m12 = m[1][2]
-    let m22 = m[2][2]
+    let m00 = m.col0.x
+    let m10 = m.col1.x
+    let m20 = m.col2.x
+    let m01 = m.col0.y
+    let m11 = m.col1.y
+    let m21 = m.col2.y
+    let m02 = m.col0.z
+    let m12 = m.col1.z
+    let m22 = m.col2.z
     
     let a = +(m00 * (m11 * m22 - m21 * m12))
     let b = -(m10 * (m01 * m22 - m21 * m02))
@@ -607,22 +694,22 @@ public func inverse<T: SignedArithmetic>(m: Matrix3<T>) -> Matrix3<T> {
 }
 
 public func inverse<T: SignedArithmetic>(m: Matrix4<T>) -> Matrix4<T> {
-    let m00 = m[0][0]
-    let m10 = m[1][0]
-    let m20 = m[2][0]
-    let m30 = m[3][0]
-    let m01 = m[0][1]
-    let m11 = m[1][1]
-    let m21 = m[2][1]
-    let m31 = m[3][1]
-    let m02 = m[0][2]
-    let m12 = m[1][2]
-    let m22 = m[2][2]
-    let m32 = m[3][2]
-    let m03 = m[0][3]
-    let m13 = m[1][3]
-    let m23 = m[2][3]
-    let m33 = m[3][3]
+    let m00 = m.col0.x
+    let m10 = m.col1.x
+    let m20 = m.col2.x
+    let m30 = m.col3.x
+    let m01 = m.col0.y
+    let m11 = m.col1.y
+    let m21 = m.col2.y
+    let m31 = m.col3.y
+    let m02 = m.col0.z
+    let m12 = m.col1.z
+    let m22 = m.col2.z
+    let m32 = m.col3.z
+    let m03 = m.col0.w
+    let m13 = m.col1.w
+    let m23 = m.col2.w
+    let m33 = m.col3.w
     
     let c00 = m22 * m33 - m32 * m23
     let c02 = m12 * m33 - m32 * m13
@@ -675,9 +762,7 @@ public func inverse<T: SignedArithmetic>(m: Matrix4<T>) -> Matrix4<T> {
         i3 * sB
     )
     
-    let r0 = Vector4(iM[0][0], iM[1][0], iM[2][0], iM[3][0])
-    
-    let d0 = m[0] * r0
+    let d0 = m.col0 * iM.row0
     let d1 = (d0.x + d0.y) + (d0.z + d0.w)
     
     let oneOverDeterminant = T.one / d1
@@ -689,48 +774,48 @@ public func inverse<T: SignedArithmetic>(m: Matrix4<T>) -> Matrix4<T> {
 
 public prefix func -<T: SignedArithmetic>(m: Matrix2<T>) -> Matrix2<T> {
     return Matrix2(
-        -m[0],
-        -m[1]
+        -m.col0,
+        -m.col1
     )
 }
 
 public prefix func -<T: SignedArithmetic>(m: Matrix3<T>) -> Matrix3<T> {
     return Matrix3(
-        -m[0],
-        -m[1],
-        -m[2]
+        -m.col0,
+        -m.col1,
+        -m.col2
     )
 }
 
 public prefix func -<T: SignedArithmetic>(m: Matrix4<T>) -> Matrix4<T> {
     return Matrix4(
-        -m[0],
-        -m[1],
-        -m[2],
-        -m[3]
+        -m.col0,
+        -m.col1,
+        -m.col2,
+        -m.col3
     )
 }
 
 public prefix func +<T: SignedArithmetic>(m: Matrix2<T>) -> Matrix2<T> {
     return Matrix2(
-        +m[0],
-        +m[1]
+        +m.col0,
+        +m.col1
     )
 }
 
 public prefix func +<T: SignedArithmetic>(m: Matrix3<T>) -> Matrix3<T> {
     return Matrix3(
-        +m[0],
-        +m[1],
-        +m[2]
+        +m.col0,
+        +m.col1,
+        +m.col2
     )
 }
 
 public prefix func +<T: SignedArithmetic>(m: Matrix4<T>) -> Matrix4<T> {
     return Matrix4(
-        +m[0],
-        +m[1],
-        +m[2],
-        +m[3]
+        +m.col0,
+        +m.col1,
+        +m.col2,
+        +m.col3
     )
 }

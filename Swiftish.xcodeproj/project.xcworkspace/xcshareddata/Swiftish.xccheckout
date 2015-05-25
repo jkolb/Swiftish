@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>BE6F37ED-DD03-4188-A73C-702DEF124A7D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Swiftish</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>46E5D706F03FD0A3D2EA32D12A439FE59E5B6922</key>
+		<string>https://github.com/jkolb/Swiftish.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Swiftish.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>46E5D706F03FD0A3D2EA32D12A439FE59E5B6922</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/jkolb/Swiftish.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>46E5D706F03FD0A3D2EA32D12A439FE59E5B6922</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>46E5D706F03FD0A3D2EA32D12A439FE59E5B6922</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Swiftish</string>
+		</dict>
+	</array>
+</dict>
+</plist>
