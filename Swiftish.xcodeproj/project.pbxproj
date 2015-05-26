@@ -19,6 +19,8 @@
 		E52F45AE1B125928004F7444 /* Vector3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F45AD1B125928004F7444 /* Vector3Tests.swift */; };
 		E52F45B01B125DFE004F7444 /* Vector4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F45AF1B125DFE004F7444 /* Vector4Tests.swift */; };
 		E55C63D01B139B4600E5D43E /* Matrix2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55C63CF1B139B4600E5D43E /* Matrix2Tests.swift */; };
+		E55C63D21B13A37A00E5D43E /* Matrix3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55C63D11B13A37A00E5D43E /* Matrix3Tests.swift */; };
+		E55C63D41B13A55D00E5D43E /* Matrix4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55C63D31B13A55D00E5D43E /* Matrix4Tests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		E52F45AD1B125928004F7444 /* Vector3Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3Tests.swift; sourceTree = "<group>"; };
 		E52F45AF1B125DFE004F7444 /* Vector4Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector4Tests.swift; sourceTree = "<group>"; };
 		E55C63CF1B139B4600E5D43E /* Matrix2Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix2Tests.swift; sourceTree = "<group>"; };
+		E55C63D11B13A37A00E5D43E /* Matrix3Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix3Tests.swift; sourceTree = "<group>"; };
+		E55C63D31B13A55D00E5D43E /* Matrix4Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix4Tests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,8 @@
 			isa = PBXGroup;
 			children = (
 				E55C63CF1B139B4600E5D43E /* Matrix2Tests.swift */,
+				E55C63D11B13A37A00E5D43E /* Matrix3Tests.swift */,
+				E55C63D31B13A55D00E5D43E /* Matrix4Tests.swift */,
 				E52F45AB1B1220D9004F7444 /* Vector2Tests.swift */,
 				E52F45AD1B125928004F7444 /* Vector3Tests.swift */,
 				E52F45AF1B125DFE004F7444 /* Vector4Tests.swift */,
@@ -240,12 +246,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E55C63D21B13A37A00E5D43E /* Matrix3Tests.swift in Sources */,
 				E52F45A31B121FD5004F7444 /* Arithmetic.swift in Sources */,
 				E52F45AE1B125928004F7444 /* Vector3Tests.swift in Sources */,
 				E55C63D01B139B4600E5D43E /* Matrix2Tests.swift in Sources */,
 				E52F45A71B121FD5004F7444 /* Vector.swift in Sources */,
 				E52F45A51B121FD5004F7444 /* Matrix.swift in Sources */,
 				E52F45AC1B1220D9004F7444 /* Vector2Tests.swift in Sources */,
+				E55C63D41B13A55D00E5D43E /* Matrix4Tests.swift in Sources */,
 				E52F45B01B125DFE004F7444 /* Vector4Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

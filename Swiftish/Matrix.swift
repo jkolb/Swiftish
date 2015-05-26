@@ -559,6 +559,80 @@ public func *<T: Arithmetic>(m1: Matrix3<T>, m2: Matrix3<T>) -> Matrix3<T> {
     )
 }
 
+public func *<T: Arithmetic>(m: Matrix4<T>, v: Vector4<T>) -> Vector4<T> {
+    let v0 = Vector4<T>(v.x)
+    let v1 = Vector4<T>(v.y)
+    let mul0 = m.col0 * v0
+    let mul1 = m.col1 * v1
+    let add0 = mul0 + mul1
+    let v2 = Vector4<T>(v.z)
+    let v3 = Vector4<T>(v.w)
+    let mul2 = m.col2 * v2
+    let mul3 = m.col3 * v3
+    let add1 = mul2 + mul3
+    let add2 = add0 + add1
+    return add2
+}
+
+public func *<T: Arithmetic>(v: Vector4<T>, m: Matrix4<T>) -> Vector4<T> {
+    let v0 = Vector4<T>(v.x)
+    let v1 = Vector4<T>(v.y)
+    let mul0 = m.row0 * v0
+    let mul1 = m.row1 * v1
+    let add0 = mul0 + mul1
+    let v2 = Vector4<T>(v.z)
+    let v3 = Vector4<T>(v.w)
+    let mul2 = m.row2 * v2
+    let mul3 = m.row3 * v3
+    let add1 = mul2 + mul3
+    let add2 = add0 + add1
+    return add2
+}
+
+public func *<T: Arithmetic>(m1: Matrix4<T>, m2: Matrix4<T>) -> Matrix4<T> {
+    let a0 = m1.col0
+    let a1 = m1.col1
+    let a2 = m1.col2
+    let a3 = m1.col3
+    
+    let b0 = m2.col0
+    let b1 = m2.col1
+    let b2 = m2.col2
+    let b3 = m2.col3
+    
+    let a0b0x = a0 * b0.x
+    let a1b0y = a1 * b0.y
+    let a2b0z = a2 * b0.z
+    let a3b0w = a3 * b0.w
+
+    let a0b1x = a0 * b1.x
+    let a1b1y = a1 * b1.y
+    let a2b1z = a2 * b1.z
+    let a3b1w = a3 * b1.w
+    
+    let a0b2x = a0 * b2.x
+    let a1b2y = a1 * b2.y
+    let a2b2z = a2 * b2.z
+    let a3b2w = a3 * b2.w
+    
+    let a0b3x = a0 * b3.x
+    let a1b3y = a1 * b3.y
+    let a2b3z = a2 * b3.z
+    let a3b3w = a3 * b3.w
+
+    let col0 = a0b0x + a1b0y + a2b0z + a3b0w
+    let col1 = a0b1x + a1b1y + a2b1z + a3b1w
+    let col2 = a0b2x + a1b2y + a2b2z + a3b2w
+    let col3 = a0b3x + a1b3y + a2b3z + a3b3w
+    
+    return Matrix4<T>(
+        col0,
+        col1,
+        col2,
+        col3
+    )
+}
+
 // MARK: - Scalar Division
 
 public func /<T: Arithmetic>(lhs: Matrix2<T>, rhs: T) -> Matrix2<T> {
@@ -632,6 +706,18 @@ public func /<T: SignedArithmetic>(v: Vector3<T>, m: Matrix3<T>) -> Vector3<T> {
 }
 
 public func /<T: SignedArithmetic>(m1: Matrix3<T>, m2: Matrix3<T>) -> Matrix3<T> {
+    return m1 * inverse(m2)
+}
+
+public func /<T: SignedArithmetic>(m: Matrix4<T>, v: Vector4<T>) -> Vector4<T> {
+    return inverse(m) * v
+}
+
+public func /<T: SignedArithmetic>(v: Vector4<T>, m: Matrix4<T>) -> Vector4<T> {
+    return v * inverse(m)
+}
+
+public func /<T: SignedArithmetic>(m1: Matrix4<T>, m2: Matrix4<T>) -> Matrix4<T> {
     return m1 * inverse(m2)
 }
 
@@ -732,7 +818,7 @@ public func inverse<T: SignedArithmetic>(m: Matrix4<T>) -> Matrix4<T> {
     let c19 = m10 * m22 - m20 * m12
     
     let c20 = m20 * m31 - m30 * m21
-    let c22 = m10 * m31 - m30 * m21
+    let c22 = m10 * m31 - m30 * m11
     let c23 = m10 * m21 - m20 * m11
     
     let f0 = Vector4(c00, c00, c02, c03)

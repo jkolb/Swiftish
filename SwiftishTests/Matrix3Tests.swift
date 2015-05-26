@@ -22,23 +22,34 @@
 
 import XCTest
 
-class Matrix2Tests: XCTestCase {
+class Matrix3Tests: XCTestCase {
     func testInverse() {
-        let col0 = Vector2<Float>(1.0, 2.0)
-        let col1 = Vector2<Float>(3.0, 4.0)
-        let a = Matrix2<Float>(col0, col1)
+        let col0 = Vector3<Float>(0.6, 0.2, 0.3)
+        let col1 = Vector3<Float>(0.2, 0.7, 0.5)
+        let col2 = Vector3<Float>(0.3, 0.5, 0.7)
+        let a = Matrix3<Float>(col0, col1, col2)
         let ai = inverse(a)
         let im = a * ai
         let id = a / a
         
         XCTAssertEqualWithAccuracy(im[0][0], 1.0, 0.000001, "")
         XCTAssertEqualWithAccuracy(im[0][1], 0.0, 0.000001, "")
+        XCTAssertEqualWithAccuracy(im[0][2], 0.0, 0.000001, "")
         XCTAssertEqualWithAccuracy(im[1][0], 0.0, 0.000001, "")
         XCTAssertEqualWithAccuracy(im[1][1], 1.0, 0.000001, "")
-        
+        XCTAssertEqualWithAccuracy(im[1][2], 0.0, 0.000001, "")
+        XCTAssertEqualWithAccuracy(im[2][0], 0.0, 0.000001, "")
+        XCTAssertEqualWithAccuracy(im[2][1], 0.0, 0.000001, "")
+        XCTAssertEqualWithAccuracy(im[2][2], 1.0, 0.000001, "")
+
         XCTAssertEqualWithAccuracy(id[0][0], 1.0, 0.000001, "")
         XCTAssertEqualWithAccuracy(id[0][1], 0.0, 0.000001, "")
+        XCTAssertEqualWithAccuracy(id[0][2], 0.0, 0.000001, "")
         XCTAssertEqualWithAccuracy(id[1][0], 0.0, 0.000001, "")
         XCTAssertEqualWithAccuracy(id[1][1], 1.0, 0.000001, "")
+        XCTAssertEqualWithAccuracy(id[1][2], 0.0, 0.000001, "")
+        XCTAssertEqualWithAccuracy(id[2][0], 0.0, 0.000001, "")
+        XCTAssertEqualWithAccuracy(id[2][1], 0.0, 0.000001, "")
+        XCTAssertEqualWithAccuracy(id[2][2], 1.0, 0.000001, "")
     }
 }
