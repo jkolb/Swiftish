@@ -130,11 +130,73 @@ class Vector2Tests: XCTestCase {
         XCTAssertEqual(vc.x, 0.5, "")
         XCTAssertEqual(vc.y, 2.0, "")
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
+
+    /* Used to make sure a switch statement was the best choice for implementing subscript
+    func testComponentsPerformance() {
+        let vectors = [
+            Vector2<Float>(0.0),
+            Vector2<Float>(1.0),
+            Vector2<Float>(2.0),
+            Vector2<Float>(3.0),
+            Vector2<Float>(4.0),
+            Vector2<Float>(5.0),
+            Vector2<Float>(6.0),
+            Vector2<Float>(7.0),
+            Vector2<Float>(8.0),
+            Vector2<Float>(9.0),
+        ]
         self.measureBlock() {
-            // Put the code you want to measure the time of here.
+            for x in 0..<100000 {
+                for v: Vector2<Float> in vectors {
+                    let components = v.components
+                    let r = components[0] + components[1]
+                }
+            }
         }
     }
+    
+    func testSubscriptPerformance() {
+        let vectors = [
+            Vector2<Float>(0.0),
+            Vector2<Float>(1.0),
+            Vector2<Float>(2.0),
+            Vector2<Float>(3.0),
+            Vector2<Float>(4.0),
+            Vector2<Float>(5.0),
+            Vector2<Float>(6.0),
+            Vector2<Float>(7.0),
+            Vector2<Float>(8.0),
+            Vector2<Float>(9.0),
+        ]
+        self.measureBlock() {
+            for x in 0..<100000 {
+                for v: Vector2<Float> in vectors {
+                    let r = v[0] + v[1]
+                }
+            }
+        }
+    }
+    
+    func testPropertyPerformance() {
+        let vectors = [
+            Vector2<Float>(0.0),
+            Vector2<Float>(1.0),
+            Vector2<Float>(2.0),
+            Vector2<Float>(3.0),
+            Vector2<Float>(4.0),
+            Vector2<Float>(5.0),
+            Vector2<Float>(6.0),
+            Vector2<Float>(7.0),
+            Vector2<Float>(8.0),
+            Vector2<Float>(9.0),
+        ]
+        self.measureBlock() {
+            for x in 0..<100000 {
+                for v: Vector2<Float> in vectors {
+                    let r = v.x + v.y
+                }
+            }
+        }
+    }
+    */
 }
