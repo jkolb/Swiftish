@@ -24,18 +24,16 @@ import XCTest
 
 class Matrix4Tests: XCTestCase {
     func testInverse() {
-        let col0 = Vector4<Double>(0.6, 0.2, 0.3, 0.4)
-        let col1 = Vector4<Double>(0.2, 0.7, 0.5, 0.3)
-        let col2 = Vector4<Double>(0.3, 0.5, 0.7, 0.2)
-        let col3 = Vector4<Double>(0.4, 0.3, 0.2, 0.6)
-        let a = Matrix4<Double>(col0, col1, col2, col3)
+        let col0 = Vector4D(0.6, 0.2, 0.3, 0.4)
+        let col1 = Vector4D(0.2, 0.7, 0.5, 0.3)
+        let col2 = Vector4D(0.3, 0.5, 0.7, 0.2)
+        let col3 = Vector4D(0.4, 0.3, 0.2, 0.6)
+        let a = Matrix4D(col0, col1, col2, col3)
         let ai = inverse(a)
         let im = a * ai
         let id = a / a
-        let i = Matrix4<Double>()
+        let i = Matrix4D()
         
-        println(im)
-        println(id)
         // Multiplication
         XCTAssertTrue(im ~~ i, "\(im) not identify")
         

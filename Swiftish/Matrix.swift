@@ -182,7 +182,7 @@ public struct Matrix3<T: Arithmetic> : Printable {
     }
     
     public var description: String {
-        return "{\(col0), \(col1)}, \(col2)"
+        return "{\(col0), \(col1), \(col2)}"
     }
 }
 
@@ -286,7 +286,7 @@ public struct Matrix4<T: Arithmetic> : Printable {
     }
     
     public var description: String {
-        return "{\(col0), \(col1)}, \(col2), \(col3)"
+        return "{\(col0), \(col1), \(col2), \(col3)}"
     }
 }
 
