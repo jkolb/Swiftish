@@ -130,7 +130,7 @@ class Vector2Tests: XCTestCase {
         XCTAssertEqual(vc.x, 0.5, "")
         XCTAssertEqual(vc.y, 2.0, "")
     }
-
+    
     /* Used to make sure a switch statement was the best choice for implementing subscript
     func testComponentsPerformance() {
         let vectors = [

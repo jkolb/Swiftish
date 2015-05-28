@@ -20,7 +20,7 @@
 // THE SOFTWARE.
 //
 
-public struct Matrix2<T: Arithmetic> {
+public struct Matrix2<T: Arithmetic> : Printable {
     typealias ColType = Vector2<T>
     typealias RowType = Vector2<T>
     
@@ -35,13 +35,16 @@ public struct Matrix2<T: Arithmetic> {
     }
     
     public init() {
-        self.col0 = ColType(T.one, T.zero)
-        self.col1 = ColType(T.zero, T.one)
+        let one: T = 1
+        let zero: T = 0
+        self.col0 = ColType(one, zero)
+        self.col1 = ColType(zero, one)
     }
     
     public init(_ v: T) {
-        self.col0 = ColType(v, T.zero)
-        self.col1 = ColType(T.zero, v)
+        let zero: T = 0
+        self.col0 = ColType(v, zero)
+        self.col1 = ColType(zero, v)
     }
     
     public init(
@@ -87,9 +90,13 @@ public struct Matrix2<T: Arithmetic> {
             fatalError("Index out of range")
         }
     }
+    
+    public var description: String {
+        return "{\(col0), \(col1)}"
+    }
 }
 
-public struct Matrix3<T: Arithmetic> {
+public struct Matrix3<T: Arithmetic> : Printable {
     typealias ColType = Vector3<T>
     typealias RowType = Vector3<T>
 
@@ -108,15 +115,18 @@ public struct Matrix3<T: Arithmetic> {
     }
     
     public init() {
-        self.col0 = ColType(T.one, T.zero, T.zero)
-        self.col1 = ColType(T.zero, T.one, T.zero)
-        self.col2 = ColType(T.zero, T.zero, T.one)
+        let one: T = 1
+        let zero: T = 0
+        self.col0 = ColType(one, zero, zero)
+        self.col1 = ColType(zero, one, zero)
+        self.col2 = ColType(zero, zero, one)
     }
     
     public init(_ v: T) {
-        self.col0 = ColType(v, T.zero, T.zero)
-        self.col1 = ColType(T.zero, v, T.zero)
-        self.col2 = ColType(T.zero, T.zero, v)
+        let zero: T = 0
+        self.col0 = ColType(v, zero, zero)
+        self.col1 = ColType(zero, v, zero)
+        self.col2 = ColType(zero, zero, v)
     }
     
     public init(
@@ -170,9 +180,13 @@ public struct Matrix3<T: Arithmetic> {
             fatalError("Index out of range")
         }
     }
+    
+    public var description: String {
+        return "{\(col0), \(col1)}, \(col2)"
+    }
 }
 
-public struct Matrix4<T: Arithmetic> {
+public struct Matrix4<T: Arithmetic> : Printable {
     typealias ColType = Vector4<T>
     typealias RowType = Vector4<T>
 
@@ -195,17 +209,20 @@ public struct Matrix4<T: Arithmetic> {
     }
     
     public init() {
-        self.col0 = ColType(T.one, T.zero, T.zero, T.zero)
-        self.col1 = ColType(T.zero, T.one, T.zero, T.zero)
-        self.col2 = ColType(T.zero, T.zero, T.one, T.zero)
-        self.col3 = ColType(T.zero, T.zero, T.zero, T.one)
+        let one: T = 1
+        let zero: T = 0
+        self.col0 = ColType(one, zero, zero, zero)
+        self.col1 = ColType(zero, one, zero, zero)
+        self.col2 = ColType(zero, zero, one, zero)
+        self.col3 = ColType(zero, zero, zero, one)
     }
     
     public init(_ v: T) {
-        self.col0 = ColType(v, T.zero, T.zero, T.zero)
-        self.col1 = ColType(T.zero, v, T.zero, T.zero)
-        self.col2 = ColType(T.zero, T.zero, v, T.zero)
-        self.col3 = ColType(T.zero, T.zero, T.zero, v)
+        let zero: T = 0
+        self.col0 = ColType(v, zero, zero, zero)
+        self.col1 = ColType(zero, v, zero, zero)
+        self.col2 = ColType(zero, zero, v, zero)
+        self.col3 = ColType(zero, zero, zero, v)
     }
     
     public init(
@@ -266,6 +283,10 @@ public struct Matrix4<T: Arithmetic> {
         default:
             fatalError("Index out of range")
         }
+    }
+    
+    public var description: String {
+        return "{\(col0), \(col1)}, \(col2), \(col3)"
     }
 }
 
@@ -732,7 +753,8 @@ public func inverse<T: SignedArithmetic>(m: Matrix2<T>) -> Matrix2<T> {
     let ad = a * d
     let bc = b * c
     
-    let oneOverDeterminant = T.one / (ad - bc)
+    let one: T = 1
+    let oneOverDeterminant = one / (ad - bc)
     
     let x0 = +d * oneOverDeterminant
     let x1 = -b * oneOverDeterminant
@@ -760,7 +782,8 @@ public func inverse<T: SignedArithmetic>(m: Matrix3<T>) -> Matrix3<T> {
     let b = -(m10 * (m01 * m22 - m21 * m02))
     let c = +(m20 * (m01 * m12 - m11 * m02))
     
-    let oneOverDeterminant = T.one / (a + b + c)
+    let one: T = 1
+    let oneOverDeterminant = one / (a + b + c)
     
     let x0 = +(m11 * m22 - m21 * m12) * oneOverDeterminant
     let y0 = -(m10 * m22 - m20 * m12) * oneOverDeterminant
@@ -838,8 +861,10 @@ public func inverse<T: SignedArithmetic>(m: Matrix4<T>) -> Matrix4<T> {
     let i2 = v0 * f1 - v1 * f3 + v3 * f5
     let i3 = v0 * f2 - v1 * f4 + v2 * f5
     
-    let sA = Vector4(+T.one, -T.one, +T.one, -T.one)
-    let sB = Vector4(-T.one, +T.one, -T.one, +T.one)
+    let one: T = 1
+    
+    let sA = Vector4(+one, -one, +one, -one)
+    let sB = Vector4(-one, +one, -one, +one)
     
     let iM = Matrix4(
         i0 * sA,
@@ -851,7 +876,7 @@ public func inverse<T: SignedArithmetic>(m: Matrix4<T>) -> Matrix4<T> {
     let d0 = m.col0 * iM.row0
     let d1 = (d0.x + d0.y) + (d0.z + d0.w)
     
-    let oneOverDeterminant = T.one / d1
+    let oneOverDeterminant = one / d1
     
     return iM * oneOverDeterminant
 }
@@ -892,4 +917,39 @@ public prefix func +<T: SignedArithmetic>(m: Matrix3<T>) -> Matrix3<T> {
 
 public prefix func +<T: SignedArithmetic>(m: Matrix4<T>) -> Matrix4<T> {
     return m
+}
+
+// MARK: Approximately Equal
+
+public func ~~<T: RealArithmetic>(ma: Matrix2<T>, mb: Matrix2<T>) -> Bool {
+    return approx(ma, mb)
+}
+
+public func approx<T: RealArithmetic>(ma: Matrix2<T>, mb: Matrix2<T>, epsilon: T = T.epsilon) -> Bool {
+    let a0 = approx(ma.col0, mb.col0, epsilon: epsilon)
+    let a1 = approx(ma.col1, mb.col1, epsilon: epsilon)
+    return a0 && a1
+}
+
+public func ~~<T: RealArithmetic>(ma: Matrix3<T>, mb: Matrix3<T>) -> Bool {
+    return approx(ma, mb)
+}
+
+public func approx<T: RealArithmetic>(ma: Matrix3<T>, mb: Matrix3<T>, epsilon: T = T.epsilon) -> Bool {
+    let a0 = approx(ma.col0, mb.col0, epsilon: epsilon)
+    let a1 = approx(ma.col1, mb.col1, epsilon: epsilon)
+    let a2 = approx(ma.col2, mb.col2, epsilon: epsilon)
+    return a0 && a1 && a2
+}
+
+public func ~~<T: RealArithmetic>(ma: Matrix4<T>, mb: Matrix4<T>) -> Bool {
+    return approx(ma, mb)
+}
+
+public func approx<T: RealArithmetic>(ma: Matrix4<T>, mb: Matrix4<T>, epsilon: T = T.epsilon) -> Bool {
+    let a0 = approx(ma.col0, mb.col0, epsilon: epsilon)
+    let a1 = approx(ma.col1, mb.col1, epsilon: epsilon)
+    let a2 = approx(ma.col2, mb.col2, epsilon: epsilon)
+    let a3 = approx(ma.col3, mb.col3, epsilon: epsilon)
+    return a0 && a1 && a2 && a3
 }

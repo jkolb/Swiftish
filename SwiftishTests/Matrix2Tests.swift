@@ -30,19 +30,12 @@ class Matrix2Tests: XCTestCase {
         let ai = inverse(a)
         let im = a * ai
         let id = a / a
+        let i = Matrix2<Float>()
         
         // Multiplication
-        XCTAssertEqualWithAccuracy(im[0][0], 1.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(im[0][1], 0.0, 0.000001, "")
-        
-        XCTAssertEqualWithAccuracy(im[1][0], 0.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(im[1][1], 1.0, 0.000001, "")
+        XCTAssertTrue(im ~~ i, "\(im) not identify")
         
         // Division
-        XCTAssertEqualWithAccuracy(id[0][0], 1.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(id[0][1], 0.0, 0.000001, "")
-        
-        XCTAssertEqualWithAccuracy(id[1][0], 0.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(id[1][1], 1.0, 0.000001, "")
+        XCTAssertTrue(id ~~ i, "\(id) not identify")
     }
 }

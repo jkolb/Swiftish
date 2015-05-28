@@ -31,31 +31,12 @@ class Matrix3Tests: XCTestCase {
         let ai = inverse(a)
         let im = a * ai
         let id = a / a
+        let i = Matrix3<Float>()
         
         // Multiplication
-        XCTAssertEqualWithAccuracy(im[0][0], 1.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(im[0][1], 0.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(im[0][2], 0.0, 0.000001, "")
+        XCTAssertTrue(im ~~ i, "\(im) not identify")
         
-        XCTAssertEqualWithAccuracy(im[1][0], 0.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(im[1][1], 1.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(im[1][2], 0.0, 0.000001, "")
-        
-        XCTAssertEqualWithAccuracy(im[2][0], 0.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(im[2][1], 0.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(im[2][2], 1.0, 0.000001, "")
-
         // Division
-        XCTAssertEqualWithAccuracy(id[0][0], 1.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(id[0][1], 0.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(id[0][2], 0.0, 0.000001, "")
-        
-        XCTAssertEqualWithAccuracy(id[1][0], 0.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(id[1][1], 1.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(id[1][2], 0.0, 0.000001, "")
-        
-        XCTAssertEqualWithAccuracy(id[2][0], 0.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(id[2][1], 0.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(id[2][2], 1.0, 0.000001, "")
+        XCTAssertTrue(id ~~ i, "\(id) not identify")
     }
 }

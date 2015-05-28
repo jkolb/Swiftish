@@ -164,11 +164,4 @@ class Vector4Tests: XCTestCase {
         XCTAssertEqual(vc.z, -4.0, "")
         XCTAssertEqual(vc.w, 0.125, "")
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
 }

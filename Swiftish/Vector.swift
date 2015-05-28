@@ -32,12 +32,13 @@ infix operator × {
     precedence 170
 }
 
-public struct Vector2<T: Arithmetic> : Equatable {
+public struct Vector2<T: Arithmetic> : Equatable, Printable {
     public let x, y: T
     
     public init() {
-        self.x = T.zero
-        self.y = T.zero
+        let zero: T = 0
+        self.x = zero
+        self.y = zero
     }
     
     public init(_ v: T) {
@@ -73,15 +74,20 @@ public struct Vector2<T: Arithmetic> : Equatable {
             fatalError("Index out of range")
         }
     }
+    
+    public var description: String {
+        return "{\(x), \(y)}"
+    }
 }
 
-public struct Vector3<T: Arithmetic> : Equatable {
+public struct Vector3<T: Arithmetic> : Equatable, Printable {
     public let x, y, z: T
     
     public init() {
-        self.x = T.zero
-        self.y = T.zero
-        self.z = T.zero
+        let zero: T = 0
+        self.x = zero
+        self.y = zero
+        self.z = zero
     }
 
     public init(_ v: T) {
@@ -124,16 +130,21 @@ public struct Vector3<T: Arithmetic> : Equatable {
             fatalError("Index out of range")
         }
     }
+    
+    public var description: String {
+        return "{\(x), \(y), \(z)}"
+    }
 }
 
-public struct Vector4<T: Arithmetic> : Equatable {
+public struct Vector4<T: Arithmetic> : Equatable, Printable {
     public let x, y, z, w: T
     
     public init() {
-        self.x = T.zero
-        self.y = T.zero
-        self.z = T.zero
-        self.w = T.zero
+        let zero: T = 0
+        self.x = zero
+        self.y = zero
+        self.z = zero
+        self.w = zero
     }
 
     public init(_ v: T) {
@@ -177,6 +188,10 @@ public struct Vector4<T: Arithmetic> : Equatable {
         default:
             fatalError("Index out of range")
         }
+    }
+    
+    public var description: String {
+        return "{\(x), \(y), \(z), \(w)}"
     }
 }
 
@@ -661,4 +676,48 @@ public func ==<T: Arithmetic>(va: Vector3<T>, vb: Vector3<T>) -> Bool {
 
 public func ==<T: Arithmetic>(va: Vector4<T>, vb: Vector4<T>) -> Bool {
     return va.x == vb.x && va.y == vb.y && va.z == vb.z && va.w == vb.w
+}
+
+// MARK: Approximately Equal
+
+public func ~~<T: RealArithmetic>(va: Vector2<T>, vb: Vector2<T>) -> Bool {
+    return approx(va, vb)
+}
+
+public func approx<T: RealArithmetic>(va: Vector2<T>, vb: Vector2<T>, epsilon: T = T.epsilon) -> Bool {
+    let dX = va.x.distanceTo(vb.x)
+    let dY = va.y.distanceTo(vb.y)
+    let aX = abs(dX) <= epsilon
+    let aY = abs(dY) <= epsilon
+    return aX && aY
+}
+
+public func ~~<T: RealArithmetic>(va: Vector3<T>, vb: Vector3<T>) -> Bool {
+    return approx(va, vb)
+}
+
+public func approx<T: RealArithmetic>(va: Vector3<T>, vb: Vector3<T>, epsilon: T = T.epsilon) -> Bool {
+    let dX = va.x.distanceTo(vb.x)
+    let dY = va.y.distanceTo(vb.y)
+    let dZ = va.z.distanceTo(vb.z)
+    let aX = abs(dX) < epsilon
+    let aY = abs(dY) < epsilon
+    let aZ = abs(dZ) < epsilon
+    return aX && aY && aZ
+}
+
+public func ~~<T: RealArithmetic>(va: Vector4<T>, vb: Vector4<T>) -> Bool {
+    return approx(va, vb)
+}
+
+public func approx<T: RealArithmetic>(va: Vector4<T>, vb: Vector4<T>, epsilon: T = T.epsilon) -> Bool {
+    let dX = va.x.distanceTo(vb.x)
+    let dY = va.y.distanceTo(vb.y)
+    let dZ = va.z.distanceTo(vb.z)
+    let dW = va.w.distanceTo(vb.w)
+    let aX = abs(dX) < epsilon
+    let aY = abs(dY) < epsilon
+    let aZ = abs(dZ) < epsilon
+    let aW = abs(dW) < epsilon
+    return aX && aY && aZ && aW
 }

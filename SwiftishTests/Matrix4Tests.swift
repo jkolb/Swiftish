@@ -24,55 +24,22 @@ import XCTest
 
 class Matrix4Tests: XCTestCase {
     func testInverse() {
-        let col0 = Vector4<Float>(0.6, 0.2, 0.3, 0.4)
-        let col1 = Vector4<Float>(0.2, 0.7, 0.5, 0.3)
-        let col2 = Vector4<Float>(0.3, 0.5, 0.7, 0.2)
-        let col3 = Vector4<Float>(0.4, 0.3, 0.2, 0.6)
-        let a = Matrix4<Float>(col0, col1, col2, col3)
+        let col0 = Vector4<Double>(0.6, 0.2, 0.3, 0.4)
+        let col1 = Vector4<Double>(0.2, 0.7, 0.5, 0.3)
+        let col2 = Vector4<Double>(0.3, 0.5, 0.7, 0.2)
+        let col3 = Vector4<Double>(0.4, 0.3, 0.2, 0.6)
+        let a = Matrix4<Double>(col0, col1, col2, col3)
         let ai = inverse(a)
         let im = a * ai
         let id = a / a
+        let i = Matrix4<Double>()
         
+        println(im)
+        println(id)
         // Multiplication
-        XCTAssertEqualWithAccuracy(im[0][0], 1.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(im[0][1], 0.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(im[0][2], 0.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(im[0][3], 0.0, 0.000001, "")
-        
-        XCTAssertEqualWithAccuracy(im[1][0], 0.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(im[1][1], 1.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(im[1][2], 0.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(im[1][3], 0.0, 0.000001, "")
-        
-        XCTAssertEqualWithAccuracy(im[2][0], 0.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(im[2][1], 0.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(im[2][2], 1.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(im[2][3], 0.0, 0.000001, "")
-        
-        XCTAssertEqualWithAccuracy(im[3][0], 0.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(im[3][1], 0.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(im[3][2], 0.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(im[3][3], 1.0, 0.000001, "")
+        XCTAssertTrue(im ~~ i, "\(im) not identify")
         
         // Division
-        XCTAssertEqualWithAccuracy(id[0][0], 1.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(id[0][1], 0.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(id[0][2], 0.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(id[0][3], 0.0, 0.000001, "")
-        
-        XCTAssertEqualWithAccuracy(id[1][0], 0.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(id[1][1], 1.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(id[1][2], 0.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(id[1][3], 0.0, 0.000001, "")
-        
-        XCTAssertEqualWithAccuracy(id[2][0], 0.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(id[2][1], 0.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(id[2][2], 1.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(id[2][3], 0.0, 0.000001, "")
-        
-        XCTAssertEqualWithAccuracy(id[3][0], 0.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(id[3][1], 0.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(id[3][2], 0.0, 0.000001, "")
-        XCTAssertEqualWithAccuracy(id[3][3], 1.0, 0.000001, "")
+        XCTAssertTrue(id ~~ i, "\(id) not identify")
     }
 }
