@@ -74,16 +74,16 @@ extension Double : RealArithmetic, SignedArithmetic {
     public static let epsilon: Double = 1e-15
 }
 
-typealias Vector2F = Vector2<Float>
-typealias Vector3F = Vector3<Float>
-typealias Vector4F = Vector4<Float>
-typealias Vector2D = Vector2<Double>
-typealias Vector3D = Vector3<Double>
-typealias Vector4D = Vector4<Double>
+public typealias Vector2F = Vector2<Float>
+public typealias Vector3F = Vector3<Float>
+public typealias Vector4F = Vector4<Float>
+public typealias Vector2D = Vector2<Double>
+public typealias Vector3D = Vector3<Double>
+public typealias Vector4D = Vector4<Double>
 
-typealias Matrix2F = Matrix2<Float>
-typealias Matrix3F = Matrix3<Float>
-typealias Matrix4F = Matrix4<Float>
-typealias Matrix2D = Matrix2<Double>
-typealias Matrix3D = Matrix3<Double>
-typealias Matrix4D = Matrix4<Double>
+public typealias Matrix2F = Matrix2<Float>
+public typealias Matrix3F = Matrix3<Float>
+public typealias Matrix4F = Matrix4<Float>
+public typealias Matrix2D = Matrix2<Double>
+public typealias Matrix3D = Matrix3<Double>
+public typealias Matrix4D = Matrix4<Double>

@@ -700,9 +700,9 @@ public func approx<T: RealArithmetic>(va: Vector3<T>, vb: Vector3<T>, epsilon: T
     let dX = va.x.distanceTo(vb.x)
     let dY = va.y.distanceTo(vb.y)
     let dZ = va.z.distanceTo(vb.z)
-    let aX = abs(dX) < epsilon
-    let aY = abs(dY) < epsilon
-    let aZ = abs(dZ) < epsilon
+    let aX = abs(dX) <= epsilon
+    let aY = abs(dY) <= epsilon
+    let aZ = abs(dZ) <= epsilon
     return aX && aY && aZ
 }
 
@@ -715,9 +715,9 @@ public func approx<T: RealArithmetic>(va: Vector4<T>, vb: Vector4<T>, epsilon: T
     let dY = va.y.distanceTo(vb.y)
     let dZ = va.z.distanceTo(vb.z)
     let dW = va.w.distanceTo(vb.w)
-    let aX = abs(dX) < epsilon
-    let aY = abs(dY) < epsilon
-    let aZ = abs(dZ) < epsilon
-    let aW = abs(dW) < epsilon
+    let aX = abs(dX) <= epsilon
+    let aY = abs(dY) <= epsilon
+    let aZ = abs(dZ) <= epsilon
+    let aW = abs(dW) <= epsilon
     return aX && aY && aZ && aW
 }
