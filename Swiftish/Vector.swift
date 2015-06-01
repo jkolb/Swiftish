@@ -20,25 +20,23 @@
 // THE SOFTWARE.
 //
 
-// Dot product Alt + 8 = •
-infix operator • {
-    associativity left
-    precedence 160
-}
+// MARK: - Aliases
 
-// Cross product
-infix operator × {
-    associativity left
-    precedence 170
-}
+public typealias Vector2F = Vector2<Float>
+public typealias Vector3F = Vector3<Float>
+public typealias Vector4F = Vector4<Float>
+public typealias Vector2D = Vector2<Double>
+public typealias Vector3D = Vector3<Double>
+public typealias Vector4D = Vector4<Double>
+
+// MARK: - Vector2
 
 public struct Vector2<T: Arithmetic> : Equatable, Printable {
     public let x, y: T
     
     public init() {
-        let zero: T = 0
-        self.x = zero
-        self.y = zero
+        self.x = 0
+        self.y = 0
     }
     
     public init(_ v: T) {
@@ -49,6 +47,16 @@ public struct Vector2<T: Arithmetic> : Equatable, Printable {
     public init(_ x: T, _ y: T) {
         self.x = x
         self.y = y
+    }
+    
+    public init(_ v: Vector3<T>) {
+        self.x = v.x
+        self.y = v.y
+    }
+    
+    public init(_ v: Vector4<T>) {
+        self.x = v.x
+        self.y = v.y
     }
     
     public var s: T { return x }
@@ -80,14 +88,15 @@ public struct Vector2<T: Arithmetic> : Equatable, Printable {
     }
 }
 
+// MARK: - Vector3
+
 public struct Vector3<T: Arithmetic> : Equatable, Printable {
     public let x, y, z: T
     
     public init() {
-        let zero: T = 0
-        self.x = zero
-        self.y = zero
-        self.z = zero
+        self.x = 0
+        self.y = 0
+        self.z = 0
     }
 
     public init(_ v: T) {
@@ -100,6 +109,24 @@ public struct Vector3<T: Arithmetic> : Equatable, Printable {
         self.x = x
         self.y = y
         self.z = z
+    }
+    
+    public init(_ v: Vector2<T>, _ z: T) {
+        self.x = v.x
+        self.y = v.y
+        self.z = z
+    }
+    
+    public init(_ x: T, _ v: Vector2<T>) {
+        self.x = x
+        self.y = v.x
+        self.z = v.y
+    }
+    
+    public init(_ v: Vector4<T>) {
+        self.x = v.x
+        self.y = v.y
+        self.z = v.z
     }
     
     public var s: T { return x }
@@ -136,15 +163,16 @@ public struct Vector3<T: Arithmetic> : Equatable, Printable {
     }
 }
 
+// MARK: - Vector4
+
 public struct Vector4<T: Arithmetic> : Equatable, Printable {
     public let x, y, z, w: T
     
     public init() {
-        let zero: T = 0
-        self.x = zero
-        self.y = zero
-        self.z = zero
-        self.w = zero
+        self.x = 0
+        self.y = 0
+        self.z = 0
+        self.w = 0
     }
 
     public init(_ v: T) {
@@ -159,6 +187,48 @@ public struct Vector4<T: Arithmetic> : Equatable, Printable {
         self.y = y
         self.z = z
         self.w = w
+    }
+    
+    public init(_ v: Vector2<T>, _ z: T, _ w: T) {
+        self.x = v.x
+        self.y = v.y
+        self.z = z
+        self.w = w
+    }
+    
+    public init(_ x: T, _ v: Vector2<T>, _ w: T) {
+        self.x = x
+        self.y = v.x
+        self.z = v.y
+        self.w = w
+    }
+    
+    public init(_ x: T, _ y: T, _ v: Vector2<T>) {
+        self.x = x
+        self.y = y
+        self.z = v.x
+        self.w = v.y
+    }
+    
+    public init(_ v: Vector3<T>, _ w: T) {
+        self.x = v.x
+        self.y = v.y
+        self.z = v.z
+        self.w = w
+    }
+    
+    public init(_ x: T, _ v: Vector3<T>) {
+        self.x = x
+        self.y = v.x
+        self.z = v.y
+        self.w = v.z
+    }
+    
+    public init(_ v1: Vector2<T>, _ v2: Vector2<T>) {
+        self.x = v1.x
+        self.y = v1.y
+        self.z = v2.x
+        self.w = v2.y
     }
     
     public var s: T { return x }
@@ -537,7 +607,7 @@ public prefix func +<T: SignedArithmetic>(v: Vector4<T>) -> Vector4<T> {
     return v
 }
 
-// MARK: - Sum
+// MARK: - Component Sum
 
 public func sum<T: Arithmetic>(vector: Vector2<T>) -> T {
     return vector.x + vector.y
@@ -610,7 +680,7 @@ public func distance2<T: Arithmetic>(va: Vector4<T>, vb: Vector4<T>) -> T {
     return sum(difference * difference)
 }
 
-// MARK: Distance
+// MARK: - Distance
 
 public func distance<T: RealArithmetic>(va: Vector2<T>, vb: Vector2<T>) -> T {
     return √distance2(va, vb)
@@ -624,7 +694,7 @@ public func distance<T: RealArithmetic>(va: Vector4<T>, vb: Vector4<T>) -> T {
     return √distance2(va, vb)
 }
 
-// MARK: Cross Product
+// MARK: - Cross Product
 
 public func ×<T: Arithmetic>(va: Vector3<T>, vb: Vector3<T>) -> Vector3<T> {
     return cross(va, vb)
@@ -638,7 +708,7 @@ public func cross<T: Arithmetic>(va: Vector3<T>, vb: Vector3<T>) -> Vector3<T> {
     )
 }
 
-// MARK: Dot Product
+// MARK: - Dot Product
 
 public func •<T: Arithmetic>(va: Vector2<T>, vb: Vector2<T>) -> T {
     return dot(va, vb)
@@ -664,7 +734,7 @@ public func dot<T: Arithmetic>(va: Vector4<T>, vb: Vector4<T>) -> T {
     return sum(va * vb)
 }
 
-// MARK: Equatable
+// MARK: - Equatable
 
 public func ==<T: Arithmetic>(va: Vector2<T>, vb: Vector2<T>) -> Bool {
     return va.x == vb.x && va.y == vb.y
@@ -678,7 +748,7 @@ public func ==<T: Arithmetic>(va: Vector4<T>, vb: Vector4<T>) -> Bool {
     return va.x == vb.x && va.y == vb.y && va.z == vb.z && va.w == vb.w
 }
 
-// MARK: Approximately Equal
+// MARK: - Approximately Equal
 
 public func ~~<T: RealArithmetic>(va: Vector2<T>, vb: Vector2<T>) -> Bool {
     return approx(va, vb)
@@ -720,4 +790,56 @@ public func approx<T: RealArithmetic>(va: Vector4<T>, vb: Vector4<T>, epsilon: T
     let aZ = abs(dZ) <= epsilon
     let aW = abs(dW) <= epsilon
     return aX && aY && aZ && aW
+}
+
+// MARK: - Cosine
+
+public func cos<T: RealArithmetic>(v: Vector2<T>) -> Vector2<T> {
+    return Vector2(
+        T.cos(v.x),
+        T.cos(v.y)
+    )
+}
+
+public func cos<T: RealArithmetic>(v: Vector3<T>) -> Vector3<T> {
+    return Vector3(
+        T.cos(v.x),
+        T.cos(v.y),
+        T.cos(v.z)
+    )
+}
+
+public func cos<T: RealArithmetic>(v: Vector4<T>) -> Vector4<T> {
+    return Vector4(
+        T.cos(v.x),
+        T.cos(v.y),
+        T.cos(v.z),
+        T.cos(v.w)
+    )
+}
+
+// MARK: - Sine
+
+public func sin<T: RealArithmetic>(v: Vector2<T>) -> Vector2<T> {
+    return Vector2(
+        T.sin(v.x),
+        T.sin(v.y)
+    )
+}
+
+public func sin<T: RealArithmetic>(v: Vector3<T>) -> Vector3<T> {
+    return Vector3(
+        T.sin(v.x),
+        T.sin(v.y),
+        T.sin(v.z)
+    )
+}
+
+public func sin<T: RealArithmetic>(v: Vector4<T>) -> Vector4<T> {
+    return Vector4(
+        T.sin(v.x),
+        T.sin(v.y),
+        T.sin(v.z),
+        T.sin(v.w)
+    )
 }

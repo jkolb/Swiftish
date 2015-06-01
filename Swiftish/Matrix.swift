@@ -20,6 +20,17 @@
 // THE SOFTWARE.
 //
 
+// MARK: - Aliases
+
+public typealias Matrix2F = Matrix2<Float>
+public typealias Matrix3F = Matrix3<Float>
+public typealias Matrix4F = Matrix4<Float>
+public typealias Matrix2D = Matrix2<Double>
+public typealias Matrix3D = Matrix3<Double>
+public typealias Matrix4D = Matrix4<Double>
+
+// MARK: - Matrix2
+
 public struct Matrix2<T: Arithmetic> : Printable {
     typealias ColType = Vector2<T>
     typealias RowType = Vector2<T>
@@ -35,16 +46,13 @@ public struct Matrix2<T: Arithmetic> : Printable {
     }
     
     public init() {
-        let one: T = 1
-        let zero: T = 0
-        self.col0 = ColType(one, zero)
-        self.col1 = ColType(zero, one)
+        self.col0 = ColType(1, 0)
+        self.col1 = ColType(0, 1)
     }
     
     public init(_ v: T) {
-        let zero: T = 0
-        self.col0 = ColType(v, zero)
-        self.col1 = ColType(zero, v)
+        self.col0 = ColType(v, 0)
+        self.col1 = ColType(0, v)
     }
     
     public init(
@@ -96,6 +104,8 @@ public struct Matrix2<T: Arithmetic> : Printable {
     }
 }
 
+// MARK: - Matrix3
+
 public struct Matrix3<T: Arithmetic> : Printable {
     typealias ColType = Vector3<T>
     typealias RowType = Vector3<T>
@@ -115,18 +125,15 @@ public struct Matrix3<T: Arithmetic> : Printable {
     }
     
     public init() {
-        let one: T = 1
-        let zero: T = 0
-        self.col0 = ColType(one, zero, zero)
-        self.col1 = ColType(zero, one, zero)
-        self.col2 = ColType(zero, zero, one)
+        self.col0 = ColType(1, 0, 0)
+        self.col1 = ColType(0, 1, 0)
+        self.col2 = ColType(0, 0, 1)
     }
     
     public init(_ v: T) {
-        let zero: T = 0
-        self.col0 = ColType(v, zero, zero)
-        self.col1 = ColType(zero, v, zero)
-        self.col2 = ColType(zero, zero, v)
+        self.col0 = ColType(v, 0, 0)
+        self.col1 = ColType(0, v, 0)
+        self.col2 = ColType(0, 0, v)
     }
     
     public init(
@@ -186,6 +193,8 @@ public struct Matrix3<T: Arithmetic> : Printable {
     }
 }
 
+// MARK: - Matrix4
+
 public struct Matrix4<T: Arithmetic> : Printable {
     typealias ColType = Vector4<T>
     typealias RowType = Vector4<T>
@@ -209,20 +218,17 @@ public struct Matrix4<T: Arithmetic> : Printable {
     }
     
     public init() {
-        let one: T = 1
-        let zero: T = 0
-        self.col0 = ColType(one, zero, zero, zero)
-        self.col1 = ColType(zero, one, zero, zero)
-        self.col2 = ColType(zero, zero, one, zero)
-        self.col3 = ColType(zero, zero, zero, one)
+        self.col0 = ColType(1, 0, 0, 0)
+        self.col1 = ColType(0, 1, 0, 0)
+        self.col2 = ColType(0, 0, 1, 0)
+        self.col3 = ColType(0, 0, 0, 1)
     }
     
     public init(_ v: T) {
-        let zero: T = 0
-        self.col0 = ColType(v, zero, zero, zero)
-        self.col1 = ColType(zero, v, zero, zero)
-        self.col2 = ColType(zero, zero, v, zero)
-        self.col3 = ColType(zero, zero, zero, v)
+        self.col0 = ColType(v, 0, 0, 0)
+        self.col1 = ColType(0, v, 0, 0)
+        self.col2 = ColType(0, 0, v, 0)
+        self.col3 = ColType(0, 0, 0, v)
     }
     
     public init(
@@ -249,6 +255,13 @@ public struct Matrix4<T: Arithmetic> : Printable {
         self.col1 = ColType(x1, y1, z1, w1)
         self.col2 = ColType(x2, y2, z2, w2)
         self.col3 = ColType(x3, y3, z3, w3)
+    }
+    
+    public init(_ m: Matrix3<T>) {
+        self.col0 = ColType(m.col0, 0)
+        self.col1 = ColType(m.col1, 0)
+        self.col2 = ColType(m.col2, 0)
+        self.col3 = ColType(0, 0, 0, 1)
     }
     
     public subscript(index: Int) -> ColType {
@@ -753,8 +766,7 @@ public func inverse<T: SignedArithmetic>(m: Matrix2<T>) -> Matrix2<T> {
     let ad = a * d
     let bc = b * c
     
-    let one: T = 1
-    let oneOverDeterminant = one / (ad - bc)
+    let oneOverDeterminant = 1 / (ad - bc)
     
     let x0 = +d * oneOverDeterminant
     let x1 = -b * oneOverDeterminant
@@ -782,8 +794,7 @@ public func inverse<T: SignedArithmetic>(m: Matrix3<T>) -> Matrix3<T> {
     let b = -(m10 * (m01 * m22 - m21 * m02))
     let c = +(m20 * (m01 * m12 - m11 * m02))
     
-    let one: T = 1
-    let oneOverDeterminant = one / (a + b + c)
+    let oneOverDeterminant = 1 / (a + b + c)
     
     let x0 = +(m11 * m22 - m21 * m12) * oneOverDeterminant
     let y0 = -(m10 * m22 - m20 * m12) * oneOverDeterminant
@@ -862,9 +873,11 @@ public func inverse<T: SignedArithmetic>(m: Matrix4<T>) -> Matrix4<T> {
     let i3 = v0 * f2 - v1 * f4 + v2 * f5
     
     let one: T = 1
-    
-    let sA = Vector4(+one, -one, +one, -one)
-    let sB = Vector4(-one, +one, -one, +one)
+    let sA = Vector4<T>(+one, -one, +one, -one)
+    let sB = Vector4<T>(-one, +one, -one, +one)
+    // This causes tests to fail, not sure why
+//    let sA = Vector4<T>(+1, -1, +1, -1)
+//    let sB = Vector4<T>(-1, +1, -1, +1)
     
     let iM = Matrix4(
         i0 * sA,
@@ -872,11 +885,9 @@ public func inverse<T: SignedArithmetic>(m: Matrix4<T>) -> Matrix4<T> {
         i2 * sA,
         i3 * sB
     )
-    
-    let d0 = m.col0 * iM.row0
-    let d1 = (d0.x + d0.y) + (d0.z + d0.w)
-    
-    let oneOverDeterminant = one / d1
+
+    let d = sum(m.col0 * iM.row0)
+    let oneOverDeterminant = 1 / d
     
     return iM * oneOverDeterminant
 }

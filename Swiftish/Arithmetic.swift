@@ -20,24 +20,7 @@
 // THE SOFTWARE.
 //
 
-import Darwin.C.math
-
-// Approximately equal using T.epsilon
-infix operator ~~ {
-    associativity none
-    precedence 130
-}
-
-// Square Root Alt + V = √
-prefix operator √ {}
-
-public prefix func √(x: Float) -> Float {
-    return sqrtf(x)
-}
-
-public prefix func √(x: Double) -> Double {
-    return sqrt(x)
-}
+import Darwin
 
 public protocol Arithmetic : Comparable, Equatable, IntegerLiteralConvertible {
     func +(lhs: Self, rhs: Self) -> Self
@@ -51,6 +34,14 @@ public protocol SignedArithmetic : Arithmetic, SignedNumberType {
 
 public protocol RealArithmetic : Arithmetic, AbsoluteValuable, FloatLiteralConvertible {
     prefix func √(x: Self) -> Self
+    static func sqrt(x: Self) -> Self
+    static func tan(x: Self) -> Self
+    static func cos(x: Self) -> Self
+    static func sin(x: Self) -> Self
+    static func atan(x: Self) -> Self
+    static func atan2(y: Self, _ x: Self) -> Self
+    static func acos(x: Self) -> Self
+    static func asin(x: Self) -> Self
     func distanceTo(other: Self) -> Self
     static var epsilon: Self { get }
 }
@@ -69,21 +60,72 @@ extension Int64 : SignedArithmetic {}
 
 extension Float : RealArithmetic, SignedArithmetic {
     public static let epsilon: Float = 1e-6
+    
+    public static func sqrt(x: Float) -> Float {
+        return Darwin.sqrt(x)
+    }
+    
+    public static func tan(x: Float) -> Float {
+        return Darwin.tanf(x)
+    }
+    
+    public static func cos(x: Float) -> Float {
+        return Darwin.cosf(x)
+    }
+    
+    public static func sin(x: Float) -> Float {
+        return Darwin.sinf(x)
+    }
+    
+    public static func atan(x: Float) -> Float {
+        return Darwin.atanf(x)
+    }
+    
+    public static func atan2(y: Float, _ x: Float) -> Float {
+        return Darwin.atan2f(y, x)
+    }
+    
+    public static func acos(x: Float) -> Float {
+        return Darwin.acosf(x)
+    }
+    
+    public static func asin(x: Float) -> Float {
+        return Darwin.asinf(x)
+    }
 }
+
 extension Double : RealArithmetic, SignedArithmetic {
     public static let epsilon: Double = 1e-15
+
+    public static func sqrt(x: Double) -> Double {
+        return Darwin.sqrt(x)
+    }
+    
+    public static func tan(x: Double) -> Double {
+        return Darwin.tan(x)
+    }
+    
+    public static func cos(x: Double) -> Double {
+        return Darwin.cos(x)
+    }
+    
+    public static func sin(x: Double) -> Double {
+        return Darwin.sin(x)
+    }
+    
+    public static func atan(x: Double) -> Double {
+        return Darwin.atan(x)
+    }
+    
+    public static func atan2(y: Double, _ x: Double) -> Double {
+        return Darwin.atan2(y, x)
+    }
+    
+    public static func acos(x: Double) -> Double {
+        return Darwin.acos(x)
+    }
+    
+    public static func asin(x: Double) -> Double {
+        return Darwin.asin(x)
+    }
 }
-
-public typealias Vector2F = Vector2<Float>
-public typealias Vector3F = Vector3<Float>
-public typealias Vector4F = Vector4<Float>
-public typealias Vector2D = Vector2<Double>
-public typealias Vector3D = Vector3<Double>
-public typealias Vector4D = Vector4<Double>
-
-public typealias Matrix2F = Matrix2<Float>
-public typealias Matrix3F = Matrix3<Float>
-public typealias Matrix4F = Matrix4<Float>
-public typealias Matrix2D = Matrix2<Double>
-public typealias Matrix3D = Matrix3<Double>
-public typealias Matrix4D = Matrix4<Double>
