@@ -20,59 +20,52 @@
 // THE SOFTWARE.
 //
 
-// MARK: - Aliases
-
-public typealias Vector2F = Vector2<Float>
-public typealias Vector3F = Vector3<Float>
-public typealias Vector4F = Vector4<Float>
-public typealias Vector2D = Vector2<Double>
-public typealias Vector3D = Vector3<Double>
-public typealias Vector4D = Vector4<Double>
+import Darwin
 
 // MARK: - Vector2
 
-public struct Vector2<T: Arithmetic> : Equatable, Printable {
-    public let x, y: T
+public struct Vector2D : Equatable, CustomStringConvertible {
+    public let x, y: Float
     
     public init() {
         self.x = 0
         self.y = 0
     }
     
-    public init(_ v: T) {
+    public init(_ v: Float) {
         self.x = v
         self.y = v
     }
     
-    public init(_ x: T, _ y: T) {
+    public init(_ x: Float, _ y: Float) {
         self.x = x
         self.y = y
     }
     
-    public init(_ v: Vector3<T>) {
+    public init(_ v: Vector3D) {
         self.x = v.x
         self.y = v.y
     }
     
-    public init(_ v: Vector4<T>) {
+    public init(_ v: Vector4D) {
         self.x = v.x
         self.y = v.y
     }
     
-    public var s: T { return x }
-    public var t: T { return y }
+    public var s: Float { return x }
+    public var t: Float { return y }
     
-    public var u: T { return x }
-    public var v: T { return y }
+    public var u: Float { return x }
+    public var v: Float { return y }
     
-    public var r: T { return x }
-    public var g: T { return y }
+    public var r: Float { return x }
+    public var g: Float { return y }
     
-    public var components: [T] {
+    public var components: [Float] {
         return [x, y]
     }
     
-    public subscript(index: Int) -> T {
+    public subscript(index: Int) -> Float {
         switch index {
         case 0:
             return x
@@ -90,8 +83,8 @@ public struct Vector2<T: Arithmetic> : Equatable, Printable {
 
 // MARK: - Vector3
 
-public struct Vector3<T: Arithmetic> : Equatable, Printable {
-    public let x, y, z: T
+public struct Vector3D : Equatable, CustomStringConvertible {
+    public let x, y, z: Float
     
     public init() {
         self.x = 0
@@ -99,53 +92,53 @@ public struct Vector3<T: Arithmetic> : Equatable, Printable {
         self.z = 0
     }
 
-    public init(_ v: T) {
+    public init(_ v: Float) {
         self.x = v
         self.y = v
         self.z = v
     }
     
-    public init(_ x: T, _ y: T, _ z: T) {
+    public init(_ x: Float, _ y: Float, _ z: Float) {
         self.x = x
         self.y = y
         self.z = z
     }
     
-    public init(_ v: Vector2<T>, _ z: T) {
+    public init(_ v: Vector2D, _ z: Float) {
         self.x = v.x
         self.y = v.y
         self.z = z
     }
     
-    public init(_ x: T, _ v: Vector2<T>) {
+    public init(_ x: Float, _ v: Vector2D) {
         self.x = x
         self.y = v.x
         self.z = v.y
     }
     
-    public init(_ v: Vector4<T>) {
+    public init(_ v: Vector4D) {
         self.x = v.x
         self.y = v.y
         self.z = v.z
     }
     
-    public var s: T { return x }
-    public var t: T { return y }
-    public var p: T { return z }
+    public var s: Float { return x }
+    public var t: Float { return y }
+    public var p: Float { return z }
     
-    public var u: T { return x }
-    public var v: T { return y }
-    public var w: T { return z }
+    public var u: Float { return x }
+    public var v: Float { return y }
+    public var w: Float { return z }
 
-    public var r: T { return x }
-    public var g: T { return y }
-    public var b: T { return z }
+    public var r: Float { return x }
+    public var g: Float { return y }
+    public var b: Float { return z }
     
-    public var components: [T] {
+    public var components: [Float] {
         return [x, y, z]
     }
     
-    public subscript(index: Int) -> T {
+    public subscript(index: Int) -> Float {
         switch index {
         case 0:
             return x
@@ -165,8 +158,8 @@ public struct Vector3<T: Arithmetic> : Equatable, Printable {
 
 // MARK: - Vector4
 
-public struct Vector4<T: Arithmetic> : Equatable, Printable {
-    public let x, y, z, w: T
+public struct Vector4D : Equatable, CustomStringConvertible {
+    public let x, y, z, w: Float
     
     public init() {
         self.x = 0
@@ -175,77 +168,77 @@ public struct Vector4<T: Arithmetic> : Equatable, Printable {
         self.w = 0
     }
 
-    public init(_ v: T) {
+    public init(_ v: Float) {
         self.x = v
         self.y = v
         self.z = v
         self.w = v
     }
     
-    public init(_ x: T, _ y: T, _ z: T, _ w: T) {
+    public init(_ x: Float, _ y: Float, _ z: Float, _ w: Float) {
         self.x = x
         self.y = y
         self.z = z
         self.w = w
     }
     
-    public init(_ v: Vector2<T>, _ z: T, _ w: T) {
+    public init(_ v: Vector2D, _ z: Float, _ w: Float) {
         self.x = v.x
         self.y = v.y
         self.z = z
         self.w = w
     }
     
-    public init(_ x: T, _ v: Vector2<T>, _ w: T) {
+    public init(_ x: Float, _ v: Vector2D, _ w: Float) {
         self.x = x
         self.y = v.x
         self.z = v.y
         self.w = w
     }
     
-    public init(_ x: T, _ y: T, _ v: Vector2<T>) {
+    public init(_ x: Float, _ y: Float, _ v: Vector2D) {
         self.x = x
         self.y = y
         self.z = v.x
         self.w = v.y
     }
     
-    public init(_ v: Vector3<T>, _ w: T) {
+    public init(_ v: Vector3D, _ w: Float) {
         self.x = v.x
         self.y = v.y
         self.z = v.z
         self.w = w
     }
     
-    public init(_ x: T, _ v: Vector3<T>) {
+    public init(_ x: Float, _ v: Vector3D) {
         self.x = x
         self.y = v.x
         self.z = v.y
         self.w = v.z
     }
     
-    public init(_ v1: Vector2<T>, _ v2: Vector2<T>) {
+    public init(_ v1: Vector2D, _ v2: Vector2D) {
         self.x = v1.x
         self.y = v1.y
         self.z = v2.x
         self.w = v2.y
     }
     
-    public var s: T { return x }
-    public var t: T { return y }
-    public var p: T { return z }
-    public var q: T { return w }
+    public var s: Float { return x }
+    public var t: Float { return y }
+    public var p: Float { return z }
+    public var q: Float { return w }
     
-    public var r: T { return x }
-    public var g: T { return y }
-    public var b: T { return z }
-    public var a: T { return w }
+    public var r: Float { return x }
+    public var g: Float { return y }
+    public var b: Float { return z }
+    public var a: Float { return w }
 
-    public var components: [T] {
+    public var components: [Float] {
         return [x, y, z, w]
     }
     
-    public subscript(index: Int) -> T {
+    public subscript(index: Int) -> Float {
         switch index {
         case 0:
             return x
@@ -267,38 +260,38 @@ public struct Vector4<T: Arithmetic> : Equatable, Printable {
 
 // MARK: - Scalar Addition
 
-public func +<T: Arithmetic>(lhs: Vector2<T>, rhs: T) -> Vector2<T> {
-    return Vector2(
+public func +(lhs: Vector2D, rhs: Float) -> Vector2D {
+    return Vector2D(
         lhs.x + rhs,
         lhs.y + rhs
     )
 }
 
-public func +<T: Arithmetic>(lhs: T, rhs: Vector2<T>) -> Vector2<T> {
-    return Vector2(
+public func +(lhs: Float, rhs: Vector2D) -> Vector2D {
+    return Vector2D(
         lhs + rhs.x,
         lhs + rhs.y
     )
 }
 
-public func +<T: Arithmetic>(lhs: Vector3<T>, rhs: T) -> Vector3<T> {
-    return Vector3(
+public func +(lhs: Vector3D, rhs: Float) -> Vector3D {
+    return Vector3D(
         lhs.x + rhs,
         lhs.y + rhs,
         lhs.z + rhs
     )
 }
 
-public func +<T: Arithmetic>(lhs: T, rhs: Vector3<T>) -> Vector3<T> {
-    return Vector3(
+public func +(lhs: Float, rhs: Vector3D) -> Vector3D {
+    return Vector3D(
         lhs + rhs.x,
         lhs + rhs.y,
         lhs + rhs.z
     )
 }
 
-public func +<T: Arithmetic>(lhs: Vector4<T>, rhs: T) -> Vector4<T> {
-    return Vector4(
+public func +(lhs: Vector4D, rhs: Float) -> Vector4D {
+    return Vector4D(
         lhs.x + rhs,
         lhs.y + rhs,
         lhs.z + rhs,
@@ -306,8 +299,8 @@ public func +<T: Arithmetic>(lhs: Vector4<T>, rhs: T) -> Vector4<T> {
     )
 }
 
-public func +<T: Arithmetic>(lhs: T, rhs: Vector4<T>) -> Vector4<T> {
-    return Vector4(
+public func +(lhs: Float, rhs: Vector4D) -> Vector4D {
+    return Vector4D(
         lhs + rhs.x,
         lhs + rhs.y,
         lhs + rhs.z,
@@ -317,23 +310,23 @@ public func +<T: Arithmetic>(lhs: T, rhs: Vector4<T>) -> Vector4<T> {
 
 // MARK: - Addition
 
-public func +<T: Arithmetic>(lhs: Vector2<T>, rhs: Vector2<T>) -> Vector2<T> {
-    return Vector2(
+public func +(lhs: Vector2D, rhs: Vector2D) -> Vector2D {
+    return Vector2D(
         lhs.x + rhs.x,
         lhs.y + rhs.y
     )
 }
 
-public func +<T: Arithmetic>(lhs: Vector3<T>, rhs: Vector3<T>) -> Vector3<T> {
-    return Vector3(
+public func +(lhs: Vector3D, rhs: Vector3D) -> Vector3D {
+    return Vector3D(
         lhs.x + rhs.x,
         lhs.y + rhs.y,
         lhs.z + rhs.z
     )
 }
 
-public func +<T: Arithmetic>(lhs: Vector4<T>, rhs: Vector4<T>) -> Vector4<T> {
-    return Vector4(
+public func +(lhs: Vector4D, rhs: Vector4D) -> Vector4D {
+    return Vector4D(
         lhs.x + rhs.x,
         lhs.y + rhs.y,
         lhs.z + rhs.z,
@@ -343,38 +336,38 @@ public func +<T: Arithmetic>(lhs: Vector4<T>, rhs: Vector4<T>) -> Vector4<T> {
 
 // MARK: - Scalar Subtraction
 
-public func -<T: Arithmetic>(lhs: Vector2<T>, rhs: T) -> Vector2<T> {
-    return Vector2(
+public func -(lhs: Vector2D, rhs: Float) -> Vector2D {
+    return Vector2D(
         lhs.x - rhs,
         lhs.y - rhs
     )
 }
 
-public func -<T: Arithmetic>(lhs: T, rhs: Vector2<T>) -> Vector2<T> {
-    return Vector2(
+public func -(lhs: Float, rhs: Vector2D) -> Vector2D {
+    return Vector2D(
         lhs - rhs.x,
         lhs - rhs.y
     )
 }
 
-public func -<T: Arithmetic>(lhs: Vector3<T>, rhs: T) -> Vector3<T> {
-    return Vector3(
+public func -(lhs: Vector3D, rhs: Float) -> Vector3D {
+    return Vector3D(
         lhs.x - rhs,
         lhs.y - rhs,
         lhs.z - rhs
     )
 }
 
-public func -<T: Arithmetic>(lhs: T, rhs: Vector3<T>) -> Vector3<T> {
-    return Vector3(
+public func -(lhs: Float, rhs: Vector3D) -> Vector3D {
+    return Vector3D(
         lhs - rhs.x,
         lhs - rhs.y,
         lhs - rhs.z
     )
 }
 
-public func -<T: Arithmetic>(lhs: Vector4<T>, rhs: T) -> Vector4<T> {
-    return Vector4(
+public func -(lhs: Vector4D, rhs: Float) -> Vector4D {
+    return Vector4D(
         lhs.x - rhs,
         lhs.y - rhs,
         lhs.z - rhs,
@@ -382,8 +375,8 @@ public func -<T: Arithmetic>(lhs: Vector4<T>, rhs: T) -> Vector4<T> {
     )
 }
 
-public func -<T: Arithmetic>(lhs: T, rhs: Vector4<T>) -> Vector4<T> {
-    return Vector4(
+public func -(lhs: Float, rhs: Vector4D) -> Vector4D {
+    return Vector4D(
         lhs - rhs.x,
         lhs - rhs.y,
         lhs - rhs.z,
@@ -393,23 +386,23 @@ public func -<T: Arithmetic>(lhs: T, rhs: Vector4<T>) -> Vector4<T> {
 
 // MARK: - Subtraction
 
-public func -<T: Arithmetic>(lhs: Vector2<T>, rhs: Vector2<T>) -> Vector2<T> {
-    return Vector2(
+public func -(lhs: Vector2D, rhs: Vector2D) -> Vector2D {
+    return Vector2D(
         lhs.x - rhs.x,
         lhs.y - rhs.y
     )
 }
 
-public func -<T: Arithmetic>(lhs: Vector3<T>, rhs: Vector3<T>) -> Vector3<T> {
-    return Vector3(
+public func -(lhs: Vector3D, rhs: Vector3D) -> Vector3D {
+    return Vector3D(
         lhs.x - rhs.x,
         lhs.y - rhs.y,
         lhs.z - rhs.z
     )
 }
 
-public func -<T: Arithmetic>(lhs: Vector4<T>, rhs: Vector4<T>) -> Vector4<T> {
-    return Vector4(
+public func -(lhs: Vector4D, rhs: Vector4D) -> Vector4D {
+    return Vector4D(
         lhs.x - rhs.x,
         lhs.y - rhs.y,
         lhs.z - rhs.z,
@@ -419,23 +412,23 @@ public func -<T: Arithmetic>(lhs: Vector4<T>, rhs: Vector4<T>) -> Vector4<T> {
 
 // MARK: - Scalar Multiplication
 
-public func *<T: Arithmetic>(lhs: Vector2<T>, rhs: T) -> Vector2<T> {
-    return Vector2(
+public func *(lhs: Vector2D, rhs: Float) -> Vector2D {
+    return Vector2D(
         lhs.x * rhs,
         lhs.y * rhs
     )
 }
 
-public func *<T: Arithmetic>(lhs: Vector3<T>, rhs: T) -> Vector3<T> {
-    return Vector3(
+public func *(lhs: Vector3D, rhs: Float) -> Vector3D {
+    return Vector3D(
         lhs.x * rhs,
         lhs.y * rhs,
         lhs.z * rhs
     )
 }
 
-public func *<T: Arithmetic>(lhs: Vector4<T>, rhs: T) -> Vector4<T> {
-    return Vector4(
+public func *(lhs: Vector4D, rhs: Float) -> Vector4D {
+    return Vector4D(
         lhs.x * rhs,
         lhs.y * rhs,
         lhs.z * rhs,
@@ -443,23 +436,23 @@ public func *<T: Arithmetic>(lhs: Vector4<T>, rhs: T) -> Vector4<T> {
     )
 }
 
-public func *<T: Arithmetic>(lhs: T, rhs: Vector2<T>) -> Vector2<T> {
-    return Vector2(
+public func *(lhs: Float, rhs: Vector2D) -> Vector2D {
+    return Vector2D(
         lhs * rhs.x,
         lhs * rhs.y
     )
 }
 
-public func *<T: Arithmetic>(lhs: T, rhs: Vector3<T>) -> Vector3<T> {
-    return Vector3(
+public func *(lhs: Float, rhs: Vector3D) -> Vector3D {
+    return Vector3D(
         lhs * rhs.x,
         lhs * rhs.y,
         lhs * rhs.z
     )
 }
 
-public func *<T: Arithmetic>(lhs: T, rhs: Vector4<T>) -> Vector4<T> {
-    return Vector4(
+public func *(lhs: Float, rhs: Vector4D) -> Vector4D {
+    return Vector4D(
         lhs * rhs.x,
         lhs * rhs.y,
         lhs * rhs.z,
@@ -469,23 +462,23 @@ public func *<T: Arithmetic>(lhs: T, rhs: Vector4<T>) -> Vector4<T> {
 
 // MARK: - Multiplication
 
-public func *<T: Arithmetic>(lhs: Vector2<T>, rhs: Vector2<T>) -> Vector2<T> {
-    return Vector2(
+public func *(lhs: Vector2D, rhs: Vector2D) -> Vector2D {
+    return Vector2D(
         lhs.x * rhs.x,
         lhs.y * rhs.y
     )
 }
 
-public func *<T: Arithmetic>(lhs: Vector3<T>, rhs: Vector3<T>) -> Vector3<T> {
-    return Vector3(
+public func *(lhs: Vector3D, rhs: Vector3D) -> Vector3D {
+    return Vector3D(
         lhs.x * rhs.x,
         lhs.y * rhs.y,
         lhs.z * rhs.z
     )
 }
 
-public func *<T: Arithmetic>(lhs: Vector4<T>, rhs: Vector4<T>) -> Vector4<T> {
-    return Vector4(
+public func *(lhs: Vector4D, rhs: Vector4D) -> Vector4D {
+    return Vector4D(
         lhs.x * rhs.x,
         lhs.y * rhs.y,
         lhs.z * rhs.z,
@@ -495,23 +488,23 @@ public func *<T: Arithmetic>(lhs: Vector4<T>, rhs: Vector4<T>) -> Vector4<T> {
 
 // MARK: - Scalar Division
 
-public func /<T: Arithmetic>(lhs: Vector2<T>, rhs: T) -> Vector2<T> {
-    return Vector2(
+public func /(lhs: Vector2D, rhs: Float) -> Vector2D {
+    return Vector2D(
         lhs.x / rhs,
         lhs.y / rhs
     )
 }
 
-public func /<T: Arithmetic>(lhs: Vector3<T>, rhs: T) -> Vector3<T> {
-    return Vector3(
+public func /(lhs: Vector3D, rhs: Float) -> Vector3D {
+    return Vector3D(
         lhs.x / rhs,
         lhs.y / rhs,
         lhs.z / rhs
     )
 }
 
-public func /<T: Arithmetic>(lhs: Vector4<T>, rhs: T) -> Vector4<T> {
-    return Vector4(
+public func /(lhs: Vector4D, rhs: Float) -> Vector4D {
+    return Vector4D(
         lhs.x / rhs,
         lhs.y / rhs,
         lhs.z / rhs,
@@ -519,23 +512,23 @@ public func /<T: Arithmetic>(lhs: Vector4<T>, rhs: T) -> Vector4<T> {
     )
 }
 
-public func /<T: Arithmetic>(lhs: T, rhs: Vector2<T>) -> Vector2<T> {
-    return Vector2(
+public func /(lhs: Float, rhs: Vector2D) -> Vector2D {
+    return Vector2D(
         lhs / rhs.x,
         lhs / rhs.y
     )
 }
 
-public func /<T: Arithmetic>(lhs: T, rhs: Vector3<T>) -> Vector3<T> {
-    return Vector3(
+public func /(lhs: Float, rhs: Vector3D) -> Vector3D {
+    return Vector3D(
         lhs / rhs.x,
         lhs / rhs.y,
         lhs / rhs.z
     )
 }
 
-public func /<T: Arithmetic>(lhs: T, rhs: Vector4<T>) -> Vector4<T> {
-    return Vector4(
+public func /(lhs: Float, rhs: Vector4D) -> Vector4D {
+    return Vector4D(
         lhs / rhs.x,
         lhs / rhs.y,
         lhs / rhs.z,
@@ -545,23 +538,23 @@ public func /<T: Arithmetic>(lhs: T, rhs: Vector4<T>) -> Vector4<T> {
 
 // MARK: - Division
 
-public func /<T: Arithmetic>(lhs: Vector2<T>, rhs: Vector2<T>) -> Vector2<T> {
-    return Vector2(
+public func /(lhs: Vector2D, rhs: Vector2D) -> Vector2D {
+    return Vector2D(
         lhs.x / rhs.x,
         lhs.y / rhs.y
     )
 }
 
-public func /<T: Arithmetic>(lhs: Vector3<T>, rhs: Vector3<T>) -> Vector3<T> {
-    return Vector3(
+public func /(lhs: Vector3D, rhs: Vector3D) -> Vector3D {
+    return Vector3D(
         lhs.x / rhs.x,
         lhs.y / rhs.y,
         lhs.z / rhs.z
     )
 }
 
-public func /<T: Arithmetic>(lhs: Vector4<T>, rhs: Vector4<T>) -> Vector4<T> {
-    return Vector4(
+public func /(lhs: Vector4D, rhs: Vector4D) -> Vector4D {
+    return Vector4D(
         lhs.x / rhs.x,
         lhs.y / rhs.y,
         lhs.z / rhs.z,
@@ -571,23 +564,23 @@ public func /<T: Arithmetic>(lhs: Vector4<T>, rhs: Vector4<T>) -> Vector4<T> {
 
 // MARK: - Negation
 
-public prefix func -<T: SignedArithmetic>(v: Vector2<T>) -> Vector2<T> {
-    return Vector2(
+public prefix func -(v: Vector2D) -> Vector2D {
+    return Vector2D(
         -v.x,
         -v.y
     )
 }
 
-public prefix func -<T: SignedArithmetic>(v: Vector3<T>) -> Vector3<T> {
-    return Vector3(
+public prefix func -(v: Vector3D) -> Vector3D {
+    return Vector3D(
         -v.x,
         -v.y,
         -v.z
     )
 }
 
-public prefix func -<T: SignedArithmetic>(v: Vector4<T>) -> Vector4<T> {
-    return Vector4(
+public prefix func -(v: Vector4D) -> Vector4D {
+    return Vector4D(
         -v.x,
         -v.y,
         -v.z,
@@ -595,113 +588,109 @@ public prefix func -<T: SignedArithmetic>(v: Vector4<T>) -> Vector4<T> {
     )
 }
 
-public prefix func +<T: SignedArithmetic>(v: Vector2<T>) -> Vector2<T> {
+public prefix func +(v: Vector2D) -> Vector2D {
     return v
 }
 
-public prefix func +<T: SignedArithmetic>(v: Vector3<T>) -> Vector3<T> {
+public prefix func +(v: Vector3D) -> Vector3D {
     return v
 }
 
-public prefix func +<T: SignedArithmetic>(v: Vector4<T>) -> Vector4<T> {
+public prefix func +(v: Vector4D) -> Vector4D {
     return v
 }
 
 // MARK: - Component Sum
 
-public func sum<T: Arithmetic>(vector: Vector2<T>) -> T {
+public func sum(vector: Vector2D) -> Float {
     return vector.x + vector.y
 }
 
-public func sum<T: Arithmetic>(vector: Vector3<T>) -> T {
+public func sum(vector: Vector3D) -> Float {
     return vector.x + vector.y + vector.z
 }
 
-public func sum<T: Arithmetic>(vector: Vector4<T>) -> T {
+public func sum(vector: Vector4D) -> Float {
     return vector.x + vector.y + vector.z + vector.w
 }
 
 // MARK: - Length Squared
 
-public func length2<T: Arithmetic>(vector: Vector2<T>) -> T {
+public func length2(vector: Vector2D) -> Float {
     return sum(vector * vector)
 }
 
-public func length2<T: Arithmetic>(vector: Vector3<T>) -> T {
+public func length2(vector: Vector3D) -> Float {
     return sum(vector * vector)
 }
 
-public func length2<T: Arithmetic>(vector: Vector4<T>) -> T {
+public func length2(vector: Vector4D) -> Float {
     return sum(vector * vector)
 }
 
 // MARK: - Length
 
-public func length<T: RealArithmetic>(vector: Vector2<T>) -> T {
-    return √length2(vector)
+public func length(vector: Vector2D) -> Float {
+    return sqrt(length2(vector))
 }
 
-public func length<T: RealArithmetic>(vector: Vector3<T>) -> T {
-    return √length2(vector)
+public func length(vector: Vector3D) -> Float {
+    return sqrt(length2(vector))
 }
 
-public func length<T: RealArithmetic>(vector: Vector4<T>) -> T {
-    return √length2(vector)
+public func length(vector: Vector4D) -> Float {
+    return sqrt(length2(vector))
 }
 
 // MARK: - Normalization
 
-public func normalize<T: RealArithmetic>(vector: Vector2<T>) -> Vector2<T> {
+public func normalize(vector: Vector2D) -> Vector2D {
     return vector / length(vector)
 }
 
-public func normalize<T: RealArithmetic>(vector: Vector3<T>) -> Vector3<T> {
+public func normalize(vector: Vector3D) -> Vector3D {
     return vector / length(vector)
 }
 
-public func normalize<T: RealArithmetic>(vector: Vector4<T>) -> Vector4<T> {
+public func normalize(vector: Vector4D) -> Vector4D {
     return vector / length(vector)
 }
 
 // MARK: - Distance Squared
 
-public func distance2<T: Arithmetic>(va: Vector2<T>, vb: Vector2<T>) -> T {
+public func distance2(va: Vector2D, _ vb: Vector2D) -> Float {
     let difference = vb - va
     return sum(difference * difference)
 }
 
-public func distance2<T: Arithmetic>(va: Vector3<T>, vb: Vector3<T>) -> T {
+public func distance2(va: Vector3D, _ vb: Vector3D) -> Float {
     let difference = vb - va
     return sum(difference * difference)
 }
 
-public func distance2<T: Arithmetic>(va: Vector4<T>, vb: Vector4<T>) -> T {
+public func distance2(va: Vector4D, _ vb: Vector4D) -> Float {
     let difference = vb - va
     return sum(difference * difference)
 }
 
 // MARK: - Distance
 
-public func distance<T: RealArithmetic>(va: Vector2<T>, vb: Vector2<T>) -> T {
-    return √distance2(va, vb)
+public func distance(va: Vector2D, _ vb: Vector2D) -> Float {
+    return sqrt(distance2(va, vb))
 }
 
-public func distance<T: RealArithmetic>(va: Vector3<T>, vb: Vector3<T>) -> T {
-    return √distance2(va, vb)
+public func distance(va: Vector3D, _ vb: Vector3D) -> Float {
+    return sqrt(distance2(va, vb))
 }
 
-public func distance<T: RealArithmetic>(va: Vector4<T>, vb: Vector4<T>) -> T {
-    return √distance2(va, vb)
+public func distance(va: Vector4D, _ vb: Vector4D) -> Float {
+    return sqrt(distance2(va, vb))
 }
 
 // MARK: - Cross Product
 
-public func ×<T: Arithmetic>(va: Vector3<T>, vb: Vector3<T>) -> Vector3<T> {
-    return cross(va, vb)
-}
-
-public func cross<T: Arithmetic>(va: Vector3<T>, vb: Vector3<T>) -> Vector3<T> {
-    return Vector3(
+public func cross(va: Vector3D, _ vb: Vector3D) -> Vector3D {
+    return Vector3D(
         va.y * vb.z - vb.y * va.z,
         va.z * vb.x - vb.z * va.x,
         va.x * vb.y - vb.x * va.y
@@ -710,51 +699,35 @@ public func cross<T: Arithmetic>(va: Vector3<T>, vb: Vector3<T>) -> Vector3<T> {
 
 // MARK: - Dot Product
 
-public func •<T: Arithmetic>(va: Vector2<T>, vb: Vector2<T>) -> T {
-    return dot(va, vb)
-}
-
-public func dot<T: Arithmetic>(va: Vector2<T>, vb: Vector2<T>) -> T {
+public func dot(va: Vector2D, _ vb: Vector2D) -> Float {
     return sum(va * vb)
 }
 
-public func •<T: Arithmetic>(va: Vector3<T>, vb: Vector3<T>) -> T {
-    return dot(va, vb)
-}
-
-public func dot<T: Arithmetic>(va: Vector3<T>, vb: Vector3<T>) -> T {
+public func dot(va: Vector3D, _ vb: Vector3D) -> Float {
     return sum(va * vb)
 }
 
-public func •<T: Arithmetic>(va: Vector4<T>, vb: Vector4<T>) -> T {
-    return dot(va, vb)
-}
-
-public func dot<T: Arithmetic>(va: Vector4<T>, vb: Vector4<T>) -> T {
+public func dot(va: Vector4D, _ vb: Vector4D) -> Float {
     return sum(va * vb)
 }
 
 // MARK: - Equatable
 
-public func ==<T: Arithmetic>(va: Vector2<T>, vb: Vector2<T>) -> Bool {
+public func ==(va: Vector2D, vb: Vector2D) -> Bool {
     return va.x == vb.x && va.y == vb.y
 }
 
-public func ==<T: Arithmetic>(va: Vector3<T>, vb: Vector3<T>) -> Bool {
+public func ==(va: Vector3D, vb: Vector3D) -> Bool {
     return va.x == vb.x && va.y == vb.y && va.z == vb.z
 }
 
-public func ==<T: Arithmetic>(va: Vector4<T>, vb: Vector4<T>) -> Bool {
+public func ==(va: Vector4D, vb: Vector4D) -> Bool {
     return va.x == vb.x && va.y == vb.y && va.z == vb.z && va.w == vb.w
 }
 
 // MARK: - Approximately Equal
 
-public func ~~<T: RealArithmetic>(va: Vector2<T>, vb: Vector2<T>) -> Bool {
-    return approx(va, vb)
-}
-
-public func approx<T: RealArithmetic>(va: Vector2<T>, vb: Vector2<T>, epsilon: T = T.epsilon) -> Bool {
+public func approx(va: Vector2D, _ vb: Vector2D, epsilon: Float = 1e-6) -> Bool {
     let dX = va.x.distanceTo(vb.x)
     let dY = va.y.distanceTo(vb.y)
     let aX = abs(dX) <= epsilon
@@ -762,11 +735,7 @@ public func approx<T: RealArithmetic>(va: Vector2<T>, vb: Vector2<T>, epsilon: T
     return aX && aY
 }
 
-public func ~~<T: RealArithmetic>(va: Vector3<T>, vb: Vector3<T>) -> Bool {
-    return approx(va, vb)
-}
-
-public func approx<T: RealArithmetic>(va: Vector3<T>, vb: Vector3<T>, epsilon: T = T.epsilon) -> Bool {
+public func approx(va: Vector3D, _ vb: Vector3D, epsilon: Float = 1e-6) -> Bool {
     let dX = va.x.distanceTo(vb.x)
     let dY = va.y.distanceTo(vb.y)
     let dZ = va.z.distanceTo(vb.z)
@@ -776,11 +745,7 @@ public func approx<T: RealArithmetic>(va: Vector3<T>, vb: Vector3<T>, epsilon: T
     return aX && aY && aZ
 }
 
-public func ~~<T: RealArithmetic>(va: Vector4<T>, vb: Vector4<T>) -> Bool {
-    return approx(va, vb)
-}
-
-public func approx<T: RealArithmetic>(va: Vector4<T>, vb: Vector4<T>, epsilon: T = T.epsilon) -> Bool {
+public func approx(va: Vector4D, _ vb: Vector4D, epsilon: Float = 1e-6) -> Bool {
     let dX = va.x.distanceTo(vb.x)
     let dY = va.y.distanceTo(vb.y)
     let dZ = va.z.distanceTo(vb.z)
@@ -794,52 +759,52 @@ public func approx<T: RealArithmetic>(va: Vector4<T>, vb: Vector4<T>, epsilon: T
 
 // MARK: - Cosine
 
-public func cos<T: RealArithmetic>(v: Vector2<T>) -> Vector2<T> {
-    return Vector2(
-        T.cos(v.x),
-        T.cos(v.y)
+public func cos(v: Vector2D) -> Vector2D {
+    return Vector2D(
+        cos(v.x),
+        cos(v.y)
     )
 }
 
-public func cos<T: RealArithmetic>(v: Vector3<T>) -> Vector3<T> {
-    return Vector3(
-        T.cos(v.x),
-        T.cos(v.y),
-        T.cos(v.z)
+public func cos(v: Vector3D) -> Vector3D {
+    return Vector3D(
+        cos(v.x),
+        cos(v.y),
+        cos(v.z)
     )
 }
 
-public func cos<T: RealArithmetic>(v: Vector4<T>) -> Vector4<T> {
-    return Vector4(
-        T.cos(v.x),
-        T.cos(v.y),
-        T.cos(v.z),
-        T.cos(v.w)
+public func cos(v: Vector4D) -> Vector4D {
+    return Vector4D(
+        cos(v.x),
+        cos(v.y),
+        cos(v.z),
+        cos(v.w)
     )
 }
 
 // MARK: - Sine
 
-public func sin<T: RealArithmetic>(v: Vector2<T>) -> Vector2<T> {
-    return Vector2(
-        T.sin(v.x),
-        T.sin(v.y)
+public func sin(v: Vector2D) -> Vector2D {
+    return Vector2D(
+        sin(v.x),
+        sin(v.y)
     )
 }
 
-public func sin<T: RealArithmetic>(v: Vector3<T>) -> Vector3<T> {
-    return Vector3(
-        T.sin(v.x),
-        T.sin(v.y),
-        T.sin(v.z)
+public func sin(v: Vector3D) -> Vector3D {
+    return Vector3D(
+        sin(v.x),
+        sin(v.y),
+        sin(v.z)
     )
 }
 
-public func sin<T: RealArithmetic>(v: Vector4<T>) -> Vector4<T> {
-    return Vector4(
-        T.sin(v.x),
-        T.sin(v.y),
-        T.sin(v.z),
-        T.sin(v.w)
+public func sin(v: Vector4D) -> Vector4D {
+    return Vector4D(
+        sin(v.x),
+        sin(v.y),
+        sin(v.z),
+        sin(v.w)
     )
 }

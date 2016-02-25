@@ -24,18 +24,18 @@ import XCTest
 
 class Matrix2Tests: XCTestCase {
     func testInverse() {
-        let col0 = Vector2F(1.0, 2.0)
-        let col1 = Vector2F(3.0, 4.0)
-        let a = Matrix2F(col0, col1)
+        let col0 = Vector2D(1.0, 2.0)
+        let col1 = Vector2D(3.0, 4.0)
+        let a = Matrix2x2(col0, col1)
         let ai = inverse(a)
         let im = a * ai
         let id = a / a
-        let i = Matrix2F()
+        let i = Matrix2x2()
         
         // Multiplication
-        XCTAssertTrue(im ~~ i, "\(im) not identify")
+        XCTAssertTrue(approx(im, i), "\(im) not identify")
         
         // Division
-        XCTAssertTrue(id ~~ i, "\(id) not identify")
+        XCTAssertTrue(approx(id, i), "\(id) not identify")
     }
 }

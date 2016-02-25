@@ -24,31 +24,31 @@ import XCTest
 
 class Vector2Tests: XCTestCase {
     func testEmptyInit() {
-        let v = Vector2<Float>()
+        let v = Vector2D()
         
         XCTAssertEqual(v.x, 0.0, "")
         XCTAssertEqual(v.y, 0.0, "")
     }
 
     func testSingleValueInit() {
-        let v = Vector2<Float>(1.257)
+        let v = Vector2D(1.257)
         
         XCTAssertEqual(v.x, 1.257, "")
         XCTAssertEqual(v.y, 1.257, "")
     }
     
     func testNormalInit() {
-        let v = Vector2<Float>(1.257, 3.1415)
+        let v = Vector2D(1.257, 3.1415)
         
         XCTAssertEqual(v.x, 1.257, "")
         XCTAssertEqual(v.y, 3.1415, "")
     }
     
     func testEquatable() {
-        let va = Vector2<Float>(1.257, 3.1415)
-        let vb = Vector2<Float>(1.257, 3.1415)
-        let vc = Vector2<Float>(457.1, 3.1415)
-        let vd = Vector2<Float>(1.257, 0.1415)
+        let va = Vector2D(1.257, 3.1415)
+        let vb = Vector2D(1.257, 3.1415)
+        let vc = Vector2D(457.1, 3.1415)
+        let vd = Vector2D(1.257, 0.1415)
         
         XCTAssertEqual(va, vb, "")
         XCTAssertNotEqual(va, vc, "")
@@ -56,8 +56,8 @@ class Vector2Tests: XCTestCase {
     }
     
     func testScalarAddition() {
-        let va = Vector2<Float>(1.0) + 1.0
-        let vb = 1.0 + Vector2<Float>(2.0)
+        let va = Vector2D(1.0) + 1.0
+        let vb = 1.0 + Vector2D(2.0)
         
         XCTAssertEqual(va.x, 2.0, "")
         XCTAssertEqual(va.y, 2.0, "")
@@ -66,8 +66,8 @@ class Vector2Tests: XCTestCase {
     }
     
     func testScalarSubtraction() {
-        let va = Vector2<Float>(1.0) - 1.0
-        let vb = 1.0 - Vector2<Float>(2.0)
+        let va = Vector2D(1.0) - 1.0
+        let vb = 1.0 - Vector2D(2.0)
         
         XCTAssertEqual(va.x, 0.0, "")
         XCTAssertEqual(va.y, 0.0, "")
@@ -76,8 +76,8 @@ class Vector2Tests: XCTestCase {
     }
     
     func testScalarMultiplication() {
-        let va = Vector2<Float>(1.0) * 2.0
-        let vb = 3.0 * Vector2<Float>(2.0)
+        let va = Vector2D(1.0) * 2.0
+        let vb = 3.0 * Vector2D(2.0)
         
         XCTAssertEqual(va.x, 2.0, "")
         XCTAssertEqual(va.y, 2.0, "")
@@ -86,8 +86,8 @@ class Vector2Tests: XCTestCase {
     }
     
     func testScalarDivision() {
-        let va = Vector2<Float>(1.0) / 2.0
-        let vb = 4.0 / Vector2<Float>(2.0)
+        let va = Vector2D(1.0) / 2.0
+        let vb = 4.0 / Vector2D(2.0)
         
         XCTAssertEqual(va.x, 0.5, "")
         XCTAssertEqual(va.y, 0.5, "")
@@ -96,8 +96,8 @@ class Vector2Tests: XCTestCase {
     }
     
     func testVectorAddition() {
-        let va = Vector2(1.0, 2.0)
-        let vb = Vector2(2.0, 1.0)
+        let va = Vector2D(1.0, 2.0)
+        let vb = Vector2D(2.0, 1.0)
         let vc = va + vb
         
         XCTAssertEqual(vc.x, 3.0, "")
@@ -105,8 +105,8 @@ class Vector2Tests: XCTestCase {
     }
     
     func testVectorSubtraction() {
-        let va = Vector2(1.0, 2.0)
-        let vb = Vector2(2.0, 1.0)
+        let va = Vector2D(1.0, 2.0)
+        let vb = Vector2D(2.0, 1.0)
         let vc = va - vb
         
         XCTAssertEqual(vc.x, -1.0, "")
@@ -114,8 +114,8 @@ class Vector2Tests: XCTestCase {
     }
     
     func testVectorMultiplication() {
-        let va = Vector2(3.0, 2.0)
-        let vb = Vector2(2.0, 3.0)
+        let va = Vector2D(3.0, 2.0)
+        let vb = Vector2D(2.0, 3.0)
         let vc = va * vb
         
         XCTAssertEqual(vc.x, 6.0, "")
@@ -123,8 +123,8 @@ class Vector2Tests: XCTestCase {
     }
     
     func testVectorDivision() {
-        let va = Vector2(1.0, 4.0)
-        let vb = Vector2(2.0, 2.0)
+        let va = Vector2D(1.0, 4.0)
+        let vb = Vector2D(2.0, 2.0)
         let vc = va / vb
         
         XCTAssertEqual(vc.x, 0.5, "")
@@ -134,20 +134,20 @@ class Vector2Tests: XCTestCase {
     /* Used to make sure a switch statement was the best choice for implementing subscript
     func testComponentsPerformance() {
         let vectors = [
-            Vector2<Float>(0.0),
-            Vector2<Float>(1.0),
-            Vector2<Float>(2.0),
-            Vector2<Float>(3.0),
-            Vector2<Float>(4.0),
-            Vector2<Float>(5.0),
-            Vector2<Float>(6.0),
-            Vector2<Float>(7.0),
-            Vector2<Float>(8.0),
-            Vector2<Float>(9.0),
+            Vector2D(0.0),
+            Vector2D(1.0),
+            Vector2D(2.0),
+            Vector2D(3.0),
+            Vector2D(4.0),
+            Vector2D(5.0),
+            Vector2D(6.0),
+            Vector2D(7.0),
+            Vector2D(8.0),
+            Vector2D(9.0),
         ]
         self.measureBlock() {
             for x in 0..<100000 {
-                for v: Vector2<Float> in vectors {
+                for v: Vector2D in vectors {
                     let components = v.components
                     let r = components[0] + components[1]
                 }
@@ -157,20 +157,20 @@ class Vector2Tests: XCTestCase {
     
     func testSubscriptPerformance() {
         let vectors = [
-            Vector2<Float>(0.0),
-            Vector2<Float>(1.0),
-            Vector2<Float>(2.0),
-            Vector2<Float>(3.0),
-            Vector2<Float>(4.0),
-            Vector2<Float>(5.0),
-            Vector2<Float>(6.0),
-            Vector2<Float>(7.0),
-            Vector2<Float>(8.0),
-            Vector2<Float>(9.0),
+            Vector2D(0.0),
+            Vector2D(1.0),
+            Vector2D(2.0),
+            Vector2D(3.0),
+            Vector2D(4.0),
+            Vector2D(5.0),
+            Vector2D(6.0),
+            Vector2D(7.0),
+            Vector2D(8.0),
+            Vector2D(9.0),
         ]
         self.measureBlock() {
             for x in 0..<100000 {
-                for v: Vector2<Float> in vectors {
+                for v: Vector2D in vectors {
                     let r = v[0] + v[1]
                 }
             }
@@ -179,20 +179,20 @@ class Vector2Tests: XCTestCase {
     
     func testPropertyPerformance() {
         let vectors = [
-            Vector2<Float>(0.0),
-            Vector2<Float>(1.0),
-            Vector2<Float>(2.0),
-            Vector2<Float>(3.0),
-            Vector2<Float>(4.0),
-            Vector2<Float>(5.0),
-            Vector2<Float>(6.0),
-            Vector2<Float>(7.0),
-            Vector2<Float>(8.0),
-            Vector2<Float>(9.0),
+            Vector2D(0.0),
+            Vector2D(1.0),
+            Vector2D(2.0),
+            Vector2D(3.0),
+            Vector2D(4.0),
+            Vector2D(5.0),
+            Vector2D(6.0),
+            Vector2D(7.0),
+            Vector2D(8.0),
+            Vector2D(9.0),
         ]
         self.measureBlock() {
             for x in 0..<100000 {
-                for v: Vector2<Float> in vectors {
+                for v: Vector2D in vectors {
                     let r = v.x + v.y
                 }
             }

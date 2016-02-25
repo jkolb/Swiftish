@@ -20,29 +20,22 @@
 // THE SOFTWARE.
 //
 
-// MARK: - Aliases
+import Darwin
 
-public typealias Matrix2F = Matrix2<Float>
-public typealias Matrix3F = Matrix3<Float>
-public typealias Matrix4F = Matrix4<Float>
-public typealias Matrix2D = Matrix2<Double>
-public typealias Matrix3D = Matrix3<Double>
-public typealias Matrix4D = Matrix4<Double>
+// MARK: - Matrix2x2
 
-// MARK: - Matrix2
-
-public struct Matrix2<T: Arithmetic> : Printable {
-    typealias ColType = Vector2<T>
-    typealias RowType = Vector2<T>
+public struct Matrix2x2 : CustomStringConvertible {
+    public typealias ColType = Vector2D
+    public typealias RowType = Vector2D
     
     private let col0, col1: ColType
     
     private var row0: RowType {
-        return Vector2<T>(col0.x, col1.x)
+        return Vector2D(col0.x, col1.x)
     }
     
     private var row1: RowType {
-        return Vector2<T>(col0.y, col1.y)
+        return Vector2D(col0.y, col1.y)
     }
     
     public init() {
@@ -50,7 +43,7 @@ public struct Matrix2<T: Arithmetic> : Printable {
         self.col1 = ColType(0, 1)
     }
     
-    public init(_ v: T) {
+    public init(_ v: Float) {
         self.col0 = ColType(v, 0)
         self.col1 = ColType(0, v)
     }
@@ -65,8 +58,8 @@ public struct Matrix2<T: Arithmetic> : Printable {
     }
     
     public init(
-        _ x0: T, _ y0: T,
-        _ x1: T, _ y1: T
+        _ x0: Float, _ y0: Float,
+        _ x1: Float, _ y1: Float
         )
     {
         self.col0 = ColType(x0, y0)
@@ -104,24 +97,24 @@ public struct Matrix2<T: Arithmetic> : Printable {
     }
 }
 
-// MARK: - Matrix3
+// MARK: - Matrix3x3
 
-public struct Matrix3<T: Arithmetic> : Printable {
-    typealias ColType = Vector3<T>
-    typealias RowType = Vector3<T>
+public struct Matrix3x3 : CustomStringConvertible {
+    public typealias ColType = Vector3D
+    public typealias RowType = Vector3D
 
     private let col0, col1, col2: ColType
     
     private var row0: RowType {
-        return Vector3<T>(col0.x, col1.x, col2.x)
+        return Vector3D(col0.x, col1.x, col2.x)
     }
     
     private var row1: RowType {
-        return Vector3<T>(col0.y, col1.y, col2.y)
+        return Vector3D(col0.y, col1.y, col2.y)
     }
     
     private var row2: RowType {
-        return Vector3<T>(col0.z, col1.z, col2.z)
+        return Vector3D(col0.z, col1.z, col2.z)
     }
     
     public init() {
@@ -130,7 +123,7 @@ public struct Matrix3<T: Arithmetic> : Printable {
         self.col2 = ColType(0, 0, 1)
     }
     
-    public init(_ v: T) {
+    public init(_ v: Float) {
         self.col0 = ColType(v, 0, 0)
         self.col1 = ColType(0, v, 0)
         self.col2 = ColType(0, 0, v)
@@ -148,9 +141,9 @@ public struct Matrix3<T: Arithmetic> : Printable {
     }
     
     public init(
-        _ x0: T, _ y0: T, _ z0: T,
-        _ x1: T, _ y1: T, _ z1: T,
-        _ x2: T, _ y2: T, _ z2: T
+        _ x0: Float, _ y0: Float, _ z0: Float,
+        _ x1: Float, _ y1: Float, _ z1: Float,
+        _ x2: Float, _ y2: Float, _ z2: Float
         )
     {
         self.col0 = ColType(x0, y0, z0)
@@ -193,28 +186,28 @@ public struct Matrix3<T: Arithmetic> : Printable {
     }
 }
 
-// MARK: - Matrix4
+// MARK: - Matrix4x4
 
-public struct Matrix4<T: Arithmetic> : Printable {
-    typealias ColType = Vector4<T>
-    typealias RowType = Vector4<T>
+public struct Matrix4x4 : CustomStringConvertible {
+    public typealias ColType = Vector4D
+    public typealias RowType = Vector4D
 
     private let col0, col1, col2, col3: ColType
     
     private var row0: RowType {
-        return Vector4<T>(col0.x, col1.x, col2.x, col3.x)
+        return Vector4D(col0.x, col1.x, col2.x, col3.x)
     }
     
     private var row1: RowType {
-        return Vector4<T>(col0.y, col1.y, col2.y, col3.y)
+        return Vector4D(col0.y, col1.y, col2.y, col3.y)
     }
     
     private var row2: RowType {
-        return Vector4<T>(col0.z, col1.z, col2.z, col3.z)
+        return Vector4D(col0.z, col1.z, col2.z, col3.z)
     }
     
     private var row3: RowType {
-        return Vector4<T>(col0.w, col1.w, col2.w, col3.w)
+        return Vector4D(col0.w, col1.w, col2.w, col3.w)
     }
     
     public init() {
@@ -224,7 +217,7 @@ public struct Matrix4<T: Arithmetic> : Printable {
         self.col3 = ColType(0, 0, 0, 1)
     }
     
-    public init(_ v: T) {
+    public init(_ v: Float) {
         self.col0 = ColType(v, 0, 0, 0)
         self.col1 = ColType(0, v, 0, 0)
         self.col2 = ColType(0, 0, v, 0)
@@ -245,10 +238,10 @@ public struct Matrix4<T: Arithmetic> : Printable {
     }
     
     public init(
-        _ x0: T, _ y0: T, _ z0: T, _ w0: T,
-        _ x1: T, _ y1: T, _ z1: T, _ w1: T,
-        _ x2: T, _ y2: T, _ z2: T, _ w2: T,
-        _ x3: T, _ y3: T, _ z3: T, _ w3: T
+        _ x0: Float, _ y0: Float, _ z0: Float, _ w0: Float,
+        _ x1: Float, _ y1: Float, _ z1: Float, _ w1: Float,
+        _ x2: Float, _ y2: Float, _ z2: Float, _ w2: Float,
+        _ x3: Float, _ y3: Float, _ z3: Float, _ w3: Float
         )
     {
         self.col0 = ColType(x0, y0, z0, w0)
@@ -257,7 +250,7 @@ public struct Matrix4<T: Arithmetic> : Printable {
         self.col3 = ColType(x3, y3, z3, w3)
     }
     
-    public init(_ m: Matrix3<T>) {
+    public init(_ m: Matrix3x3) {
         self.col0 = ColType(m.col0, 0)
         self.col1 = ColType(m.col1, 0)
         self.col2 = ColType(m.col2, 0)
@@ -305,38 +298,38 @@ public struct Matrix4<T: Arithmetic> : Printable {
 
 // MARK: - Scalar Addition
 
-public func +<T: Arithmetic>(lhs: Matrix2<T>, rhs: T) -> Matrix2<T> {
-    return Matrix2(
+public func +(lhs: Matrix2x2, rhs: Float) -> Matrix2x2 {
+    return Matrix2x2(
         lhs.col0 + rhs,
         lhs.col1 + rhs
     )
 }
 
-public func +<T: Arithmetic>(lhs: T, rhs: Matrix2<T>) -> Matrix2<T> {
-    return Matrix2(
+public func +(lhs: Float, rhs: Matrix2x2) -> Matrix2x2 {
+    return Matrix2x2(
         lhs + rhs.col0,
         lhs + rhs.col1
     )
 }
 
-public func +<T: Arithmetic>(lhs: Matrix3<T>, rhs: T) -> Matrix3<T> {
-    return Matrix3(
+public func +(lhs: Matrix3x3, rhs: Float) -> Matrix3x3 {
+    return Matrix3x3(
         lhs.col0 + rhs,
         lhs.col1 + rhs,
         lhs.col2 + rhs
     )
 }
 
-public func +<T: Arithmetic>(lhs: T, rhs: Matrix3<T>) -> Matrix3<T> {
-    return Matrix3(
+public func +(lhs: Float, rhs: Matrix3x3) -> Matrix3x3 {
+    return Matrix3x3(
         lhs + rhs.col0,
         lhs + rhs.col1,
         lhs + rhs.col2
     )
 }
 
-public func +<T: Arithmetic>(lhs: Matrix4<T>, rhs: T) -> Matrix4<T> {
-    return Matrix4(
+public func +(lhs: Matrix4x4, rhs: Float) -> Matrix4x4 {
+    return Matrix4x4(
         lhs.col0 + rhs,
         lhs.col1 + rhs,
         lhs.col2 + rhs,
@@ -344,8 +337,8 @@ public func +<T: Arithmetic>(lhs: Matrix4<T>, rhs: T) -> Matrix4<T> {
     )
 }
 
-public func +<T: Arithmetic>(lhs: T, rhs: Matrix4<T>) -> Matrix4<T> {
-    return Matrix4(
+public func +(lhs: Float, rhs: Matrix4x4) -> Matrix4x4 {
+    return Matrix4x4(
         lhs + rhs.col0,
         lhs + rhs.col1,
         lhs + rhs.col2,
@@ -355,23 +348,23 @@ public func +<T: Arithmetic>(lhs: T, rhs: Matrix4<T>) -> Matrix4<T> {
 
 // MARK: - Addition
 
-public func +<T: Arithmetic>(lhs: Matrix2<T>, rhs: Matrix2<T>) -> Matrix2<T> {
-    return Matrix2(
+public func +(lhs: Matrix2x2, rhs: Matrix2x2) -> Matrix2x2 {
+    return Matrix2x2(
         lhs.col0 + rhs.col0,
         lhs.col1 + rhs.col1
     )
 }
 
-public func +<T: Arithmetic>(lhs: Matrix3<T>, rhs: Matrix3<T>) -> Matrix3<T> {
-    return Matrix3(
+public func +(lhs: Matrix3x3, rhs: Matrix3x3) -> Matrix3x3 {
+    return Matrix3x3(
         lhs.col0 + rhs.col0,
         lhs.col1 + rhs.col1,
         lhs.col2 + rhs.col2
     )
 }
 
-public func +<T: Arithmetic>(lhs: Matrix4<T>, rhs: Matrix4<T>) -> Matrix4<T> {
-    return Matrix4(
+public func +(lhs: Matrix4x4, rhs: Matrix4x4) -> Matrix4x4 {
+    return Matrix4x4(
         lhs.col0 + rhs.col0,
         lhs.col1 + rhs.col1,
         lhs.col2 + rhs.col2,
@@ -381,38 +374,38 @@ public func +<T: Arithmetic>(lhs: Matrix4<T>, rhs: Matrix4<T>) -> Matrix4<T> {
 
 // MARK: - Scalar Subtraction
 
-public func -<T: Arithmetic>(lhs: Matrix2<T>, rhs: T) -> Matrix2<T> {
-    return Matrix2(
+public func -(lhs: Matrix2x2, rhs: Float) -> Matrix2x2 {
+    return Matrix2x2(
         lhs.col0 - rhs,
         lhs.col1 - rhs
     )
 }
 
-public func -<T: Arithmetic>(lhs: T, rhs: Matrix2<T>) -> Matrix2<T> {
-    return Matrix2(
+public func -(lhs: Float, rhs: Matrix2x2) -> Matrix2x2 {
+    return Matrix2x2(
         lhs - rhs.col0,
         lhs - rhs.col1
     )
 }
 
-public func -<T: Arithmetic>(lhs: Matrix3<T>, rhs: T) -> Matrix3<T> {
-    return Matrix3(
+public func -(lhs: Matrix3x3, rhs: Float) -> Matrix3x3 {
+    return Matrix3x3(
         lhs.col0 - rhs,
         lhs.col1 - rhs,
         lhs.col2 - rhs
     )
 }
 
-public func -<T: Arithmetic>(lhs: T, rhs: Matrix3<T>) -> Matrix3<T> {
-    return Matrix3(
+public func -(lhs: Float, rhs: Matrix3x3) -> Matrix3x3 {
+    return Matrix3x3(
         lhs - rhs.col0,
         lhs - rhs.col1,
         lhs - rhs.col2
     )
 }
 
-public func -<T: Arithmetic>(lhs: Matrix4<T>, rhs: T) -> Matrix4<T> {
-    return Matrix4(
+public func -(lhs: Matrix4x4, rhs: Float) -> Matrix4x4 {
+    return Matrix4x4(
         lhs.col0 - rhs,
         lhs.col1 - rhs,
         lhs.col2 - rhs,
@@ -420,8 +413,8 @@ public func -<T: Arithmetic>(lhs: Matrix4<T>, rhs: T) -> Matrix4<T> {
     )
 }
 
-public func -<T: Arithmetic>(lhs: T, rhs: Matrix4<T>) -> Matrix4<T> {
-    return Matrix4(
+public func -(lhs: Float, rhs: Matrix4x4) -> Matrix4x4 {
+    return Matrix4x4(
         lhs - rhs.col0,
         lhs - rhs.col1,
         lhs - rhs.col2,
@@ -431,23 +424,23 @@ public func -<T: Arithmetic>(lhs: T, rhs: Matrix4<T>) -> Matrix4<T> {
 
 // MARK: - Subtraction
 
-public func -<T: Arithmetic>(lhs: Matrix2<T>, rhs: Matrix2<T>) -> Matrix2<T> {
-    return Matrix2(
+public func -(lhs: Matrix2x2, rhs: Matrix2x2) -> Matrix2x2 {
+    return Matrix2x2(
         lhs.col0 - rhs.col0,
         lhs.col1 - rhs.col1
     )
 }
 
-public func -<T: Arithmetic>(lhs: Matrix3<T>, rhs: Matrix3<T>) -> Matrix3<T> {
-    return Matrix3(
+public func -(lhs: Matrix3x3, rhs: Matrix3x3) -> Matrix3x3 {
+    return Matrix3x3(
         lhs.col0 - rhs.col0,
         lhs.col1 - rhs.col1,
         lhs.col2 - rhs.col2
     )
 }
 
-public func -<T: Arithmetic>(lhs: Matrix4<T>, rhs: Matrix4<T>) -> Matrix4<T> {
-    return Matrix4(
+public func -(lhs: Matrix4x4, rhs: Matrix4x4) -> Matrix4x4 {
+    return Matrix4x4(
         lhs.col0 - rhs.col0,
         lhs.col1 - rhs.col1,
         lhs.col2 - rhs.col2,
@@ -457,38 +450,38 @@ public func -<T: Arithmetic>(lhs: Matrix4<T>, rhs: Matrix4<T>) -> Matrix4<T> {
 
 // MARK: - Scalar Multiplication
 
-public func *<T: Arithmetic>(lhs: Matrix2<T>, rhs: T) -> Matrix2<T> {
-    return Matrix2(
+public func *(lhs: Matrix2x2, rhs: Float) -> Matrix2x2 {
+    return Matrix2x2(
         lhs.col0 * rhs,
         lhs.col1 * rhs
     )
 }
 
-public func *<T: Arithmetic>(lhs: T, rhs: Matrix2<T>) -> Matrix2<T> {
-    return Matrix2(
+public func *(lhs: Float, rhs: Matrix2x2) -> Matrix2x2 {
+    return Matrix2x2(
         lhs * rhs.col0,
         lhs * rhs.col1
     )
 }
 
-public func *<T: Arithmetic>(lhs: Matrix3<T>, rhs: T) -> Matrix3<T> {
-    return Matrix3(
+public func *(lhs: Matrix3x3, rhs: Float) -> Matrix3x3 {
+    return Matrix3x3(
         lhs.col0 * rhs,
         lhs.col1 * rhs,
         lhs.col2 * rhs
     )
 }
 
-public func *<T: Arithmetic>(lhs: T, rhs: Matrix3<T>) -> Matrix3<T> {
-    return Matrix3(
+public func *(lhs: Float, rhs: Matrix3x3) -> Matrix3x3 {
+    return Matrix3x3(
         lhs * rhs.col0,
         lhs * rhs.col1,
         lhs * rhs.col2
     )
 }
 
-public func *<T: Arithmetic>(lhs: Matrix4<T>, rhs: T) -> Matrix4<T> {
-    return Matrix4(
+public func *(lhs: Matrix4x4, rhs: Float) -> Matrix4x4 {
+    return Matrix4x4(
         lhs.col0 * rhs,
         lhs.col1 * rhs,
         lhs.col2 * rhs,
@@ -496,8 +489,8 @@ public func *<T: Arithmetic>(lhs: Matrix4<T>, rhs: T) -> Matrix4<T> {
     )
 }
 
-public func *<T: Arithmetic>(lhs: T, rhs: Matrix4<T>) -> Matrix4<T> {
-    return Matrix4(
+public func *(lhs: Float, rhs: Matrix4x4) -> Matrix4x4 {
+    return Matrix4x4(
         lhs * rhs.col0,
         lhs * rhs.col1,
         lhs * rhs.col2,
@@ -507,19 +500,19 @@ public func *<T: Arithmetic>(lhs: T, rhs: Matrix4<T>) -> Matrix4<T> {
 
 // MARK: - Multiplication
 
-public func *<T: Arithmetic>(m: Matrix2<T>, v: Vector2<T>) -> Vector2<T> {
+public func *(m: Matrix2x2, v: Vector2D) -> Vector2D {
     let x = m.col0.x * v.x + m.col1.x * v.y
     let y = m.col0.y * v.x + m.col1.y * v.y
-    return Vector2(x, y)
+    return Vector2D(x, y)
 }
 
-public func *<T: Arithmetic>(v: Vector2<T>, m: Matrix2<T>) -> Vector2<T> {
+public func *(v: Vector2D, m: Matrix2x2) -> Vector2D {
     let x = v.x * m.col0.x + v.y * m.col0.y
     let y = v.x * m.col1.x + v.y * m.col1.y
-    return Vector2(x, y)
+    return Vector2D(x, y)
 }
 
-public func *<T: Arithmetic>(m1: Matrix2<T>, m2: Matrix2<T>) -> Matrix2<T> {
+public func *(m1: Matrix2x2, m2: Matrix2x2) -> Matrix2x2 {
     let a00 = m1.col0.x
     let a01 = m1.col0.y
     let a10 = m1.col1.x
@@ -535,27 +528,27 @@ public func *<T: Arithmetic>(m1: Matrix2<T>, m2: Matrix2<T>) -> Matrix2<T> {
     let x1 = a00 * b10 + a10 * b11
     let y1 = a01 * b10 + a11 * b11
     
-    return Matrix2(
+    return Matrix2x2(
         x0, y0,
         x1, y1
     )
 }
 
-public func *<T: Arithmetic>(m: Matrix3<T>, v: Vector3<T>) -> Vector3<T> {
+public func *(m: Matrix3x3, v: Vector3D) -> Vector3D {
     let x = m.col0.x * v.x + m.col1.x * v.y + m.col2.x * v.z
     let y = m.col0.y * v.x + m.col1.y * v.y + m.col2.y * v.z
     let z = m.col0.z * v.x + m.col1.z * v.y + m.col2.z * v.z
-    return Vector3(x, y, z)
+    return Vector3D(x, y, z)
 }
 
-public func *<T: Arithmetic>(v: Vector3<T>, m: Matrix3<T>) -> Vector3<T> {
+public func *(v: Vector3D, m: Matrix3x3) -> Vector3D {
     let x = m.col0.x * v.x + m.col0.y * v.y + m.col0.z * v.z
     let y = m.col1.x * v.x + m.col1.y * v.y + m.col1.z * v.z
     let z = m.col2.x * v.x + m.col2.y * v.y + m.col2.z * v.z
-    return Vector3(x, y, z)
+    return Vector3D(x, y, z)
 }
 
-public func *<T: Arithmetic>(m1: Matrix3<T>, m2: Matrix3<T>) -> Matrix3<T> {
+public func *(m1: Matrix3x3, m2: Matrix3x3) -> Matrix3x3 {
     let a00 = m1.col0.x
     let a01 = m1.col0.y
     let a02 = m1.col0.z
@@ -586,21 +579,21 @@ public func *<T: Arithmetic>(m1: Matrix3<T>, m2: Matrix3<T>) -> Matrix3<T> {
     let y2 = a01 * b20 + a11 * b21 + a21 * b22
     let z2 = a02 * b20 + a12 * b21 + a22 * b22
     
-    return Matrix3(
+    return Matrix3x3(
         x0, y0, z0,
         x1, y1, z1,
         x2, y2, z2
     )
 }
 
-public func *<T: Arithmetic>(m: Matrix4<T>, v: Vector4<T>) -> Vector4<T> {
-    let v0 = Vector4<T>(v.x)
-    let v1 = Vector4<T>(v.y)
+public func *(m: Matrix4x4, v: Vector4D) -> Vector4D {
+    let v0 = Vector4D(v.x)
+    let v1 = Vector4D(v.y)
     let mul0 = m.col0 * v0
     let mul1 = m.col1 * v1
     let add0 = mul0 + mul1
-    let v2 = Vector4<T>(v.z)
-    let v3 = Vector4<T>(v.w)
+    let v2 = Vector4D(v.z)
+    let v3 = Vector4D(v.w)
     let mul2 = m.col2 * v2
     let mul3 = m.col3 * v3
     let add1 = mul2 + mul3
@@ -608,14 +601,14 @@ public func *<T: Arithmetic>(m: Matrix4<T>, v: Vector4<T>) -> Vector4<T> {
     return add2
 }
 
-public func *<T: Arithmetic>(v: Vector4<T>, m: Matrix4<T>) -> Vector4<T> {
-    let v0 = Vector4<T>(v.x)
-    let v1 = Vector4<T>(v.y)
+public func *(v: Vector4D, m: Matrix4x4) -> Vector4D {
+    let v0 = Vector4D(v.x)
+    let v1 = Vector4D(v.y)
     let mul0 = m.row0 * v0
     let mul1 = m.row1 * v1
     let add0 = mul0 + mul1
-    let v2 = Vector4<T>(v.z)
-    let v3 = Vector4<T>(v.w)
+    let v2 = Vector4D(v.z)
+    let v3 = Vector4D(v.w)
     let mul2 = m.row2 * v2
     let mul3 = m.row3 * v3
     let add1 = mul2 + mul3
@@ -623,7 +616,7 @@ public func *<T: Arithmetic>(v: Vector4<T>, m: Matrix4<T>) -> Vector4<T> {
     return add2
 }
 
-public func *<T: Arithmetic>(m1: Matrix4<T>, m2: Matrix4<T>) -> Matrix4<T> {
+public func *(m1: Matrix4x4, m2: Matrix4x4) -> Matrix4x4 {
     let a0 = m1.col0
     let a1 = m1.col1
     let a2 = m1.col2
@@ -659,7 +652,7 @@ public func *<T: Arithmetic>(m1: Matrix4<T>, m2: Matrix4<T>) -> Matrix4<T> {
     let col2 = a0b2x + a1b2y + a2b2z + a3b2w
     let col3 = a0b3x + a1b3y + a2b3z + a3b3w
     
-    return Matrix4<T>(
+    return Matrix4x4(
         col0,
         col1,
         col2,
@@ -669,38 +662,38 @@ public func *<T: Arithmetic>(m1: Matrix4<T>, m2: Matrix4<T>) -> Matrix4<T> {
 
 // MARK: - Scalar Division
 
-public func /<T: Arithmetic>(lhs: Matrix2<T>, rhs: T) -> Matrix2<T> {
-    return Matrix2(
+public func /(lhs: Matrix2x2, rhs: Float) -> Matrix2x2 {
+    return Matrix2x2(
         lhs.col0 / rhs,
         lhs.col1 / rhs
     )
 }
 
-public func /<T: Arithmetic>(lhs: T, rhs: Matrix2<T>) -> Matrix2<T> {
-    return Matrix2(
+public func /(lhs: Float, rhs: Matrix2x2) -> Matrix2x2 {
+    return Matrix2x2(
         lhs / rhs.col0,
         lhs / rhs.col1
     )
 }
 
-public func /<T: Arithmetic>(lhs: Matrix3<T>, rhs: T) -> Matrix3<T> {
-    return Matrix3(
+public func /(lhs: Matrix3x3, rhs: Float) -> Matrix3x3 {
+    return Matrix3x3(
         lhs.col0 / rhs,
         lhs.col1 / rhs,
         lhs.col2 / rhs
     )
 }
 
-public func /<T: Arithmetic>(lhs: T, rhs: Matrix3<T>) -> Matrix3<T> {
-    return Matrix3(
+public func /(lhs: Float, rhs: Matrix3x3) -> Matrix3x3 {
+    return Matrix3x3(
         lhs / rhs.col0,
         lhs / rhs.col1,
         lhs / rhs.col2
     )
 }
 
-public func /<T: Arithmetic>(lhs: Matrix4<T>, rhs: T) -> Matrix4<T> {
-    return Matrix4(
+public func /(lhs: Matrix4x4, rhs: Float) -> Matrix4x4 {
+    return Matrix4x4(
         lhs.col0 / rhs,
         lhs.col1 / rhs,
         lhs.col2 / rhs,
@@ -708,8 +701,8 @@ public func /<T: Arithmetic>(lhs: Matrix4<T>, rhs: T) -> Matrix4<T> {
     )
 }
 
-public func /<T: Arithmetic>(lhs: T, rhs: Matrix4<T>) -> Matrix4<T> {
-    return Matrix4(
+public func /(lhs: Float, rhs: Matrix4x4) -> Matrix4x4 {
+    return Matrix4x4(
         lhs / rhs.col0,
         lhs / rhs.col1,
         lhs / rhs.col2,
@@ -719,45 +712,45 @@ public func /<T: Arithmetic>(lhs: T, rhs: Matrix4<T>) -> Matrix4<T> {
 
 // MARK: - Division
 
-public func /<T: SignedArithmetic>(m: Matrix2<T>, v: Vector2<T>) -> Vector2<T> {
+public func /(m: Matrix2x2, v: Vector2D) -> Vector2D {
     return inverse(m) * v
 }
 
-public func /<T: SignedArithmetic>(v: Vector2<T>, m: Matrix2<T>) -> Vector2<T> {
+public func /(v: Vector2D, m: Matrix2x2) -> Vector2D {
     return v * inverse(m)
 }
 
-public func /<T: SignedArithmetic>(m1: Matrix2<T>, m2: Matrix2<T>) -> Matrix2<T> {
+public func /(m1: Matrix2x2, m2: Matrix2x2) -> Matrix2x2 {
     return m1 * inverse(m2)
 }
 
-public func /<T: SignedArithmetic>(m: Matrix3<T>, v: Vector3<T>) -> Vector3<T> {
+public func /(m: Matrix3x3, v: Vector3D) -> Vector3D {
     return inverse(m) * v
 }
 
-public func /<T: SignedArithmetic>(v: Vector3<T>, m: Matrix3<T>) -> Vector3<T> {
+public func /(v: Vector3D, m: Matrix3x3) -> Vector3D {
     return v * inverse(m)
 }
 
-public func /<T: SignedArithmetic>(m1: Matrix3<T>, m2: Matrix3<T>) -> Matrix3<T> {
+public func /(m1: Matrix3x3, m2: Matrix3x3) -> Matrix3x3 {
     return m1 * inverse(m2)
 }
 
-public func /<T: SignedArithmetic>(m: Matrix4<T>, v: Vector4<T>) -> Vector4<T> {
+public func /(m: Matrix4x4, v: Vector4D) -> Vector4D {
     return inverse(m) * v
 }
 
-public func /<T: SignedArithmetic>(v: Vector4<T>, m: Matrix4<T>) -> Vector4<T> {
+public func /(v: Vector4D, m: Matrix4x4) -> Vector4D {
     return v * inverse(m)
 }
 
-public func /<T: SignedArithmetic>(m1: Matrix4<T>, m2: Matrix4<T>) -> Matrix4<T> {
+public func /(m1: Matrix4x4, m2: Matrix4x4) -> Matrix4x4 {
     return m1 * inverse(m2)
 }
 
 // MARK: - Inverse
 
-public func inverse<T: SignedArithmetic>(m: Matrix2<T>) -> Matrix2<T> {
+public func inverse(m: Matrix2x2) -> Matrix2x2 {
     let a = m.col0.x
     let b = m.col1.x
     let c = m.col0.y
@@ -773,13 +766,13 @@ public func inverse<T: SignedArithmetic>(m: Matrix2<T>) -> Matrix2<T> {
     let y0 = -c * oneOverDeterminant
     let y1 = +a * oneOverDeterminant
     
-    return Matrix2(
+    return Matrix2x2(
         x0, y0,
         x1, y1
     )
 }
 
-public func inverse<T: SignedArithmetic>(m: Matrix3<T>) -> Matrix3<T> {
+public func inverse(m: Matrix3x3) -> Matrix3x3 {
     let m00 = m.col0.x
     let m10 = m.col1.x
     let m20 = m.col2.x
@@ -806,14 +799,14 @@ public func inverse<T: SignedArithmetic>(m: Matrix3<T>) -> Matrix3<T> {
     let y2 = -(m00 * m12 - m10 * m02) * oneOverDeterminant
     let z2 = +(m00 * m11 - m10 * m01) * oneOverDeterminant
     
-    return Matrix3(
+    return Matrix3x3(
         x0, y0, z0,
         x1, y1, z1,
         x2, y2, z2
     )
 }
 
-public func inverse<T: SignedArithmetic>(m: Matrix4<T>) -> Matrix4<T> {
+public func inverse(m: Matrix4x4) -> Matrix4x4 {
     let m00 = m.col0.x
     let m10 = m.col1.x
     let m20 = m.col2.x
@@ -855,31 +848,31 @@ public func inverse<T: SignedArithmetic>(m: Matrix4<T>) -> Matrix4<T> {
     let c22 = m10 * m31 - m30 * m11
     let c23 = m10 * m21 - m20 * m11
     
-    let f0 = Vector4(c00, c00, c02, c03)
-    let f1 = Vector4(c04, c04, c06, c07)
-    let f2 = Vector4(c08, c08, c10, c11)
-    let f3 = Vector4(c12, c12, c14, c15)
-    let f4 = Vector4(c16, c16, c18, c19)
-    let f5 = Vector4(c20, c20, c22, c23)
+    let f0 = Vector4D(c00, c00, c02, c03)
+    let f1 = Vector4D(c04, c04, c06, c07)
+    let f2 = Vector4D(c08, c08, c10, c11)
+    let f3 = Vector4D(c12, c12, c14, c15)
+    let f4 = Vector4D(c16, c16, c18, c19)
+    let f5 = Vector4D(c20, c20, c22, c23)
     
-    let v0 = Vector4(m10, m00, m00, m00)
-    let v1 = Vector4(m11, m01, m01, m01)
-    let v2 = Vector4(m12, m02, m02, m02)
-    let v3 = Vector4(m13, m03, m03, m03)
+    let v0 = Vector4D(m10, m00, m00, m00)
+    let v1 = Vector4D(m11, m01, m01, m01)
+    let v2 = Vector4D(m12, m02, m02, m02)
+    let v3 = Vector4D(m13, m03, m03, m03)
     
     let i0 = v1 * f0 - v2 * f1 + v3 * f2
     let i1 = v0 * f0 - v2 * f3 + v3 * f4
     let i2 = v0 * f1 - v1 * f3 + v3 * f5
     let i3 = v0 * f2 - v1 * f4 + v2 * f5
     
-    let one: T = 1
-    let sA = Vector4<T>(+one, -one, +one, -one)
-    let sB = Vector4<T>(-one, +one, -one, +one)
+    let one: Float = 1
+    let sA = Vector4D(+one, -one, +one, -one)
+    let sB = Vector4D(-one, +one, -one, +one)
     // This causes tests to fail, not sure why
-//    let sA = Vector4<T>(+1, -1, +1, -1)
-//    let sB = Vector4<T>(-1, +1, -1, +1)
+//    let sA = Vector4D(+1, -1, +1, -1)
+//    let sB = Vector4D(-1, +1, -1, +1)
     
-    let iM = Matrix4(
+    let iM = Matrix4x4(
         i0 * sA,
         i1 * sB,
         i2 * sA,
@@ -894,23 +887,23 @@ public func inverse<T: SignedArithmetic>(m: Matrix4<T>) -> Matrix4<T> {
 
 // MARK: - Negation
 
-public prefix func -<T: SignedArithmetic>(m: Matrix2<T>) -> Matrix2<T> {
-    return Matrix2(
+public prefix func -(m: Matrix2x2) -> Matrix2x2 {
+    return Matrix2x2(
         -m.col0,
         -m.col1
     )
 }
 
-public prefix func -<T: SignedArithmetic>(m: Matrix3<T>) -> Matrix3<T> {
-    return Matrix3(
+public prefix func -(m: Matrix3x3) -> Matrix3x3 {
+    return Matrix3x3(
         -m.col0,
         -m.col1,
         -m.col2
     )
 }
 
-public prefix func -<T: SignedArithmetic>(m: Matrix4<T>) -> Matrix4<T> {
-    return Matrix4(
+public prefix func -(m: Matrix4x4) -> Matrix4x4 {
+    return Matrix4x4(
         -m.col0,
         -m.col1,
         -m.col2,
@@ -918,46 +911,34 @@ public prefix func -<T: SignedArithmetic>(m: Matrix4<T>) -> Matrix4<T> {
     )
 }
 
-public prefix func +<T: SignedArithmetic>(m: Matrix2<T>) -> Matrix2<T> {
+public prefix func +(m: Matrix2x2) -> Matrix2x2 {
     return m
 }
 
-public prefix func +<T: SignedArithmetic>(m: Matrix3<T>) -> Matrix3<T> {
+public prefix func +(m: Matrix3x3) -> Matrix3x3 {
     return m
 }
 
-public prefix func +<T: SignedArithmetic>(m: Matrix4<T>) -> Matrix4<T> {
+public prefix func +(m: Matrix4x4) -> Matrix4x4 {
     return m
 }
 
 // MARK: Approximately Equal
 
-public func ~~<T: RealArithmetic>(ma: Matrix2<T>, mb: Matrix2<T>) -> Bool {
-    return approx(ma, mb)
-}
-
-public func approx<T: RealArithmetic>(ma: Matrix2<T>, mb: Matrix2<T>, epsilon: T = T.epsilon) -> Bool {
+public func approx(ma: Matrix2x2, _ mb: Matrix2x2, epsilon: Float = 1e-6) -> Bool {
     let a0 = approx(ma.col0, mb.col0, epsilon: epsilon)
     let a1 = approx(ma.col1, mb.col1, epsilon: epsilon)
     return a0 && a1
 }
 
-public func ~~<T: RealArithmetic>(ma: Matrix3<T>, mb: Matrix3<T>) -> Bool {
-    return approx(ma, mb)
-}
-
-public func approx<T: RealArithmetic>(ma: Matrix3<T>, mb: Matrix3<T>, epsilon: T = T.epsilon) -> Bool {
+public func approx(ma: Matrix3x3, _ mb: Matrix3x3, epsilon: Float = 1e-6) -> Bool {
     let a0 = approx(ma.col0, mb.col0, epsilon: epsilon)
     let a1 = approx(ma.col1, mb.col1, epsilon: epsilon)
     let a2 = approx(ma.col2, mb.col2, epsilon: epsilon)
     return a0 && a1 && a2
 }
 
-public func ~~<T: RealArithmetic>(ma: Matrix4<T>, mb: Matrix4<T>) -> Bool {
-    return approx(ma, mb)
-}
-
-public func approx<T: RealArithmetic>(ma: Matrix4<T>, mb: Matrix4<T>, epsilon: T = T.epsilon) -> Bool {
+public func approx(ma: Matrix4x4, _ mb: Matrix4x4, epsilon: Float = 1e-6) -> Bool {
     let a0 = approx(ma.col0, mb.col0, epsilon: epsilon)
     let a1 = approx(ma.col1, mb.col1, epsilon: epsilon)
     let a2 = approx(ma.col2, mb.col2, epsilon: epsilon)
