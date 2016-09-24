@@ -20,12 +20,10 @@
 // THE SOFTWARE.
 //
 
-import Darwin
-
 // MARK: - Quaternion
 
-public struct Quaternion {
-    public let w, x, y, z: Float
+public struct Quaternion<T: RealArithmetic> {
+    public let w, x, y, z: T
     
     public init() {
         self.w = 1
@@ -34,21 +32,21 @@ public struct Quaternion {
         self.z = 0
     }
     
-    public init(_ w: Float, _ v: Vector3D) {
+    public init(_ w: T, _ v: Vector3<T>) {
         self.w = w
         self.x = v.x
         self.y = v.y
         self.z = v.z
     }
     
-    public init(_ w: Float, _ x: Float, _ y: Float, _ z: Float) {
+    public init(_ w: T, _ x: T, _ y: T, _ z: T) {
         self.w = w
         self.x = x
         self.y = y
         self.z = z
     }
     
-    public init(eulerAngle: Vector3D) {
+    public init(eulerAngle: Vector3<T>) {
         let halfEulerAngle = eulerAngle * 0.5
         let c = cos(halfEulerAngle)
         let s = sin(halfEulerAngle)
@@ -58,7 +56,7 @@ public struct Quaternion {
         self.z = c.x * c.y * s.z - s.x * s.y * c.z
     }
     
-    public init(_ m: Matrix3x3) {
+    public init(_ m: Matrix3<T>) {
         let q = convert(m)
         self.w = q.w
         self.x = q.x
@@ -66,86 +64,90 @@ public struct Quaternion {
         self.z = q.z
     }
     
-    public init(angle: Float, axis: Vector3D) {
+    public init(angle: T, axis: Vector3<T>) {
         let halfAngle = angle * 0.5
-        let s = sin(halfAngle)
-        let c = cos(halfAngle)
+        let s = T.sin(halfAngle)
+        let c = T.cos(halfAngle)
         self.w = c
         self.x = axis.x * s
         self.y = axis.y * s
         self.z = axis.z * s
     }
     
-    public func angle() -> Float {
-        return acos(w) * 2
+    public func angle() -> T {
+        return T.acos(w) * 2
     }
     
-    public func axis() -> Vector3D {
+    public func axis() -> Vector3<T> {
         let t1 = 1 - w * w
         
         if t1 <= 0 {
-            return Vector3D(0, 0, 1)
+            return Vector3(0, 0, 1)
         }
         
-        let t2 = 1 / sqrt(t1)
+        let t2 = 1 / T.sqrt(t1)
         
-        return Vector3D(
+        return Vector3(
             x * t2,
             y * t2,
             z * t2
         )
     }
 
-    public func roll() -> Float {
+    public func roll() -> T {
         let a = 2 * (x * y + w * z)
         let b = w * w + x * x - y * y - z * z
-        return atan2(a, b)
+        return T.atan2(a, b)
     }
     
-    public func pitch() -> Float {
+    public func pitch() -> T {
         let a = 2 * (y * z + w * x)
         let b = w * w - x * x - y * y + z * z
-        return atan2(a, b)
+        return T.atan2(a, b)
     }
     
-    public func yaw() -> Float {
+    public func yaw() -> T {
         let a = -2 * (x * z - w * y)
-        return asin(a)
+        return T.asin(a)
     }
     
-    public func eulerAngles() -> Vector3D {
-        return Vector3D(
+    public func eulerAngles() -> Vector3<T> {
+        return Vector3(
             pitch(),
             yaw(),
             roll()
         )
     }
     
-    public func matrix3x3() -> Matrix3x3 {
+    public func matrix3() -> Matrix3<T> {
         return convert(self)
     }
     
-    public func matrix4x4() -> Matrix4x4 {
+    public func matrix4() -> Matrix4<T> {
         return convert(self)
     }
 }
 
 // MARK: - Conjugate
 
-public func conjugate(q: Quaternion) -> Quaternion {
+public func conjugate<T: RealArithmetic>(q: Quaternion<T>) -> Quaternion<T> {
     return Quaternion(q.w, -q.x, -q.y, -q.z)
 }
 
 // MARK: - Inverse
 
-public func inverse(q: Quaternion) -> Quaternion {
-    return conjugate(q) / dot(q, q)
+public func inverse<T: RealArithmetic>(q: Quaternion<T>) -> Quaternion<T> {
+    return conjugate(q) / (q • q)
 }
 
 // MARK: - Dot Product
 
-public func dot(lhs: Quaternion, _ rhs: Quaternion) -> Float {
-    let v = Vector4D(
+public func •<T: Arithmetic>(qa: Quaternion<T>, qb: Quaternion<T>) -> T {
+    return dot(qa, qb)
+}
+
+public func dot<T: RealArithmetic>(lhs: Quaternion<T>, rhs: Quaternion<T>) -> T {
+    let v = Vector4(
         lhs.x * rhs.x,
         lhs.y * rhs.y,
         lhs.z * rhs.z,
@@ -156,7 +158,7 @@ public func dot(lhs: Quaternion, _ rhs: Quaternion) -> Float {
 
 // MARK: - Multiplication
 
-public func *(lhs: Quaternion, rhs: Quaternion) -> Quaternion {
+public func *<T: RealArithmetic>(lhs: Quaternion<T>, rhs: Quaternion<T>) -> Quaternion<T> {
     let w = lhs.w * rhs.w - lhs.x * rhs.x - lhs.y * rhs.y - lhs.z * rhs.z
     let x = lhs.w * rhs.x + lhs.x * rhs.w + lhs.y * rhs.z - lhs.z * rhs.y
     let y = lhs.w * rhs.y + lhs.y * rhs.w + lhs.z * rhs.x - lhs.x * rhs.z
@@ -166,7 +168,7 @@ public func *(lhs: Quaternion, rhs: Quaternion) -> Quaternion {
 
 // MARK: - Scalar Multiplication
 
-public func *(lhs: Quaternion, rhs: Float) -> Quaternion {
+public func *<T: RealArithmetic>(lhs: Quaternion<T>, rhs: T) -> Quaternion<T> {
     return Quaternion(
         lhs.w * rhs,
         lhs.x * rhs,
@@ -177,7 +179,7 @@ public func *(lhs: Quaternion, rhs: Float) -> Quaternion {
 
 // MARK: - Scalar Division
 
-public func /(lhs: Quaternion, rhs: Float) -> Quaternion {
+public func /<T: RealArithmetic>(lhs: Quaternion<T>, rhs: T) -> Quaternion<T> {
     return Quaternion(
         lhs.w / rhs,
         lhs.x / rhs,
@@ -188,8 +190,8 @@ public func /(lhs: Quaternion, rhs: Float) -> Quaternion {
 
 // MARK: - Normalization
 
-public func normalize(q: Quaternion) -> Quaternion {
-    let length = sqrt(dot(q, q))
+public func normalize<T: RealArithmetic>(q: Quaternion<T>) -> Quaternion<T> {
+    let length = T.sqrt(q • q)
     if length <= 0 {
         return Quaternion()
     }
@@ -199,7 +201,7 @@ public func normalize(q: Quaternion) -> Quaternion {
 
 // MARK: - Matrix Conversion
 
-public func convert(q: Quaternion) -> Matrix3x3 {
+public func convert<T: RealArithmetic>(q: Quaternion<T>) -> Matrix3<T> {
     let qxx = q.x * q.x
     let qyy = q.y * q.y
     let qzz = q.z * q.z
@@ -222,18 +224,18 @@ public func convert(q: Quaternion) -> Matrix3x3 {
     let m2y = 2 * (qyz - qwx)
     let m2z = 1 - 2 * (qxx +  qyy)
     
-    return Matrix3x3(
+    return Matrix3(
         m0x, m0y, m0z,
         m1x, m1y, m1z,
         m2x, m2y, m2z
     )
 }
 
-public func convert(q: Quaternion) -> Matrix4x4 {
-    return Matrix4x4(convert(q))
+public func convert<T: RealArithmetic>(q: Quaternion<T>) -> Matrix4<T> {
+    return Matrix4(convert(q))
 }
 
-public func convert(m: Matrix3x3) -> Quaternion {
+public func convert<T: RealArithmetic>(m: Matrix3<T>) -> Quaternion<T> {
     let m00 = m[0].x
     let m10 = m[1].x
     let m20 = m[2].x
@@ -267,7 +269,7 @@ public func convert(m: Matrix3x3) -> Quaternion {
         fMax = fZ
     }
     
-    let max = sqrt(fMax + 1.0) * 0.5
+    let max = T.sqrt(fMax + 1.0) * 0.5
     let mul = 0.25 / max
     
     switch index {

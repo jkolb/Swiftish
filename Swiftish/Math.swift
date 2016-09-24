@@ -20,23 +20,34 @@
 // THE SOFTWARE.
 //
 
-import XCTest
+import Darwin
 
-class Matrix3Tests: XCTestCase {
-    func testInverse() {
-        let col0 = Vector3<Float>(0.6, 0.2, 0.3)
-        let col1 = Vector3<Float>(0.2, 0.7, 0.5)
-        let col2 = Vector3<Float>(0.3, 0.5, 0.7)
-        let a = Matrix3<Float>(col0, col1, col2)
-        let ai = inverse(a)
-        let im = a * ai
-        let id = a / a
-        let i = Matrix3<Float>()
-        
-        // Multiplication
-        XCTAssertTrue(im ~~ i, "\(im) not identify")
-        
-        // Division
-        XCTAssertTrue(id ~~ i, "\(id) not identify")
-    }
+// Approximately equal using T.epsilon
+infix operator ~~ {
+    associativity none
+    precedence 130
+}
+
+// Dot product Alt + 8 = •
+infix operator • {
+    associativity left
+    precedence 160
+}
+
+// Cross product
+infix operator × {
+    associativity left
+    precedence 170
+}
+
+// Square Root Alt + V = √
+prefix operator √ {
+}
+
+public prefix func √(x: Float) -> Float {
+    return Darwin.sqrtf(x)
+}
+
+public prefix func √(x: Double) -> Double {
+    return Darwin.sqrt(x)
 }

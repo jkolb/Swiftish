@@ -24,7 +24,7 @@ import XCTest
 
 class Vector3Tests: XCTestCase {
     func testEmptyInit() {
-        let v = Vector3D()
+        let v = Vector3<Float>()
         
         XCTAssertEqual(v.x, 0.0, "")
         XCTAssertEqual(v.y, 0.0, "")
@@ -32,7 +32,7 @@ class Vector3Tests: XCTestCase {
     }
     
     func testSingleValueInit() {
-        let v = Vector3D(1.257)
+        let v = Vector3<Float>(1.257)
         
         XCTAssertEqual(v.x, 1.257, "")
         XCTAssertEqual(v.y, 1.257, "")
@@ -40,7 +40,7 @@ class Vector3Tests: XCTestCase {
     }
     
     func testNormalInit() {
-        let v = Vector3D(1.257, 3.1415, 401.5)
+        let v = Vector3<Float>(1.257, 3.1415, 401.5)
         
         XCTAssertEqual(v.x, 1.257, "")
         XCTAssertEqual(v.y, 3.1415, "")
@@ -48,11 +48,11 @@ class Vector3Tests: XCTestCase {
     }
     
     func testEquatable() {
-        let va = Vector3D(1.257, 3.1415, -1.7)
-        let vb = Vector3D(1.257, 3.1415, -1.7)
-        let vc = Vector3D(457.1, 3.1415, -1.7)
-        let vd = Vector3D(1.257, 0.1415, -1.7)
-        let ve = Vector3D(1.257, 3.1415, 1.7)
+        let va = Vector3<Float>(1.257, 3.1415, -1.7)
+        let vb = Vector3<Float>(1.257, 3.1415, -1.7)
+        let vc = Vector3<Float>(457.1, 3.1415, -1.7)
+        let vd = Vector3<Float>(1.257, 0.1415, -1.7)
+        let ve = Vector3<Float>(1.257, 3.1415, 1.7)
         
         XCTAssertEqual(va, vb, "")
         XCTAssertNotEqual(va, vc, "")
@@ -61,8 +61,8 @@ class Vector3Tests: XCTestCase {
     }
     
     func testScalarAddition() {
-        let va = Vector3D(1.0) + 1.0
-        let vb = 1.0 + Vector3D(2.0)
+        let va = Vector3<Float>(1.0) + 1.0
+        let vb = 1.0 + Vector3<Float>(2.0)
         
         XCTAssertEqual(va.x, 2.0, "")
         XCTAssertEqual(va.y, 2.0, "")
@@ -73,8 +73,8 @@ class Vector3Tests: XCTestCase {
     }
     
     func testScalarSubtraction() {
-        let va = Vector3D(1.0) - 1.0
-        let vb = 1.0 - Vector3D(2.0)
+        let va = Vector3<Float>(1.0) - 1.0
+        let vb = 1.0 - Vector3<Float>(2.0)
         
         XCTAssertEqual(va.x, 0.0, "")
         XCTAssertEqual(va.y, 0.0, "")
@@ -85,8 +85,8 @@ class Vector3Tests: XCTestCase {
     }
     
     func testScalarMultiplication() {
-        let va = Vector3D(1.0) * 2.0
-        let vb = 3.0 * Vector3D(2.0)
+        let va = Vector3<Float>(1.0) * 2.0
+        let vb = 3.0 * Vector3<Float>(2.0)
         
         XCTAssertEqual(va.x, 2.0, "")
         XCTAssertEqual(va.y, 2.0, "")
@@ -97,8 +97,8 @@ class Vector3Tests: XCTestCase {
     }
     
     func testScalarDivision() {
-        let va = Vector3D(1.0) / 2.0
-        let vb = 4.0 / Vector3D(2.0)
+        let va = Vector3<Float>(1.0) / 2.0
+        let vb = 4.0 / Vector3<Float>(2.0)
         
         XCTAssertEqual(va.x, 0.5, "")
         XCTAssertEqual(va.y, 0.5, "")
@@ -109,8 +109,8 @@ class Vector3Tests: XCTestCase {
     }
     
     func testVectorAddition() {
-        let va = Vector3D(1.0, 2.0, 3.0)
-        let vb = Vector3D(2.0, 1.0, -4.0)
+        let va = Vector3(1.0, 2.0, 3.0)
+        let vb = Vector3(2.0, 1.0, -4.0)
         let vc = va + vb
         
         XCTAssertEqual(vc.x, 3.0, "")
@@ -119,8 +119,8 @@ class Vector3Tests: XCTestCase {
     }
     
     func testVectorSubtraction() {
-        let va = Vector3D(1.0, 2.0, 3.0)
-        let vb = Vector3D(2.0, 1.0, -4.0)
+        let va = Vector3(1.0, 2.0, 3.0)
+        let vb = Vector3(2.0, 1.0, -4.0)
         let vc = va - vb
         
         XCTAssertEqual(vc.x, -1.0, "")
@@ -129,8 +129,8 @@ class Vector3Tests: XCTestCase {
     }
     
     func testVectorMultiplication() {
-        let va = Vector3D(3.0, 2.0, 3.0)
-        let vb = Vector3D(2.0, 3.0, -4.0)
+        let va = Vector3(3.0, 2.0, 3.0)
+        let vb = Vector3(2.0, 3.0, -4.0)
         let vc = va * vb
         
         XCTAssertEqual(vc.x, 6.0, "")
@@ -139,8 +139,8 @@ class Vector3Tests: XCTestCase {
     }
     
     func testVectorDivision() {
-        let va = Vector3D(1.0, 4.0, -12.0)
-        let vb = Vector3D(2.0, 2.0, 3.0)
+        let va = Vector3(1.0, 4.0, -12.0)
+        let vb = Vector3(2.0, 2.0, 3.0)
         let vc = va / vb
         
         XCTAssertEqual(vc.x, 0.5, "")

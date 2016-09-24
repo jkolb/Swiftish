@@ -28,16 +28,16 @@ class Matrix4Tests: XCTestCase {
         let col1 = Vector4D(0.2, 0.7, 0.5, 0.3)
         let col2 = Vector4D(0.3, 0.5, 0.7, 0.2)
         let col3 = Vector4D(0.4, 0.3, 0.2, 0.6)
-        let a = Matrix4x4(col0, col1, col2, col3)
+        let a = Matrix4D(col0, col1, col2, col3)
         let ai = inverse(a)
         let im = a * ai
         let id = a / a
-        let i = Matrix4x4()
+        let i = Matrix4D()
         
         // Multiplication
-        XCTAssertTrue(approx(im, i), "\(im) not identify")
+        XCTAssertTrue(im ~~ i, "\(im) not identify")
         
         // Division
-        XCTAssertTrue(approx(id, i), "\(id) not identify")
+        XCTAssertTrue(id ~~ i, "\(id) not identify")
     }
 }
