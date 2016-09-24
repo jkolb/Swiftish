@@ -24,7 +24,7 @@ import Darwin
 
 // MARK: - Matrix2x2
 
-public struct Matrix2x2 : Equatable, CustomStringConvertible {
+public struct Matrix2x2 : CustomStringConvertible {
     public typealias ColType = Vector2D
     public typealias RowType = Vector2D
     
@@ -921,20 +921,6 @@ public prefix func +(m: Matrix3x3) -> Matrix3x3 {
 
 public prefix func +(m: Matrix4x4) -> Matrix4x4 {
     return m
-}
-
-// MARK: - Equatable
-
-public func ==(va: Matrix2x2, vb: Matrix2x2) -> Bool {
-    return va.col0 == vb.col0 && va.col1 == vb.col1
-}
-
-public func ==(va: Matrix3x3, vb: Matrix3x3) -> Bool {
-    return va.col0 == vb.col0 && va.col1 == vb.col1 && va.col2 == vb.col2
-}
-
-public func ==(va: Matrix4x4, vb: Matrix4x4) -> Bool {
-    return va.col0 == vb.col0 && va.col1 == vb.col1 && va.col2 == vb.col2 && va.col3 == vb.col3
 }
 
 // MARK: Approximately Equal

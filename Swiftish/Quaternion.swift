@@ -24,7 +24,7 @@ import Darwin
 
 // MARK: - Quaternion
 
-public struct Quaternion : Equatable, CustomStringConvertible {
+public struct Quaternion {
     public let w, x, y, z: Float
     
     public init() {
@@ -128,16 +128,6 @@ public struct Quaternion : Equatable, CustomStringConvertible {
     public func matrix4x4() -> Matrix4x4 {
         return convert(self)
     }
-    
-    public var description: String {
-        return "{\(w), \(x), \(y), \(z)}"
-    }
-}
-
-// MARK: - Equatable
-
-public func ==(va: Quaternion, vb: Quaternion) -> Bool {
-    return va.w == vb.w && va.x == vb.x && va.y == vb.y && va.z == vb.z
 }
 
 // MARK: - Conjugate
