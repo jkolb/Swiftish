@@ -22,7 +22,56 @@
  SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
+extension Vector2 {
+    public var u: T {
+        get {
+            return x
+        }
+        
+        set {
+            x = newValue
+        }
+    }
+    
+    public var v: T {
+        get {
+            return y
+        }
+        
+        set {
+            y = newValue
+        }
+    }
+}
 
-FOUNDATION_EXPORT double SwiftishVersionNumber;
-FOUNDATION_EXPORT const unsigned char SwiftishVersionString[];
+extension Vector3 {
+    public var u: T {
+        get {
+            return x
+        }
+        
+        set {
+            x = newValue
+        }
+    }
+    
+    public var v: T {
+        get {
+            return y
+        }
+        
+        set {
+            y = newValue
+        }
+    }
+    
+    public var w: T {
+        get {
+            return z
+        }
+        
+        set {
+            z = newValue
+        }
+    }
+}

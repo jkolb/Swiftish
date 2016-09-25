@@ -9,21 +9,24 @@
 /* Begin PBXBuildFile section */
 		E52F45891B121F4C004F7444 /* Swiftish.h in Headers */ = {isa = PBXBuildFile; fileRef = E52F45881B121F4C004F7444 /* Swiftish.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E52F458F1B121F4C004F7444 /* Swiftish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E52F45831B121F4C004F7444 /* Swiftish.framework */; };
-		E52F45A21B121FD5004F7444 /* Arithmetic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F459F1B121FD5004F7444 /* Arithmetic.swift */; };
-		E52F45A31B121FD5004F7444 /* Arithmetic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F459F1B121FD5004F7444 /* Arithmetic.swift */; };
-		E52F45A41B121FD5004F7444 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F45A01B121FD5004F7444 /* Matrix.swift */; };
-		E52F45A51B121FD5004F7444 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F45A01B121FD5004F7444 /* Matrix.swift */; };
-		E52F45A61B121FD5004F7444 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F45A11B121FD5004F7444 /* Vector.swift */; };
-		E52F45A71B121FD5004F7444 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F45A11B121FD5004F7444 /* Vector.swift */; };
-		E52F45AC1B1220D9004F7444 /* Vector2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F45AB1B1220D9004F7444 /* Vector2Tests.swift */; };
-		E52F45AE1B125928004F7444 /* Vector3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F45AD1B125928004F7444 /* Vector3Tests.swift */; };
-		E52F45B01B125DFE004F7444 /* Vector4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F45AF1B125DFE004F7444 /* Vector4Tests.swift */; };
-		E55C63D01B139B4600E5D43E /* Matrix2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55C63CF1B139B4600E5D43E /* Matrix2Tests.swift */; };
-		E55C63D21B13A37A00E5D43E /* Matrix3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55C63D11B13A37A00E5D43E /* Matrix3Tests.swift */; };
-		E55C63D41B13A55D00E5D43E /* Matrix4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55C63D31B13A55D00E5D43E /* Matrix4Tests.swift */; };
-		E5CB1D7F1B1B8D0700A08B63 /* Quaternion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB1D7E1B1B8D0700A08B63 /* Quaternion.swift */; };
-		E5CB1D811B1B95FB00A08B63 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB1D801B1B95FB00A08B63 /* Math.swift */; };
-		E5CB1D821B1B973A00A08B63 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB1D801B1B95FB00A08B63 /* Math.swift */; };
+		E5CCAB0F1D96C8F1003BC135 /* Vector2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F45A11B121FD5004F7444 /* Vector2.swift */; };
+		E5CCAB101D96CCE4003BC135 /* Vector2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F45AB1B1220D9004F7444 /* Vector2Tests.swift */; };
+		E5CCAB111D96CD20003BC135 /* Vector3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F45AD1B125928004F7444 /* Vector3Tests.swift */; };
+		E5CCAB121D96CD25003BC135 /* Vector4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F45AF1B125DFE004F7444 /* Vector4Tests.swift */; };
+		E5CCAB141D96E1C0003BC135 /* Vectorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB131D96E1C0003BC135 /* Vectorable.swift */; };
+		E5CCAB161D96E32E003BC135 /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB151D96E32E003BC135 /* Vector3.swift */; };
+		E5CCAB181D96E3BA003BC135 /* Vector4.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB171D96E3BA003BC135 /* Vector4.swift */; };
+		E5CCAB1A1D96E8AA003BC135 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB191D96E8AA003BC135 /* Color.swift */; };
+		E5CCAB1C1D96E929003BC135 /* TexCoord.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB1B1D96E929003BC135 /* TexCoord.swift */; };
+		E5CCAB1D1D96F2E1003BC135 /* Quaternion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB1D7E1B1B8D0700A08B63 /* Quaternion.swift */; };
+		E5CCAB1F1D96FDBC003BC135 /* Matrix2x2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB1E1D96FDBC003BC135 /* Matrix2x2.swift */; };
+		E5CCAB211D96FDC9003BC135 /* Matrix3x3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB201D96FDC9003BC135 /* Matrix3x3.swift */; };
+		E5CCAB251D970142003BC135 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB241D970142003BC135 /* Size.swift */; };
+		E5CCAB271D970239003BC135 /* Bounds2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB261D970239003BC135 /* Bounds2.swift */; };
+		E5CCAB2F1D9719D0003BC135 /* Bounds3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB2E1D9719D0003BC135 /* Bounds3.swift */; };
+		E5CCAB311D971E1F003BC135 /* Region2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB301D971E1F003BC135 /* Region2.swift */; };
+		E5CCAB331D971F6C003BC135 /* Region3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB321D971F6C003BC135 /* Region3.swift */; };
+		E5CCAB341D977650003BC135 /* Matrix4x4.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB221D96FDD4003BC135 /* Matrix4x4.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,9 +45,7 @@
 		E52F45881B121F4C004F7444 /* Swiftish.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Swiftish.h; sourceTree = "<group>"; };
 		E52F458E1B121F4C004F7444 /* SwiftishTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftishTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E52F45941B121F4C004F7444 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E52F459F1B121FD5004F7444 /* Arithmetic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Arithmetic.swift; sourceTree = "<group>"; };
-		E52F45A01B121FD5004F7444 /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
-		E52F45A11B121FD5004F7444 /* Vector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
+		E52F45A11B121FD5004F7444 /* Vector2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector2.swift; sourceTree = "<group>"; };
 		E52F45AB1B1220D9004F7444 /* Vector2Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector2Tests.swift; sourceTree = "<group>"; };
 		E52F45AD1B125928004F7444 /* Vector3Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3Tests.swift; sourceTree = "<group>"; };
 		E52F45AF1B125DFE004F7444 /* Vector4Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector4Tests.swift; sourceTree = "<group>"; };
@@ -52,7 +53,19 @@
 		E55C63D11B13A37A00E5D43E /* Matrix3Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix3Tests.swift; sourceTree = "<group>"; };
 		E55C63D31B13A55D00E5D43E /* Matrix4Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix4Tests.swift; sourceTree = "<group>"; };
 		E5CB1D7E1B1B8D0700A08B63 /* Quaternion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quaternion.swift; sourceTree = "<group>"; };
-		E5CB1D801B1B95FB00A08B63 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
+		E5CCAB131D96E1C0003BC135 /* Vectorable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vectorable.swift; sourceTree = "<group>"; };
+		E5CCAB151D96E32E003BC135 /* Vector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
+		E5CCAB171D96E3BA003BC135 /* Vector4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector4.swift; sourceTree = "<group>"; };
+		E5CCAB191D96E8AA003BC135 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		E5CCAB1B1D96E929003BC135 /* TexCoord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TexCoord.swift; sourceTree = "<group>"; };
+		E5CCAB1E1D96FDBC003BC135 /* Matrix2x2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix2x2.swift; sourceTree = "<group>"; };
+		E5CCAB201D96FDC9003BC135 /* Matrix3x3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix3x3.swift; sourceTree = "<group>"; };
+		E5CCAB221D96FDD4003BC135 /* Matrix4x4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix4x4.swift; sourceTree = "<group>"; };
+		E5CCAB241D970142003BC135 /* Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
+		E5CCAB261D970239003BC135 /* Bounds2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bounds2.swift; sourceTree = "<group>"; };
+		E5CCAB2E1D9719D0003BC135 /* Bounds3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bounds3.swift; sourceTree = "<group>"; };
+		E5CCAB301D971E1F003BC135 /* Region2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region2.swift; sourceTree = "<group>"; };
+		E5CCAB321D971F6C003BC135 /* Region3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region3.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,11 +108,21 @@
 		E52F45851B121F4C004F7444 /* Swiftish */ = {
 			isa = PBXGroup;
 			children = (
-				E52F459F1B121FD5004F7444 /* Arithmetic.swift */,
-				E5CB1D801B1B95FB00A08B63 /* Math.swift */,
-				E52F45A01B121FD5004F7444 /* Matrix.swift */,
-				E52F45A11B121FD5004F7444 /* Vector.swift */,
+				E5CCAB131D96E1C0003BC135 /* Vectorable.swift */,
+				E5CCAB1E1D96FDBC003BC135 /* Matrix2x2.swift */,
+				E5CCAB201D96FDC9003BC135 /* Matrix3x3.swift */,
+				E5CCAB221D96FDD4003BC135 /* Matrix4x4.swift */,
+				E52F45A11B121FD5004F7444 /* Vector2.swift */,
+				E5CCAB151D96E32E003BC135 /* Vector3.swift */,
+				E5CCAB171D96E3BA003BC135 /* Vector4.swift */,
+				E5CCAB1B1D96E929003BC135 /* TexCoord.swift */,
+				E5CCAB191D96E8AA003BC135 /* Color.swift */,
+				E5CCAB241D970142003BC135 /* Size.swift */,
 				E5CB1D7E1B1B8D0700A08B63 /* Quaternion.swift */,
+				E5CCAB261D970239003BC135 /* Bounds2.swift */,
+				E5CCAB2E1D9719D0003BC135 /* Bounds3.swift */,
+				E5CCAB301D971E1F003BC135 /* Region2.swift */,
+				E5CCAB321D971F6C003BC135 /* Region3.swift */,
 				E52F45881B121F4C004F7444 /* Swiftish.h */,
 				E52F45861B121F4C004F7444 /* Supporting Files */,
 			);
@@ -192,14 +215,16 @@
 		E52F457A1B121F4C004F7444 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Justin Kolb";
 				TargetAttributes = {
 					E52F45821B121F4C004F7444 = {
 						CreatedOnToolsVersion = 6.4;
+						LastSwiftMigration = 0800;
 					};
 					E52F458D1B121F4C004F7444 = {
 						CreatedOnToolsVersion = 6.4;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -243,11 +268,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E52F45A41B121FD5004F7444 /* Matrix.swift in Sources */,
-				E5CB1D7F1B1B8D0700A08B63 /* Quaternion.swift in Sources */,
-				E52F45A61B121FD5004F7444 /* Vector.swift in Sources */,
-				E52F45A21B121FD5004F7444 /* Arithmetic.swift in Sources */,
-				E5CB1D811B1B95FB00A08B63 /* Math.swift in Sources */,
+				E5CCAB251D970142003BC135 /* Size.swift in Sources */,
+				E5CCAB141D96E1C0003BC135 /* Vectorable.swift in Sources */,
+				E5CCAB1A1D96E8AA003BC135 /* Color.swift in Sources */,
+				E5CCAB2F1D9719D0003BC135 /* Bounds3.swift in Sources */,
+				E5CCAB271D970239003BC135 /* Bounds2.swift in Sources */,
+				E5CCAB161D96E32E003BC135 /* Vector3.swift in Sources */,
+				E5CCAB1F1D96FDBC003BC135 /* Matrix2x2.swift in Sources */,
+				E5CCAB341D977650003BC135 /* Matrix4x4.swift in Sources */,
+				E5CCAB331D971F6C003BC135 /* Region3.swift in Sources */,
+				E5CCAB0F1D96C8F1003BC135 /* Vector2.swift in Sources */,
+				E5CCAB311D971E1F003BC135 /* Region2.swift in Sources */,
+				E5CCAB1D1D96F2E1003BC135 /* Quaternion.swift in Sources */,
+				E5CCAB181D96E3BA003BC135 /* Vector4.swift in Sources */,
+				E5CCAB1C1D96E929003BC135 /* TexCoord.swift in Sources */,
+				E5CCAB211D96FDC9003BC135 /* Matrix3x3.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,16 +290,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E55C63D21B13A37A00E5D43E /* Matrix3Tests.swift in Sources */,
-				E52F45A31B121FD5004F7444 /* Arithmetic.swift in Sources */,
-				E52F45AE1B125928004F7444 /* Vector3Tests.swift in Sources */,
-				E55C63D01B139B4600E5D43E /* Matrix2Tests.swift in Sources */,
-				E52F45A71B121FD5004F7444 /* Vector.swift in Sources */,
-				E52F45A51B121FD5004F7444 /* Matrix.swift in Sources */,
-				E52F45AC1B1220D9004F7444 /* Vector2Tests.swift in Sources */,
-				E55C63D41B13A55D00E5D43E /* Matrix4Tests.swift in Sources */,
-				E52F45B01B125DFE004F7444 /* Vector4Tests.swift in Sources */,
-				E5CB1D821B1B973A00A08B63 /* Math.swift in Sources */,
+				E5CCAB111D96CD20003BC135 /* Vector3Tests.swift in Sources */,
+				E5CCAB101D96CCE4003BC135 /* Vector2Tests.swift in Sources */,
+				E5CCAB121D96CD25003BC135 /* Vector4Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,14 +320,17 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -319,8 +350,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_WHOLE_MODULE_OPTIMIZATION = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -339,8 +369,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
@@ -359,7 +391,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
-				SWIFT_WHOLE_MODULE_OPTIMIZATION = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -377,8 +409,10 @@
 				INFOPLIST_FILE = Swiftish/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.franticapparatus.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -394,8 +428,10 @@
 				INFOPLIST_FILE = Swiftish/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.franticapparatus.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -413,7 +449,9 @@
 				);
 				INFOPLIST_FILE = SwiftishTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.franticapparatus.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -427,7 +465,9 @@
 				);
 				INFOPLIST_FILE = SwiftishTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.franticapparatus.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

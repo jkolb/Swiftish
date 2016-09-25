@@ -22,7 +22,20 @@
  SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
+public struct Region2<T: Vectorable> : Equatable {
+    public var origin: Vector2<T>
+    public var size: Vector2<T>
+    
+    public init() {
+        self.init(origin: Vector2<T>(), size: Vector2<T>())
+    }
+    
+    public init(origin: Vector2<T>, size: Vector2<T>) {
+        self.origin = origin
+        self.size = size
+    }
+}
 
-FOUNDATION_EXPORT double SwiftishVersionNumber;
-FOUNDATION_EXPORT const unsigned char SwiftishVersionString[];
+public func ==<T: Vectorable>(lhs: Region2<T>, rhs: Region2<T>) -> Bool {
+    return lhs.origin == rhs.origin && lhs.size == rhs.size
+}

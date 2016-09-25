@@ -21,6 +21,7 @@
 //
 
 import XCTest
+@testable import Swiftish
 
 class Vector4Tests: XCTestCase {
     func testEmptyInit() {
@@ -122,8 +123,8 @@ class Vector4Tests: XCTestCase {
     }
     
     func testVectorAddition() {
-        let va = Vector4(1.0, 2.0, 3.0, 4.0)
-        let vb = Vector4(2.0, 1.0, -4.0, 0.0)
+        let va = Vector4<Float>(1.0, 2.0, 3.0, 4.0)
+        let vb = Vector4<Float>(2.0, 1.0, -4.0, 0.0)
         let vc = va + vb
         
         XCTAssertEqual(vc.x, 3.0, "")
@@ -133,8 +134,8 @@ class Vector4Tests: XCTestCase {
     }
     
     func testVectorSubtraction() {
-        let va = Vector4(1.0, 2.0, 3.0, 4.0)
-        let vb = Vector4(2.0, 1.0, -4.0, 1.0)
+        let va = Vector4<Float>(1.0, 2.0, 3.0, 4.0)
+        let vb = Vector4<Float>(2.0, 1.0, -4.0, 1.0)
         let vc = va - vb
         
         XCTAssertEqual(vc.x, -1.0, "")
@@ -144,8 +145,8 @@ class Vector4Tests: XCTestCase {
     }
     
     func testVectorMultiplication() {
-        let va = Vector4(3.0, 2.0, 3.0, 0.5)
-        let vb = Vector4(2.0, 3.0, -4.0, 2.0)
+        let va = Vector4<Float>(3.0, 2.0, 3.0, 0.5)
+        let vb = Vector4<Float>(2.0, 3.0, -4.0, 2.0)
         let vc = va * vb
         
         XCTAssertEqual(vc.x, 6.0, "")
@@ -155,8 +156,8 @@ class Vector4Tests: XCTestCase {
     }
     
     func testVectorDivision() {
-        let va = Vector4(1.0, 4.0, -12.0, 0.5)
-        let vb = Vector4(2.0, 2.0, 3.0, 4.0)
+        let va = Vector4<Float>(1.0, 4.0, -12.0, 0.5)
+        let vb = Vector4<Float>(2.0, 2.0, 3.0, 4.0)
         let vc = va / vb
         
         XCTAssertEqual(vc.x, 0.5, "")
