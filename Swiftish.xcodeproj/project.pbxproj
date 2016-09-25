@@ -31,6 +31,13 @@
 		E5CCAB361D982EF4003BC135 /* Matrix3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55C63D11B13A37A00E5D43E /* Matrix3Tests.swift */; };
 		E5CCAB371D982F36003BC135 /* Matrix4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55C63D31B13A55D00E5D43E /* Matrix4Tests.swift */; };
 		E5CCAB391D983099003BC135 /* Transform3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB381D983099003BC135 /* Transform3.swift */; };
+		E5CCAB3B1D985463003BC135 /* Triangle3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB3A1D985463003BC135 /* Triangle3.swift */; };
+		E5CCAB3D1D9858DF003BC135 /* Triangle2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB3C1D9858DF003BC135 /* Triangle2.swift */; };
+		E5CCAB3F1D985998003BC135 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB3E1D985998003BC135 /* Plane.swift */; };
+		E5CCAB411D985BC5003BC135 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB401D985BC5003BC135 /* Circle.swift */; };
+		E5CCAB431D986147003BC135 /* Sphere.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB421D986147003BC135 /* Sphere.swift */; };
+		E5CCAB451D986500003BC135 /* Ray3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB441D986500003BC135 /* Ray3.swift */; };
+		E5CCAB471D98660A003BC135 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB461D98660A003BC135 /* Angle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +78,13 @@
 		E5CCAB301D971E1F003BC135 /* Region2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region2.swift; sourceTree = "<group>"; };
 		E5CCAB321D971F6C003BC135 /* Region3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region3.swift; sourceTree = "<group>"; };
 		E5CCAB381D983099003BC135 /* Transform3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transform3.swift; sourceTree = "<group>"; };
+		E5CCAB3A1D985463003BC135 /* Triangle3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Triangle3.swift; sourceTree = "<group>"; };
+		E5CCAB3C1D9858DF003BC135 /* Triangle2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Triangle2.swift; sourceTree = "<group>"; };
+		E5CCAB3E1D985998003BC135 /* Plane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
+		E5CCAB401D985BC5003BC135 /* Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
+		E5CCAB421D986147003BC135 /* Sphere.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sphere.swift; sourceTree = "<group>"; };
+		E5CCAB441D986500003BC135 /* Ray3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ray3.swift; sourceTree = "<group>"; };
+		E5CCAB461D98660A003BC135 /* Angle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +127,7 @@
 		E52F45851B121F4C004F7444 /* Swiftish */ = {
 			isa = PBXGroup;
 			children = (
+				E5CCAB461D98660A003BC135 /* Angle.swift */,
 				E5CCAB131D96E1C0003BC135 /* Vectorable.swift */,
 				E5CCAB1E1D96FDBC003BC135 /* Matrix2x2.swift */,
 				E5CCAB201D96FDC9003BC135 /* Matrix3x3.swift */,
@@ -129,6 +144,12 @@
 				E5CCAB301D971E1F003BC135 /* Region2.swift */,
 				E5CCAB321D971F6C003BC135 /* Region3.swift */,
 				E5CCAB381D983099003BC135 /* Transform3.swift */,
+				E5CCAB3C1D9858DF003BC135 /* Triangle2.swift */,
+				E5CCAB3A1D985463003BC135 /* Triangle3.swift */,
+				E5CCAB3E1D985998003BC135 /* Plane.swift */,
+				E5CCAB401D985BC5003BC135 /* Circle.swift */,
+				E5CCAB421D986147003BC135 /* Sphere.swift */,
+				E5CCAB441D986500003BC135 /* Ray3.swift */,
 				E52F45881B121F4C004F7444 /* Swiftish.h */,
 				E52F45861B121F4C004F7444 /* Supporting Files */,
 			);
@@ -279,6 +300,9 @@
 				E5CCAB1A1D96E8AA003BC135 /* Color.swift in Sources */,
 				E5CCAB2F1D9719D0003BC135 /* Bounds3.swift in Sources */,
 				E5CCAB271D970239003BC135 /* Bounds2.swift in Sources */,
+				E5CCAB411D985BC5003BC135 /* Circle.swift in Sources */,
+				E5CCAB451D986500003BC135 /* Ray3.swift in Sources */,
+				E5CCAB3F1D985998003BC135 /* Plane.swift in Sources */,
 				E5CCAB161D96E32E003BC135 /* Vector3.swift in Sources */,
 				E5CCAB1F1D96FDBC003BC135 /* Matrix2x2.swift in Sources */,
 				E5CCAB341D977650003BC135 /* Matrix4x4.swift in Sources */,
@@ -286,10 +310,14 @@
 				E5CCAB0F1D96C8F1003BC135 /* Vector2.swift in Sources */,
 				E5CCAB391D983099003BC135 /* Transform3.swift in Sources */,
 				E5CCAB311D971E1F003BC135 /* Region2.swift in Sources */,
+				E5CCAB431D986147003BC135 /* Sphere.swift in Sources */,
+				E5CCAB3D1D9858DF003BC135 /* Triangle2.swift in Sources */,
 				E5CCAB1D1D96F2E1003BC135 /* Quaternion.swift in Sources */,
 				E5CCAB181D96E3BA003BC135 /* Vector4.swift in Sources */,
 				E5CCAB1C1D96E929003BC135 /* TexCoord.swift in Sources */,
+				E5CCAB471D98660A003BC135 /* Angle.swift in Sources */,
 				E5CCAB211D96FDC9003BC135 /* Matrix3x3.swift in Sources */,
+				E5CCAB3B1D985463003BC135 /* Triangle3.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

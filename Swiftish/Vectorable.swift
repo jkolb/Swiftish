@@ -22,6 +22,12 @@
  SOFTWARE.
  */
 
+#if os(Linux)
+    import Glibc
+#else
+    import Darwin.C
+#endif
+
 public protocol Vectorable : Equatable, Comparable {
     static func +(a: Self, b: Self) -> Self
     static func -(a: Self, b: Self) -> Self
@@ -40,6 +46,18 @@ public protocol SignedVectorable : Vectorable, SignedNumber {
 
 public protocol FloatingPointVectorable : SignedVectorable, FloatingPoint {    
     static var epsilon: Self { get }
+    static var deg2rad: Self { get }
+    static var rad2deg: Self { get }
+    
+    func cosine() -> Self
+    func sine() -> Self
+    func tangent() -> Self
+    
+    func arccosine() -> Self
+    func arcsine() -> Self
+    func arctangent() -> Self
+    
+    func arctangent2(_ b: Self) -> Self
 }
 
 extension UInt : Vectorable {
@@ -109,6 +127,36 @@ extension Float32: FloatingPointVectorable {
     public static let min: Float32 = -greatestFiniteMagnitude
     public static let max: Float32 = +greatestFiniteMagnitude
     public static let epsilon: Float32 = 1e-6
+    public static let deg2rad: Float32 = 0.0174532925199433
+    public static let rad2deg: Float32 = 57.295779513082321
+    
+    public func cosine() -> Float32 {
+        return cos(self)
+    }
+    
+    public func sine() -> Float32 {
+        return sin(self)
+    }
+    
+    public func tangent() -> Float32 {
+        return tan(self)
+    }
+    
+    public func arccosine() -> Float32 {
+        return acos(self)
+    }
+    
+    public func arcsine() -> Float32 {
+        return asin(self)
+    }
+    
+    public func arctangent() -> Float32 {
+        return atan(self)
+    }
+    
+    public func arctangent2(_ b: Float32) -> Float32 {
+        return atan2(self, b)
+    }
 }
 
 extension Float64: FloatingPointVectorable {
@@ -118,6 +166,36 @@ extension Float64: FloatingPointVectorable {
     public static let min: Float64 = -greatestFiniteMagnitude
     public static let max: Float64 = +greatestFiniteMagnitude
     public static let epsilon: Float64 = 1e-15
+    public static let deg2rad: Float64 = 0.0174532925199433
+    public static let rad2deg: Float64 = 57.295779513082321
+    
+    public func cosine() -> Float64 {
+        return cos(self)
+    }
+    
+    public func sine() -> Float64 {
+        return sin(self)
+    }
+    
+    public func tangent() -> Float64 {
+        return tan(self)
+    }
+    
+    public func arccosine() -> Float64 {
+        return acos(self)
+    }
+    
+    public func arcsine() -> Float64 {
+        return asin(self)
+    }
+    
+    public func arctangent() -> Float64 {
+        return atan(self)
+    }
+    
+    public func arctangent2(_ b: Float64) -> Float64 {
+        return atan2(self, b)
+    }
 }
 
 extension Float80: FloatingPointVectorable {
@@ -127,4 +205,34 @@ extension Float80: FloatingPointVectorable {
     public static let min: Float80 = -greatestFiniteMagnitude
     public static let max: Float80 = +greatestFiniteMagnitude
     public static let epsilon: Float80 = 1e-15
+    public static let deg2rad: Float80 = 0.0174532925199433
+    public static let rad2deg: Float80 = 57.295779513082321
+    
+    public func cosine() -> Float80 {
+        return Float80(cos(Float64(self)))
+    }
+    
+    public func sine() -> Float80 {
+        return Float80(sin(Float64(self)))
+    }
+    
+    public func tangent() -> Float80 {
+        return Float80(tan(Float64(self)))
+    }
+    
+    public func arccosine() -> Float80 {
+        return Float80(acos(Float64(self)))
+    }
+    
+    public func arcsine() -> Float80 {
+        return Float80(asin(Float64(self)))
+    }
+    
+    public func arctangent() -> Float80 {
+        return Float80(atan(Float64(self)))
+    }
+    
+    public func arctangent2(_ b: Float80) -> Float80 {
+        return Float80(atan2(Float64(self), Float64(b)))
+    }
 }

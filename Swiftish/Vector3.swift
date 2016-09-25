@@ -23,6 +23,18 @@
  */
 
 public struct Vector3<T: Vectorable> : Equatable, CustomStringConvertible {
+    public static func xAxis() -> Vector3<T> {
+        return Vector3<T>(T.one, T.zero, T.zero)
+    }
+    
+    public static func yAxis() -> Vector3<T> {
+        return Vector3<T>(T.zero, T.one, T.zero)
+    }
+    
+    public static func zAxis() -> Vector3<T> {
+        return Vector3<T>(T.zero, T.zero, T.one)
+    }
+    
     public var x: T
     public var y: T
     public var z: T

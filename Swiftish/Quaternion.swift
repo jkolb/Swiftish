@@ -136,56 +136,6 @@ public struct Quaternion<T: Vectorable> : Equatable, CustomStringConvertible {
 //        self.y = axis.y * s
 //        self.z = axis.z * s
 //    }
-//    
-//    public func angle() -> T {
-//        return T.acos(w) * 2
-//    }
-//    
-//    public func axis() -> Vector3<T> {
-//        let t1 = 1 - w * w
-//        
-//        if t1 <= 0 {
-//            return Vector3<T>(0, 0, 1)
-//        }
-//        
-//        let t2 = 1 / T.sqrt(t1)
-//        
-//        return Vector3<T>(
-//            x * t2,
-//            y * t2,
-//            z * t2
-//        )
-//    }
-//    
-//    public func roll() -> T {
-//        let a = 2 * (x * y + w * z)
-//        let b = w * w + x * x - y * y - z * z
-//        return T.atan2(a, b)
-//    }
-//    
-//    public func pitch() -> T {
-//        let a = 2 * (y * z + w * x)
-//        let b = w * w - x * x - y * y + z * z
-//        return T.atan2(a, b)
-//    }
-//    
-//    public func yaw() -> T {
-//        let a = -2 * (x * z - w * y)
-//        return T.asin(a)
-//    }
-//    
-//    public func eulerAngles() -> Vector3<T> {
-//        return Vector3<T>(
-//            pitch(),
-//            yaw(),
-//            roll()
-//        )
-//    }
-//
-//    public static func axis(axis: Vector3<T>, angle: Angle) -> Quaternion {
-//        let halfAngle = angle * 0.5
-//        return Quaternion(cos(halfAngle), sin(halfAngle) * axis)
-//    }
     
     public var matrix: Matrix3x3<T> {
         let v: Vector3<T> = xyz
@@ -381,4 +331,58 @@ public func quat<T: FloatingPointVectorable>(_ m: Matrix3x3<T>) -> Quaternion<T>
     default:
         preconditionFailure("Should never happen")
     }
+}
+
+public func angleOf<T: FloatingPointVectorable>(_ q: Quaternion<T>) -> Angle<T> {
+    return Angle<T>(radians: q.w.arccosine() * T.two)
+}
+
+public func axisOf<T: FloatingPointVectorable>(_ q: Quaternion<T>) -> Vector3<T> {
+    let t1 = T.one - q.w * q.w
+    
+    if t1 <= T.zero {
+        return Vector3<T>(T.zero, T.zero, T.one)
+    }
+    
+    let t2 = T.one / t1.squareRoot()
+    
+    return Vector3<T>(
+        q.x * t2,
+        q.y * t2,
+        q.z * t2
+    )
+}
+
+public func quat<T: FloatingPointVectorable>(axis: Vector3<T>, angle: Angle<T>) -> Quaternion<T> {
+    let halfAngle = angle / T.two
+    
+    return Quaternion<T>(cos(halfAngle).radians, sin(halfAngle).radians * axis)
+}
+
+public func rollOf<T: FloatingPointVectorable>(_ q: Quaternion<T>) -> Angle<T> {
+    let a: T = T.two * (q.x * q.y + q.w * q.z)
+    let w2: T = q.w * q.w
+    let x2: T = q.x * q.x
+    let y2: T = q.y * q.y
+    let z2: T = q.z * q.z
+    let b: T = w2 + x2 - y2 - z2
+    
+    return Angle<T>(radians: a.arctangent2(b))
+}
+
+public func pitchOf<T: FloatingPointVectorable>(_ q: Quaternion<T>) -> Angle<T> {
+    let a: T = T.two * (q.y * q.z + q.w * q.x)
+    let w2: T = q.w * q.w
+    let x2: T = q.x * q.x
+    let y2: T = q.y * q.y
+    let z2: T = q.z * q.z
+    let b: T = w2 - x2 - y2 + z2
+    
+    return Angle<T>(radians: a.arctangent2(b))
+}
+
+public func yawOf<T: FloatingPointVectorable>(_ q: Quaternion<T>) -> Angle<T> {
+    let a = -T.two * (q.x * q.z - q.w * q.y)
+    
+    return Angle<T>(radians: a.arcsine())
 }
