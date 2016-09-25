@@ -23,31 +23,35 @@
  */
 
 public struct Matrix2x2<T: Vectorable> : Equatable, CustomStringConvertible {
-    public typealias ColType = Vector2<T>
-    public typealias RowType = Vector2<T>
+    fileprivate var col0: Vector2<T>
+    fileprivate var col1: Vector2<T>
     
-    fileprivate var col0: ColType
-    fileprivate var col1: ColType
-    
-    fileprivate var row0: RowType {
-        return RowType(col0.x, col1.x)
+    fileprivate var row0: Vector2<T> {
+        return Vector2<T>(col0.x, col1.x)
     }
     
-    fileprivate var row1: RowType {
-        return RowType(col0.y, col1.y)
+    fileprivate var row1: Vector2<T> {
+        return Vector2<T>(col0.y, col1.y)
     }
     
     public init() {
         self.init(
-            ColType(T.one, T.zero),
-            ColType(T.zero, T.one)
+            Vector2<T>(T.one, T.zero),
+            Vector2<T>(T.zero, T.one)
         )
     }
     
     public init(_ v: T) {
         self.init(
-            ColType(v, T.zero),
-            ColType(T.zero, v)
+            Vector2<T>(v, T.zero),
+            Vector2<T>(T.zero, v)
+        )
+    }
+    
+    public init(_ d: Vector2<T>) {
+        self.init(
+            Vector2<T>(d.x, T.zero),
+            Vector2<T>(T.zero, d.y)
         )
     }
     
@@ -57,29 +61,29 @@ public struct Matrix2x2<T: Vectorable> : Equatable, CustomStringConvertible {
         )
     {
         self.init(
-            ColType(x0, x1),
-            ColType(y0, y1)
+            Vector2<T>(x0, x1),
+            Vector2<T>(y0, y1)
         )
     }
     
     public init(_ rows: [[T]]) {
         precondition(rows.count == 2 && rows[0].count == 2 && rows[1].count == 2)
         self.init(
-            ColType(rows[0][0], rows[1][0]),
-            ColType(rows[0][1], rows[1][1])
+            Vector2<T>(rows[0][0], rows[1][0]),
+            Vector2<T>(rows[0][1], rows[1][1])
         )
     }
     
     public init(
-        _ col0: ColType,
-        _ col1: ColType
+        _ col0: Vector2<T>,
+        _ col1: Vector2<T>
         )
     {
         self.col0 = col0
         self.col1 = col1
     }
     
-    public subscript(index: Int) -> ColType {
+    public subscript(index: Int) -> Vector2<T> {
         get {
             switch index {
             case 0:
@@ -103,11 +107,11 @@ public struct Matrix2x2<T: Vectorable> : Equatable, CustomStringConvertible {
         }
     }
     
-    public func col(_ index: Int) -> ColType {
+    public func col(_ index: Int) -> Vector2<T> {
         return self[index]
     }
     
-    public func row(_ index: Int) -> RowType {
+    public func row(_ index: Int) -> Vector2<T> {
         switch index {
         case 0:
             return row0
@@ -118,6 +122,10 @@ public struct Matrix2x2<T: Vectorable> : Equatable, CustomStringConvertible {
         }
     }
     
+    public var transpose: Matrix2x2<T> {
+        return Matrix2x2<T>(row0, row1)
+    }
+
     public var description: String {
         return "{\n\t\(row0),\n\t\(row1)}"
     }
@@ -127,6 +135,15 @@ public struct Matrix2x2<T: Vectorable> : Equatable, CustomStringConvertible {
 
 public func ==<T: Vectorable>(a: Matrix2x2<T>, b: Matrix2x2<T>) -> Bool {
     return a.col0 == b.col0 && a.col1 == b.col1
+}
+
+// MARK: Approximately Equal
+
+public func approx<T: FloatingPointVectorable>(_ a: Matrix2x2<T>, _ b: Matrix2x2<T>, epsilon: T = T.epsilon) -> Bool {
+    let col0: Bool = approx(a.col0, b.col0, epsilon: epsilon)
+    let col1: Bool = approx(a.col1, b.col1, epsilon: epsilon)
+    
+    return col0 && col1
 }
 
 // MARK: - Addition
@@ -244,20 +261,20 @@ public func /<T: Vectorable>(a: T, b: Matrix2x2<T>) -> Matrix2x2<T> {
 }
 
 public func /<T: SignedVectorable>(m: Matrix2x2<T>, v: Vector2<T>) -> Vector2<T> {
-    return inverse(m) * v
+    return invert(m) * v
 }
 
 public func /<T: SignedVectorable>(v: Vector2<T>, m: Matrix2x2<T>) -> Vector2<T> {
-    return v * inverse(m)
+    return v * invert(m)
 }
 
 public func /<T: SignedVectorable>(m1: Matrix2x2<T>, m2: Matrix2x2<T>) -> Matrix2x2<T> {
-    return m1 * inverse(m2)
+    return m1 * invert(m2)
 }
 
 // MARK: - Inverse
 
-public func inverse<T: SignedVectorable>(_ m: Matrix2x2<T>) -> Matrix2x2<T> {
+public func invert<T: SignedVectorable>(_ m: Matrix2x2<T>) -> Matrix2x2<T> {
     let a: T = m.col0.x
     let b: T = m.col1.x
     let c: T = m.col0.y

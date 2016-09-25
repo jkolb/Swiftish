@@ -82,8 +82,26 @@ public struct Vector2<T: Vectorable> : Equatable, CustomStringConvertible {
 
 // MARK: - Equatable
 
-public func ==<T: Vectorable>(va: Vector2<T>, _ vb: Vector2<T>) -> Bool {
-    return va.x == vb.x && va.y == vb.y
+public func ==<T: Vectorable>(a: Vector2<T>, b: Vector2<T>) -> Bool {
+    return a.x == b.x && a.y == b.y
+}
+
+// MARK: Approximately Equal
+
+public func approx<T: FloatingPointVectorable>(_ a: Vector2<T>, _ b: Vector2<T>, epsilon: T = T.epsilon) -> Bool {
+    let delta: Vector2<T> = b - a
+    let magnitude: Vector2<T> = abs(delta)
+    
+    return magnitude.x <= epsilon && magnitude.y <= epsilon
+}
+
+// MARK: Absolute Value
+
+public func abs<T: SignedVectorable>(_ a: Vector2<T>) -> Vector2<T> {
+    let x: T = abs(a.x)
+    let y: T = abs(a.y)
+    
+    return Vector2<T>(x, y)
 }
 
 // MARK: - Addition
@@ -196,34 +214,39 @@ public prefix func +<T: SignedVectorable>(v: Vector2<T>) -> Vector2<T> {
 
 // MARK: - Sum
 
-public func sum<T: Vectorable>(_ vector: Vector2<T>) -> T {
-    return vector.x + vector.y
+public func sum<T: Vectorable>(_ a: Vector2<T>) -> T {
+    return a.x + a.y
 }
 
 // MARK: - Geometric
 
-public func length<T: FloatingPointVectorable>(_ vector: Vector2<T>) -> T {
-    return length2(vector).squareRoot()
+public func length<T: FloatingPointVectorable>(_ a: Vector2<T>) -> T {
+    return length2(a).squareRoot()
 }
 
-public func length2<T: Vectorable>(_ vector: Vector2<T>) -> T {
-    return sum(vector * vector)
+public func length2<T: Vectorable>(_ a: Vector2<T>) -> T {
+    let a2: Vector2<T> = a * a
+    
+    return sum(a2)
 }
 
-public func normalize<T: FloatingPointVectorable>(_ vector: Vector2<T>) -> Vector2<T> {
-    return vector / length(vector)
+public func normalize<T: FloatingPointVectorable>(_ a: Vector2<T>) -> Vector2<T> {
+    return a / length(a)
 }
 
-public func distance<T: FloatingPointVectorable>(_ va: Vector2<T>, _ vb: Vector2<T>) -> T {
-    return distance2(va, vb).squareRoot()
+public func distance<T: FloatingPointVectorable>(_ a: Vector2<T>, _ b: Vector2<T>) -> T {
+    return distance2(a, b).squareRoot()
 }
 
-public func distance2<T: Vectorable>(_ va: Vector2<T>, _ vb: Vector2<T>) -> T {
-    let difference: Vector2<T> = vb - va
+public func distance2<T: Vectorable>(_ a: Vector2<T>, _ b: Vector2<T>) -> T {
+    let difference: Vector2<T> = b - a
     let difference2: Vector2<T> = difference * difference
+    
     return sum(difference2)
 }
 
-public func dot<T: Vectorable>(_ va: Vector2<T>, _ vb: Vector2<T>) -> T {
-    return sum(va * vb)
+public func dot<T: Vectorable>(_ a: Vector2<T>, _ b: Vector2<T>) -> T {
+    let ab: Vector2<T> = a * b
+    
+    return sum(ab)
 }

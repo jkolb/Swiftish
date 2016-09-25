@@ -23,9 +23,39 @@
  */
 
 public struct Quaternion<T: Vectorable> : Equatable, CustomStringConvertible {
-    public let w: T
-    public let xyz: Vector3<T>
+    public var w: T
+    public var xyz: Vector3<T>
     
+    public var x: T {
+        get {
+            return xyz.x
+        }
+        
+        set {
+            xyz.x = newValue
+        }
+    }
+    
+    public var y: T {
+        get {
+            return xyz.y
+        }
+        
+        set {
+            xyz.y = newValue
+        }
+    }
+    
+    public var z: T {
+        get {
+            return xyz.z
+        }
+        
+        set {
+            xyz.z = newValue
+        }
+    }
+
     public init() {
         self.init(T.one, Vector3<T>())
     }
@@ -33,28 +63,53 @@ public struct Quaternion<T: Vectorable> : Equatable, CustomStringConvertible {
     public init(_ w: T, _ x: T, _ y: T, _ z: T) {
         self.init(w, Vector3<T>(x, y, z))
     }
-    
+
     public init(_ w: T, _ xyz: Vector3<T>) {
         self.w = w
         self.xyz = xyz
     }
     
     public var components: [T] {
-        return [w, xyz.x, xyz.y, xyz.z]
+        get {
+            return [w, xyz.x, xyz.y, xyz.z]
+        }
+        
+        set {
+            precondition(newValue.count == 4)
+            w = newValue[0]
+            xyz = Vector3<T>(newValue[1], newValue[2], newValue[3])
+        }
     }
     
     public subscript(index: Int) -> T {
-        switch index {
-        case 0:
-            return w
-        case 1:
-            return xyz.x
-        case 2:
-            return xyz.y
-        case 3:
-            return xyz.z
-        default:
-            fatalError("Index out of range")
+        get {
+            switch index {
+            case 0:
+                return w
+            case 1:
+                return xyz.x
+            case 2:
+                return xyz.y
+            case 3:
+                return xyz.z
+            default:
+                fatalError("Index out of range")
+            }
+        }
+        
+        set {
+            switch index {
+            case 0:
+                w = newValue
+            case 1:
+                xyz.x = newValue
+            case 2:
+                xyz.y = newValue
+            case 3:
+                xyz.z = newValue
+            default:
+                fatalError("Index out of range")
+            }
         }
     }
     
@@ -70,14 +125,6 @@ public struct Quaternion<T: Vectorable> : Equatable, CustomStringConvertible {
 //        self.x = s.x * c.y * c.z - c.x * s.y * s.z
 //        self.y = c.x * s.y * c.z + s.x * c.y * s.z
 //        self.z = c.x * c.y * s.z - s.x * s.y * c.z
-//    }
-//    
-//    public init(_ m: Matrix3<T>) {
-//        let q = convert(m)
-//        self.w = q.w
-//        self.x = q.x
-//        self.y = q.y
-//        self.z = q.z
 //    }
 //    
 //    public init(angle: T, axis: Vector3<T>) {
@@ -134,110 +181,101 @@ public struct Quaternion<T: Vectorable> : Equatable, CustomStringConvertible {
 //            roll()
 //        )
 //    }
-//    
-//    public func matrix3() -> Matrix3<T> {
-//        return convert(self)
-//    }
-//    
-//    public func matrix4() -> Matrix4<T> {
-//        return convert(self)
-//    }
-//    
+//
 //    public static func axis(axis: Vector3<T>, angle: Angle) -> Quaternion {
 //        let halfAngle = angle * 0.5
 //        return Quaternion(cos(halfAngle), sin(halfAngle) * axis)
 //    }
-//    
-//    public var description: String {
-//        return "{\(w), \(xyz)}"
-//    }
-//    
-//    public var matrix: Matrix3x3 {
-//        let v = xyz
-//        let twoWV = 2.0 * (w * v)
-//        let twoV2 = 2.0 * (v * v)
-//        let twoXY = 2.0 * (v.x * v.y)
-//        let twoXZ = 2.0 * (v.x * v.z)
-//        let twoYZ = 2.0 * (v.y * v.z)
-//        
-//        let col0 = Vector3D(1.0 - twoV2.y - twoV2.z, twoXY + twoWV.z, twoXZ - twoWV.y)
-//        let col1 = Vector3D(twoXY - twoWV.z, 1.0 - twoV2.x - twoV2.z, twoYZ + twoWV.x)
-//        let col2 = Vector3D(twoXZ + twoWV.y, twoYZ - twoWV.x, 1.0 - twoV2.x - twoV2.y)
-//        
-//        return Matrix3x3(col0, col1, col2)
-//    }
+    
+    public var matrix: Matrix3x3<T> {
+        let v: Vector3<T> = xyz
+        let twoWV = T.two * (w * v)
+        let twoV2 = T.two * (v * v)
+        let twoXY = T.two * (v.x * v.y)
+        let twoXZ = T.two * (v.x * v.z)
+        let twoYZ = T.two * (v.y * v.z)
+        
+        let col0 = Vector3<T>(T.one - twoV2.y - twoV2.z, twoXY + twoWV.z, twoXZ - twoWV.y)
+        let col1 = Vector3<T>(twoXY - twoWV.z, T.one - twoV2.x - twoV2.z, twoYZ + twoWV.x)
+        let col2 = Vector3<T>(twoXZ + twoWV.y, twoYZ - twoWV.x, T.one - twoV2.x - twoV2.y)
+        
+        return Matrix3x3<T>(col0, col1, col2)
+    }
 }
 
 // MARK: - Equatable
 
-public func ==<T: Vectorable>(va: Quaternion<T>, vb: Quaternion<T>) -> Bool {
-    return va.w == vb.w && va.xyz == vb.xyz
+public func ==<T: Vectorable>(a: Quaternion<T>, b: Quaternion<T>) -> Bool {
+    return a.w == b.w && a.xyz == b.xyz
 }
 
 // MARK: - Addition
 
-public func +<T: Vectorable>(lhs: Quaternion<T>, rhs: Quaternion<T>) -> Quaternion<T> {
-    return Quaternion<T>(
-        lhs.w + rhs.w,
-        lhs.xyz + rhs.xyz
-    )
+public func +<T: Vectorable>(a: Quaternion<T>, b: Quaternion<T>) -> Quaternion<T> {
+    let w: T = a.w + b.w
+    let xyz: Vector3<T> = a.xyz + b.xyz
+    
+    return Quaternion<T>(w, xyz)
 }
 
 // MARK: - Subtraction
 
-public func -<T: Vectorable>(lhs: Quaternion<T>, rhs: Quaternion<T>) -> Quaternion<T> {
-    return Quaternion<T>(
-        lhs.w - rhs.w,
-        lhs.xyz - rhs.xyz
-    )
+public func -<T: Vectorable>(a: Quaternion<T>, b: Quaternion<T>) -> Quaternion<T> {
+    let w: T = a.w - b.w
+    let xyz: Vector3<T> = a.xyz - b.xyz
+    
+    return Quaternion<T>(w, xyz)
 }
 
 // MARK: - Multiplication
 
-public func *<T: Vectorable>(lhs: Quaternion<T>, rhs: Quaternion<T>) -> Quaternion<T> {
-    let ps = lhs.w
-    let pv = lhs.xyz
-    let qs = rhs.w
-    let qv = rhs.xyz
-    let s = ps * qs - dot(pv, qv)
-    let v = cross(pv, qv) + ps * qv + qs * pv
+public func *<T: Vectorable>(a: Quaternion<T>, b: Quaternion<T>) -> Quaternion<T> {
+    let ps: T = a.w
+    let pv: Vector3<T> = a.xyz
+    let qs: T = b.w
+    let qv: Vector3<T> = b.xyz
+    let s: T = ps * qs - dot(pv, qv)
+    let v: Vector3<T> = cross(pv, qv) + ps * qv + qs * pv
+    
     return Quaternion<T>(s, v)
 }
 
-public func *<T: Vectorable>(lhs: T, rhs: Quaternion<T>) -> Quaternion<T> {
-    return Quaternion<T>(
-        lhs * rhs.w,
-        lhs * rhs.xyz
-    )
+public func *<T: Vectorable>(a: T, b: Quaternion<T>) -> Quaternion<T> {
+    let w: T = a * b.w
+    let xyz: Vector3<T> = a * b.xyz
+    
+    return Quaternion<T>(w, xyz)
 }
 
-public func *<T: Vectorable>(lhs: Quaternion<T>, rhs: T) -> Quaternion<T> {
-    return Quaternion<T>(
-        lhs.w * rhs,
-        lhs.xyz * rhs
-    )
+public func *<T: Vectorable>(a: Quaternion<T>, b: T) -> Quaternion<T> {
+    let w: T = a.w * b
+    let xyz: Vector3<T> = a.xyz * b
+    
+    return Quaternion<T>(w, xyz)
 }
 
 // MARK: - Division
 
 public func /<T: FloatingPoint>(a: Quaternion<T>, b: T) -> Quaternion<T> {
-    return Quaternion(
-        a.w / b,
-        a.xyz / b
-    )
+    let w: T = a.w / b
+    let xyz: Vector3<T> = a.xyz / b
+    
+    return Quaternion<T>(w, xyz)
 }
 
 // MARK: - Rotation
 
 public func *<T: Vectorable>(q: Quaternion<T>, r: Vector3<T>) -> Vector3<T> {
-    let qXr = cross(q.xyz, r)
-    let twoQ = T.two * q
+    let qXr: Vector3<T> = cross(q.xyz, r)
+    let twoQ: Quaternion<T> = T.two * q
+    
     return r + twoQ.w * qXr + cross(twoQ.xyz, qXr)
 }
 
 public func *<T: Vectorable>(r: Vector3<T>, q: Quaternion<T>) -> Vector3<T> {
-    let qXr = cross(q.xyz, r)
-    let twoQ = T.two * q
+    let qXr: Vector3<T> = cross(q.xyz, r)
+    let twoQ: Quaternion<T> = T.two * q
+    
     return r + twoQ.w * qXr + cross(twoQ.xyz, qXr)
 }
 
@@ -249,8 +287,8 @@ public func conjugate<T: SignedVectorable>(_ q: Quaternion<T>) -> Quaternion<T> 
 
 // MARK: Geometric
 
-public func dot<T: Vectorable>(_ lhs: Quaternion<T>, _ rhs: Quaternion<T>) -> T {
-    return lhs.w * rhs.w + dot(lhs.xyz, rhs.xyz)
+public func dot<T: Vectorable>(_ a: Quaternion<T>, _ b: Quaternion<T>) -> T {
+    return a.w * b.w + dot(a.xyz, b.xyz)
 }
 
 public func length2<T: Vectorable>(_ q: Quaternion<T>) -> T {
@@ -271,105 +309,76 @@ public func inverse<T: FloatingPointVectorable>(_ q: Quaternion<T>) -> Quaternio
     return conjugate(q) / dot(q, q)
 }
 
-// MARK: - Matrix Conversion
+// MARK: - Conversion
 
-//public func convert<T: RealArithmetic>(_ q: Quaternion<T>) -> Matrix3<T> {
-//    let qxx = q.x * q.x
-//    let qyy = q.y * q.y
-//    let qzz = q.z * q.z
-//    let qxz = q.x * q.z
-//    let qxy = q.x * q.y
-//    let qyz = q.y * q.z
-//    let qwx = q.w * q.x
-//    let qwy = q.w * q.y
-//    let qwz = q.w * q.z
-//    
-//    let m0x = 1 - 2 * (qyy +  qzz)
-//    let m0y = 2 * (qxy + qwz)
-//    let m0z = 2 * (qxz - qwy)
-//    
-//    let m1x = 2 * (qxy - qwz)
-//    let m1y = 1 - 2 * (qxx +  qzz)
-//    let m1z = 2 * (qyz + qwx)
-//    
-//    let m2x = 2 * (qxz + qwy)
-//    let m2y = 2 * (qyz - qwx)
-//    let m2z = 1 - 2 * (qxx +  qyy)
-//    
-//    return Matrix3(
-//        m0x, m0y, m0z,
-//        m1x, m1y, m1z,
-//        m2x, m2y, m2z
-//    )
-//}
-//
-//public func convert<T: RealArithmetic>(_ q: Quaternion<T>) -> Matrix4<T> {
-//    return Matrix4(convert(q))
-//}
-//
-//public func convert<T: RealArithmetic>(_ m: Matrix3<T>) -> Quaternion<T> {
-//    let m00 = m[0].x
-//    let m10 = m[1].x
-//    let m20 = m[2].x
-//    let m01 = m[0].y
-//    let m11 = m[1].y
-//    let m21 = m[2].y
-//    let m02 = m[0].z
-//    let m12 = m[1].z
-//    let m22 = m[2].z
-//    
-//    let fX = m00 - m11 - m22
-//    let fY = m11 - m00 - m22
-//    let fZ = m22 - m00 - m11
-//    let fW = m00 + m11 + m22
-//    
-//    var index = 0
-//    var fMax = fW
-//    
-//    if fX > fMax {
-//        index = 1
-//        fMax = fX
-//    }
-//    
-//    if fY > fMax {
-//        index = 2
-//        fMax = fY
-//    }
-//    
-//    if fZ > fMax {
-//        index = 3
-//        fMax = fZ
-//    }
-//    
-//    let max = T.sqrt(fMax + 1.0) * 0.5
-//    let mul = 0.25 / max
-//    
-//    switch index {
-//    case 0:
-//        let w = max
-//        let x = (m12 - m21) * mul
-//        let y = (m20 - m02) * mul
-//        let z = (m01 - m10) * mul
-//        return Quaternion(w, x, y, z)
-//    case 1:
-//        let w = (m12 - m21) * mul
-//        let x = max
-//        let y = (m01 + m10) * mul
-//        let z = (m20 + m02) * mul
-//        return Quaternion(w, x, y, z)
-//    case 2:
-//        let w = (m20 - m02) * mul
-//        let x = (m01 + m10) * mul
-//        let y = max
-//        let z = (m12 + m21) * mul
-//        return Quaternion(w, x, y, z)
-//    case 3:
-//        let w = (m01 - m10) * mul
-//        let x = (m20 + m02) * mul
-//        let y = (m12 + m21) * mul
-//        let z = max
-//        return Quaternion(w, x, y, z)
-//    default:
-//        preconditionFailure("Should never happen")
-//    }
-//}
+public func quat<T: FloatingPointVectorable>(_ m: Matrix3x3<T>) -> Quaternion<T> {
+    let m00: T = m[0].x
+    let m10: T = m[1].x
+    let m20: T = m[2].x
+    let m01: T = m[0].y
+    let m11: T = m[1].y
+    let m21: T = m[2].y
+    let m02: T = m[0].z
+    let m12: T = m[1].z
+    let m22: T = m[2].z
+    
+    let fX: T = m00 - m11 - m22
+    let fY: T = m11 - m00 - m22
+    let fZ: T = m22 - m00 - m11
+    let fW: T = m00 + m11 + m22
+    
+    var index = 0
+    var fMax: T = fW
+    
+    if fX > fMax {
+        index = 1
+        fMax = fX
+    }
+    
+    if fY > fMax {
+        index = 2
+        fMax = fY
+    }
+    
+    if fZ > fMax {
+        index = 3
+        fMax = fZ
+    }
+    
+    let oneQuarter: T = T.one / (T.two * T.two)
+    let max = (fMax + T.one).squareRoot() / T.two
+    let mul = oneQuarter / max
+    
+    switch index {
+    case 0:
+        let w: T = max
+        let x: T = (m12 - m21) * mul
+        let y: T = (m20 - m02) * mul
+        let z: T = (m01 - m10) * mul
+        
+        return Quaternion(w, x, y, z)
+    case 1:
+        let w: T = (m12 - m21) * mul
+        let x: T = max
+        let y: T = (m01 + m10) * mul
+        let z: T = (m20 + m02) * mul
+        
+        return Quaternion(w, x, y, z)
+    case 2:
+        let w: T = (m20 - m02) * mul
+        let x: T = (m01 + m10) * mul
+        let y: T = max
+        let z: T = (m12 + m21) * mul
+        
+        return Quaternion(w, x, y, z)
+    case 3:
+        let w: T = (m01 - m10) * mul
+        let x: T = (m20 + m02) * mul
+        let y: T = (m12 + m21) * mul
+        let z: T = max
+        
+        return Quaternion(w, x, y, z)
+    default:
+        preconditionFailure("Should never happen")
+    }
+}

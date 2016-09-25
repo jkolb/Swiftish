@@ -21,21 +21,22 @@
 //
 
 import XCTest
+@testable import Swiftish
 
 class Matrix2Tests: XCTestCase {
     func testInverse() {
-        let col0 = Vector2F(1.0, 2.0)
-        let col1 = Vector2F(3.0, 4.0)
-        let a = Matrix2F(col0, col1)
-        let ai = inverse(a)
+        let col0 = Vector2<Float>(1.0, 2.0)
+        let col1 = Vector2<Float>(3.0, 4.0)
+        let a = Matrix2x2<Float>(col0, col1)
+        let ai = invert(a)
         let im = a * ai
         let id = a / a
-        let i = Matrix2F()
+        let i = Matrix2x2<Float>()
         
         // Multiplication
-        XCTAssertTrue(im ~~ i, "\(im) not identify")
+        XCTAssertTrue(approx(im, i), "\(im) not identity")
         
         // Division
-        XCTAssertTrue(id ~~ i, "\(id) not identify")
+        XCTAssertTrue(approx(id, i), "\(id) not identity")
     }
 }

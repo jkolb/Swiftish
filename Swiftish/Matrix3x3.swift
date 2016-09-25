@@ -55,6 +55,22 @@ public struct Matrix3x3<T: Vectorable> : Equatable, CustomStringConvertible {
         )
     }
     
+    public init(_ d: Vector3<T>) {
+        self.init(
+            Vector3<T>(d.x, T.zero, T.zero),
+            Vector3<T>(T.zero, d.y, T.zero),
+            Vector3<T>(T.zero, T.zero, d.z)
+        )
+    }
+    
+    public init(_ m: Matrix2x2<T>) {
+        self.init(
+            Vector3<T>(m[0]),
+            Vector3<T>(m[1]),
+            Vector3<T>(Vector2<T>(), T.one)
+        )
+    }
+    
     public init(
         _ x0: T, _ y0: T, _ z0: T,
         _ x1: T, _ y1: T, _ z1: T,
@@ -133,6 +149,10 @@ public struct Matrix3x3<T: Vectorable> : Equatable, CustomStringConvertible {
         }
     }
     
+    public var transpose: Matrix3x3<T> {
+        return Matrix3x3<T>(row0, row1, row2)
+    }
+
     public var description: String {
         return "{\n\t\(row0),\n\t\(row1),\n\t\(row2)}"
     }
@@ -142,6 +162,16 @@ public struct Matrix3x3<T: Vectorable> : Equatable, CustomStringConvertible {
 
 public func ==<T: Vectorable>(a: Matrix3x3<T>, b: Matrix3x3<T>) -> Bool {
     return a.col0 == b.col0 && a.col1 == b.col1 && a.col2 == b.col2
+}
+
+// MARK: Approximately Equal
+
+public func approx<T: FloatingPointVectorable>(_ a: Matrix3x3<T>, _ b: Matrix3x3<T>, epsilon: T = T.epsilon) -> Bool {
+    let col0: Bool = approx(a.col0, b.col0, epsilon: epsilon)
+    let col1: Bool = approx(a.col1, b.col1, epsilon: epsilon)
+    let col2: Bool = approx(a.col2, b.col2, epsilon: epsilon)
+    
+    return col0 && col1 && col2
 }
 
 // MARK: - Addition
@@ -287,20 +317,20 @@ public func /<T: Vectorable>(a: T, b: Matrix3x3<T>) -> Matrix3x3<T> {
 }
 
 public func /<T: SignedVectorable>(m: Matrix3x3<T>, v: Vector3<T>) -> Vector3<T> {
-    return inverse(m) * v
+    return invert(m) * v
 }
 
 public func /<T: SignedVectorable>(v: Vector3<T>, m: Matrix3x3<T>) -> Vector3<T> {
-    return v * inverse(m)
+    return v * invert(m)
 }
 
 public func /<T: SignedVectorable>(m1: Matrix3x3<T>, m2: Matrix3x3<T>) -> Matrix3x3<T> {
-    return m1 * inverse(m2)
+    return m1 * invert(m2)
 }
 
 // MARK: - Inverse
 
-public func inverse<T: SignedVectorable>(_ m: Matrix3x3<T>) -> Matrix3x3<T> {
+public func invert<T: SignedVectorable>(_ m: Matrix3x3<T>) -> Matrix3x3<T> {
     let m00: T = m.col0.x
     let m10: T = m.col1.x
     let m20: T = m.col2.x

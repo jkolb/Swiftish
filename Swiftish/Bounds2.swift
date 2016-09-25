@@ -152,15 +152,16 @@ public struct Bounds2<T: SignedVectorable> : Equatable {
     }
     
     public var corners: [Vector2<T>] {
-        let corner0: Vector2<T> = center + extents * Vector2<T>(+T.one, +T.one)
-        let corner1: Vector2<T> = center + extents * Vector2<T>(+T.one, -T.one)
-        let corner2: Vector2<T> = center + extents * Vector2<T>(-T.one, +T.one)
-        let corner3: Vector2<T> = center + extents * Vector2<T>(-T.one, -T.one)
+        let max: Vector2<T> = maximum
+        let corner0: Vector2<T> = max * Vector2<T>(+T.one, +T.one)
+        let corner1: Vector2<T> = max * Vector2<T>(+T.one, -T.one)
+        let corner2: Vector2<T> = max * Vector2<T>(-T.one, +T.one)
+        let corner3: Vector2<T> = max * Vector2<T>(-T.one, -T.one)
 
         return [corner0, corner1, corner2, corner3]
     }
 }
 
-public func ==<T: SignedVectorable>(lhs: Bounds2<T>, rhs: Bounds2<T>) -> Bool {
-    return lhs.center == rhs.center && lhs.extents == rhs.extents
+public func ==<T: SignedVectorable>(a: Bounds2<T>, b: Bounds2<T>) -> Bool {
+    return a.center == b.center && a.extents == b.extents
 }

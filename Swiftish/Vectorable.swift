@@ -39,210 +39,92 @@ public protocol SignedVectorable : Vectorable, SignedNumber {
 }
 
 public protocol FloatingPointVectorable : SignedVectorable, FloatingPoint {    
+    static var epsilon: Self { get }
 }
 
 extension UInt : Vectorable {
-    public static var zero: UInt {
-        return 0
-    }
-
-    public static var one: UInt {
-        return 1
-    }
-    
-    public static var two: UInt {
-        return 2
-    }
+    public static let zero: UInt = 0
+    public static let one: UInt = 1
+    public static let two: UInt = 2
 }
 
 extension UInt8 : Vectorable {
-    public static var zero: UInt8 {
-        return 0
-    }
-
-    public static var one: UInt8 {
-        return 1
-    }
-    
-    public static var two: UInt8 {
-        return 2
-    }
+    public static let zero: UInt8 = 0
+    public static let one: UInt8 = 1
+    public static let two: UInt8 = 2
 }
 
 extension UInt16 : Vectorable {
-    public static var zero: UInt16 {
-        return 0
-    }
-
-    public static var one: UInt16 {
-        return 1
-    }
-    
-    public static var two: UInt16 {
-        return 2
-    }
+    public static let zero: UInt16 = 0
+    public static let one: UInt16 = 1
+    public static let two: UInt16 = 2
 }
 
 extension UInt32 : Vectorable {
-    public static var zero: UInt32 {
-        return 0
-    }
-
-    public static var one: UInt32 {
-        return 1
-    }
-    
-    public static var two: UInt32 {
-        return 2
-    }
+    public static let zero: UInt32 = 0
+    public static let one: UInt32 = 1
+    public static let two: UInt32 = 2
 }
 
 extension UInt64 : Vectorable {
-    public static var zero: UInt64 {
-        return 0
-    }
-
-    public static var one: UInt64 {
-        return 1
-    }
-    
-    public static var two: UInt64 {
-        return 2
-    }
+    public static let zero: UInt64 = 0
+    public static let one: UInt64 = 1
+    public static let two: UInt64 = 2
 }
 
 extension Int : SignedVectorable {
-    public static var zero: Int {
-        return 0
-    }
-
-    public static var one: Int {
-        return 1
-    }
-    
-    public static var two: Int {
-        return 2
-    }
+    public static let zero: Int = 0
+    public static let one: Int = 1
+    public static let two: Int = 2
 }
 
 extension Int8 : SignedVectorable {
-    public static var zero: Int8 {
-        return 0
-    }
-
-    public static var one: Int8 {
-        return 1
-    }
-    
-    public static var two: Int8 {
-        return 2
-    }
+    public static let zero: Int8 = 0
+    public static let one: Int8 = 1
+    public static let two: Int8 = 2
 }
 
 extension Int16 : SignedVectorable {
-    public static var zero: Int16 {
-        return 0
-    }
-
-    public static var one: Int16 {
-        return 1
-    }
-    
-    public static var two: Int16 {
-        return 2
-    }
+    public static let zero: Int16 = 0
+    public static let one: Int16 = 1
+    public static let two: Int16 = 2
 }
 
 extension Int32 : SignedVectorable {
-    public static var zero: Int32 {
-        return 0
-    }
-
-    public static var one: Int32 {
-        return 1
-    }
-    
-    public static var two: Int32 {
-        return 2
-    }
+    public static let zero: Int32 = 0
+    public static let one: Int32 = 1
+    public static let two: Int32 = 2
 }
 
 extension Int64 : SignedVectorable {
-    public static var zero: Int64 {
-        return 0
-    }
-
-    public static var one: Int64 {
-        return 1
-    }
-    
-    public static var two: Int64 {
-        return 2
-    }
+    public static let zero: Int64 = 0
+    public static let one: Int64 = 1
+    public static let two: Int64 = 2
 }
 
 extension Float32: FloatingPointVectorable {
-    public static var zero: Float32 {
-        return 0
-    }
-
-    public static var one: Float32 {
-        return 1
-    }
-    
-    public static var two: Float32 {
-        return 2
-    }
-    
-    public static var min: Float32 {
-        return -greatestFiniteMagnitude
-    }
-    
-    public static var max: Float32 {
-        return +greatestFiniteMagnitude
-    }
+    public static let zero: Float32 = 0
+    public static let one: Float32 = 1
+    public static let two: Float32 = 2
+    public static let min: Float32 = -greatestFiniteMagnitude
+    public static let max: Float32 = +greatestFiniteMagnitude
+    public static let epsilon: Float32 = 1e-6
 }
 
 extension Float64: FloatingPointVectorable {
-    public static var zero: Float64 {
-        return 0
-    }
-
-    public static var one: Float64 {
-        return 1
-    }
-    
-    public static var two: Float64 {
-        return 2
-    }
-    
-    public static var min: Float64 {
-        return -greatestFiniteMagnitude
-    }
-    
-    public static var max: Float64 {
-        return +greatestFiniteMagnitude
-    }
+    public static let zero: Float64 = 0
+    public static let one: Float64 = 1
+    public static let two: Float64 = 2
+    public static let min: Float64 = -greatestFiniteMagnitude
+    public static let max: Float64 = +greatestFiniteMagnitude
+    public static let epsilon: Float64 = 1e-15
 }
 
 extension Float80: FloatingPointVectorable {
-    public static var zero: Float80 {
-        return 0
-    }
-
-    public static var one: Float80 {
-        return 1
-    }
-    
-    public static var two: Float80 {
-        return 2
-    }
-    
-    public static var min: Float80 {
-        return -greatestFiniteMagnitude
-    }
-    
-    public static var max: Float80 {
-        return +greatestFiniteMagnitude
-    }
+    public static let zero: Float80 = 0
+    public static let one: Float80 = 1
+    public static let two: Float80 = 2
+    public static let min: Float80 = -greatestFiniteMagnitude
+    public static let max: Float80 = +greatestFiniteMagnitude
+    public static let epsilon: Float80 = 1e-15
 }

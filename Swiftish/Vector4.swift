@@ -36,6 +36,10 @@ public struct Vector4<T: Vectorable> : Equatable, CustomStringConvertible {
         self.init(v, v, v, v)
     }
     
+    public init(_ v: Vector3<T>, _ c: T = T.zero) {
+        self.init(v.x, v.y, v.z, c)
+    }
+    
     public init(_ x: T, _ y: T, _ z: T, _ w: T) {
         self.x = x
         self.y = y
@@ -96,8 +100,28 @@ public struct Vector4<T: Vectorable> : Equatable, CustomStringConvertible {
 
 // MARK: - Equatable
 
-public func ==<T: Vectorable>(va: Vector4<T>, _ vb: Vector4<T>) -> Bool {
-    return va.x == vb.x && va.y == vb.y && va.z == vb.z && va.w == vb.w
+public func ==<T: Vectorable>(a: Vector4<T>, b: Vector4<T>) -> Bool {
+    return a.x == b.x && a.y == b.y && a.z == b.z && a.w == b.w
+}
+
+// MARK: Approximately Equal
+
+public func approx<T: FloatingPointVectorable>(_ a: Vector4<T>, _ b: Vector4<T>, epsilon: T = T.epsilon) -> Bool {
+    let delta: Vector4<T> = b - a
+    let magnitude: Vector4<T> = abs(delta)
+    
+    return magnitude.x <= epsilon && magnitude.y <= epsilon && magnitude.z <= epsilon && magnitude.w <= epsilon
+}
+
+// MARK: Absolute Value
+
+public func abs<T: SignedVectorable>(_ a: Vector4<T>) -> Vector4<T> {
+    let x: T = abs(a.x)
+    let y: T = abs(a.y)
+    let z: T = abs(a.z)
+    let w: T = abs(a.w)
+    
+    return Vector4<T>(x, y, z, w)
 }
 
 // MARK: - Addition
@@ -238,35 +262,39 @@ public prefix func +<T: SignedVectorable>(v: Vector4<T>) -> Vector4<T> {
 
 // MARK: - Sum
 
-public func sum<T: Vectorable>(_ vector: Vector4<T>) -> T {
-    return vector.x + vector.y + vector.z + vector.w
+public func sum<T: Vectorable>(_ a: Vector4<T>) -> T {
+    return a.x + a.y + a.z + a.w
 }
 
 // MARK: - Geometric
 
-public func length<T: FloatingPointVectorable>(_ vector: Vector4<T>) -> T {
-    return length2(vector).squareRoot()
+public func length<T: FloatingPointVectorable>(_ a: Vector4<T>) -> T {
+    return length2(a).squareRoot()
 }
 
-public func length2<T: Vectorable>(_ vector: Vector4<T>) -> T {
-    return sum(vector * vector)
+public func length2<T: Vectorable>(_ a: Vector4<T>) -> T {
+    let a2: Vector4<T> = a * a
+    
+    return sum(a2)
 }
 
-public func normalize<T: FloatingPointVectorable>(_ vector: Vector4<T>) -> Vector4<T> {
-    return vector / length(vector)
+public func normalize<T: FloatingPointVectorable>(_ a: Vector4<T>) -> Vector4<T> {
+    return a / length(a)
 }
 
-public func distance<T: FloatingPointVectorable>(_ va: Vector4<T>, _ vb: Vector4<T>) -> T {
-    return distance2(va, vb).squareRoot()
+public func distance<T: FloatingPointVectorable>(_ a: Vector4<T>, _ b: Vector4<T>) -> T {
+    return distance2(a, b).squareRoot()
 }
 
-public func distance2<T: Vectorable>(_ va: Vector4<T>, _ vb: Vector4<T>) -> T {
-    let difference: Vector4<T> = vb - va
+public func distance2<T: Vectorable>(_ a: Vector4<T>, _ b: Vector4<T>) -> T {
+    let difference: Vector4<T> = b - a
     let difference2: Vector4<T> = difference * difference
     
     return sum(difference2)
 }
 
-public func dot<T: Vectorable>(_ va: Vector4<T>, _ vb: Vector4<T>) -> T {
-    return sum(va * vb)
+public func dot<T: Vectorable>(_ a: Vector4<T>, _ b: Vector4<T>) -> T {
+    let ab: Vector4<T> = a * b
+    
+    return sum(ab)
 }

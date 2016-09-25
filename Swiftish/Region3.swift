@@ -36,6 +36,6 @@ public struct Region3<T: Vectorable> : Equatable {
     }
 }
 
-public func ==<T: Vectorable>(lhs: Region3<T>, rhs: Region3<T>) -> Bool {
-    return lhs.origin == rhs.origin && lhs.size == rhs.size
+public func ==<T: Vectorable>(a: Region3<T>, b: Region3<T>) -> Bool {
+    return a.origin == b.origin && a.size == b.size
 }

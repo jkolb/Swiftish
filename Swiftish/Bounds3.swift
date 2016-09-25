@@ -162,19 +162,23 @@ public struct Bounds3<T: SignedVectorable> : Equatable {
     }
     
     public var corners: [Vector3<T>] {
+        let max: Vector3<T> = maximum
+        let corner0: Vector3<T> = max * Vector3<T>(+T.one, +T.one, +T.one)
+        let corner1: Vector3<T> = max * Vector3<T>(-T.one, +T.one, +T.one)
+        let corner2: Vector3<T> = max * Vector3<T>(+T.one, -T.one, +T.one)
+        let corner3: Vector3<T> = max * Vector3<T>(+T.one, +T.one, -T.one)
+        let corner4: Vector3<T> = max * Vector3<T>(-T.one, -T.one, +T.one)
+        let corner5: Vector3<T> = max * Vector3<T>(+T.one, -T.one, -T.one)
+        let corner6: Vector3<T> = max * Vector3<T>(-T.one, +T.one, -T.one)
+        let corner7: Vector3<T> = max * Vector3<T>(-T.one, -T.one, -T.one)
+        
         return [
-            (center + extents * Vector3<T>(+T.one, +T.one, +T.one)),
-            (center + extents * Vector3<T>(-T.one, +T.one, +T.one)),
-            (center + extents * Vector3<T>(+T.one, -T.one, +T.one)),
-            (center + extents * Vector3<T>(+T.one, +T.one, -T.one)),
-            (center + extents * Vector3<T>(-T.one, -T.one, +T.one)),
-            (center + extents * Vector3<T>(+T.one, -T.one, -T.one)),
-            (center + extents * Vector3<T>(-T.one, +T.one, -T.one)),
-            (center + extents * Vector3<T>(-T.one, -T.one, -T.one)),
+            corner0, corner1, corner2, corner3,
+            corner4, corner5, corner6, corner7,
         ]
     }
 }
 
-public func ==<T: SignedVectorable>(lhs: Bounds3<T>, rhs: Bounds3<T>) -> Bool {
-    return lhs.center == rhs.center && lhs.extents == rhs.extents
+public func ==<T: SignedVectorable>(a: Bounds3<T>, b: Bounds3<T>) -> Bool {
+    return a.center == b.center && a.extents == b.extents
 }
