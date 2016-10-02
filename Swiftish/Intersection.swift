@@ -136,7 +136,7 @@ public func test<T: FloatingPointVectorable>(_ ray: Ray3<T>, intersects bounds: 
     return true
 }
 
-public func test<T: SignedVectorable>(_ ray: Ray3<T>, _ triangle: Triangle3<T>) -> Bool {
+public func test<T: SignedVectorable>(_ ray: Ray3<T>, intersects triangle: Triangle3<T>) -> Bool {
     let ab = triangle.b - triangle.a
     let ac = triangle.c - triangle.a
     let qp = -ray.direction
