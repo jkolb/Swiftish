@@ -9,38 +9,40 @@
 /* Begin PBXBuildFile section */
 		E52F45891B121F4C004F7444 /* Swiftish.h in Headers */ = {isa = PBXBuildFile; fileRef = E52F45881B121F4C004F7444 /* Swiftish.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E52F458F1B121F4C004F7444 /* Swiftish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E52F45831B121F4C004F7444 /* Swiftish.framework */; };
-		E52FE2151DA1761600878C40 /* Frustum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2141DA1761600878C40 /* Frustum.swift */; };
-		E52FE2171DA1779900878C40 /* Intersection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2161DA1779900878C40 /* Intersection.swift */; };
-		E52FE2191DA1811100878C40 /* PerspectiveProjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2181DA1811100878C40 /* PerspectiveProjection.swift */; };
-		E5CCAB0F1D96C8F1003BC135 /* Vector2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F45A11B121FD5004F7444 /* Vector2.swift */; };
-		E5CCAB101D96CCE4003BC135 /* Vector2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F45AB1B1220D9004F7444 /* Vector2Tests.swift */; };
-		E5CCAB111D96CD20003BC135 /* Vector3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F45AD1B125928004F7444 /* Vector3Tests.swift */; };
-		E5CCAB121D96CD25003BC135 /* Vector4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F45AF1B125DFE004F7444 /* Vector4Tests.swift */; };
-		E5CCAB141D96E1C0003BC135 /* Vectorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB131D96E1C0003BC135 /* Vectorable.swift */; };
-		E5CCAB161D96E32E003BC135 /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB151D96E32E003BC135 /* Vector3.swift */; };
-		E5CCAB181D96E3BA003BC135 /* Vector4.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB171D96E3BA003BC135 /* Vector4.swift */; };
-		E5CCAB1A1D96E8AA003BC135 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB191D96E8AA003BC135 /* Color.swift */; };
-		E5CCAB1C1D96E929003BC135 /* TexCoord.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB1B1D96E929003BC135 /* TexCoord.swift */; };
-		E5CCAB1D1D96F2E1003BC135 /* Quaternion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB1D7E1B1B8D0700A08B63 /* Quaternion.swift */; };
-		E5CCAB1F1D96FDBC003BC135 /* Matrix2x2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB1E1D96FDBC003BC135 /* Matrix2x2.swift */; };
-		E5CCAB211D96FDC9003BC135 /* Matrix3x3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB201D96FDC9003BC135 /* Matrix3x3.swift */; };
-		E5CCAB251D970142003BC135 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB241D970142003BC135 /* Size.swift */; };
-		E5CCAB271D970239003BC135 /* Bounds2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB261D970239003BC135 /* Bounds2.swift */; };
-		E5CCAB2F1D9719D0003BC135 /* Bounds3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB2E1D9719D0003BC135 /* Bounds3.swift */; };
-		E5CCAB311D971E1F003BC135 /* Region2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB301D971E1F003BC135 /* Region2.swift */; };
-		E5CCAB331D971F6C003BC135 /* Region3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB321D971F6C003BC135 /* Region3.swift */; };
-		E5CCAB341D977650003BC135 /* Matrix4x4.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB221D96FDD4003BC135 /* Matrix4x4.swift */; };
-		E5CCAB351D982AB4003BC135 /* Matrix2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55C63CF1B139B4600E5D43E /* Matrix2Tests.swift */; };
-		E5CCAB361D982EF4003BC135 /* Matrix3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55C63D11B13A37A00E5D43E /* Matrix3Tests.swift */; };
-		E5CCAB371D982F36003BC135 /* Matrix4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55C63D31B13A55D00E5D43E /* Matrix4Tests.swift */; };
-		E5CCAB391D983099003BC135 /* Transform3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB381D983099003BC135 /* Transform3.swift */; };
-		E5CCAB3B1D985463003BC135 /* Triangle3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB3A1D985463003BC135 /* Triangle3.swift */; };
-		E5CCAB3D1D9858DF003BC135 /* Triangle2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB3C1D9858DF003BC135 /* Triangle2.swift */; };
-		E5CCAB3F1D985998003BC135 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB3E1D985998003BC135 /* Plane.swift */; };
-		E5CCAB411D985BC5003BC135 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB401D985BC5003BC135 /* Circle.swift */; };
-		E5CCAB431D986147003BC135 /* Sphere.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB421D986147003BC135 /* Sphere.swift */; };
-		E5CCAB451D986500003BC135 /* Ray3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB441D986500003BC135 /* Ray3.swift */; };
-		E5CCAB471D98660A003BC135 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAB461D98660A003BC135 /* Angle.swift */; };
+		E52FE2361DA18CDC00878C40 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE21B1DA18CDC00878C40 /* Angle.swift */; };
+		E52FE2371DA18CDC00878C40 /* Bounds2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE21C1DA18CDC00878C40 /* Bounds2.swift */; };
+		E52FE2381DA18CDC00878C40 /* Bounds3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE21D1DA18CDC00878C40 /* Bounds3.swift */; };
+		E52FE2391DA18CDC00878C40 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE21E1DA18CDC00878C40 /* Circle.swift */; };
+		E52FE23A1DA18CDC00878C40 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE21F1DA18CDC00878C40 /* Color.swift */; };
+		E52FE23B1DA18CDC00878C40 /* Frustum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2201DA18CDC00878C40 /* Frustum.swift */; };
+		E52FE23C1DA18CDC00878C40 /* Intersection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2211DA18CDC00878C40 /* Intersection.swift */; };
+		E52FE23D1DA18CDC00878C40 /* Matrix2x2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2221DA18CDC00878C40 /* Matrix2x2.swift */; };
+		E52FE23E1DA18CDC00878C40 /* Matrix3x3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2231DA18CDC00878C40 /* Matrix3x3.swift */; };
+		E52FE23F1DA18CDC00878C40 /* Matrix4x4.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2241DA18CDC00878C40 /* Matrix4x4.swift */; };
+		E52FE2401DA18CDC00878C40 /* PerspectiveProjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2251DA18CDC00878C40 /* PerspectiveProjection.swift */; };
+		E52FE2411DA18CDC00878C40 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2261DA18CDC00878C40 /* Plane.swift */; };
+		E52FE2421DA18CDC00878C40 /* Quaternion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2271DA18CDC00878C40 /* Quaternion.swift */; };
+		E52FE2431DA18CDC00878C40 /* Ray3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2281DA18CDC00878C40 /* Ray3.swift */; };
+		E52FE2441DA18CDC00878C40 /* Region2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2291DA18CDC00878C40 /* Region2.swift */; };
+		E52FE2451DA18CDC00878C40 /* Region3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE22A1DA18CDC00878C40 /* Region3.swift */; };
+		E52FE2461DA18CDC00878C40 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE22B1DA18CDC00878C40 /* Size.swift */; };
+		E52FE2471DA18CDC00878C40 /* Sphere.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE22C1DA18CDC00878C40 /* Sphere.swift */; };
+		E52FE2491DA18CDC00878C40 /* TexCoord.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE22E1DA18CDC00878C40 /* TexCoord.swift */; };
+		E52FE24A1DA18CDC00878C40 /* Transform3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE22F1DA18CDC00878C40 /* Transform3.swift */; };
+		E52FE24B1DA18CDC00878C40 /* Triangle2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2301DA18CDC00878C40 /* Triangle2.swift */; };
+		E52FE24C1DA18CDC00878C40 /* Triangle3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2311DA18CDC00878C40 /* Triangle3.swift */; };
+		E52FE24D1DA18CDC00878C40 /* Vector2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2321DA18CDC00878C40 /* Vector2.swift */; };
+		E52FE24E1DA18CDC00878C40 /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2331DA18CDC00878C40 /* Vector3.swift */; };
+		E52FE24F1DA18CDC00878C40 /* Vector4.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2341DA18CDC00878C40 /* Vector4.swift */; };
+		E52FE2501DA18CDC00878C40 /* Vectorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2351DA18CDC00878C40 /* Vectorable.swift */; };
+		E52FE2631DA18D5200878C40 /* Matrix2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2541DA18D4200878C40 /* Matrix2Tests.swift */; };
+		E52FE2641DA18D5200878C40 /* Matrix3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2551DA18D4200878C40 /* Matrix3Tests.swift */; };
+		E52FE2651DA18D5200878C40 /* Matrix4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2561DA18D4200878C40 /* Matrix4Tests.swift */; };
+		E52FE2671DA18D5200878C40 /* Vector2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2581DA18D4200878C40 /* Vector2Tests.swift */; };
+		E52FE2681DA18D5200878C40 /* Vector3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2591DA18D4200878C40 /* Vector3Tests.swift */; };
+		E52FE2691DA18D5200878C40 /* Vector4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE25A1DA18D4200878C40 /* Vector4Tests.swift */; };
+		E52FE26D1DA18DD800878C40 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = E52FE26A1DA18DD800878C40 /* LICENSE */; };
+		E52FE26F1DA18DD800878C40 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E52FE26C1DA18DD800878C40 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,38 +61,42 @@
 		E52F45881B121F4C004F7444 /* Swiftish.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Swiftish.h; sourceTree = "<group>"; };
 		E52F458E1B121F4C004F7444 /* SwiftishTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftishTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E52F45941B121F4C004F7444 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E52F45A11B121FD5004F7444 /* Vector2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector2.swift; sourceTree = "<group>"; };
-		E52F45AB1B1220D9004F7444 /* Vector2Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector2Tests.swift; sourceTree = "<group>"; };
-		E52F45AD1B125928004F7444 /* Vector3Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3Tests.swift; sourceTree = "<group>"; };
-		E52F45AF1B125DFE004F7444 /* Vector4Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector4Tests.swift; sourceTree = "<group>"; };
-		E52FE2141DA1761600878C40 /* Frustum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Frustum.swift; sourceTree = "<group>"; };
-		E52FE2161DA1779900878C40 /* Intersection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Intersection.swift; sourceTree = "<group>"; };
-		E52FE2181DA1811100878C40 /* PerspectiveProjection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerspectiveProjection.swift; sourceTree = "<group>"; };
-		E55C63CF1B139B4600E5D43E /* Matrix2Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix2Tests.swift; sourceTree = "<group>"; };
-		E55C63D11B13A37A00E5D43E /* Matrix3Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix3Tests.swift; sourceTree = "<group>"; };
-		E55C63D31B13A55D00E5D43E /* Matrix4Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix4Tests.swift; sourceTree = "<group>"; };
-		E5CB1D7E1B1B8D0700A08B63 /* Quaternion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quaternion.swift; sourceTree = "<group>"; };
-		E5CCAB131D96E1C0003BC135 /* Vectorable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vectorable.swift; sourceTree = "<group>"; };
-		E5CCAB151D96E32E003BC135 /* Vector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
-		E5CCAB171D96E3BA003BC135 /* Vector4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector4.swift; sourceTree = "<group>"; };
-		E5CCAB191D96E8AA003BC135 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		E5CCAB1B1D96E929003BC135 /* TexCoord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TexCoord.swift; sourceTree = "<group>"; };
-		E5CCAB1E1D96FDBC003BC135 /* Matrix2x2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix2x2.swift; sourceTree = "<group>"; };
-		E5CCAB201D96FDC9003BC135 /* Matrix3x3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix3x3.swift; sourceTree = "<group>"; };
-		E5CCAB221D96FDD4003BC135 /* Matrix4x4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix4x4.swift; sourceTree = "<group>"; };
-		E5CCAB241D970142003BC135 /* Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
-		E5CCAB261D970239003BC135 /* Bounds2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bounds2.swift; sourceTree = "<group>"; };
-		E5CCAB2E1D9719D0003BC135 /* Bounds3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bounds3.swift; sourceTree = "<group>"; };
-		E5CCAB301D971E1F003BC135 /* Region2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region2.swift; sourceTree = "<group>"; };
-		E5CCAB321D971F6C003BC135 /* Region3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region3.swift; sourceTree = "<group>"; };
-		E5CCAB381D983099003BC135 /* Transform3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transform3.swift; sourceTree = "<group>"; };
-		E5CCAB3A1D985463003BC135 /* Triangle3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Triangle3.swift; sourceTree = "<group>"; };
-		E5CCAB3C1D9858DF003BC135 /* Triangle2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Triangle2.swift; sourceTree = "<group>"; };
-		E5CCAB3E1D985998003BC135 /* Plane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
-		E5CCAB401D985BC5003BC135 /* Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
-		E5CCAB421D986147003BC135 /* Sphere.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sphere.swift; sourceTree = "<group>"; };
-		E5CCAB441D986500003BC135 /* Ray3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ray3.swift; sourceTree = "<group>"; };
-		E5CCAB461D98660A003BC135 /* Angle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
+		E52FE21B1DA18CDC00878C40 /* Angle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
+		E52FE21C1DA18CDC00878C40 /* Bounds2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bounds2.swift; sourceTree = "<group>"; };
+		E52FE21D1DA18CDC00878C40 /* Bounds3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bounds3.swift; sourceTree = "<group>"; };
+		E52FE21E1DA18CDC00878C40 /* Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
+		E52FE21F1DA18CDC00878C40 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		E52FE2201DA18CDC00878C40 /* Frustum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Frustum.swift; sourceTree = "<group>"; };
+		E52FE2211DA18CDC00878C40 /* Intersection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Intersection.swift; sourceTree = "<group>"; };
+		E52FE2221DA18CDC00878C40 /* Matrix2x2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix2x2.swift; sourceTree = "<group>"; };
+		E52FE2231DA18CDC00878C40 /* Matrix3x3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix3x3.swift; sourceTree = "<group>"; };
+		E52FE2241DA18CDC00878C40 /* Matrix4x4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix4x4.swift; sourceTree = "<group>"; };
+		E52FE2251DA18CDC00878C40 /* PerspectiveProjection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerspectiveProjection.swift; sourceTree = "<group>"; };
+		E52FE2261DA18CDC00878C40 /* Plane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
+		E52FE2271DA18CDC00878C40 /* Quaternion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quaternion.swift; sourceTree = "<group>"; };
+		E52FE2281DA18CDC00878C40 /* Ray3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ray3.swift; sourceTree = "<group>"; };
+		E52FE2291DA18CDC00878C40 /* Region2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region2.swift; sourceTree = "<group>"; };
+		E52FE22A1DA18CDC00878C40 /* Region3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region3.swift; sourceTree = "<group>"; };
+		E52FE22B1DA18CDC00878C40 /* Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
+		E52FE22C1DA18CDC00878C40 /* Sphere.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sphere.swift; sourceTree = "<group>"; };
+		E52FE22E1DA18CDC00878C40 /* TexCoord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TexCoord.swift; sourceTree = "<group>"; };
+		E52FE22F1DA18CDC00878C40 /* Transform3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transform3.swift; sourceTree = "<group>"; };
+		E52FE2301DA18CDC00878C40 /* Triangle2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Triangle2.swift; sourceTree = "<group>"; };
+		E52FE2311DA18CDC00878C40 /* Triangle3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Triangle3.swift; sourceTree = "<group>"; };
+		E52FE2321DA18CDC00878C40 /* Vector2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector2.swift; sourceTree = "<group>"; };
+		E52FE2331DA18CDC00878C40 /* Vector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
+		E52FE2341DA18CDC00878C40 /* Vector4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector4.swift; sourceTree = "<group>"; };
+		E52FE2351DA18CDC00878C40 /* Vectorable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vectorable.swift; sourceTree = "<group>"; };
+		E52FE2521DA18D4200878C40 /* LinuxMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinuxMain.swift; sourceTree = "<group>"; };
+		E52FE2541DA18D4200878C40 /* Matrix2Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix2Tests.swift; sourceTree = "<group>"; };
+		E52FE2551DA18D4200878C40 /* Matrix3Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix3Tests.swift; sourceTree = "<group>"; };
+		E52FE2561DA18D4200878C40 /* Matrix4Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix4Tests.swift; sourceTree = "<group>"; };
+		E52FE2581DA18D4200878C40 /* Vector2Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector2Tests.swift; sourceTree = "<group>"; };
+		E52FE2591DA18D4200878C40 /* Vector3Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3Tests.swift; sourceTree = "<group>"; };
+		E52FE25A1DA18D4200878C40 /* Vector4Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector4Tests.swift; sourceTree = "<group>"; };
+		E52FE26A1DA18DD800878C40 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		E52FE26B1DA18DD800878C40 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		E52FE26C1DA18DD800878C40 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +121,11 @@
 		E52F45791B121F4C004F7444 = {
 			isa = PBXGroup;
 			children = (
+				E52FE26B1DA18DD800878C40 /* Package.swift */,
+				E52FE26A1DA18DD800878C40 /* LICENSE */,
+				E52FE26C1DA18DD800878C40 /* README.md */,
+				E52FE21A1DA18CDC00878C40 /* Sources */,
+				E52FE2511DA18D4200878C40 /* Tests */,
 				E52F45851B121F4C004F7444 /* Swiftish */,
 				E52F45921B121F4C004F7444 /* SwiftishTests */,
 				E52F45841B121F4C004F7444 /* Products */,
@@ -133,32 +144,6 @@
 		E52F45851B121F4C004F7444 /* Swiftish */ = {
 			isa = PBXGroup;
 			children = (
-				E5CCAB461D98660A003BC135 /* Angle.swift */,
-				E5CCAB131D96E1C0003BC135 /* Vectorable.swift */,
-				E5CCAB1E1D96FDBC003BC135 /* Matrix2x2.swift */,
-				E5CCAB201D96FDC9003BC135 /* Matrix3x3.swift */,
-				E5CCAB221D96FDD4003BC135 /* Matrix4x4.swift */,
-				E52F45A11B121FD5004F7444 /* Vector2.swift */,
-				E5CCAB151D96E32E003BC135 /* Vector3.swift */,
-				E5CCAB171D96E3BA003BC135 /* Vector4.swift */,
-				E5CCAB1B1D96E929003BC135 /* TexCoord.swift */,
-				E5CCAB191D96E8AA003BC135 /* Color.swift */,
-				E5CCAB241D970142003BC135 /* Size.swift */,
-				E5CB1D7E1B1B8D0700A08B63 /* Quaternion.swift */,
-				E5CCAB261D970239003BC135 /* Bounds2.swift */,
-				E5CCAB2E1D9719D0003BC135 /* Bounds3.swift */,
-				E5CCAB301D971E1F003BC135 /* Region2.swift */,
-				E5CCAB321D971F6C003BC135 /* Region3.swift */,
-				E5CCAB381D983099003BC135 /* Transform3.swift */,
-				E5CCAB3C1D9858DF003BC135 /* Triangle2.swift */,
-				E5CCAB3A1D985463003BC135 /* Triangle3.swift */,
-				E5CCAB3E1D985998003BC135 /* Plane.swift */,
-				E5CCAB401D985BC5003BC135 /* Circle.swift */,
-				E5CCAB421D986147003BC135 /* Sphere.swift */,
-				E5CCAB441D986500003BC135 /* Ray3.swift */,
-				E52FE2141DA1761600878C40 /* Frustum.swift */,
-				E52FE2161DA1779900878C40 /* Intersection.swift */,
-				E52FE2181DA1811100878C40 /* PerspectiveProjection.swift */,
 				E52F45881B121F4C004F7444 /* Swiftish.h */,
 				E52F45861B121F4C004F7444 /* Supporting Files */,
 			);
@@ -176,12 +161,6 @@
 		E52F45921B121F4C004F7444 /* SwiftishTests */ = {
 			isa = PBXGroup;
 			children = (
-				E55C63CF1B139B4600E5D43E /* Matrix2Tests.swift */,
-				E55C63D11B13A37A00E5D43E /* Matrix3Tests.swift */,
-				E55C63D31B13A55D00E5D43E /* Matrix4Tests.swift */,
-				E52F45AB1B1220D9004F7444 /* Vector2Tests.swift */,
-				E52F45AD1B125928004F7444 /* Vector3Tests.swift */,
-				E52F45AF1B125DFE004F7444 /* Vector4Tests.swift */,
 				E52F45931B121F4C004F7444 /* Supporting Files */,
 			);
 			path = SwiftishTests;
@@ -193,6 +172,61 @@
 				E52F45941B121F4C004F7444 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E52FE21A1DA18CDC00878C40 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				E52FE21B1DA18CDC00878C40 /* Angle.swift */,
+				E52FE21C1DA18CDC00878C40 /* Bounds2.swift */,
+				E52FE21D1DA18CDC00878C40 /* Bounds3.swift */,
+				E52FE21E1DA18CDC00878C40 /* Circle.swift */,
+				E52FE21F1DA18CDC00878C40 /* Color.swift */,
+				E52FE2201DA18CDC00878C40 /* Frustum.swift */,
+				E52FE2211DA18CDC00878C40 /* Intersection.swift */,
+				E52FE2221DA18CDC00878C40 /* Matrix2x2.swift */,
+				E52FE2231DA18CDC00878C40 /* Matrix3x3.swift */,
+				E52FE2241DA18CDC00878C40 /* Matrix4x4.swift */,
+				E52FE2251DA18CDC00878C40 /* PerspectiveProjection.swift */,
+				E52FE2261DA18CDC00878C40 /* Plane.swift */,
+				E52FE2271DA18CDC00878C40 /* Quaternion.swift */,
+				E52FE2281DA18CDC00878C40 /* Ray3.swift */,
+				E52FE2291DA18CDC00878C40 /* Region2.swift */,
+				E52FE22A1DA18CDC00878C40 /* Region3.swift */,
+				E52FE22B1DA18CDC00878C40 /* Size.swift */,
+				E52FE22C1DA18CDC00878C40 /* Sphere.swift */,
+				E52FE22E1DA18CDC00878C40 /* TexCoord.swift */,
+				E52FE22F1DA18CDC00878C40 /* Transform3.swift */,
+				E52FE2301DA18CDC00878C40 /* Triangle2.swift */,
+				E52FE2311DA18CDC00878C40 /* Triangle3.swift */,
+				E52FE2321DA18CDC00878C40 /* Vector2.swift */,
+				E52FE2331DA18CDC00878C40 /* Vector3.swift */,
+				E52FE2341DA18CDC00878C40 /* Vector4.swift */,
+				E52FE2351DA18CDC00878C40 /* Vectorable.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		E52FE2511DA18D4200878C40 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				E52FE2521DA18D4200878C40 /* LinuxMain.swift */,
+				E52FE2531DA18D4200878C40 /* SwiftishTests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		E52FE2531DA18D4200878C40 /* SwiftishTests */ = {
+			isa = PBXGroup;
+			children = (
+				E52FE2541DA18D4200878C40 /* Matrix2Tests.swift */,
+				E52FE2551DA18D4200878C40 /* Matrix3Tests.swift */,
+				E52FE2561DA18D4200878C40 /* Matrix4Tests.swift */,
+				E52FE2581DA18D4200878C40 /* Vector2Tests.swift */,
+				E52FE2591DA18D4200878C40 /* Vector3Tests.swift */,
+				E52FE25A1DA18D4200878C40 /* Vector4Tests.swift */,
+			);
+			path = SwiftishTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,6 +321,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E52FE26D1DA18DD800878C40 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,32 +339,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5CCAB251D970142003BC135 /* Size.swift in Sources */,
-				E5CCAB141D96E1C0003BC135 /* Vectorable.swift in Sources */,
-				E5CCAB1A1D96E8AA003BC135 /* Color.swift in Sources */,
-				E52FE2171DA1779900878C40 /* Intersection.swift in Sources */,
-				E5CCAB2F1D9719D0003BC135 /* Bounds3.swift in Sources */,
-				E5CCAB271D970239003BC135 /* Bounds2.swift in Sources */,
-				E5CCAB411D985BC5003BC135 /* Circle.swift in Sources */,
-				E5CCAB451D986500003BC135 /* Ray3.swift in Sources */,
-				E5CCAB3F1D985998003BC135 /* Plane.swift in Sources */,
-				E5CCAB161D96E32E003BC135 /* Vector3.swift in Sources */,
-				E5CCAB1F1D96FDBC003BC135 /* Matrix2x2.swift in Sources */,
-				E5CCAB341D977650003BC135 /* Matrix4x4.swift in Sources */,
-				E5CCAB331D971F6C003BC135 /* Region3.swift in Sources */,
-				E52FE2191DA1811100878C40 /* PerspectiveProjection.swift in Sources */,
-				E5CCAB0F1D96C8F1003BC135 /* Vector2.swift in Sources */,
-				E5CCAB391D983099003BC135 /* Transform3.swift in Sources */,
-				E52FE2151DA1761600878C40 /* Frustum.swift in Sources */,
-				E5CCAB311D971E1F003BC135 /* Region2.swift in Sources */,
-				E5CCAB431D986147003BC135 /* Sphere.swift in Sources */,
-				E5CCAB3D1D9858DF003BC135 /* Triangle2.swift in Sources */,
-				E5CCAB1D1D96F2E1003BC135 /* Quaternion.swift in Sources */,
-				E5CCAB181D96E3BA003BC135 /* Vector4.swift in Sources */,
-				E5CCAB1C1D96E929003BC135 /* TexCoord.swift in Sources */,
-				E5CCAB471D98660A003BC135 /* Angle.swift in Sources */,
-				E5CCAB211D96FDC9003BC135 /* Matrix3x3.swift in Sources */,
-				E5CCAB3B1D985463003BC135 /* Triangle3.swift in Sources */,
+				E52FE24A1DA18CDC00878C40 /* Transform3.swift in Sources */,
+				E52FE2361DA18CDC00878C40 /* Angle.swift in Sources */,
+				E52FE2391DA18CDC00878C40 /* Circle.swift in Sources */,
+				E52FE2471DA18CDC00878C40 /* Sphere.swift in Sources */,
+				E52FE23B1DA18CDC00878C40 /* Frustum.swift in Sources */,
+				E52FE24F1DA18CDC00878C40 /* Vector4.swift in Sources */,
+				E52FE2501DA18CDC00878C40 /* Vectorable.swift in Sources */,
+				E52FE23D1DA18CDC00878C40 /* Matrix2x2.swift in Sources */,
+				E52FE2491DA18CDC00878C40 /* TexCoord.swift in Sources */,
+				E52FE24C1DA18CDC00878C40 /* Triangle3.swift in Sources */,
+				E52FE26F1DA18DD800878C40 /* README.md in Sources */,
+				E52FE2461DA18CDC00878C40 /* Size.swift in Sources */,
+				E52FE24B1DA18CDC00878C40 /* Triangle2.swift in Sources */,
+				E52FE2381DA18CDC00878C40 /* Bounds3.swift in Sources */,
+				E52FE23A1DA18CDC00878C40 /* Color.swift in Sources */,
+				E52FE2431DA18CDC00878C40 /* Ray3.swift in Sources */,
+				E52FE24E1DA18CDC00878C40 /* Vector3.swift in Sources */,
+				E52FE24D1DA18CDC00878C40 /* Vector2.swift in Sources */,
+				E52FE2441DA18CDC00878C40 /* Region2.swift in Sources */,
+				E52FE23C1DA18CDC00878C40 /* Intersection.swift in Sources */,
+				E52FE23F1DA18CDC00878C40 /* Matrix4x4.swift in Sources */,
+				E52FE2401DA18CDC00878C40 /* PerspectiveProjection.swift in Sources */,
+				E52FE2371DA18CDC00878C40 /* Bounds2.swift in Sources */,
+				E52FE2411DA18CDC00878C40 /* Plane.swift in Sources */,
+				E52FE2421DA18CDC00878C40 /* Quaternion.swift in Sources */,
+				E52FE23E1DA18CDC00878C40 /* Matrix3x3.swift in Sources */,
+				E52FE2451DA18CDC00878C40 /* Region3.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,12 +373,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5CCAB111D96CD20003BC135 /* Vector3Tests.swift in Sources */,
-				E5CCAB371D982F36003BC135 /* Matrix4Tests.swift in Sources */,
-				E5CCAB101D96CCE4003BC135 /* Vector2Tests.swift in Sources */,
-				E5CCAB361D982EF4003BC135 /* Matrix3Tests.swift in Sources */,
-				E5CCAB121D96CD25003BC135 /* Vector4Tests.swift in Sources */,
-				E5CCAB351D982AB4003BC135 /* Matrix2Tests.swift in Sources */,
+				E52FE2641DA18D5200878C40 /* Matrix3Tests.swift in Sources */,
+				E52FE2651DA18D5200878C40 /* Matrix4Tests.swift in Sources */,
+				E52FE2681DA18D5200878C40 /* Vector3Tests.swift in Sources */,
+				E52FE2631DA18D5200878C40 /* Matrix2Tests.swift in Sources */,
+				E52FE2671DA18D5200878C40 /* Vector2Tests.swift in Sources */,
+				E52FE2691DA18D5200878C40 /* Vector4Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,6 +524,7 @@
 		E52F459D1B121F4C004F7444 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -508,6 +545,7 @@
 		E52F459E1B121F4C004F7444 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",

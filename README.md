@@ -1,8 +1,13 @@
-# [Swiftish 1.0.2](https://github.com/jkolb/Swiftish)
+# [Swiftish 2.0.0](https://github.com/jkolb/Swiftish)
 
 #### A fully generic Swift vector & matrix library
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 #### Changelog
+
+#####Version 2.0.0
+* Updated for Swift 3
+* Swift Package Manager support
+* Geometry and intersection tests
 
 #####Version 1.0.2
 * Forgot to make typealias public
