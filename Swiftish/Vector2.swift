@@ -83,6 +83,14 @@ public struct Vector2<T: Vectorable> : Equatable, CustomStringConvertible {
         }
     }
     
+    public var minimum: T {
+        return min(x, y)
+    }
+    
+    public var maximum: T {
+        return max(x, y)
+    }
+    
     public var description: String {
         return "{\(x), \(y)}"
     }
@@ -257,4 +265,20 @@ public func dot<T: Vectorable>(_ a: Vector2<T>, _ b: Vector2<T>) -> T {
     let ab: Vector2<T> = a * b
     
     return sum(ab)
+}
+
+// Trigonometry
+
+public func cos<T: FloatingPointVectorable>(_ a: Vector2<T>) -> Vector2<T> {
+    let x: T = a.x.cosine()
+    let y: T = a.y.cosine()
+    
+    return Vector2<T>(x, y)
+}
+
+public func sin<T: FloatingPointVectorable>(_ a: Vector2<T>) -> Vector2<T> {
+    let x: T = a.x.sine()
+    let y: T = a.y.sine()
+    
+    return Vector2<T>(x, y)
 }

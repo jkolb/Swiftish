@@ -114,43 +114,44 @@ public struct Transform3<T: FloatingPointVectorable> : Equatable, CustomStringCo
         )
     }
     
-    public func applyTo(_ v: Vector3<T>) -> Vector3<T> {
-        return v * s * r + t
+    public func applyTo(_ vector: Vector3<T>) -> Vector3<T> {
+        return vector * s * r + t
     }
     
-    public func applyTo(_ b: Bounds3<T>) -> Bounds3<T> {
-        return Bounds3<T>(containingPoints: b.corners.map({ applyTo($0) }))
+    public func applyTo(_ bounds: Bounds3<T>) -> Bounds3<T> {
+        return Bounds3<T>(containingPoints: bounds.corners.map({ applyTo($0) }))
     }
     
-//    public func applyTo(p: Plane) -> Plane {
-//        let pointOnPlane = p.normal * p.distanceToOrigin
-//        let transformedNormal = p.normal * rotation
-//        let transformedPoint = applyTo(pointOnPlane)
-//        let transformedDistance = dot(transformedNormal, transformedPoint)
-//        return Plane(normal: transformedNormal, distanceToOrigin: transformedDistance)
-//    }
+    public func applyTo(_ plane: Plane<T>) -> Plane<T> {
+        let pointOnPlane = plane.normal * plane.distance
+        let transformedNormal = plane.normal * r
+        let transformedPoint = applyTo(pointOnPlane)
+        let transformedDistance = dot(transformedNormal, transformedPoint)
+        
+        return Plane(normal: transformedNormal, distance: transformedDistance)
+    }
     
-//    public func applyTo(f: Frustum) -> Frustum {
-//        return Frustum(
-//            top: applyTo(f.top),
-//            bottom: applyTo(f.bottom),
-//            right: applyTo(f.right),
-//            left: applyTo(f.left),
-//            near: applyTo(f.near),
-//            far: applyTo(f.far)
-//        )
-//    }
+    public func applyTo(_ frustum: Frustum<T>) -> Frustum<T> {
+        return Frustum<T>(
+            top: applyTo(frustum.top),
+            bottom: applyTo(frustum.bottom),
+            left: applyTo(frustum.left),
+            right: applyTo(frustum.right),
+            near: applyTo(frustum.near),
+            far: applyTo(frustum.far)
+        )
+    }
     
-//    public func applyTo(s: Sphere) -> Sphere {
-//        return Sphere(
-//            center: s.center + translation,
-//            radius: s.radius * scale.maximum
-//        )
-//    }
+    public func applyTo(_ sphere: Sphere<T>) -> Sphere<T> {
+        return Sphere(
+            center: sphere.center + t,
+            radius: sphere.radius * s.maximum
+        )
+    }
     
-//    public func applyTo(r: Ray3D) -> Ray3D {
-//        return Ray3D(origin: applyTo(r.origin), direction: r.direction * rotation)
-//    }
+    public func applyTo(_ ray: Ray3<T>) -> Ray3<T> {
+        return Ray3<T>(origin: applyTo(ray.origin), direction: ray.direction * r)
+    }
 }
 
 public func ==<T: FloatingPointVectorable>(a: Transform3<T>, b: Transform3<T>) -> Bool {

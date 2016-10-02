@@ -59,11 +59,3 @@ public func union<T: FloatingPointVectorable>(_ a: Sphere<T>, _ b: Sphere<T>) ->
     
     return Sphere<T>(center: midpoint, radius: largestRadius)
 }
-
-public func sphere<T: SignedVectorable>(_ s: Sphere<T>, intersectsOrIsInside plane: Plane<T>) -> Bool {
-    let distance: T = dot(s.center, plane.normal) - plane.distance
-    let intersects = abs(distance) <= s.radius
-    let isInside = s.radius <= distance
-    
-    return intersects || isInside
-}

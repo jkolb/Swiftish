@@ -93,6 +93,14 @@ public struct Vector4<T: Vectorable> : Equatable, CustomStringConvertible {
         }
     }
     
+    public var minimum: T {
+        return min(min(min(x, y), z), w)
+    }
+    
+    public var maximum: T {
+        return min(max(max(x, y), z), w)
+    }
+
     public var description: String {
         return "{\(x), \(y), \(z), \(w)}"
     }
@@ -297,4 +305,24 @@ public func dot<T: Vectorable>(_ a: Vector4<T>, _ b: Vector4<T>) -> T {
     let ab: Vector4<T> = a * b
     
     return sum(ab)
+}
+
+// Trigonometry
+
+public func cos<T: FloatingPointVectorable>(_ a: Vector4<T>) -> Vector4<T> {
+    let x: T = a.x.cosine()
+    let y: T = a.y.cosine()
+    let z: T = a.z.cosine()
+    let w: T = a.w.cosine()
+    
+    return Vector4<T>(x, y, z, w)
+}
+
+public func sin<T: FloatingPointVectorable>(_ a: Vector4<T>) -> Vector4<T> {
+    let x: T = a.x.sine()
+    let y: T = a.y.sine()
+    let z: T = a.z.sine()
+    let w: T = a.w.sine()
+    
+    return Vector4<T>(x, y, z, w)
 }

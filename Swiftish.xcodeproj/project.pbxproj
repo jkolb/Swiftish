@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		E52F45891B121F4C004F7444 /* Swiftish.h in Headers */ = {isa = PBXBuildFile; fileRef = E52F45881B121F4C004F7444 /* Swiftish.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E52F458F1B121F4C004F7444 /* Swiftish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E52F45831B121F4C004F7444 /* Swiftish.framework */; };
+		E52FE2151DA1761600878C40 /* Frustum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2141DA1761600878C40 /* Frustum.swift */; };
+		E52FE2171DA1779900878C40 /* Intersection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2161DA1779900878C40 /* Intersection.swift */; };
+		E52FE2191DA1811100878C40 /* PerspectiveProjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2181DA1811100878C40 /* PerspectiveProjection.swift */; };
 		E5CCAB0F1D96C8F1003BC135 /* Vector2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F45A11B121FD5004F7444 /* Vector2.swift */; };
 		E5CCAB101D96CCE4003BC135 /* Vector2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F45AB1B1220D9004F7444 /* Vector2Tests.swift */; };
 		E5CCAB111D96CD20003BC135 /* Vector3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F45AD1B125928004F7444 /* Vector3Tests.swift */; };
@@ -60,6 +63,9 @@
 		E52F45AB1B1220D9004F7444 /* Vector2Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector2Tests.swift; sourceTree = "<group>"; };
 		E52F45AD1B125928004F7444 /* Vector3Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3Tests.swift; sourceTree = "<group>"; };
 		E52F45AF1B125DFE004F7444 /* Vector4Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector4Tests.swift; sourceTree = "<group>"; };
+		E52FE2141DA1761600878C40 /* Frustum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Frustum.swift; sourceTree = "<group>"; };
+		E52FE2161DA1779900878C40 /* Intersection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Intersection.swift; sourceTree = "<group>"; };
+		E52FE2181DA1811100878C40 /* PerspectiveProjection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerspectiveProjection.swift; sourceTree = "<group>"; };
 		E55C63CF1B139B4600E5D43E /* Matrix2Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix2Tests.swift; sourceTree = "<group>"; };
 		E55C63D11B13A37A00E5D43E /* Matrix3Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix3Tests.swift; sourceTree = "<group>"; };
 		E55C63D31B13A55D00E5D43E /* Matrix4Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix4Tests.swift; sourceTree = "<group>"; };
@@ -150,6 +156,9 @@
 				E5CCAB401D985BC5003BC135 /* Circle.swift */,
 				E5CCAB421D986147003BC135 /* Sphere.swift */,
 				E5CCAB441D986500003BC135 /* Ray3.swift */,
+				E52FE2141DA1761600878C40 /* Frustum.swift */,
+				E52FE2161DA1779900878C40 /* Intersection.swift */,
+				E52FE2181DA1811100878C40 /* PerspectiveProjection.swift */,
 				E52F45881B121F4C004F7444 /* Swiftish.h */,
 				E52F45861B121F4C004F7444 /* Supporting Files */,
 			);
@@ -298,6 +307,7 @@
 				E5CCAB251D970142003BC135 /* Size.swift in Sources */,
 				E5CCAB141D96E1C0003BC135 /* Vectorable.swift in Sources */,
 				E5CCAB1A1D96E8AA003BC135 /* Color.swift in Sources */,
+				E52FE2171DA1779900878C40 /* Intersection.swift in Sources */,
 				E5CCAB2F1D9719D0003BC135 /* Bounds3.swift in Sources */,
 				E5CCAB271D970239003BC135 /* Bounds2.swift in Sources */,
 				E5CCAB411D985BC5003BC135 /* Circle.swift in Sources */,
@@ -307,8 +317,10 @@
 				E5CCAB1F1D96FDBC003BC135 /* Matrix2x2.swift in Sources */,
 				E5CCAB341D977650003BC135 /* Matrix4x4.swift in Sources */,
 				E5CCAB331D971F6C003BC135 /* Region3.swift in Sources */,
+				E52FE2191DA1811100878C40 /* PerspectiveProjection.swift in Sources */,
 				E5CCAB0F1D96C8F1003BC135 /* Vector2.swift in Sources */,
 				E5CCAB391D983099003BC135 /* Transform3.swift in Sources */,
+				E52FE2151DA1761600878C40 /* Frustum.swift in Sources */,
 				E5CCAB311D971E1F003BC135 /* Region2.swift in Sources */,
 				E5CCAB431D986147003BC135 /* Sphere.swift in Sources */,
 				E5CCAB3D1D9858DF003BC135 /* Triangle2.swift in Sources */,

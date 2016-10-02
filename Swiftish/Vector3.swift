@@ -98,6 +98,14 @@ public struct Vector3<T: Vectorable> : Equatable, CustomStringConvertible {
         }
     }
     
+    public var minimum: T {
+        return min(min(x, y), z)
+    }
+    
+    public var maximum: T {
+        return max(max(x, y), z)
+    }
+
     public var description: String {
         return "{\(x), \(y), \(z)}"
     }
@@ -293,6 +301,24 @@ public func cross<T: Vectorable>(_ a: Vector3<T>, _ b: Vector3<T>) -> Vector3<T>
     let x: T = a.y * b.z - b.y * a.z
     let y: T = a.z * b.x - b.z * a.x
     let z: T = a.x * b.y - b.x * a.y
+    
+    return Vector3<T>(x, y, z)
+}
+
+// Trigonometry
+
+public func cos<T: FloatingPointVectorable>(_ a: Vector3<T>) -> Vector3<T> {
+    let x: T = a.x.cosine()
+    let y: T = a.y.cosine()
+    let z: T = a.z.cosine()
+
+    return Vector3<T>(x, y, z)
+}
+
+public func sin<T: FloatingPointVectorable>(_ a: Vector3<T>) -> Vector3<T> {
+    let x: T = a.x.sine()
+    let y: T = a.y.sine()
+    let z: T = a.z.sine()
     
     return Vector3<T>(x, y, z)
 }

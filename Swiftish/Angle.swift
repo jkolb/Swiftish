@@ -25,7 +25,7 @@
 public struct Angle<T: FloatingPointVectorable> : Equatable, Comparable, CustomStringConvertible {
     public var radians: T {
         didSet {
-            radians = Angle<T>.clamped(radians) // TODO: This looks like it might be wrong
+            radians = Angle<T>.clamped(radians)
         }
     }
     

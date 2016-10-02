@@ -106,18 +106,6 @@ public struct Bounds3<T: SignedVectorable> : Equatable {
         return center + extents
     }
     
-    //    public func intersectsOrIsInsidePlane(plane: Plane) -> Bool {
-    //        let projectionRadiusOfBox = sum(radius * abs(plane.normal))
-    //        let distanceOfBoxCenterFromPlane = dot(plane.normal, center) - plane.distanceToOrigin
-    //        let intersects = abs(distanceOfBoxCenterFromPlane) <= projectionRadiusOfBox
-    //        let isInside = projectionRadiusOfBox <= distanceOfBoxCenterFromPlane
-    //        return intersects || isInside
-    //    }
-    //
-    //    public var sphere: Sphere {
-    //        return Sphere(center: center, radius: length(radius))
-    //    }
-    
     public var isNull: Bool {
         return center == Vector3<T>() && extents == Vector3<T>()
     }
@@ -181,4 +169,32 @@ public struct Bounds3<T: SignedVectorable> : Equatable {
 
 public func ==<T: SignedVectorable>(a: Bounds3<T>, b: Bounds3<T>) -> Bool {
     return a.center == b.center && a.extents == b.extents
+}
+
+public func sphere<T: FloatingPointVectorable>(_ a: Bounds3<T>) -> Sphere<T> {
+    return Sphere<T>(center: a.center, radius: length(a.extents))
+}
+
+public func distance2<T: Vectorable>(_ point: Vector3<T>, _ bounds: Bounds3<T>) -> T {
+    var distanceSquared: T = T.zero
+    let minimum = bounds.minimum
+    let maximum = bounds.maximum
+    
+    for index in 0..<3 {
+        let p = point[index]
+        let bMin = minimum[index]
+        let bMax = maximum[index]
+        
+        if p < bMin {
+            let delta = bMin - p
+            distanceSquared = distanceSquared + delta * delta
+        }
+        
+        if p > bMax {
+            let delta = p - bMax
+            distanceSquared = distanceSquared + delta * delta
+        }
+    }
+    
+    return distanceSquared
 }

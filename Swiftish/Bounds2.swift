@@ -96,18 +96,6 @@ public struct Bounds2<T: SignedVectorable> : Equatable {
         return center + extents
     }
     
-    //    public func intersectsOrIsInsidePlane(plane: Plane) -> Bool {
-    //        let projectionRadiusOfBox = sum(radius * abs(plane.normal))
-    //        let distanceOfBoxCenterFromPlane = dot(plane.normal, center) - plane.distanceToOrigin
-    //        let intersects = abs(distanceOfBoxCenterFromPlane) <= projectionRadiusOfBox
-    //        let isInside = projectionRadiusOfBox <= distanceOfBoxCenterFromPlane
-    //        return intersects || isInside
-    //    }
-    //
-    //    public var sphere: Sphere {
-    //        return Sphere(center: center, radius: length(radius))
-    //    }
-    
     public var isNull: Bool {
         return center == Vector2<T>() && extents == Vector2<T>()
     }
@@ -164,4 +152,8 @@ public struct Bounds2<T: SignedVectorable> : Equatable {
 
 public func ==<T: SignedVectorable>(a: Bounds2<T>, b: Bounds2<T>) -> Bool {
     return a.center == b.center && a.extents == b.extents
+}
+
+public func circle<T: FloatingPointVectorable>(_ a: Bounds2<T>) -> Circle<T> {
+    return Circle<T>(center: a.center, radius: length(a.extents))
 }

@@ -22,20 +22,28 @@
  SOFTWARE.
  */
 
-public struct Circle<T: Vectorable> : Equatable, CustomStringConvertible {
-    public var center: Vector2<T>
-    public var radius: T
+public struct Frustum<T: Vectorable> : Equatable, CustomStringConvertible {
+    public let top: Plane<T>
+    public let bottom: Plane<T>
+    public let left: Plane<T>
+    public let right: Plane<T>
+    public let near: Plane<T>
+    public let far: Plane<T>
     
-    public init(center: Vector2<T>, radius: T) {
-        self.center = center
-        self.radius = radius
+    public init(top: Plane<T>, bottom: Plane<T>, left: Plane<T>, right: Plane<T>, near: Plane<T>, far: Plane<T>) {
+        self.top = top
+        self.bottom = bottom
+        self.left = left
+        self.right = right
+        self.near = near
+        self.far = far
     }
     
     public var description: String {
-        return "{\(center), \(radius)}"
+        return "{\n\tT: \(top)\n\tB: \(bottom)\n\tL: \(left)\n\tR: \(right)\n\tN: \(near)\n\tF: \(far)}"
     }
 }
 
-public func ==<T: Vectorable>(a: Circle<T>, b: Circle<T>) -> Bool {
-    return a.center == b.center && a.radius == b.radius
+public func ==<T: Vectorable>(lhs: Frustum<T>, rhs: Frustum<T>) -> Bool {
+    return lhs.top == rhs.top && lhs.bottom == rhs.bottom && lhs.left == rhs.left && lhs.right == rhs.right && lhs.near == rhs.near && lhs.far == rhs.far
 }
