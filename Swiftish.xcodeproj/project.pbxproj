@@ -7,250 +7,223 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E52F45891B121F4C004F7444 /* Swiftish.h in Headers */ = {isa = PBXBuildFile; fileRef = E52F45881B121F4C004F7444 /* Swiftish.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E52F458F1B121F4C004F7444 /* Swiftish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E52F45831B121F4C004F7444 /* Swiftish.framework */; };
-		E52FE2361DA18CDC00878C40 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE21B1DA18CDC00878C40 /* Angle.swift */; };
-		E52FE2371DA18CDC00878C40 /* Bounds2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE21C1DA18CDC00878C40 /* Bounds2.swift */; };
-		E52FE2381DA18CDC00878C40 /* Bounds3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE21D1DA18CDC00878C40 /* Bounds3.swift */; };
-		E52FE2391DA18CDC00878C40 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE21E1DA18CDC00878C40 /* Circle.swift */; };
-		E52FE23A1DA18CDC00878C40 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE21F1DA18CDC00878C40 /* Color.swift */; };
-		E52FE23B1DA18CDC00878C40 /* Frustum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2201DA18CDC00878C40 /* Frustum.swift */; };
-		E52FE23C1DA18CDC00878C40 /* Intersection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2211DA18CDC00878C40 /* Intersection.swift */; };
-		E52FE23D1DA18CDC00878C40 /* Matrix2x2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2221DA18CDC00878C40 /* Matrix2x2.swift */; };
-		E52FE23E1DA18CDC00878C40 /* Matrix3x3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2231DA18CDC00878C40 /* Matrix3x3.swift */; };
-		E52FE23F1DA18CDC00878C40 /* Matrix4x4.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2241DA18CDC00878C40 /* Matrix4x4.swift */; };
-		E52FE2401DA18CDC00878C40 /* PerspectiveProjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2251DA18CDC00878C40 /* PerspectiveProjection.swift */; };
-		E52FE2411DA18CDC00878C40 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2261DA18CDC00878C40 /* Plane.swift */; };
-		E52FE2421DA18CDC00878C40 /* Quaternion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2271DA18CDC00878C40 /* Quaternion.swift */; };
-		E52FE2431DA18CDC00878C40 /* Ray3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2281DA18CDC00878C40 /* Ray3.swift */; };
-		E52FE2441DA18CDC00878C40 /* Region2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2291DA18CDC00878C40 /* Region2.swift */; };
-		E52FE2451DA18CDC00878C40 /* Region3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE22A1DA18CDC00878C40 /* Region3.swift */; };
-		E52FE2461DA18CDC00878C40 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE22B1DA18CDC00878C40 /* Size.swift */; };
-		E52FE2471DA18CDC00878C40 /* Sphere.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE22C1DA18CDC00878C40 /* Sphere.swift */; };
-		E52FE2491DA18CDC00878C40 /* TexCoord.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE22E1DA18CDC00878C40 /* TexCoord.swift */; };
-		E52FE24A1DA18CDC00878C40 /* Transform3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE22F1DA18CDC00878C40 /* Transform3.swift */; };
-		E52FE24B1DA18CDC00878C40 /* Triangle2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2301DA18CDC00878C40 /* Triangle2.swift */; };
-		E52FE24C1DA18CDC00878C40 /* Triangle3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2311DA18CDC00878C40 /* Triangle3.swift */; };
-		E52FE24D1DA18CDC00878C40 /* Vector2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2321DA18CDC00878C40 /* Vector2.swift */; };
-		E52FE24E1DA18CDC00878C40 /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2331DA18CDC00878C40 /* Vector3.swift */; };
-		E52FE24F1DA18CDC00878C40 /* Vector4.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2341DA18CDC00878C40 /* Vector4.swift */; };
-		E52FE2501DA18CDC00878C40 /* Vectorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2351DA18CDC00878C40 /* Vectorable.swift */; };
-		E52FE2631DA18D5200878C40 /* Matrix2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2541DA18D4200878C40 /* Matrix2Tests.swift */; };
-		E52FE2641DA18D5200878C40 /* Matrix3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2551DA18D4200878C40 /* Matrix3Tests.swift */; };
-		E52FE2651DA18D5200878C40 /* Matrix4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2561DA18D4200878C40 /* Matrix4Tests.swift */; };
-		E52FE2671DA18D5200878C40 /* Vector2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2581DA18D4200878C40 /* Vector2Tests.swift */; };
-		E52FE2681DA18D5200878C40 /* Vector3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE2591DA18D4200878C40 /* Vector3Tests.swift */; };
-		E52FE2691DA18D5200878C40 /* Vector4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52FE25A1DA18D4200878C40 /* Vector4Tests.swift */; };
-		E52FE26D1DA18DD800878C40 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = E52FE26A1DA18DD800878C40 /* LICENSE */; };
-		E52FE26F1DA18DD800878C40 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E52FE26C1DA18DD800878C40 /* README.md */; };
+		E5F052F01DA194BA0061A18D /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E5F052EF1DA194BA0061A18D /* README.md */; };
+		_LinkFileRef_Swiftish_via_SwiftishTests /* Swiftish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Swiftish" /* Swiftish.framework */; };
+		__src_cc_ref_Sources/Angle.swift /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Angle.swift /* Angle.swift */; };
+		__src_cc_ref_Sources/Bounds2.swift /* Bounds2.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Bounds2.swift /* Bounds2.swift */; };
+		__src_cc_ref_Sources/Bounds3.swift /* Bounds3.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Bounds3.swift /* Bounds3.swift */; };
+		__src_cc_ref_Sources/Circle.swift /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Circle.swift /* Circle.swift */; };
+		__src_cc_ref_Sources/Color.swift /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Color.swift /* Color.swift */; };
+		__src_cc_ref_Sources/Frustum.swift /* Frustum.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Frustum.swift /* Frustum.swift */; };
+		__src_cc_ref_Sources/Intersection.swift /* Intersection.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Intersection.swift /* Intersection.swift */; };
+		__src_cc_ref_Sources/Matrix2x2.swift /* Matrix2x2.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Matrix2x2.swift /* Matrix2x2.swift */; };
+		__src_cc_ref_Sources/Matrix3x3.swift /* Matrix3x3.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Matrix3x3.swift /* Matrix3x3.swift */; };
+		__src_cc_ref_Sources/Matrix4x4.swift /* Matrix4x4.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Matrix4x4.swift /* Matrix4x4.swift */; };
+		__src_cc_ref_Sources/PerspectiveProjection.swift /* PerspectiveProjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/PerspectiveProjection.swift /* PerspectiveProjection.swift */; };
+		__src_cc_ref_Sources/Plane.swift /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Plane.swift /* Plane.swift */; };
+		__src_cc_ref_Sources/Quaternion.swift /* Quaternion.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Quaternion.swift /* Quaternion.swift */; };
+		__src_cc_ref_Sources/Ray3.swift /* Ray3.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Ray3.swift /* Ray3.swift */; };
+		__src_cc_ref_Sources/Region2.swift /* Region2.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Region2.swift /* Region2.swift */; };
+		__src_cc_ref_Sources/Region3.swift /* Region3.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Region3.swift /* Region3.swift */; };
+		__src_cc_ref_Sources/Size.swift /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Size.swift /* Size.swift */; };
+		__src_cc_ref_Sources/Sphere.swift /* Sphere.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Sphere.swift /* Sphere.swift */; };
+		__src_cc_ref_Sources/TexCoord.swift /* TexCoord.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/TexCoord.swift /* TexCoord.swift */; };
+		__src_cc_ref_Sources/Transform3.swift /* Transform3.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Transform3.swift /* Transform3.swift */; };
+		__src_cc_ref_Sources/Triangle2.swift /* Triangle2.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Triangle2.swift /* Triangle2.swift */; };
+		__src_cc_ref_Sources/Triangle3.swift /* Triangle3.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Triangle3.swift /* Triangle3.swift */; };
+		__src_cc_ref_Sources/Vector2.swift /* Vector2.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Vector2.swift /* Vector2.swift */; };
+		__src_cc_ref_Sources/Vector3.swift /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Vector3.swift /* Vector3.swift */; };
+		__src_cc_ref_Sources/Vector4.swift /* Vector4.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Vector4.swift /* Vector4.swift */; };
+		__src_cc_ref_Sources/Vectorable.swift /* Vectorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Vectorable.swift /* Vectorable.swift */; };
+		__src_cc_ref_Tests/SwiftishTests/Matrix2Tests.swift /* Matrix2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/SwiftishTests/Matrix2Tests.swift /* Matrix2Tests.swift */; };
+		__src_cc_ref_Tests/SwiftishTests/Matrix3Tests.swift /* Matrix3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/SwiftishTests/Matrix3Tests.swift /* Matrix3Tests.swift */; };
+		__src_cc_ref_Tests/SwiftishTests/Matrix4Tests.swift /* Matrix4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/SwiftishTests/Matrix4Tests.swift /* Matrix4Tests.swift */; };
+		__src_cc_ref_Tests/SwiftishTests/Vector2Tests.swift /* Vector2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/SwiftishTests/Vector2Tests.swift /* Vector2Tests.swift */; };
+		__src_cc_ref_Tests/SwiftishTests/Vector3Tests.swift /* Vector3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/SwiftishTests/Vector3Tests.swift /* Vector3Tests.swift */; };
+		__src_cc_ref_Tests/SwiftishTests/Vector4Tests.swift /* Vector4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/SwiftishTests/Vector4Tests.swift /* Vector4Tests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		E52F45901B121F4C004F7444 /* PBXContainerItemProxy */ = {
+		E5F052ED1DA194450061A18D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = E52F457A1B121F4C004F7444 /* Project object */;
+			containerPortal = __RootObject_ /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = E52F45821B121F4C004F7444;
+			remoteGlobalIDString = "______Target_Swiftish";
 			remoteInfo = Swiftish;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E52F45831B121F4C004F7444 /* Swiftish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Swiftish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E52F45871B121F4C004F7444 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E52F45881B121F4C004F7444 /* Swiftish.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Swiftish.h; sourceTree = "<group>"; };
-		E52F458E1B121F4C004F7444 /* SwiftishTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftishTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E52F45941B121F4C004F7444 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E52FE21B1DA18CDC00878C40 /* Angle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
-		E52FE21C1DA18CDC00878C40 /* Bounds2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bounds2.swift; sourceTree = "<group>"; };
-		E52FE21D1DA18CDC00878C40 /* Bounds3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bounds3.swift; sourceTree = "<group>"; };
-		E52FE21E1DA18CDC00878C40 /* Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
-		E52FE21F1DA18CDC00878C40 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		E52FE2201DA18CDC00878C40 /* Frustum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Frustum.swift; sourceTree = "<group>"; };
-		E52FE2211DA18CDC00878C40 /* Intersection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Intersection.swift; sourceTree = "<group>"; };
-		E52FE2221DA18CDC00878C40 /* Matrix2x2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix2x2.swift; sourceTree = "<group>"; };
-		E52FE2231DA18CDC00878C40 /* Matrix3x3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix3x3.swift; sourceTree = "<group>"; };
-		E52FE2241DA18CDC00878C40 /* Matrix4x4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix4x4.swift; sourceTree = "<group>"; };
-		E52FE2251DA18CDC00878C40 /* PerspectiveProjection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerspectiveProjection.swift; sourceTree = "<group>"; };
-		E52FE2261DA18CDC00878C40 /* Plane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
-		E52FE2271DA18CDC00878C40 /* Quaternion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quaternion.swift; sourceTree = "<group>"; };
-		E52FE2281DA18CDC00878C40 /* Ray3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ray3.swift; sourceTree = "<group>"; };
-		E52FE2291DA18CDC00878C40 /* Region2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region2.swift; sourceTree = "<group>"; };
-		E52FE22A1DA18CDC00878C40 /* Region3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region3.swift; sourceTree = "<group>"; };
-		E52FE22B1DA18CDC00878C40 /* Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
-		E52FE22C1DA18CDC00878C40 /* Sphere.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sphere.swift; sourceTree = "<group>"; };
-		E52FE22E1DA18CDC00878C40 /* TexCoord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TexCoord.swift; sourceTree = "<group>"; };
-		E52FE22F1DA18CDC00878C40 /* Transform3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transform3.swift; sourceTree = "<group>"; };
-		E52FE2301DA18CDC00878C40 /* Triangle2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Triangle2.swift; sourceTree = "<group>"; };
-		E52FE2311DA18CDC00878C40 /* Triangle3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Triangle3.swift; sourceTree = "<group>"; };
-		E52FE2321DA18CDC00878C40 /* Vector2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector2.swift; sourceTree = "<group>"; };
-		E52FE2331DA18CDC00878C40 /* Vector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
-		E52FE2341DA18CDC00878C40 /* Vector4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector4.swift; sourceTree = "<group>"; };
-		E52FE2351DA18CDC00878C40 /* Vectorable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vectorable.swift; sourceTree = "<group>"; };
-		E52FE2521DA18D4200878C40 /* LinuxMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinuxMain.swift; sourceTree = "<group>"; };
-		E52FE2541DA18D4200878C40 /* Matrix2Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix2Tests.swift; sourceTree = "<group>"; };
-		E52FE2551DA18D4200878C40 /* Matrix3Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix3Tests.swift; sourceTree = "<group>"; };
-		E52FE2561DA18D4200878C40 /* Matrix4Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix4Tests.swift; sourceTree = "<group>"; };
-		E52FE2581DA18D4200878C40 /* Vector2Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector2Tests.swift; sourceTree = "<group>"; };
-		E52FE2591DA18D4200878C40 /* Vector3Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3Tests.swift; sourceTree = "<group>"; };
-		E52FE25A1DA18D4200878C40 /* Vector4Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector4Tests.swift; sourceTree = "<group>"; };
-		E52FE26A1DA18DD800878C40 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		E52FE26B1DA18DD800878C40 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		E52FE26C1DA18DD800878C40 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		E5F052EE1DA194BA0061A18D /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		E5F052EF1DA194BA0061A18D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Angle.swift /* Angle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Bounds2.swift /* Bounds2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bounds2.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Bounds3.swift /* Bounds3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bounds3.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Circle.swift /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Color.swift /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Frustum.swift /* Frustum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frustum.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Intersection.swift /* Intersection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intersection.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Matrix2x2.swift /* Matrix2x2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix2x2.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Matrix3x3.swift /* Matrix3x3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix3x3.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Matrix4x4.swift /* Matrix4x4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix4x4.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/PerspectiveProjection.swift /* PerspectiveProjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerspectiveProjection.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Plane.swift /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Quaternion.swift /* Quaternion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quaternion.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Ray3.swift /* Ray3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ray3.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Region2.swift /* Region2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Region2.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Region3.swift /* Region3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Region3.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Size.swift /* Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Sphere.swift /* Sphere.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sphere.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/TexCoord.swift /* TexCoord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TexCoord.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Transform3.swift /* Transform3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transform3.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Triangle2.swift /* Triangle2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle2.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Triangle3.swift /* Triangle3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle3.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Vector2.swift /* Vector2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector2.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Vector3.swift /* Vector3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Vector4.swift /* Vector4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector4.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Vectorable.swift /* Vectorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vectorable.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Swiftish.xcodeproj/Configs/Project.xcconfig /* Swiftish.xcodeproj/Configs/Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Swiftish.xcodeproj/Configs/Project.xcconfig; sourceTree = "<group>"; };
+		__PBXFileRef_Tests/SwiftishTests/Matrix2Tests.swift /* Matrix2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix2Tests.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Tests/SwiftishTests/Matrix3Tests.swift /* Matrix3Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix3Tests.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Tests/SwiftishTests/Matrix4Tests.swift /* Matrix4Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix4Tests.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Tests/SwiftishTests/Vector2Tests.swift /* Vector2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector2Tests.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Tests/SwiftishTests/Vector3Tests.swift /* Vector3Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector3Tests.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Tests/SwiftishTests/Vector4Tests.swift /* Vector4Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector4Tests.swift; sourceTree = "<group>"; };
+		"_____Product_Swiftish" /* Swiftish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Swiftish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_SwiftishTests" /* SwiftishTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = SwiftishTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E52F457F1B121F4C004F7444 /* Frameworks */ = {
+		"___LinkPhase_Swiftish" /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 0;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E52F458B1B121F4C004F7444 /* Frameworks */ = {
+		"___LinkPhase_SwiftishTests" /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 0;
 			files = (
-				E52F458F1B121F4C004F7444 /* Swiftish.framework in Frameworks */,
+				_LinkFileRef_Swiftish_via_SwiftishTests /* Swiftish.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E52F45791B121F4C004F7444 = {
+		TestProducts_ /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				E52FE26B1DA18DD800878C40 /* Package.swift */,
-				E52FE26A1DA18DD800878C40 /* LICENSE */,
-				E52FE26C1DA18DD800878C40 /* README.md */,
-				E52FE21A1DA18CDC00878C40 /* Sources */,
-				E52FE2511DA18D4200878C40 /* Tests */,
-				E52F45851B121F4C004F7444 /* Swiftish */,
-				E52F45921B121F4C004F7444 /* SwiftishTests */,
-				E52F45841B121F4C004F7444 /* Products */,
+				"_____Product_SwiftishTests" /* SwiftishTests.xctest */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
+		"___RootGroup_" = {
+			isa = PBXGroup;
+			children = (
+				E5F052EE1DA194BA0061A18D /* LICENSE */,
+				E5F052EF1DA194BA0061A18D /* README.md */,
+				__PBXFileRef_Package.swift /* Package.swift */,
+				"_____Configs_" /* Configs */,
+				"_____Sources_" /* Sources */,
+				"_______Tests_" /* Tests */,
+				"____Products_" /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		E52F45841B121F4C004F7444 /* Products */ = {
+		"____Products_" /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E52F45831B121F4C004F7444 /* Swiftish.framework */,
-				E52F458E1B121F4C004F7444 /* SwiftishTests.xctest */,
+				TestProducts_ /* Tests */,
+				"_____Product_Swiftish" /* Swiftish.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E52F45851B121F4C004F7444 /* Swiftish */ = {
+		"_____Configs_" /* Configs */ = {
 			isa = PBXGroup;
 			children = (
-				E52F45881B121F4C004F7444 /* Swiftish.h */,
-				E52F45861B121F4C004F7444 /* Supporting Files */,
+				__PBXFileRef_Swiftish.xcodeproj/Configs/Project.xcconfig /* Swiftish.xcodeproj/Configs/Project.xcconfig */,
 			);
-			path = Swiftish;
+			name = Configs;
 			sourceTree = "<group>";
 		};
-		E52F45861B121F4C004F7444 /* Supporting Files */ = {
+		"_____Sources_" /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				E52F45871B121F4C004F7444 /* Info.plist */,
+				"_______Group_Swiftish" /* Swiftish */,
 			);
-			name = "Supporting Files";
+			name = Sources;
 			sourceTree = "<group>";
 		};
-		E52F45921B121F4C004F7444 /* SwiftishTests */ = {
+		"_______Group_Swiftish" /* Swiftish */ = {
 			isa = PBXGroup;
 			children = (
-				E52F45931B121F4C004F7444 /* Supporting Files */,
+				__PBXFileRef_Sources/Angle.swift /* Angle.swift */,
+				__PBXFileRef_Sources/Bounds2.swift /* Bounds2.swift */,
+				__PBXFileRef_Sources/Bounds3.swift /* Bounds3.swift */,
+				__PBXFileRef_Sources/Circle.swift /* Circle.swift */,
+				__PBXFileRef_Sources/Color.swift /* Color.swift */,
+				__PBXFileRef_Sources/Frustum.swift /* Frustum.swift */,
+				__PBXFileRef_Sources/Intersection.swift /* Intersection.swift */,
+				__PBXFileRef_Sources/Matrix2x2.swift /* Matrix2x2.swift */,
+				__PBXFileRef_Sources/Matrix3x3.swift /* Matrix3x3.swift */,
+				__PBXFileRef_Sources/Matrix4x4.swift /* Matrix4x4.swift */,
+				__PBXFileRef_Sources/PerspectiveProjection.swift /* PerspectiveProjection.swift */,
+				__PBXFileRef_Sources/Plane.swift /* Plane.swift */,
+				__PBXFileRef_Sources/Quaternion.swift /* Quaternion.swift */,
+				__PBXFileRef_Sources/Ray3.swift /* Ray3.swift */,
+				__PBXFileRef_Sources/Region2.swift /* Region2.swift */,
+				__PBXFileRef_Sources/Region3.swift /* Region3.swift */,
+				__PBXFileRef_Sources/Size.swift /* Size.swift */,
+				__PBXFileRef_Sources/Sphere.swift /* Sphere.swift */,
+				__PBXFileRef_Sources/TexCoord.swift /* TexCoord.swift */,
+				__PBXFileRef_Sources/Transform3.swift /* Transform3.swift */,
+				__PBXFileRef_Sources/Triangle2.swift /* Triangle2.swift */,
+				__PBXFileRef_Sources/Triangle3.swift /* Triangle3.swift */,
+				__PBXFileRef_Sources/Vector2.swift /* Vector2.swift */,
+				__PBXFileRef_Sources/Vector3.swift /* Vector3.swift */,
+				__PBXFileRef_Sources/Vector4.swift /* Vector4.swift */,
+				__PBXFileRef_Sources/Vectorable.swift /* Vectorable.swift */,
 			);
-			path = SwiftishTests;
-			sourceTree = "<group>";
-		};
-		E52F45931B121F4C004F7444 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E52F45941B121F4C004F7444 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E52FE21A1DA18CDC00878C40 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				E52FE21B1DA18CDC00878C40 /* Angle.swift */,
-				E52FE21C1DA18CDC00878C40 /* Bounds2.swift */,
-				E52FE21D1DA18CDC00878C40 /* Bounds3.swift */,
-				E52FE21E1DA18CDC00878C40 /* Circle.swift */,
-				E52FE21F1DA18CDC00878C40 /* Color.swift */,
-				E52FE2201DA18CDC00878C40 /* Frustum.swift */,
-				E52FE2211DA18CDC00878C40 /* Intersection.swift */,
-				E52FE2221DA18CDC00878C40 /* Matrix2x2.swift */,
-				E52FE2231DA18CDC00878C40 /* Matrix3x3.swift */,
-				E52FE2241DA18CDC00878C40 /* Matrix4x4.swift */,
-				E52FE2251DA18CDC00878C40 /* PerspectiveProjection.swift */,
-				E52FE2261DA18CDC00878C40 /* Plane.swift */,
-				E52FE2271DA18CDC00878C40 /* Quaternion.swift */,
-				E52FE2281DA18CDC00878C40 /* Ray3.swift */,
-				E52FE2291DA18CDC00878C40 /* Region2.swift */,
-				E52FE22A1DA18CDC00878C40 /* Region3.swift */,
-				E52FE22B1DA18CDC00878C40 /* Size.swift */,
-				E52FE22C1DA18CDC00878C40 /* Sphere.swift */,
-				E52FE22E1DA18CDC00878C40 /* TexCoord.swift */,
-				E52FE22F1DA18CDC00878C40 /* Transform3.swift */,
-				E52FE2301DA18CDC00878C40 /* Triangle2.swift */,
-				E52FE2311DA18CDC00878C40 /* Triangle3.swift */,
-				E52FE2321DA18CDC00878C40 /* Vector2.swift */,
-				E52FE2331DA18CDC00878C40 /* Vector3.swift */,
-				E52FE2341DA18CDC00878C40 /* Vector4.swift */,
-				E52FE2351DA18CDC00878C40 /* Vectorable.swift */,
-			);
+			name = Swiftish;
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		E52FE2511DA18D4200878C40 /* Tests */ = {
+		"_______Group_SwiftishTests" /* SwiftishTests */ = {
 			isa = PBXGroup;
 			children = (
-				E52FE2521DA18D4200878C40 /* LinuxMain.swift */,
-				E52FE2531DA18D4200878C40 /* SwiftishTests */,
+				__PBXFileRef_Tests/SwiftishTests/Matrix2Tests.swift /* Matrix2Tests.swift */,
+				__PBXFileRef_Tests/SwiftishTests/Matrix3Tests.swift /* Matrix3Tests.swift */,
+				__PBXFileRef_Tests/SwiftishTests/Matrix4Tests.swift /* Matrix4Tests.swift */,
+				__PBXFileRef_Tests/SwiftishTests/Vector2Tests.swift /* Vector2Tests.swift */,
+				__PBXFileRef_Tests/SwiftishTests/Vector3Tests.swift /* Vector3Tests.swift */,
+				__PBXFileRef_Tests/SwiftishTests/Vector4Tests.swift /* Vector4Tests.swift */,
 			);
-			path = Tests;
+			name = SwiftishTests;
+			path = Tests/SwiftishTests;
 			sourceTree = "<group>";
 		};
-		E52FE2531DA18D4200878C40 /* SwiftishTests */ = {
+		"_______Tests_" /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				E52FE2541DA18D4200878C40 /* Matrix2Tests.swift */,
-				E52FE2551DA18D4200878C40 /* Matrix3Tests.swift */,
-				E52FE2561DA18D4200878C40 /* Matrix4Tests.swift */,
-				E52FE2581DA18D4200878C40 /* Vector2Tests.swift */,
-				E52FE2591DA18D4200878C40 /* Vector3Tests.swift */,
-				E52FE25A1DA18D4200878C40 /* Vector4Tests.swift */,
+				"_______Group_SwiftishTests" /* SwiftishTests */,
 			);
-			path = SwiftishTests;
+			name = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		E52F45801B121F4C004F7444 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E52F45891B121F4C004F7444 /* Swiftish.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		E52F45821B121F4C004F7444 /* Swiftish */ = {
+		"______Target_Swiftish" /* Swiftish */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E52F45991B121F4C004F7444 /* Build configuration list for PBXNativeTarget "Swiftish" */;
+			buildConfigurationList = "_______Confs_Swiftish" /* Build configuration list for PBXNativeTarget "Swiftish" */;
 			buildPhases = (
-				E52F457E1B121F4C004F7444 /* Sources */,
-				E52F457F1B121F4C004F7444 /* Frameworks */,
-				E52F45801B121F4C004F7444 /* Headers */,
-				E52F45811B121F4C004F7444 /* Resources */,
+				CompilePhase_Swiftish /* Sources */,
+				"___LinkPhase_Swiftish" /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -258,338 +231,216 @@
 			);
 			name = Swiftish;
 			productName = Swiftish;
-			productReference = E52F45831B121F4C004F7444 /* Swiftish.framework */;
+			productReference = "_____Product_Swiftish" /* Swiftish.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		E52F458D1B121F4C004F7444 /* SwiftishTests */ = {
+		"______Target_SwiftishTests" /* SwiftishTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E52F459C1B121F4C004F7444 /* Build configuration list for PBXNativeTarget "SwiftishTests" */;
+			buildConfigurationList = "_______Confs_SwiftishTests" /* Build configuration list for PBXNativeTarget "SwiftishTests" */;
 			buildPhases = (
-				E52F458A1B121F4C004F7444 /* Sources */,
-				E52F458B1B121F4C004F7444 /* Frameworks */,
-				E52F458C1B121F4C004F7444 /* Resources */,
+				CompilePhase_SwiftishTests /* Sources */,
+				"___LinkPhase_SwiftishTests" /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E52F45911B121F4C004F7444 /* PBXTargetDependency */,
+				__Dependency_Swiftish /* PBXTargetDependency */,
 			);
 			name = SwiftishTests;
 			productName = SwiftishTests;
-			productReference = E52F458E1B121F4C004F7444 /* SwiftishTests.xctest */;
+			productReference = "_____Product_SwiftishTests" /* SwiftishTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		E52F457A1B121F4C004F7444 /* Project object */ = {
+		__RootObject_ /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
-				ORGANIZATIONNAME = "Justin Kolb";
-				TargetAttributes = {
-					E52F45821B121F4C004F7444 = {
-						CreatedOnToolsVersion = 6.4;
-						LastSwiftMigration = 0800;
-					};
-					E52F458D1B121F4C004F7444 = {
-						CreatedOnToolsVersion = 6.4;
-						LastSwiftMigration = 0800;
-					};
-				};
+				LastUpgradeCheck = 9999;
 			};
-			buildConfigurationList = E52F457D1B121F4C004F7444 /* Build configuration list for PBXProject "Swiftish" */;
+			buildConfigurationList = "___RootConfs_" /* Build configuration list for PBXProject "Swiftish" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = E52F45791B121F4C004F7444;
-			productRefGroup = E52F45841B121F4C004F7444 /* Products */;
+			mainGroup = "___RootGroup_";
+			productRefGroup = "____Products_" /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E52F45821B121F4C004F7444 /* Swiftish */,
-				E52F458D1B121F4C004F7444 /* SwiftishTests */,
+				"______Target_Swiftish" /* Swiftish */,
+				"______Target_SwiftishTests" /* SwiftishTests */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		E52F45811B121F4C004F7444 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E52FE26D1DA18DD800878C40 /* LICENSE in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E52F458C1B121F4C004F7444 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		E52F457E1B121F4C004F7444 /* Sources */ = {
+		CompilePhase_Swiftish /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 0;
 			files = (
-				E52FE24A1DA18CDC00878C40 /* Transform3.swift in Sources */,
-				E52FE2361DA18CDC00878C40 /* Angle.swift in Sources */,
-				E52FE2391DA18CDC00878C40 /* Circle.swift in Sources */,
-				E52FE2471DA18CDC00878C40 /* Sphere.swift in Sources */,
-				E52FE23B1DA18CDC00878C40 /* Frustum.swift in Sources */,
-				E52FE24F1DA18CDC00878C40 /* Vector4.swift in Sources */,
-				E52FE2501DA18CDC00878C40 /* Vectorable.swift in Sources */,
-				E52FE23D1DA18CDC00878C40 /* Matrix2x2.swift in Sources */,
-				E52FE2491DA18CDC00878C40 /* TexCoord.swift in Sources */,
-				E52FE24C1DA18CDC00878C40 /* Triangle3.swift in Sources */,
-				E52FE26F1DA18DD800878C40 /* README.md in Sources */,
-				E52FE2461DA18CDC00878C40 /* Size.swift in Sources */,
-				E52FE24B1DA18CDC00878C40 /* Triangle2.swift in Sources */,
-				E52FE2381DA18CDC00878C40 /* Bounds3.swift in Sources */,
-				E52FE23A1DA18CDC00878C40 /* Color.swift in Sources */,
-				E52FE2431DA18CDC00878C40 /* Ray3.swift in Sources */,
-				E52FE24E1DA18CDC00878C40 /* Vector3.swift in Sources */,
-				E52FE24D1DA18CDC00878C40 /* Vector2.swift in Sources */,
-				E52FE2441DA18CDC00878C40 /* Region2.swift in Sources */,
-				E52FE23C1DA18CDC00878C40 /* Intersection.swift in Sources */,
-				E52FE23F1DA18CDC00878C40 /* Matrix4x4.swift in Sources */,
-				E52FE2401DA18CDC00878C40 /* PerspectiveProjection.swift in Sources */,
-				E52FE2371DA18CDC00878C40 /* Bounds2.swift in Sources */,
-				E52FE2411DA18CDC00878C40 /* Plane.swift in Sources */,
-				E52FE2421DA18CDC00878C40 /* Quaternion.swift in Sources */,
-				E52FE23E1DA18CDC00878C40 /* Matrix3x3.swift in Sources */,
-				E52FE2451DA18CDC00878C40 /* Region3.swift in Sources */,
+				__src_cc_ref_Sources/Angle.swift /* Angle.swift in Sources */,
+				__src_cc_ref_Sources/Bounds2.swift /* Bounds2.swift in Sources */,
+				__src_cc_ref_Sources/Bounds3.swift /* Bounds3.swift in Sources */,
+				__src_cc_ref_Sources/Circle.swift /* Circle.swift in Sources */,
+				__src_cc_ref_Sources/Color.swift /* Color.swift in Sources */,
+				__src_cc_ref_Sources/Frustum.swift /* Frustum.swift in Sources */,
+				__src_cc_ref_Sources/Intersection.swift /* Intersection.swift in Sources */,
+				__src_cc_ref_Sources/Matrix2x2.swift /* Matrix2x2.swift in Sources */,
+				__src_cc_ref_Sources/Matrix3x3.swift /* Matrix3x3.swift in Sources */,
+				__src_cc_ref_Sources/Matrix4x4.swift /* Matrix4x4.swift in Sources */,
+				__src_cc_ref_Sources/PerspectiveProjection.swift /* PerspectiveProjection.swift in Sources */,
+				__src_cc_ref_Sources/Plane.swift /* Plane.swift in Sources */,
+				__src_cc_ref_Sources/Quaternion.swift /* Quaternion.swift in Sources */,
+				__src_cc_ref_Sources/Ray3.swift /* Ray3.swift in Sources */,
+				__src_cc_ref_Sources/Region2.swift /* Region2.swift in Sources */,
+				E5F052F01DA194BA0061A18D /* README.md in Sources */,
+				__src_cc_ref_Sources/Region3.swift /* Region3.swift in Sources */,
+				__src_cc_ref_Sources/Size.swift /* Size.swift in Sources */,
+				__src_cc_ref_Sources/Sphere.swift /* Sphere.swift in Sources */,
+				__src_cc_ref_Sources/TexCoord.swift /* TexCoord.swift in Sources */,
+				__src_cc_ref_Sources/Transform3.swift /* Transform3.swift in Sources */,
+				__src_cc_ref_Sources/Triangle2.swift /* Triangle2.swift in Sources */,
+				__src_cc_ref_Sources/Triangle3.swift /* Triangle3.swift in Sources */,
+				__src_cc_ref_Sources/Vector2.swift /* Vector2.swift in Sources */,
+				__src_cc_ref_Sources/Vector3.swift /* Vector3.swift in Sources */,
+				__src_cc_ref_Sources/Vector4.swift /* Vector4.swift in Sources */,
+				__src_cc_ref_Sources/Vectorable.swift /* Vectorable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E52F458A1B121F4C004F7444 /* Sources */ = {
+		CompilePhase_SwiftishTests /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 0;
 			files = (
-				E52FE2641DA18D5200878C40 /* Matrix3Tests.swift in Sources */,
-				E52FE2651DA18D5200878C40 /* Matrix4Tests.swift in Sources */,
-				E52FE2681DA18D5200878C40 /* Vector3Tests.swift in Sources */,
-				E52FE2631DA18D5200878C40 /* Matrix2Tests.swift in Sources */,
-				E52FE2671DA18D5200878C40 /* Vector2Tests.swift in Sources */,
-				E52FE2691DA18D5200878C40 /* Vector4Tests.swift in Sources */,
+				__src_cc_ref_Tests/SwiftishTests/Matrix2Tests.swift /* Matrix2Tests.swift in Sources */,
+				__src_cc_ref_Tests/SwiftishTests/Matrix3Tests.swift /* Matrix3Tests.swift in Sources */,
+				__src_cc_ref_Tests/SwiftishTests/Matrix4Tests.swift /* Matrix4Tests.swift in Sources */,
+				__src_cc_ref_Tests/SwiftishTests/Vector2Tests.swift /* Vector2Tests.swift in Sources */,
+				__src_cc_ref_Tests/SwiftishTests/Vector3Tests.swift /* Vector3Tests.swift in Sources */,
+				__src_cc_ref_Tests/SwiftishTests/Vector4Tests.swift /* Vector4Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		E52F45911B121F4C004F7444 /* PBXTargetDependency */ = {
+		__Dependency_Swiftish /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E52F45821B121F4C004F7444 /* Swiftish */;
-			targetProxy = E52F45901B121F4C004F7444 /* PBXContainerItemProxy */;
+			target = "______Target_Swiftish" /* Swiftish */;
+			targetProxy = E5F052ED1DA194450061A18D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		E52F45971B121F4C004F7444 /* Debug */ = {
+		_ReleaseConf_Swiftish /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		E52F45981B121F4C004F7444 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		E52F459A1B121F4C004F7444 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Swiftish/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "net.franticapparatus.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-			};
-			name = Debug;
-		};
-		E52F459B1B121F4C004F7444 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Swiftish/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "net.franticapparatus.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				INFOPLIST_FILE = Swiftish.xcodeproj/Swiftish_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Swiftish;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
-		E52F459D1B121F4C004F7444 /* Debug */ = {
+		_ReleaseConf_SwiftishTests /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SwiftishTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "net.franticapparatus.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				INFOPLIST_FILE = Swiftish.xcodeproj/SwiftishTests_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		"___DebugConf_Swiftish" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				INFOPLIST_FILE = Swiftish.xcodeproj/Swiftish_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Swiftish;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
-		E52F459E1B121F4C004F7444 /* Release */ = {
+		"___DebugConf_SwiftishTests" /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SwiftishTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "net.franticapparatus.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				INFOPLIST_FILE = Swiftish.xcodeproj/SwiftishTests_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
+			name = Debug;
+		};
+		"_____Release_" /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = __PBXFileRef_Swiftish.xcodeproj/Configs/Project.xcconfig /* Swiftish.xcodeproj/Configs/Project.xcconfig */;
+			buildSettings = {
+			};
 			name = Release;
+		};
+		"_______Debug_" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = __PBXFileRef_Swiftish.xcodeproj/Configs/Project.xcconfig /* Swiftish.xcodeproj/Configs/Project.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E52F457D1B121F4C004F7444 /* Build configuration list for PBXProject "Swiftish" */ = {
+		"___RootConfs_" /* Build configuration list for PBXProject "Swiftish" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E52F45971B121F4C004F7444 /* Debug */,
-				E52F45981B121F4C004F7444 /* Release */,
+				"_______Debug_" /* Debug */,
+				"_____Release_" /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
-		E52F45991B121F4C004F7444 /* Build configuration list for PBXNativeTarget "Swiftish" */ = {
+		"_______Confs_Swiftish" /* Build configuration list for PBXNativeTarget "Swiftish" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E52F459A1B121F4C004F7444 /* Debug */,
-				E52F459B1B121F4C004F7444 /* Release */,
+				"___DebugConf_Swiftish" /* Debug */,
+				_ReleaseConf_Swiftish /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
-		E52F459C1B121F4C004F7444 /* Build configuration list for PBXNativeTarget "SwiftishTests" */ = {
+		"_______Confs_SwiftishTests" /* Build configuration list for PBXNativeTarget "SwiftishTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E52F459D1B121F4C004F7444 /* Debug */,
-				E52F459E1B121F4C004F7444 /* Release */,
+				"___DebugConf_SwiftishTests" /* Debug */,
+				_ReleaseConf_SwiftishTests /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = E52F457A1B121F4C004F7444 /* Project object */;
+	rootObject = __RootObject_ /* Project object */;
 }

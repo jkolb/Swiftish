@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0800"
+   LastUpgradeVersion = "9999"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,23 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E52F45821B121F4C004F7444"
+               BlueprintIdentifier = "______Target_Swiftish"
                BuildableName = "Swiftish.framework"
                BlueprintName = "Swiftish"
-               ReferencedContainer = "container:Swiftish.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E52F458D1B121F4C004F7444"
-               BuildableName = "SwiftishTests.xctest"
-               BlueprintName = "SwiftishTests"
                ReferencedContainer = "container:Swiftish.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,22 +32,13 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E52F458D1B121F4C004F7444"
+               BlueprintIdentifier = "______Target_SwiftishTests"
                BuildableName = "SwiftishTests.xctest"
                BlueprintName = "SwiftishTests"
                ReferencedContainer = "container:Swiftish.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E52F45821B121F4C004F7444"
-            BuildableName = "Swiftish.framework"
-            BlueprintName = "Swiftish"
-            ReferencedContainer = "container:Swiftish.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -78,7 +55,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E52F45821B121F4C004F7444"
+            BlueprintIdentifier = "______Target_Swiftish"
             BuildableName = "Swiftish.framework"
             BlueprintName = "Swiftish"
             ReferencedContainer = "container:Swiftish.xcodeproj">
@@ -93,15 +70,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E52F45821B121F4C004F7444"
-            BuildableName = "Swiftish.framework"
-            BlueprintName = "Swiftish"
-            ReferencedContainer = "container:Swiftish.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
