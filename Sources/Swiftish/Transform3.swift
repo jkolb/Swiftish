@@ -27,7 +27,7 @@ public struct Transform3<T: FloatingPointVectorable> : Equatable, CustomStringCo
     public var r: Quaternion<T>
     public var s: Vector3<T>
     
-    public init(t: Vector3<T> = Vector3<T>(), r: Quaternion<T> = Quaternion<T>(), s: Vector3<T> = Vector3<T>(T.one)) {
+    public init(t: Vector3<T> = Vector3<T>(), r: Quaternion<T> = Quaternion<T>(), s: Vector3<T> = Vector3<T>(1)) {
         self.t = t
         self.r = r
         self.s = s
@@ -38,7 +38,7 @@ public struct Transform3<T: FloatingPointVectorable> : Equatable, CustomStringCo
     }
     
     public var hasScale: Bool {
-        return s != Vector3<T>(T.one)
+        return s != Vector3<T>(1)
     }
     
     public var hasRotation: Bool {
@@ -54,7 +54,7 @@ public struct Transform3<T: FloatingPointVectorable> : Equatable, CustomStringCo
     }
     
     public var inverse: Transform3<T> {
-        return Transform3<T>(t: -t, r: conjugate(r), s: T.one / s)
+        return Transform3<T>(t: -t, r: conjugate(r), s: 1 / s)
     }
     
     public var matrix: Matrix4x4<T> {
@@ -77,7 +77,7 @@ public struct Transform3<T: FloatingPointVectorable> : Equatable, CustomStringCo
             Vector4<T>(rs[0]),
             Vector4<T>(rs[1]),
             Vector4<T>(rs[2]),
-            Vector4<T>(t, T.one)
+            Vector4<T>(t, 1)
         )
     }
     
@@ -85,13 +85,13 @@ public struct Transform3<T: FloatingPointVectorable> : Equatable, CustomStringCo
         let sri: Matrix3x3<T>
         
         if hasRotation && hasScale {
-            sri = Matrix3x3<T>(T.one / s) * r.matrix.transpose
+            sri = Matrix3x3<T>(1 / s) * r.matrix.transpose
         }
         else if hasRotation {
             sri = r.matrix.transpose
         }
         else if hasScale {
-            sri = Matrix3x3<T>(T.one / s)
+            sri = Matrix3x3<T>(1 / s)
         }
         else {
             sri = Matrix3x3<T>()
@@ -110,7 +110,7 @@ public struct Transform3<T: FloatingPointVectorable> : Equatable, CustomStringCo
             Vector4<T>(sri[0]),
             Vector4<T>(sri[1]),
             Vector4<T>(sri[2]),
-            Vector4<T>(ti, T.one)
+            Vector4<T>(ti, 1)
         )
     }
     
@@ -152,16 +152,16 @@ public struct Transform3<T: FloatingPointVectorable> : Equatable, CustomStringCo
     public func applyTo(_ ray: Ray3<T>) -> Ray3<T> {
         return Ray3<T>(origin: applyTo(ray.origin), direction: ray.direction * r)
     }
-}
 
-public func ==<T: FloatingPointVectorable>(a: Transform3<T>, b: Transform3<T>) -> Bool {
-    return a.t == b.t && a.r == b.r && a.s == b.s
-}
+    public static func ==(a: Transform3<T>, b: Transform3<T>) -> Bool {
+        return a.t == b.t && a.r == b.r && a.s == b.s
+    }
 
-public func +<T: FloatingPointVectorable>(a: Transform3<T>, b: Transform3<T>) -> Transform3<T> {
-    return Transform3<T>(
-        t: a.r * b.t * a.s + a.t,
-        r: a.r * b.r,
-        s: a.s * b.s
-    )
+    public static func +(a: Transform3<T>, b: Transform3<T>) -> Transform3<T> {
+        return Transform3<T>(
+            t: a.r * b.t * a.s + a.t,
+            r: a.r * b.r,
+            s: a.s * b.s
+        )
+    }
 }

@@ -2,7 +2,7 @@
  The MIT License (MIT)
  
  Copyright (c) 2015-2017 Justin Kolb
-
+ 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
@@ -22,28 +22,20 @@
  SOFTWARE.
  */
 
-public struct Frustum<T: Vectorable> : Equatable, CustomStringConvertible {
-    public let top: Plane<T>
-    public let bottom: Plane<T>
-    public let left: Plane<T>
-    public let right: Plane<T>
-    public let near: Plane<T>
-    public let far: Plane<T>
+public struct Region3<T: Vectorable> : Equatable {
+    public var origin: Vector3<T>
+    public var size: Vector3<T>
     
-    public init(top: Plane<T>, bottom: Plane<T>, left: Plane<T>, right: Plane<T>, near: Plane<T>, far: Plane<T>) {
-        self.top = top
-        self.bottom = bottom
-        self.left = left
-        self.right = right
-        self.near = near
-        self.far = far
+    public init() {
+        self.init(origin: Vector3<T>(), size: Vector3<T>())
     }
     
-    public var description: String {
-        return "{\n\tT: \(top)\n\tB: \(bottom)\n\tL: \(left)\n\tR: \(right)\n\tN: \(near)\n\tF: \(far)}"
+    public init(origin: Vector3<T>, size: Vector3<T>) {
+        self.origin = origin
+        self.size = size
     }
-}
 
-public func ==<T: Vectorable>(lhs: Frustum<T>, rhs: Frustum<T>) -> Bool {
-    return lhs.top == rhs.top && lhs.bottom == rhs.bottom && lhs.left == rhs.left && lhs.right == rhs.right && lhs.near == rhs.near && lhs.far == rhs.far
+    public static func ==(a: Region3<T>, b: Region3<T>) -> Bool {
+        return a.origin == b.origin && a.size == b.size
+    }
 }

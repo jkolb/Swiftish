@@ -29,14 +29,14 @@ public struct Vector4<T: Vectorable> : Equatable, CustomStringConvertible {
     public var w: T
     
     public init() {
-        self.init(T.zero, T.zero, T.zero, T.zero)
+        self.init(0, 0, 0, 0)
     }
     
     public init(_ v: T) {
         self.init(v, v, v, v)
     }
     
-    public init(_ v: Vector3<T>, _ c: T = T.zero) {
+    public init(_ v: Vector3<T>, _ c: T = 0) {
         self.init(v.x, v.y, v.z, c)
     }
     
@@ -104,148 +104,128 @@ public struct Vector4<T: Vectorable> : Equatable, CustomStringConvertible {
     public var description: String {
         return "{\(x), \(y), \(z), \(w)}"
     }
-}
 
-// MARK: - Equatable
+    // MARK: - Equatable
 
-public func ==<T: Vectorable>(a: Vector4<T>, b: Vector4<T>) -> Bool {
-    return a.x == b.x && a.y == b.y && a.z == b.z && a.w == b.w
-}
+    public static func ==(a: Vector4<T>, b: Vector4<T>) -> Bool {
+        return a.x == b.x && a.y == b.y && a.z == b.z && a.w == b.w
+    }
 
-// MARK: Approximately Equal
+    // MARK: - Addition
 
-public func approx<T: FloatingPointVectorable>(_ a: Vector4<T>, _ b: Vector4<T>, epsilon: T = T.epsilon) -> Bool {
-    let delta: Vector4<T> = b - a
-    let magnitude: Vector4<T> = abs(delta)
-    
-    return magnitude.x <= epsilon && magnitude.y <= epsilon && magnitude.z <= epsilon && magnitude.w <= epsilon
-}
+    public static func +(a: Vector4<T>, b: T) -> Vector4<T> {
+        let x: T = a.x + b
+        let y: T = a.y + b
+        let z: T = a.z + b
+        let w: T = a.w + b
+        
+        return Vector4<T>(x, y, z, w)
+    }
 
-// MARK: Absolute Value
+    public static func +(a: T, b: Vector4<T>) -> Vector4<T> {
+        let x: T = a + b.x
+        let y: T = a + b.y
+        let z: T = a + b.z
+        let w: T = a + b.w
+        
+        return Vector4<T>(x, y, z, w)
+    }
 
-public func abs<T: SignedVectorable>(_ a: Vector4<T>) -> Vector4<T> {
-    let x: T = abs(a.x)
-    let y: T = abs(a.y)
-    let z: T = abs(a.z)
-    let w: T = abs(a.w)
-    
-    return Vector4<T>(x, y, z, w)
-}
+    public static func +(a: Vector4<T>, b: Vector4<T>) -> Vector4<T> {
+        let x: T = a.x + b.x
+        let y: T = a.y + b.y
+        let z: T = a.z + b.z
+        let w: T = a.w + b.w
+        
+        return Vector4<T>(x, y, z, w)
+    }
 
-// MARK: - Addition
+    // MARK: - Subtraction
 
-public func +<T: Vectorable>(a: Vector4<T>, b: T) -> Vector4<T> {
-    let x: T = a.x + b
-    let y: T = a.y + b
-    let z: T = a.z + b
-    let w: T = a.w + b
-    
-    return Vector4<T>(x, y, z, w)
-}
+    public static func -(a: Vector4<T>, b: T) -> Vector4<T> {
+        let x: T = a.x - b
+        let y: T = a.y - b
+        let z: T = a.z - b
+        let w: T = a.w - b
+        
+        return Vector4<T>(x, y, z, w)
+    }
 
-public func +<T: Vectorable>(a: T, b: Vector4<T>) -> Vector4<T> {
-    let x: T = a + b.x
-    let y: T = a + b.y
-    let z: T = a + b.z
-    let w: T = a + b.w
-    
-    return Vector4<T>(x, y, z, w)
-}
+    public static func -(a: T, b: Vector4<T>) -> Vector4<T> {
+        let x: T = a - b.x
+        let y: T = a - b.y
+        let z: T = a - b.z
+        let w: T = a - b.w
+        
+        return Vector4<T>(x, y, z, w)
+    }
 
-public func +<T: Vectorable>(a: Vector4<T>, b: Vector4<T>) -> Vector4<T> {
-    let x: T = a.x + b.x
-    let y: T = a.y + b.y
-    let z: T = a.z + b.z
-    let w: T = a.w + b.w
-    
-    return Vector4<T>(x, y, z, w)
-}
+    public static func -(a: Vector4<T>, b: Vector4<T>) -> Vector4<T> {
+        let x: T = a.x - b.x
+        let y: T = a.y - b.y
+        let z: T = a.z - b.z
+        let w: T = a.w - b.w
+        
+        return Vector4<T>(x, y, z, w)
+    }
 
-// MARK: - Subtraction
+    // MARK: - Multiplication
 
-public func -<T: Vectorable>(a: Vector4<T>, b: T) -> Vector4<T> {
-    let x: T = a.x - b
-    let y: T = a.y - b
-    let z: T = a.z - b
-    let w: T = a.w - b
-    
-    return Vector4<T>(x, y, z, w)
-}
+    public static func *(a: Vector4<T>, b: T) -> Vector4<T> {
+        return Vector4<T>(
+            a.x * b,
+            a.y * b,
+            a.z * b,
+            a.w * b
+        )
+    }
 
-public func -<T: Vectorable>(a: T, b: Vector4<T>) -> Vector4<T> {
-    let x: T = a - b.x
-    let y: T = a - b.y
-    let z: T = a - b.z
-    let w: T = a - b.w
-    
-    return Vector4<T>(x, y, z, w)
-}
+    public static func *(a: T, b: Vector4<T>) -> Vector4<T> {
+        let x: T = a * b.x
+        let y: T = a * b.y
+        let z: T = a * b.z
+        let w: T = a * b.w
+        
+        return Vector4<T>(x, y, z, w)
+    }
 
-public func -<T: Vectorable>(a: Vector4<T>, b: Vector4<T>) -> Vector4<T> {
-    let x: T = a.x - b.x
-    let y: T = a.y - b.y
-    let z: T = a.z - b.z
-    let w: T = a.w - b.w
-    
-    return Vector4<T>(x, y, z, w)
-}
+    public static func *(a: Vector4<T>, b: Vector4<T>) -> Vector4<T> {
+        let x: T = a.x * b.x
+        let y: T = a.y * b.y
+        let z: T = a.z * b.z
+        let w: T = a.w * b.w
+        
+        return Vector4<T>(x, y, z, w)
+    }
 
-// MARK: - Multiplication
+    // MARK: - Division
 
-public func *<T: Vectorable>(a: Vector4<T>, b: T) -> Vector4<T> {
-    return Vector4<T>(
-        a.x * b,
-        a.y * b,
-        a.z * b,
-        a.w * b
-    )
-}
+    public static func /(a: Vector4<T>, b: T) -> Vector4<T> {
+        let x: T = a.x / b
+        let y: T = a.y / b
+        let z: T = a.z / b
+        let w: T = a.w / b
+        
+        return Vector4<T>(x, y, z, w)
+    }
 
-public func *<T: Vectorable>(a: T, b: Vector4<T>) -> Vector4<T> {
-    let x: T = a * b.x
-    let y: T = a * b.y
-    let z: T = a * b.z
-    let w: T = a * b.w
-    
-    return Vector4<T>(x, y, z, w)
-}
+    public static func /(a: T, b: Vector4<T>) -> Vector4<T> {
+        let x: T = a / b.x
+        let y: T = a / b.y
+        let z: T = a / b.z
+        let w: T = a / b.w
+        
+        return Vector4<T>(x, y, z, w)
+    }
 
-public func *<T: Vectorable>(a: Vector4<T>, b: Vector4<T>) -> Vector4<T> {
-    let x: T = a.x * b.x
-    let y: T = a.y * b.y
-    let z: T = a.z * b.z
-    let w: T = a.w * b.w
-    
-    return Vector4<T>(x, y, z, w)
-}
-
-// MARK: - Division
-
-public func /<T: Vectorable>(a: Vector4<T>, b: T) -> Vector4<T> {
-    let x: T = a.x / b
-    let y: T = a.y / b
-    let z: T = a.z / b
-    let w: T = a.w / b
-    
-    return Vector4<T>(x, y, z, w)
-}
-
-public func /<T: Vectorable>(a: T, b: Vector4<T>) -> Vector4<T> {
-    let x: T = a / b.x
-    let y: T = a / b.y
-    let z: T = a / b.z
-    let w: T = a / b.w
-    
-    return Vector4<T>(x, y, z, w)
-}
-
-public func /<T: Vectorable>(a: Vector4<T>, b: Vector4<T>) -> Vector4<T> {
-    let x: T = a.x / b.x
-    let y: T = a.y / b.y
-    let z: T = a.z / b.z
-    let w: T = a.w / b.w
-    
-    return Vector4<T>(x, y, z, w)
+    public static func /(a: Vector4<T>, b: Vector4<T>) -> Vector4<T> {
+        let x: T = a.x / b.x
+        let y: T = a.y / b.y
+        let z: T = a.z / b.z
+        let w: T = a.w / b.w
+        
+        return Vector4<T>(x, y, z, w)
+    }
 }
 
 // MARK: - Negation
@@ -268,9 +248,29 @@ public prefix func +<T: SignedVectorable>(v: Vector4<T>) -> Vector4<T> {
     return Vector4<T>(x, y, z, w)
 }
 
+// MARK: Approximately Equal
+
+public func approx<T: FloatingPointVectorable>(_ a: Vector4<T>, _ b: Vector4<T>, epsilon: T = T.epsilon) -> Bool {
+    let delta: Vector4<T> = b - a
+    let magnitude: Vector4<T> = abs(delta)
+    
+    return magnitude.x <= epsilon && magnitude.y <= epsilon && magnitude.z <= epsilon && magnitude.w <= epsilon
+}
+
+// MARK: Absolute Value
+
+public func abs<T: SignedVectorable>(_ a: Vector4<T>) -> Vector4<T> {
+    let x: T = abs(a.x)
+    let y: T = abs(a.y)
+    let z: T = abs(a.z)
+    let w: T = abs(a.w)
+    
+    return Vector4<T>(x, y, z, w)
+}
+
 // MARK: - Sum
 
-public func sum<T: Vectorable>(_ a: Vector4<T>) -> T {
+public func sum<T>(_ a: Vector4<T>) -> T {
     return a.x + a.y + a.z + a.w
 }
 
@@ -280,7 +280,7 @@ public func length<T: FloatingPointVectorable>(_ a: Vector4<T>) -> T {
     return length2(a).squareRoot()
 }
 
-public func length2<T: Vectorable>(_ a: Vector4<T>) -> T {
+public func length2<T>(_ a: Vector4<T>) -> T {
     let a2: Vector4<T> = a * a
     
     return sum(a2)
@@ -294,14 +294,14 @@ public func distance<T: FloatingPointVectorable>(_ a: Vector4<T>, _ b: Vector4<T
     return distance2(a, b).squareRoot()
 }
 
-public func distance2<T: Vectorable>(_ a: Vector4<T>, _ b: Vector4<T>) -> T {
+public func distance2<T>(_ a: Vector4<T>, _ b: Vector4<T>) -> T {
     let difference: Vector4<T> = b - a
     let difference2: Vector4<T> = difference * difference
     
     return sum(difference2)
 }
 
-public func dot<T: Vectorable>(_ a: Vector4<T>, _ b: Vector4<T>) -> T {
+public func dot<T>(_ a: Vector4<T>, _ b: Vector4<T>) -> T {
     let ab: Vector4<T> = a * b
     
     return sum(ab)

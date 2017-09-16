@@ -23,14 +23,14 @@
  */
 
 public func test<T: SignedVectorable>(_ sphere: Sphere<T>, intersectsOrIsInside plane: Plane<T>) -> Bool {
-    let distance: T = dot(sphere.center, plane.normal) - plane.distance
-    let intersects = abs(distance) <= sphere.radius
-    let isInside = sphere.radius <= distance
+    let dist = dot(sphere.center, plane.normal) - plane.distance
+    let intersects = abs(dist) <= sphere.radius
+    let isInside = sphere.radius <= dist
     
     return intersects || isInside
 }
 
-public func test<T: SignedVectorable>(_ bounds: Bounds3<T>, intersectsOrIsInside plane: Plane<T>) -> Bool {
+public func test<T>(_ bounds: Bounds3<T>, intersectsOrIsInside plane: Plane<T>) -> Bool {
     let projectionRadiusOfBox = sum(bounds.extents * abs(plane.normal))
     let distanceOfBoxCenterFromPlane = dot(plane.normal, bounds.center) - plane.distance
     let intersects = abs(distanceOfBoxCenterFromPlane) <= projectionRadiusOfBox
@@ -39,7 +39,7 @@ public func test<T: SignedVectorable>(_ bounds: Bounds3<T>, intersectsOrIsInside
     return intersects || isInside
 }
 
-public func test<T: SignedVectorable>(_ bounds:Bounds3<T>, intersectsOrIsInside frustum: Frustum<T>) -> Bool {
+public func test<T>(_ bounds:Bounds3<T>, intersectsOrIsInside frustum: Frustum<T>) -> Bool {
     if  bounds.isNull {
         return false
     }
@@ -55,14 +55,14 @@ public func test<T: SignedVectorable>(_ bounds:Bounds3<T>, intersectsOrIsInside 
     return true
 }
 
-public func test<T: SignedVectorable>(_ bounds: Bounds3<T>, intersects plane: Plane<T>) -> Bool {
+public func test<T>(_ bounds: Bounds3<T>, intersects plane: Plane<T>) -> Bool {
     let projectionRadiusOfBox = sum(bounds.extents * abs(plane.normal))
     let distanceOfBoxCenterFromPlane = abs(dot(plane.normal, bounds.center) - plane.distance)
     
     return distanceOfBoxCenterFromPlane <= projectionRadiusOfBox
 }
 
-public func test<T: SignedVectorable>(_ boundsA: Bounds3<T>, intersects boundsB: Bounds3<T>) -> Bool {
+public func test<T>(_ boundsA: Bounds3<T>, intersects boundsB: Bounds3<T>) -> Bool {
     if abs(boundsA.center.x - boundsB.center.x) > (boundsA.extents.x + boundsB.extents.x) { return false }
     if abs(boundsA.center.y - boundsB.center.y) > (boundsA.extents.y + boundsB.extents.y) { return false }
     if abs(boundsA.center.z - boundsB.center.z) > (boundsA.extents.z + boundsB.extents.z) { return false }
@@ -71,18 +71,18 @@ public func test<T: SignedVectorable>(_ boundsA: Bounds3<T>, intersects boundsB:
 }
 
 public func test<T: SignedVectorable>(_ sphere: Sphere<T>, intersects plane: Plane<T>) -> Bool {
-    let distance = dot(sphere.center, plane.normal) - plane.distance
+    let dist = dot(sphere.center, plane.normal) - plane.distance
     
-    return abs(distance) <= sphere.radius
+    return abs(dist) <= sphere.radius
 }
 
-public func test<T: SignedVectorable>(_ sphere: Sphere<T>, intersects bounds: Bounds3<T>) -> Bool {
+public func test<T>(_ sphere: Sphere<T>, intersects bounds: Bounds3<T>) -> Bool {
     let distanceSquared = distance2(sphere.center, bounds)
     
     return distanceSquared <= sphere.radius * sphere.radius
 }
 
-public func test<T: SignedVectorable>(_ sphereA: Sphere<T>, intersects sphereB: Sphere<T>) -> Bool {
+public func test<T>(_ sphereA: Sphere<T>, intersects sphereB: Sphere<T>) -> Bool {
     let delta = sphereA.center - sphereB.center
     let distanceSquared = dot(delta, delta)
     let radiusSum = sphereA.radius + sphereB.radius
@@ -90,7 +90,7 @@ public func test<T: SignedVectorable>(_ sphereA: Sphere<T>, intersects sphereB: 
     return distanceSquared < radiusSum * radiusSum
 }
 
-public func test<T: SignedVectorable>(_ point: Vector3<T>, inside bounds: Bounds3<T>) -> Bool {
+public func test<T>(_ point: Vector3<T>, inside bounds: Bounds3<T>) -> Bool {
     let bmin = bounds.minimum
     let bmax = bounds.maximum
     let xin = point.x > bmin.x && point.x < bmax.x
@@ -101,7 +101,7 @@ public func test<T: SignedVectorable>(_ point: Vector3<T>, inside bounds: Bounds
 }
 
 public func test<T: FloatingPointVectorable>(_ ray: Ray3<T>, intersects bounds: Bounds3<T>) -> Bool {
-    var tmin = T.zero
+    var tmin: T = 0
     var tmax = T.max
     let amin = bounds.minimum
     let amax = bounds.maximum
@@ -116,7 +116,7 @@ public func test<T: FloatingPointVectorable>(_ ray: Ray3<T>, intersects bounds: 
             }
         }
         else {
-            let ood = T.one / di
+            let ood = 1 / di
             var t1 = (amin[i] - oi) * ood
             var t2 = (amax[i] - oi) * ood
             
@@ -145,27 +145,27 @@ public func test<T: SignedVectorable>(_ ray: Ray3<T>, intersects triangle: Trian
     
     let d = dot(qp, n)
     
-    if d <= T.zero {
+    if d <= 0 {
         return false
     }
     
     let ap = ray.origin - triangle.a
     let t = dot(ap, n)
     
-    if t < T.zero {
+    if t < 0 {
         return false
     }
     
     let e = cross(qp, ap)
     let v = dot(ac, e)
     
-    if v < T.zero || v > d {
+    if v < 0 || v > d {
         return false
     }
     
     let w = -dot(ab, e)
     
-    if w < T.zero || v + w > d {
+    if w < 0 || v + w > d {
         return false
     }
     

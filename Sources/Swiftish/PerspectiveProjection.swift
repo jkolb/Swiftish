@@ -51,20 +51,20 @@
 public struct PerspectiveProjection<T: FloatingPointVectorable> : Equatable {
     public var fovx: Angle<T> {
         get {
-            return T.two * atan(tan(fovy / T.two) * aspectRatio)
+            return 2 * atan(tan(fovy / 2) * aspectRatio)
         }
         set {
-            fovy = T.two * atan(tan(newValue / T.two) * inverseAspectRatio)
+            fovy = 2 * atan(tan(newValue / 2) * inverseAspectRatio)
         }
     }
     public var fovy: Angle<T>
     public var aspectRatio: T
     public var inverseAspectRatio: T {
         get {
-            return T.one / aspectRatio;
+            return 1 / aspectRatio;
         }
         set {
-            aspectRatio = T.one / newValue
+            aspectRatio = 1 / newValue
         }
     }
     public var zNear: T
@@ -72,7 +72,7 @@ public struct PerspectiveProjection<T: FloatingPointVectorable> : Equatable {
     
     public init(fovx: Angle<T>, aspectRatio: T, zNear: T, zFar: T) {
         self.init(
-            fovy: T.two * atan(tan(fovx / T.two) * (T.one / aspectRatio)),
+            fovy: 2 * atan(tan(fovx / 2) * (1 / aspectRatio)),
             aspectRatio: aspectRatio,
             zNear: zNear,
             zFar: zFar
@@ -80,10 +80,10 @@ public struct PerspectiveProjection<T: FloatingPointVectorable> : Equatable {
     }
     
     public init(fovy: Angle<T>, aspectRatio: T, zNear: T, zFar: T) {
-        precondition(fovy > Angle<T>(radians: T.zero))
+        precondition(fovy > Angle<T>(radians: 0))
         precondition(fovy <= Angle<T>(radians: T.pi - T.epsilon))
-        precondition(aspectRatio > T.zero)
-        precondition(zNear > T.zero)
+        precondition(aspectRatio > 0)
+        precondition(zNear > 0)
         precondition(zFar > zNear)
         self.fovy = fovy
         self.aspectRatio = aspectRatio
@@ -92,7 +92,7 @@ public struct PerspectiveProjection<T: FloatingPointVectorable> : Equatable {
     }
     
     public var matrix: Matrix4x4<T> {
-        let x = fovy / T.two
+        let x = fovy / 2
         let s = sin(x)
         let c = cos(x)
         
@@ -101,27 +101,27 @@ public struct PerspectiveProjection<T: FloatingPointVectorable> : Equatable {
         
         let col0 = Vector4<T>(
             f / aspectRatio,
-            T.zero,
-            T.zero,
-            T.zero
+            0,
+            0,
+            0
         )
         let col1 = Vector4<T>(
-            T.zero,
+            0,
             f,
-            T.zero,
-            T.zero
+            0,
+            0
         )
         let col2 = Vector4<T>(
-            T.zero,
-            T.zero,
+            0,
+            0,
             (zFar + zNear) / (zNear - zFar),
-            -T.one
+            -1
         )
         let col3 = Vector4<T>(
-            T.zero,
-            T.zero,
-            (T.two * zFar * zNear) / (zNear - zFar),
-            T.zero
+            0,
+            0,
+            (2 * zFar * zNear) / (zNear - zFar),
+            0
         )
         
         return Matrix4x4(col0, col1, col2, col3)
@@ -129,24 +129,24 @@ public struct PerspectiveProjection<T: FloatingPointVectorable> : Equatable {
     
     public var frustum: Frustum<T> {
         // Pointing down the -Z axis, camera frustum in world space using a right handed coordinate system
-        let halfFOVY = fovy / T.two
-        let halfFOVX = fovx / T.two
+        let halfFOVY = fovy / 2
+        let halfFOVX = fovx / 2
         let sy = sin(halfFOVY).radians
         let cy = cos(halfFOVY).radians
         let sx = sin(halfFOVX).radians
         let cx = cos(halfFOVX).radians
         
         return Frustum<T>(
-            top:  Plane<T>(normal: Vector3<T>(T.zero, -cy, -sy), distance: T.zero),
-            bottom: Plane<T>(normal: Vector3<T>(T.zero, +cy, -sy), distance: T.zero),
-            left: Plane<T>(normal: Vector3<T>(+cx, T.zero, -sx), distance: T.zero),
-            right: Plane<T>(normal: Vector3<T>(-cx, T.zero, -sx), distance: T.zero),
-            near: Plane<T>(normal: Vector3<T>(T.zero, T.zero, -T.one), distance: +zNear),
-            far: Plane<T>(normal: Vector3<T>(T.zero, T.zero, +T.one), distance: -zFar)
+            top:  Plane<T>(normal: Vector3<T>(0, -cy, -sy), distance: 0),
+            bottom: Plane<T>(normal: Vector3<T>(0, +cy, -sy), distance: 0),
+            left: Plane<T>(normal: Vector3<T>(+cx, 0, -sx), distance: 0),
+            right: Plane<T>(normal: Vector3<T>(-cx, 0, -sx), distance: 0),
+            near: Plane<T>(normal: Vector3<T>(0, 0, -1), distance: +zNear),
+            far: Plane<T>(normal: Vector3<T>(0, 0, +1), distance: -zFar)
         )
     }
-}
 
-public func ==<T: FloatingPointVectorable>(lhs: PerspectiveProjection<T>, rhs: PerspectiveProjection<T>) -> Bool {
-    return lhs.fovy == rhs.fovy && lhs.aspectRatio == rhs.aspectRatio && lhs.zNear == rhs.zNear && lhs.zFar == rhs.zFar
+    public static func ==(lhs: PerspectiveProjection<T>, rhs: PerspectiveProjection<T>) -> Bool {
+        return lhs.fovy == rhs.fovy && lhs.aspectRatio == rhs.aspectRatio && lhs.zNear == rhs.zNear && lhs.zFar == rhs.zFar
+    }
 }

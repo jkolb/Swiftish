@@ -26,6 +26,21 @@ import XCTest
 @testable import Swiftish
 
 class Vector4Tests: XCTestCase {
+    static var allTests = [
+        ("testEmptyInit", testEmptyInit),
+        ("testSingleValueInit", testSingleValueInit),
+        ("testNormalInit", testNormalInit),
+        ("testEquatable", testEquatable),
+        ("testScalarAddition", testScalarAddition),
+        ("testScalarSubtraction", testScalarSubtraction),
+        ("testScalarMultiplication", testScalarMultiplication),
+        ("testScalarDivision", testScalarDivision),
+        ("testVectorAddition", testVectorAddition),
+        ("testVectorSubtraction", testVectorSubtraction),
+        ("testVectorMultiplication", testVectorMultiplication),
+        ("testVectorDivision", testVectorDivision),
+    ]
+
     func testEmptyInit() {
         let v = Vector4<Float>()
         

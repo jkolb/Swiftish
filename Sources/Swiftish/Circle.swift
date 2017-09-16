@@ -2,7 +2,7 @@
  The MIT License (MIT)
  
  Copyright (c) 2015-2017 Justin Kolb
- 
+
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
@@ -22,20 +22,20 @@
  SOFTWARE.
  */
 
-public struct Plane<T: Vectorable> : Equatable, CustomStringConvertible {
-    public let normal: Vector3<T>
-    public let distance: T
+public struct Circle<T: Vectorable> : Equatable, CustomStringConvertible {
+    public var center: Vector2<T>
+    public var radius: T
     
-    public init(normal: Vector3<T>, distance: T) {
-        self.normal = normal
-        self.distance = distance
+    public init(center: Vector2<T>, radius: T) {
+        self.center = center
+        self.radius = radius
     }
     
     public var description: String {
-        return "{\(normal), \(distance)}"
+        return "{\(center), \(radius)}"
     }
-}
 
-public func ==<T: Vectorable>(a: Plane<T>, b: Plane<T>) -> Bool {
-    return a.normal == b.normal && a.distance == b.distance
+    public static func ==(a: Circle<T>, b: Circle<T>) -> Bool {
+        return a.center == b.center && a.radius == b.radius
+    }
 }

@@ -22,20 +22,31 @@
  SOFTWARE.
  */
 
-public struct Region3<T: Vectorable> : Equatable {
+public struct Ray3<T: Vectorable> : Equatable, CustomStringConvertible {
     public var origin: Vector3<T>
-    public var size: Vector3<T>
+    public var direction: Vector3<T>
     
-    public init() {
-        self.init(origin: Vector3<T>(), size: Vector3<T>())
+    public init(origin: Vector3<T>, direction: Vector3<T>) {
+        self.origin = origin
+        self.direction = direction;
     }
     
-    public init(origin: Vector3<T>, size: Vector3<T>) {
-        self.origin = origin
-        self.size = size
+    public var description: String {
+        return "{\(origin), \(direction)}"
+    }
+
+    public static func ==(a: Ray3<T>, b: Ray3<T>) -> Bool {
+        return a.origin == b.origin && a.direction == b.direction
     }
 }
 
-public func ==<T: Vectorable>(a: Region3<T>, b: Region3<T>) -> Bool {
-    return a.origin == b.origin && a.size == b.size
+public func distance<T: FloatingPointVectorable>(_ r: Ray3<T>, _ t: Triangle3<T>) -> T {
+    let n = normalOf(t)
+    let qp = -r.direction
+    let d = dot(qp, n)
+    let ap = r.origin - t.a
+    let t = dot(ap, n)
+    let ood = t / d
+    
+    return ood
 }

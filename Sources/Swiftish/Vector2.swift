@@ -24,18 +24,18 @@
 
 public struct Vector2<T: Vectorable> : Equatable, CustomStringConvertible {
     public static func xAxis() -> Vector2<T> {
-        return Vector2<T>(T.one, T.zero)
+        return Vector2<T>(1, 0)
     }
     
     public static func yAxis() -> Vector2<T> {
-        return Vector2<T>(T.zero, T.one)
+        return Vector2<T>(0, 1)
     }
     
     public var x: T
     public var y: T
     
     public init() {
-        self.init(T.zero, T.zero)
+        self.init(0, 0)
     }
     
     public init(_ v: T) {
@@ -94,12 +94,120 @@ public struct Vector2<T: Vectorable> : Equatable, CustomStringConvertible {
     public var description: String {
         return "{\(x), \(y)}"
     }
+
+    // MARK: - Equatable
+
+    public static func ==(a: Vector2<T>, b: Vector2<T>) -> Bool {
+        return a.x == b.x && a.y == b.y
+    }
+
+    // MARK: - Addition
+
+    public static func +(a: Vector2<T>, b: T) -> Vector2<T> {
+        let x: T = a.x + b
+        let y: T = a.y + b
+        
+        return Vector2<T>(x, y)
+    }
+
+    public static func +(a: T, b: Vector2<T>) -> Vector2<T> {
+        let x: T = a + b.x
+        let y: T = a + b.y
+        
+        return Vector2<T>(x, y)
+    }
+
+    public static func +(a: Vector2<T>, b: Vector2<T>) -> Vector2<T> {
+        let x: T = a.x + b.x
+        let y: T = a.y + b.y
+        
+        return Vector2<T>(x, y)
+    }
+
+    // MARK: - Subtraction
+
+    public static func -(a: Vector2<T>, b: T) -> Vector2<T> {
+        let x: T = a.x - b
+        let y: T = a.y - b
+        
+        return Vector2<T>(x, y)
+    }
+
+    public static func -(a: T, b: Vector2<T>) -> Vector2<T> {
+        let x: T = a - b.x
+        let y: T = a - b.y
+        
+        return Vector2<T>(x, y)
+    }
+
+    public static func -(a: Vector2<T>, b: Vector2<T>) -> Vector2<T> {
+        let x: T = a.x - b.x
+        let y: T = a.y - b.y
+        
+        return Vector2<T>(x, y)
+    }
+
+    // MARK: - Multiplication
+
+    public static func *(a: Vector2<T>, b: T) -> Vector2<T> {
+        let x: T = a.x * b
+        let y: T = a.y * b
+        
+        return Vector2<T>(x, y)
+    }
+
+    public static func *(a: T, b: Vector2<T>) -> Vector2<T> {
+        let x: T = a * b.x
+        let y: T = a * b.y
+        
+        return Vector2<T>(x, y)
+    }
+
+    public static func *(a: Vector2<T>, b: Vector2<T>) -> Vector2<T> {
+        let x: T = a.x * b.x
+        let y: T = a.y * b.y
+        
+        return Vector2<T>(x, y)
+    }
+
+    // MARK: - Division
+
+    public static func /(a: Vector2<T>, b: T) -> Vector2<T> {
+        let x: T = a.x / b
+        let y: T = a.y / b
+        
+        return Vector2<T>(x, y)
+    }
+
+    public static func /(a: T, b: Vector2<T>) -> Vector2<T> {
+        let x: T = a / b.x
+        let y: T = a / b.y
+        
+        return Vector2<T>(x, y)
+    }
+
+    public static func /(a: Vector2<T>, b: Vector2<T>) -> Vector2<T> {
+        let x: T = a.x / b.x
+        let y: T = a.y / b.y
+        
+        return Vector2<T>(x, y)
+    }
 }
 
-// MARK: - Equatable
+// MARK: - Negation
 
-public func ==<T: Vectorable>(a: Vector2<T>, b: Vector2<T>) -> Bool {
-    return a.x == b.x && a.y == b.y
+public prefix func -<T: SignedVectorable>(v: Vector2<T>) -> Vector2<T> {
+    let x: T = -v.x
+    let y: T = -v.y
+    
+    return Vector2<T>(x, y)
+}
+
+public prefix func +<T: SignedVectorable>(v: Vector2<T>) -> Vector2<T> {
+    let x: T = +v.x
+    let y: T = +v.y
+    
+    return Vector2<T>(x, y)
 }
 
 // MARK: Approximately Equal
@@ -120,117 +228,9 @@ public func abs<T: SignedVectorable>(_ a: Vector2<T>) -> Vector2<T> {
     return Vector2<T>(x, y)
 }
 
-// MARK: - Addition
-
-public func +<T: Vectorable>(a: Vector2<T>, b: T) -> Vector2<T> {
-    let x: T = a.x + b
-    let y: T = a.y + b
-    
-    return Vector2<T>(x, y)
-}
-
-public func +<T: Vectorable>(a: T, b: Vector2<T>) -> Vector2<T> {
-    let x: T = a + b.x
-    let y: T = a + b.y
-    
-    return Vector2<T>(x, y)
-}
-
-public func +<T: Vectorable>(a: Vector2<T>, b: Vector2<T>) -> Vector2<T> {
-    let x: T = a.x + b.x
-    let y: T = a.y + b.y
-    
-    return Vector2<T>(x, y)
-}
-
-// MARK: - Subtraction
-
-public func -<T: Vectorable>(a: Vector2<T>, b: T) -> Vector2<T> {
-    let x: T = a.x - b
-    let y: T = a.y - b
-    
-    return Vector2<T>(x, y)
-}
-
-public func -<T: Vectorable>(a: T, b: Vector2<T>) -> Vector2<T> {
-    let x: T = a - b.x
-    let y: T = a - b.y
-    
-    return Vector2<T>(x, y)
-}
-
-public func -<T: Vectorable>(a: Vector2<T>, b: Vector2<T>) -> Vector2<T> {
-    let x: T = a.x - b.x
-    let y: T = a.y - b.y
-    
-    return Vector2<T>(x, y)
-}
-
-// MARK: - Multiplication
-
-public func *<T: Vectorable>(a: Vector2<T>, b: T) -> Vector2<T> {
-    let x: T = a.x * b
-    let y: T = a.y * b
-    
-    return Vector2<T>(x, y)
-}
-
-public func *<T: Vectorable>(a: T, b: Vector2<T>) -> Vector2<T> {
-    let x: T = a * b.x
-    let y: T = a * b.y
-    
-    return Vector2<T>(x, y)
-}
-
-public func *<T: Vectorable>(a: Vector2<T>, b: Vector2<T>) -> Vector2<T> {
-    let x: T = a.x * b.x
-    let y: T = a.y * b.y
-    
-    return Vector2<T>(x, y)
-}
-
-// MARK: - Division
-
-public func /<T: Vectorable>(a: Vector2<T>, b: T) -> Vector2<T> {
-    let x: T = a.x / b
-    let y: T = a.y / b
-    
-    return Vector2<T>(x, y)
-}
-
-public func /<T: Vectorable>(a: T, b: Vector2<T>) -> Vector2<T> {
-    let x: T = a / b.x
-    let y: T = a / b.y
-    
-    return Vector2<T>(x, y)
-}
-
-public func /<T: Vectorable>(a: Vector2<T>, b: Vector2<T>) -> Vector2<T> {
-    let x: T = a.x / b.x
-    let y: T = a.y / b.y
-    
-    return Vector2<T>(x, y)
-}
-
-// MARK: - Negation
-
-public prefix func -<T: SignedVectorable>(v: Vector2<T>) -> Vector2<T> {
-    let x: T = -v.x
-    let y: T = -v.y
-    
-    return Vector2<T>(x, y)
-}
-
-public prefix func +<T: SignedVectorable>(v: Vector2<T>) -> Vector2<T> {
-    let x: T = +v.x
-    let y: T = +v.y
-    
-    return Vector2<T>(x, y)
-}
-
 // MARK: - Sum
 
-public func sum<T: Vectorable>(_ a: Vector2<T>) -> T {
+public func sum<T>(_ a: Vector2<T>) -> T {
     return a.x + a.y
 }
 
@@ -240,7 +240,7 @@ public func length<T: FloatingPointVectorable>(_ a: Vector2<T>) -> T {
     return length2(a).squareRoot()
 }
 
-public func length2<T: Vectorable>(_ a: Vector2<T>) -> T {
+public func length2<T>(_ a: Vector2<T>) -> T {
     let a2: Vector2<T> = a * a
     
     return sum(a2)
@@ -254,14 +254,14 @@ public func distance<T: FloatingPointVectorable>(_ a: Vector2<T>, _ b: Vector2<T
     return distance2(a, b).squareRoot()
 }
 
-public func distance2<T: Vectorable>(_ a: Vector2<T>, _ b: Vector2<T>) -> T {
+public func distance2<T>(_ a: Vector2<T>, _ b: Vector2<T>) -> T {
     let difference: Vector2<T> = b - a
     let difference2: Vector2<T> = difference * difference
     
     return sum(difference2)
 }
 
-public func dot<T: Vectorable>(_ a: Vector2<T>, _ b: Vector2<T>) -> T {
+public func dot<T>(_ a: Vector2<T>, _ b: Vector2<T>) -> T {
     let ab: Vector2<T> = a * b
     
     return sum(ab)

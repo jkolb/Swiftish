@@ -30,7 +30,7 @@ public struct Angle<T: FloatingPointVectorable> : Equatable, Comparable, CustomS
     }
     
     public init() {
-        self.init(radians: T.zero)
+        self.init(radians: 0)
     }
     
     public init(radians: T) {
@@ -38,8 +38,8 @@ public struct Angle<T: FloatingPointVectorable> : Equatable, Comparable, CustomS
     }
     
     private static func clamped(_ radians: T) -> T {
-        let min: T = -(T.pi * T.two)
-        let max: T = +(T.pi * T.two)
+        let min: T = -(T.pi * 2)
+        let max: T = +(T.pi * 2)
         var clampedRadians = radians
         
         while clampedRadians >= max {
@@ -64,76 +64,76 @@ public struct Angle<T: FloatingPointVectorable> : Equatable, Comparable, CustomS
     public var description: String {
         return "\(radians)"
     }
-}
 
-public func ==<T: FloatingPointVectorable>(a: Angle<T>, b: Angle<T>) -> Bool {
-    return a.radians == b.radians
-}
+    public static func ==(a: Angle<T>, b: Angle<T>) -> Bool {
+        return a.radians == b.radians
+    }
 
-public func <<T: FloatingPointVectorable>(a: Angle<T>, b: Angle<T>) -> Bool {
-    return a.radians < b.radians
-}
+    public static func <(a: Angle<T>, b: Angle<T>) -> Bool {
+        return a.radians < b.radians
+    }
 
-public func +<T: FloatingPointVectorable>(a: Angle<T>, b: Angle<T>) -> Angle<T> {
-    return Angle<T>(radians: a.radians + b.radians)
-}
+    public static func +(a: Angle<T>, b: Angle<T>) -> Angle<T> {
+        return Angle<T>(radians: a.radians + b.radians)
+    }
 
-public func -<T: FloatingPointVectorable>(a: Angle<T>, b: Angle<T>) -> Angle<T> {
-    return Angle<T>(radians: a.radians - b.radians)
-}
+    public static func -(a: Angle<T>, b: Angle<T>) -> Angle<T> {
+        return Angle<T>(radians: a.radians - b.radians)
+    }
 
-public func *<T: FloatingPointVectorable>(a: Angle<T>, b: T) -> Angle<T> {
-    return Angle<T>(radians: a.radians * b)
-}
+    public static func *(a: Angle<T>, b: T) -> Angle<T> {
+        return Angle<T>(radians: a.radians * b)
+    }
 
-public func *<T: FloatingPointVectorable>(a: T, b: Angle<T>) -> Angle<T> {
-    return Angle<T>(radians: a * b.radians)
-}
+    public static func *(a: T, b: Angle<T>) -> Angle<T> {
+        return Angle<T>(radians: a * b.radians)
+    }
 
-public func /<T: FloatingPointVectorable>(a: Angle<T>, b: T) -> Angle<T> {
-    return Angle<T>(radians: a.radians / b)
-}
+    public static func /(a: Angle<T>, b: T) -> Angle<T> {
+        return Angle<T>(radians: a.radians / b)
+    }
 
-public func +=<T: FloatingPointVectorable>(a: inout Angle<T>, b: Angle<T>) {
-    a.radians = a.radians + b.radians
-}
+    public static func +=(a: inout Angle<T>, b: Angle<T>) {
+        a.radians = a.radians + b.radians
+    }
 
-public func -=<T: FloatingPointVectorable>(a: inout Angle<T>, b: Angle<T>) {
-    a.radians = a.radians - b.radians
-}
+    public static func -=(a: inout Angle<T>, b: Angle<T>) {
+        a.radians = a.radians - b.radians
+    }
 
-// MARK: - Negation
+    // MARK: - Negation
 
-public prefix func -<T: FloatingPointVectorable>(a: Angle<T>) -> Angle<T> {
-    return Angle<T>(radians: -a.radians)
-}
+    public static prefix func -(a: Angle<T>) -> Angle<T> {
+        return Angle<T>(radians: -a.radians)
+    }
 
-public prefix func +<T: FloatingPointVectorable>(a: Angle<T>) -> Angle<T> {
-    return Angle<T>(radians: +a.radians)
+    public static prefix func +(a: Angle<T>) -> Angle<T> {
+        return Angle<T>(radians: +a.radians)
+    }
 }
 
 // MARK: - Trigonometry
 
-public func cos<T: FloatingPointVectorable>(_ a: Angle<T>) -> Angle<T> {
+public func cos<T>(_ a: Angle<T>) -> Angle<T> {
     return Angle<T>(radians: a.radians.cosine())
 }
 
-public func sin<T: FloatingPointVectorable>(_ a: Angle<T>) -> Angle<T> {
+public func sin<T>(_ a: Angle<T>) -> Angle<T> {
     return Angle<T>(radians: a.radians.sine())
 }
 
-public func tan<T: FloatingPointVectorable>(_ a: Angle<T>) -> Angle<T> {
+public func tan<T>(_ a: Angle<T>) -> Angle<T> {
     return Angle<T>(radians: a.radians.tangent())
 }
 
-public func acos<T: FloatingPointVectorable>(_ a: Angle<T>) -> Angle<T> {
+public func acos<T>(_ a: Angle<T>) -> Angle<T> {
     return Angle<T>(radians: a.radians.arccosine())
 }
 
-public func asin<T: FloatingPointVectorable>(_ a: Angle<T>) -> Angle<T> {
+public func asin<T>(_ a: Angle<T>) -> Angle<T> {
     return Angle<T>(radians: a.radians.arcsine())
 }
 
-public func atan<T: FloatingPointVectorable>(_ a: Angle<T>) -> Angle<T> {
+public func atan<T>(_ a: Angle<T>) -> Angle<T> {
     return Angle<T>(radians: a.radians.arctangent())
 }

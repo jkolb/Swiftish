@@ -33,14 +33,14 @@ public struct Bounds2<T: SignedVectorable> : Equatable {
     public init(minimum: Vector2<T>, maximum: Vector2<T>) {
         precondition(minimum.x <= maximum.x)
         precondition(minimum.y <= maximum.y)
-        let center = (maximum + minimum) / T.two
-        let extents = (maximum - minimum) / T.two
+        let center = (maximum + minimum) / 2
+        let extents = (maximum - minimum) / 2
         self.init(center: center, extents: extents)
     }
     
     public init(center: Vector2<T>, extents: Vector2<T>) {
-        precondition(extents.x >= T.zero)
-        precondition(extents.y >= T.zero)
+        precondition(extents.x >= 0)
+        precondition(extents.y >= 0)
         self.center = center
         self.extents = extents
     }
@@ -141,17 +141,17 @@ public struct Bounds2<T: SignedVectorable> : Equatable {
     
     public var corners: [Vector2<T>] {
         let max: Vector2<T> = maximum
-        let corner0: Vector2<T> = max * Vector2<T>(+T.one, +T.one)
-        let corner1: Vector2<T> = max * Vector2<T>(+T.one, -T.one)
-        let corner2: Vector2<T> = max * Vector2<T>(-T.one, +T.one)
-        let corner3: Vector2<T> = max * Vector2<T>(-T.one, -T.one)
+        let corner0: Vector2<T> = max * Vector2<T>(+1, +1)
+        let corner1: Vector2<T> = max * Vector2<T>(+1, -1)
+        let corner2: Vector2<T> = max * Vector2<T>(-1, +1)
+        let corner3: Vector2<T> = max * Vector2<T>(-1, -1)
 
         return [corner0, corner1, corner2, corner3]
     }
-}
 
-public func ==<T: SignedVectorable>(a: Bounds2<T>, b: Bounds2<T>) -> Bool {
-    return a.center == b.center && a.extents == b.extents
+    public static func ==(a: Bounds2<T>, b: Bounds2<T>) -> Bool {
+        return a.center == b.center && a.extents == b.extents
+    }
 }
 
 public func circle<T: FloatingPointVectorable>(_ a: Bounds2<T>) -> Circle<T> {

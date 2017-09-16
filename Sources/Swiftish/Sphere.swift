@@ -22,20 +22,40 @@
  SOFTWARE.
  */
 
-public struct Region2<T: Vectorable> : Equatable {
-    public var origin: Vector2<T>
-    public var size: Vector2<T>
+public struct Sphere<T: Vectorable> : Equatable, CustomStringConvertible {
+    public let center: Vector3<T>
+    public let radius: T
     
     public init() {
-        self.init(origin: Vector2<T>(), size: Vector2<T>())
+        self.init(center: Vector3<T>(), radius: 0)
     }
     
-    public init(origin: Vector2<T>, size: Vector2<T>) {
-        self.origin = origin
-        self.size = size
+    public init(center: Vector3<T>, radius: T) {
+        precondition(radius >= 0)
+        self.center = center
+        self.radius = radius
+    }
+    
+    public var isNull: Bool {
+        return center == Vector3<T>() && radius == 0
+    }
+    
+    public var description: String {
+        return "{\(center), \(radius)}"
+    }
+
+    public static func ==(a: Sphere<T>, b: Sphere<T>) -> Bool {
+        return a.center == b.center && a.radius == b.radius
     }
 }
 
-public func ==<T: Vectorable>(a: Region2<T>, b: Region2<T>) -> Bool {
-    return a.origin == b.origin && a.size == b.size
+public func boundsOf<T: SignedVectorable>(_ s: Sphere<T>) -> Bounds3<T> {
+    return Bounds3<T>(center: s.center, extents: Vector3<T>(s.radius))
+}
+
+public func union<T: FloatingPointVectorable>(_ a: Sphere<T>, _ b: Sphere<T>) -> Sphere<T> {
+    let midpoint = (a.center + b.center) / 2
+    let largestRadius = distance(midpoint, a.center) + max(a.radius, b.radius)
+    
+    return Sphere<T>(center: midpoint, radius: largestRadius)
 }

@@ -57,7 +57,7 @@ public struct Quaternion<T: Vectorable> : Equatable, CustomStringConvertible {
     }
 
     public init() {
-        self.init(T.one, Vector3<T>())
+        self.init(1, Vector3<T>())
     }
     
     public init(_ w: T, _ x: T, _ y: T, _ z: T) {
@@ -119,94 +119,94 @@ public struct Quaternion<T: Vectorable> : Equatable, CustomStringConvertible {
     
     public var matrix: Matrix3x3<T> {
         let v: Vector3<T> = xyz
-        let twoWV = T.two * (w * v)
-        let twoV2 = T.two * (v * v)
-        let twoXY = T.two * (v.x * v.y)
-        let twoXZ = T.two * (v.x * v.z)
-        let twoYZ = T.two * (v.y * v.z)
+        let twoWV = 2 * (w * v)
+        let twoV2 = 2 * (v * v)
+        let twoXY = 2 * (v.x * v.y)
+        let twoXZ = 2 * (v.x * v.z)
+        let twoYZ = 2 * (v.y * v.z)
         
-        let col0 = Vector3<T>(T.one - twoV2.y - twoV2.z, twoXY + twoWV.z, twoXZ - twoWV.y)
-        let col1 = Vector3<T>(twoXY - twoWV.z, T.one - twoV2.x - twoV2.z, twoYZ + twoWV.x)
-        let col2 = Vector3<T>(twoXZ + twoWV.y, twoYZ - twoWV.x, T.one - twoV2.x - twoV2.y)
+        let col0 = Vector3<T>(1 - twoV2.y - twoV2.z, twoXY + twoWV.z, twoXZ - twoWV.y)
+        let col1 = Vector3<T>(twoXY - twoWV.z, 1 - twoV2.x - twoV2.z, twoYZ + twoWV.x)
+        let col2 = Vector3<T>(twoXZ + twoWV.y, twoYZ - twoWV.x, 1 - twoV2.x - twoV2.y)
         
         return Matrix3x3<T>(col0, col1, col2)
     }
-}
 
-// MARK: - Equatable
+    // MARK: - Equatable
 
-public func ==<T: Vectorable>(a: Quaternion<T>, b: Quaternion<T>) -> Bool {
-    return a.w == b.w && a.xyz == b.xyz
-}
+    public static func ==(a: Quaternion<T>, b: Quaternion<T>) -> Bool {
+        return a.w == b.w && a.xyz == b.xyz
+    }
 
-// MARK: - Addition
+    // MARK: - Addition
 
-public func +<T: Vectorable>(a: Quaternion<T>, b: Quaternion<T>) -> Quaternion<T> {
-    let w: T = a.w + b.w
-    let xyz: Vector3<T> = a.xyz + b.xyz
-    
-    return Quaternion<T>(w, xyz)
-}
+    public static func +(a: Quaternion<T>, b: Quaternion<T>) -> Quaternion<T> {
+        let w: T = a.w + b.w
+        let xyz: Vector3<T> = a.xyz + b.xyz
+        
+        return Quaternion<T>(w, xyz)
+    }
 
-// MARK: - Subtraction
+    // MARK: - Subtraction
 
-public func -<T: Vectorable>(a: Quaternion<T>, b: Quaternion<T>) -> Quaternion<T> {
-    let w: T = a.w - b.w
-    let xyz: Vector3<T> = a.xyz - b.xyz
-    
-    return Quaternion<T>(w, xyz)
-}
+    public static func -(a: Quaternion<T>, b: Quaternion<T>) -> Quaternion<T> {
+        let w: T = a.w - b.w
+        let xyz: Vector3<T> = a.xyz - b.xyz
+        
+        return Quaternion<T>(w, xyz)
+    }
 
-// MARK: - Multiplication
+    // MARK: - Multiplication
 
-public func *<T: Vectorable>(a: Quaternion<T>, b: Quaternion<T>) -> Quaternion<T> {
-    let ps: T = a.w
-    let pv: Vector3<T> = a.xyz
-    let qs: T = b.w
-    let qv: Vector3<T> = b.xyz
-    let s: T = ps * qs - dot(pv, qv)
-    let v: Vector3<T> = cross(pv, qv) + ps * qv + qs * pv
-    
-    return Quaternion<T>(s, v)
-}
+    public static func *(a: Quaternion<T>, b: Quaternion<T>) -> Quaternion<T> {
+        let ps: T = a.w
+        let pv: Vector3<T> = a.xyz
+        let qs: T = b.w
+        let qv: Vector3<T> = b.xyz
+        let s: T = ps * qs - dot(pv, qv)
+        let v: Vector3<T> = cross(pv, qv) + ps * qv + qs * pv
+        
+        return Quaternion<T>(s, v)
+    }
 
-public func *<T: Vectorable>(a: T, b: Quaternion<T>) -> Quaternion<T> {
-    let w: T = a * b.w
-    let xyz: Vector3<T> = a * b.xyz
-    
-    return Quaternion<T>(w, xyz)
-}
+    public static func *(a: T, b: Quaternion<T>) -> Quaternion<T> {
+        let w: T = a * b.w
+        let xyz: Vector3<T> = a * b.xyz
+        
+        return Quaternion<T>(w, xyz)
+    }
 
-public func *<T: Vectorable>(a: Quaternion<T>, b: T) -> Quaternion<T> {
-    let w: T = a.w * b
-    let xyz: Vector3<T> = a.xyz * b
-    
-    return Quaternion<T>(w, xyz)
-}
+    public static func *(a: Quaternion<T>, b: T) -> Quaternion<T> {
+        let w: T = a.w * b
+        let xyz: Vector3<T> = a.xyz * b
+        
+        return Quaternion<T>(w, xyz)
+    }
 
-// MARK: - Division
+    // MARK: - Division
 
-public func /<T: FloatingPoint>(a: Quaternion<T>, b: T) -> Quaternion<T> {
-    let w: T = a.w / b
-    let xyz: Vector3<T> = a.xyz / b
-    
-    return Quaternion<T>(w, xyz)
-}
+    public static func /(a: Quaternion<T>, b: T) -> Quaternion<T> {
+        let w: T = a.w / b
+        let xyz: Vector3<T> = a.xyz / b
+        
+        return Quaternion<T>(w, xyz)
+    }
 
-// MARK: - Rotation
+    // MARK: - Rotation
 
-public func *<T: Vectorable>(q: Quaternion<T>, r: Vector3<T>) -> Vector3<T> {
-    let qXr: Vector3<T> = cross(q.xyz, r)
-    let twoQ: Quaternion<T> = T.two * q
-    
-    return r + twoQ.w * qXr + cross(twoQ.xyz, qXr)
-}
+    public static func *(q: Quaternion<T>, r: Vector3<T>) -> Vector3<T> {
+        let qXr: Vector3<T> = cross(q.xyz, r)
+        let twoQ: Quaternion<T> = 2 * q
+        
+        return r + twoQ.w * qXr + cross(twoQ.xyz, qXr)
+    }
 
-public func *<T: Vectorable>(r: Vector3<T>, q: Quaternion<T>) -> Vector3<T> {
-    let qXr: Vector3<T> = cross(q.xyz, r)
-    let twoQ: Quaternion<T> = T.two * q
-    
-    return r + twoQ.w * qXr + cross(twoQ.xyz, qXr)
+    public static func *(r: Vector3<T>, q: Quaternion<T>) -> Vector3<T> {
+        let qXr: Vector3<T> = cross(q.xyz, r)
+        let twoQ: Quaternion<T> = 2 * q
+        
+        return r + twoQ.w * qXr + cross(twoQ.xyz, qXr)
+    }
 }
 
 // MARK: Conjugate
@@ -217,11 +217,11 @@ public func conjugate<T: SignedVectorable>(_ q: Quaternion<T>) -> Quaternion<T> 
 
 // MARK: Geometric
 
-public func dot<T: Vectorable>(_ a: Quaternion<T>, _ b: Quaternion<T>) -> T {
+public func dot<T>(_ a: Quaternion<T>, _ b: Quaternion<T>) -> T {
     return a.w * b.w + dot(a.xyz, b.xyz)
 }
 
-public func length2<T: Vectorable>(_ q: Quaternion<T>) -> T {
+public func length2<T>(_ q: Quaternion<T>) -> T {
     return q.w * q.w + sum(q.xyz * q.xyz)
 }
 
@@ -230,7 +230,7 @@ public func length<T: FloatingPointVectorable>(_ q: Quaternion<T>) -> T {
 }
 
 public func normalize<T: FloatingPointVectorable>(_ q: Quaternion<T>) -> Quaternion<T> {
-    return q * (T.one / length(q))
+    return q * (1 / length(q))
 }
 
 // MARK: - Inverse
@@ -275,8 +275,8 @@ public func quat<T: FloatingPointVectorable>(_ m: Matrix3x3<T>) -> Quaternion<T>
         fMax = fZ
     }
     
-    let oneQuarter: T = T.one / (T.two * T.two)
-    let max = (fMax + T.one).squareRoot() / T.two
+    let oneQuarter: T = 1 / (2 * 2)
+    let max = (fMax + 1).squareRoot() / 2
     let mul = oneQuarter / max
     
     switch index {
@@ -314,17 +314,17 @@ public func quat<T: FloatingPointVectorable>(_ m: Matrix3x3<T>) -> Quaternion<T>
 }
 
 public func angleOf<T: FloatingPointVectorable>(_ q: Quaternion<T>) -> Angle<T> {
-    return Angle<T>(radians: q.w.arccosine() * T.two)
+    return Angle<T>(radians: q.w.arccosine() * 2)
 }
 
 public func axisOf<T: FloatingPointVectorable>(_ q: Quaternion<T>) -> Vector3<T> {
-    let t1 = T.one - q.w * q.w
+    let t1 = 1 - q.w * q.w
     
-    if t1 <= T.zero {
-        return Vector3<T>(T.zero, T.zero, T.one)
+    if t1 <= 0 {
+        return Vector3<T>(0, 0, 0)
     }
     
-    let t2 = T.one / t1.squareRoot()
+    let t2 = 1 / t1.squareRoot()
     
     return Vector3<T>(
         q.x * t2,
@@ -333,14 +333,14 @@ public func axisOf<T: FloatingPointVectorable>(_ q: Quaternion<T>) -> Vector3<T>
     )
 }
 
-public func quat<T: FloatingPointVectorable>(axis: Vector3<T>, angle: Angle<T>) -> Quaternion<T> {
-    let halfAngle = angle / T.two
+public func quat<T>(axis: Vector3<T>, angle: Angle<T>) -> Quaternion<T> {
+    let halfAngle = angle / 2
     
     return Quaternion<T>(cos(halfAngle).radians, sin(halfAngle).radians * axis)
 }
 
 public func rollOf<T: FloatingPointVectorable>(_ q: Quaternion<T>) -> Angle<T> {
-    let a: T = T.two * (q.x * q.y + q.w * q.z)
+    let a: T = 2 * (q.x * q.y + q.w * q.z)
     let w2: T = q.w * q.w
     let x2: T = q.x * q.x
     let y2: T = q.y * q.y
@@ -353,7 +353,7 @@ public func rollOf<T: FloatingPointVectorable>(_ q: Quaternion<T>) -> Angle<T> {
 }
 
 public func pitchOf<T: FloatingPointVectorable>(_ q: Quaternion<T>) -> Angle<T> {
-    let a: T = T.two * (q.y * q.z + q.w * q.x)
+    let a: T = 2 * (q.y * q.z + q.w * q.x)
     let w2: T = q.w * q.w
     let x2: T = q.x * q.x
     let y2: T = q.y * q.y
@@ -366,14 +366,14 @@ public func pitchOf<T: FloatingPointVectorable>(_ q: Quaternion<T>) -> Angle<T> 
 }
 
 public func yawOf<T: FloatingPointVectorable>(_ q: Quaternion<T>) -> Angle<T> {
-    let a = -T.two * (q.x * q.z - q.w * q.y)
+    let a = -2 * (q.x * q.z - q.w * q.y)
     
     return Angle<T>(radians: a.arcsine())
 }
 
-public func rotation<T: FloatingPointVectorable>(pitch: Angle<T>, yaw: Angle<T>, roll: Angle<T>) -> Quaternion<T> {
+public func rotation<T>(pitch: Angle<T>, yaw: Angle<T>, roll: Angle<T>) -> Quaternion<T> {
     let angle = Vector3<T>(pitch.radians, yaw.radians, roll.radians)
-    let halfAngle: Vector3<T> = angle / T.two
+    let halfAngle: Vector3<T> = angle / 2
     let c = cos(halfAngle)
     let s = sin(halfAngle)
     let w: T = c.x * c.y * c.z + s.x * s.y * s.z
@@ -384,8 +384,8 @@ public func rotation<T: FloatingPointVectorable>(pitch: Angle<T>, yaw: Angle<T>,
     return Quaternion<T>(w, x, y, z)
 }
 
-public func rotation<T: FloatingPointVectorable>(angle: Angle<T>, axis: Vector3<T>) -> Quaternion<T> {
-    let halfAngle = angle / T.two
+public func rotation<T>(angle: Angle<T>, axis: Vector3<T>) -> Quaternion<T> {
+    let halfAngle = angle / 2
     let s = sin(halfAngle).radians
     let c = cos(halfAngle).radians
     let w: T = c

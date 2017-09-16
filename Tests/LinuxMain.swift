@@ -26,5 +26,10 @@ import XCTest
 @testable import SwiftishTests
 
 XCTMain([
-     testCase(SwiftishTests.allTests),
+     testCase(Vector2Tests.allTests),
+     testCase(Vector3Tests.allTests),
+     testCase(Vector4Tests.allTests),
+     testCase(Matrix2Tests.allTests),
+     testCase(Matrix3Tests.allTests),
+     testCase(Matrix4Tests.allTests),
 ])

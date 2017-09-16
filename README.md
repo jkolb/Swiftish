@@ -4,6 +4,9 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 #### Changelog
 
+#####Version 3.0.0
+* Updated for Swift 4
+
 #####Version 2.0.0
 * Updated for Swift 3
 * Swift Package Manager support

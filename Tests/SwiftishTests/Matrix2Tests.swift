@@ -26,6 +26,10 @@ import XCTest
 @testable import Swiftish
 
 class Matrix2Tests: XCTestCase {
+    static var allTests = [
+        ("testInverse", testInverse),
+    ]
+
     func testInverse() {
         let col0 = Vector2<Float>(1.0, 2.0)
         let col1 = Vector2<Float>(3.0, 4.0)

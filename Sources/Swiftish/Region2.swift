@@ -2,7 +2,7 @@
  The MIT License (MIT)
  
  Copyright (c) 2015-2017 Justin Kolb
-
+ 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
@@ -22,20 +22,20 @@
  SOFTWARE.
  */
 
-public struct Circle<T: Vectorable> : Equatable, CustomStringConvertible {
-    public var center: Vector2<T>
-    public var radius: T
+public struct Region2<T: Vectorable> : Equatable {
+    public var origin: Vector2<T>
+    public var size: Vector2<T>
     
-    public init(center: Vector2<T>, radius: T) {
-        self.center = center
-        self.radius = radius
+    public init() {
+        self.init(origin: Vector2<T>(), size: Vector2<T>())
     }
     
-    public var description: String {
-        return "{\(center), \(radius)}"
+    public init(origin: Vector2<T>, size: Vector2<T>) {
+        self.origin = origin
+        self.size = size
     }
-}
 
-public func ==<T: Vectorable>(a: Circle<T>, b: Circle<T>) -> Bool {
-    return a.center == b.center && a.radius == b.radius
+    public static func ==(a: Region2<T>, b: Region2<T>) -> Bool {
+        return a.origin == b.origin && a.size == b.size
+    }
 }

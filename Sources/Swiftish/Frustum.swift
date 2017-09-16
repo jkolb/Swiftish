@@ -2,7 +2,7 @@
  The MIT License (MIT)
  
  Copyright (c) 2015-2017 Justin Kolb
- 
+
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
@@ -22,31 +22,28 @@
  SOFTWARE.
  */
 
-public struct Ray3<T: Vectorable> : Equatable, CustomStringConvertible {
-    public var origin: Vector3<T>
-    public var direction: Vector3<T>
+public struct Frustum<T: Vectorable> : Equatable, CustomStringConvertible {
+    public let top: Plane<T>
+    public let bottom: Plane<T>
+    public let left: Plane<T>
+    public let right: Plane<T>
+    public let near: Plane<T>
+    public let far: Plane<T>
     
-    public init(origin: Vector3<T>, direction: Vector3<T>) {
-        self.origin = origin
-        self.direction = direction;
+    public init(top: Plane<T>, bottom: Plane<T>, left: Plane<T>, right: Plane<T>, near: Plane<T>, far: Plane<T>) {
+        self.top = top
+        self.bottom = bottom
+        self.left = left
+        self.right = right
+        self.near = near
+        self.far = far
     }
     
     public var description: String {
-        return "{\(origin), \(direction)}"
+        return "{\n\tT: \(top)\n\tB: \(bottom)\n\tL: \(left)\n\tR: \(right)\n\tN: \(near)\n\tF: \(far)}"
     }
-}
 
-public func ==<T: Vectorable>(a: Ray3<T>, b: Ray3<T>) -> Bool {
-    return a.origin == b.origin && a.direction == b.direction
-}
-
-public func distance<T: FloatingPointVectorable>(_ r: Ray3<T>, _ t: Triangle3<T>) -> T {
-    let n = normalOf(t)
-    let qp = -r.direction
-    let d = dot(qp, n)
-    let ap = r.origin - t.a
-    let t = dot(ap, n)
-    let ood = t / d
-    
-    return ood
+    public static func ==(lhs: Frustum<T>, rhs: Frustum<T>) -> Bool {
+        return lhs.top == rhs.top && lhs.bottom == rhs.bottom && lhs.left == rhs.left && lhs.right == rhs.right && lhs.near == rhs.near && lhs.far == rhs.far
+    }
 }

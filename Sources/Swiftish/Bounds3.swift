@@ -34,15 +34,15 @@ public struct Bounds3<T: SignedVectorable> : Equatable {
         precondition(minimum.x <= maximum.x)
         precondition(minimum.y <= maximum.y)
         precondition(minimum.z <= maximum.z)
-        let center = (maximum + minimum) / T.two
-        let extents = (maximum - minimum) / T.two
+        let center = (maximum + minimum) / 2
+        let extents = (maximum - minimum) / 2
         self.init(center: center, extents: extents)
     }
     
     public init(center: Vector3<T>, extents: Vector3<T>) {
-        precondition(extents.x >= T.zero)
-        precondition(extents.y >= T.zero)
-        precondition(extents.z >= T.zero)
+        precondition(extents.x >= 0)
+        precondition(extents.y >= 0)
+        precondition(extents.z >= 0)
         self.center = center
         self.extents = extents
     }
@@ -151,32 +151,32 @@ public struct Bounds3<T: SignedVectorable> : Equatable {
     
     public var corners: [Vector3<T>] {
         let max: Vector3<T> = maximum
-        let corner0: Vector3<T> = max * Vector3<T>(+T.one, +T.one, +T.one)
-        let corner1: Vector3<T> = max * Vector3<T>(-T.one, +T.one, +T.one)
-        let corner2: Vector3<T> = max * Vector3<T>(+T.one, -T.one, +T.one)
-        let corner3: Vector3<T> = max * Vector3<T>(+T.one, +T.one, -T.one)
-        let corner4: Vector3<T> = max * Vector3<T>(-T.one, -T.one, +T.one)
-        let corner5: Vector3<T> = max * Vector3<T>(+T.one, -T.one, -T.one)
-        let corner6: Vector3<T> = max * Vector3<T>(-T.one, +T.one, -T.one)
-        let corner7: Vector3<T> = max * Vector3<T>(-T.one, -T.one, -T.one)
+        let corner0: Vector3<T> = max * Vector3<T>(+1, +1, +1)
+        let corner1: Vector3<T> = max * Vector3<T>(-1, +1, +1)
+        let corner2: Vector3<T> = max * Vector3<T>(+1, -1, +1)
+        let corner3: Vector3<T> = max * Vector3<T>(+1, +1, -1)
+        let corner4: Vector3<T> = max * Vector3<T>(-1, -1, +1)
+        let corner5: Vector3<T> = max * Vector3<T>(+1, -1, -1)
+        let corner6: Vector3<T> = max * Vector3<T>(-1, +1, -1)
+        let corner7: Vector3<T> = max * Vector3<T>(-1, -1, -1)
         
         return [
             corner0, corner1, corner2, corner3,
             corner4, corner5, corner6, corner7,
         ]
     }
-}
 
-public func ==<T: SignedVectorable>(a: Bounds3<T>, b: Bounds3<T>) -> Bool {
-    return a.center == b.center && a.extents == b.extents
+    public static func ==(a: Bounds3<T>, b: Bounds3<T>) -> Bool {
+        return a.center == b.center && a.extents == b.extents
+    }
 }
 
 public func sphere<T: FloatingPointVectorable>(_ a: Bounds3<T>) -> Sphere<T> {
     return Sphere<T>(center: a.center, radius: length(a.extents))
 }
 
-public func distance2<T: Vectorable>(_ point: Vector3<T>, _ bounds: Bounds3<T>) -> T {
-    var distanceSquared: T = T.zero
+public func distance2<T>(_ point: Vector3<T>, _ bounds: Bounds3<T>) -> T {
+    var distanceSquared: T = 0
     let minimum = bounds.minimum
     let maximum = bounds.maximum
     
