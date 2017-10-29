@@ -58,20 +58,7 @@ public struct Transform3<T: FloatingPointVectorable> : Equatable, CustomStringCo
     }
     
     public var matrix: Matrix4x4<T> {
-        let rs: Matrix3x3<T>
-        
-        if hasRotation && hasScale {
-            rs = r.matrix * Matrix3x3<T>(s)
-        }
-        else if hasRotation {
-            rs = r.matrix
-        }
-        else if hasScale {
-            rs = Matrix3x3<T>(s)
-        }
-        else {
-            rs = Matrix3x3<T>()
-        }
+        let rs = r.matrix * Matrix3x3<T>(s)
         
         return Matrix4x4<T>(
             Vector4<T>(rs[0]),
@@ -82,29 +69,8 @@ public struct Transform3<T: FloatingPointVectorable> : Equatable, CustomStringCo
     }
     
     public var inverseMatrix: Matrix4x4<T> {
-        let sri: Matrix3x3<T>
-        
-        if hasRotation && hasScale {
-            sri = Matrix3x3<T>(1 / s) * r.matrix.transpose
-        }
-        else if hasRotation {
-            sri = r.matrix.transpose
-        }
-        else if hasScale {
-            sri = Matrix3x3<T>(1 / s)
-        }
-        else {
-            sri = Matrix3x3<T>()
-        }
-        
-        let ti: Vector3<T>
-        
-        if hasTranslation {
-            ti = sri * -t
-        }
-        else {
-            ti = Vector3<T>()
-        }
+        let sri = Matrix3x3<T>(1 / s) * r.matrix.transpose
+        let ti = sri * -t
 
         return Matrix4x4<T>(
             Vector4<T>(sri[0]),

@@ -1,8 +1,13 @@
-# [Swiftish 2.0.0](https://github.com/jkolb/Swiftish)
+# [Swiftish](https://github.com/jkolb/Swiftish)
 
 #### A fully generic Swift vector & matrix library
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 #### Changelog
+
+#####Version 3.1.0
+* Fix Vector3 xAxis
+* Turn Vector3 axis methods into static properties
+* Simplify Transform3 matrix & inverseMatrix methods to not use conditionals
 
 #####Version 3.0.0
 * Updated for Swift 4
