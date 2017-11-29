@@ -100,6 +100,40 @@ public struct Bounds2<T: SignedVectorable> : Equatable {
         return center == Vector2<T>() && extents == Vector2<T>()
     }
     
+    public func contains(point: Vector2<T>) -> Bool {
+        if point.x < minimum.x { return false }
+        if point.y < minimum.y { return false }
+        if point.x > maximum.x { return false }
+        if point.y > maximum.y { return false }
+        
+        return true
+    }
+    
+    /// If `other` bounds intersects current bounds, return their intersection.
+    /// A `null` Bounds2 object is returned if any of those are `null` or if they don't intersect at all.
+    ///
+    /// - Note: A Bounds2 object `isNull` if it's center and extents are zero.
+    /// - Parameter other: The second Bounds2 object to intersect with.
+    /// - Returns: A Bounds2 object intersection.
+    public func intersection(other: Bounds2<T>) -> Bounds2<T> {
+        if isNull {
+            return self
+        }
+        else if other.isNull {
+            return other
+        }
+        else if minimum.x <= other.maximum.x && other.minimum.x <= maximum.x && maximum.y <= other.minimum.y &&
+            other.maximum.y <= minimum.y {
+            let minX = max(minimum.x, other.minimum.x)
+            let minY = max(minimum.y, other.minimum.y)
+            let maxX = min(maximum.x, other.maximum.x)
+            let maxY = min(maximum.y, other.maximum.y)
+            
+            return Bounds2<T>(minimum: Vector2<T>(minX, minY), maximum: Vector2<T>(maxX, maxY))
+        }
+        return Bounds2<T>()
+    }
+    
     public func union(other: Bounds2<T>) -> Bounds2<T> {
         if isNull {
             return other

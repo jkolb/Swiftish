@@ -110,6 +110,43 @@ public struct Bounds3<T: SignedVectorable> : Equatable {
         return center == Vector3<T>() && extents == Vector3<T>()
     }
     
+    public func contains(point: Vector3<T>) -> Bool {
+        if point.x < minimum.x { return false }
+        if point.y < minimum.y { return false }
+        if point.z < minimum.z { return false }
+        if point.x > maximum.x { return false }
+        if point.y > maximum.y { return false }
+        if point.z > maximum.z { return false }
+        
+        return true
+    }
+    
+    /// If `other` bounds intersects current bounds, return their intersection.
+    /// A `null` Bounds3 object is returned if any of those are `null` or if they don't intersect at all.
+    ///
+    /// - Note: A Bounds3 object `isNull` if it's center and extents are zero.
+    /// - Parameter other: The second Bounds3 object to intersect with.
+    /// - Returns: A Bounds3 object intersection.
+    public func intersection(other: Bounds3<T>) -> Bounds3<T> {
+        if isNull {
+            return self
+        }
+        else if other.isNull {
+            return other
+        }
+        else if minimum.x <= other.maximum.x && other.minimum.x <= maximum.x && maximum.y <= other.minimum.y && other.maximum.y <= minimum.y && maximum.z <= other.minimum.z && other.maximum.z <= minimum.z {
+            let minX = max(minimum.x, other.minimum.x)
+            let minY = max(minimum.y, other.minimum.y)
+            let minZ = max(minimum.z, other.minimum.z)
+            let maxX = min(maximum.x, other.maximum.x)
+            let maxY = min(maximum.y, other.maximum.y)
+            let maxZ = min(maximum.z, other.maximum.z)
+            
+            return Bounds3<T>(minimum: Vector3<T>(minX, minY, minZ), maximum: Vector3<T>(maxX, maxY, maxZ))
+        }
+        return Bounds3<T>()
+    }
+    
     public func union(other: Bounds3<T>) -> Bounds3<T> {
         if isNull {
             return other
