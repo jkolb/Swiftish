@@ -4,24 +4,27 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 #### Changelog
 
-#####Version 3.1.0
+###Version 3.1.1
+* zubco added Bounds2 & Bounds3 contains(point:) and intersection(other:) methods.
+
+###Version 3.1.0
 * Fix Vector3 xAxis
 * Turn Vector3 axis methods into static properties
 * Simplify Transform3 matrix & inverseMatrix methods to not use conditionals
 
-#####Version 3.0.0
+###Version 3.0.0
 * Updated for Swift 4
 
-#####Version 2.0.0
+###Version 2.0.0
 * Updated for Swift 3
 * Swift Package Manager support
 * Geometry and intersection tests
 
-#####Version 1.0.2
+###Version 1.0.2
 * Forgot to make typealias public
 * Fixed approx to always use <=
 
-#####Version 1.0.1
+###Version 1.0.1
 * Started adding tests
 * Added some aliases for common sizes and element types
 * Tightened up the Arithmetic protocols
