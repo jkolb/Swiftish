@@ -146,6 +146,9 @@ extension Float64: FloatingPointVectorable {
     }
 }
 
+// Float80 not available on ARM architecture
+#if arch(i386) || arch(x86_64)
+
 extension Float80: FloatingPointVectorable {
     public static let min: Float80 = -greatestFiniteMagnitude
     public static let max: Float80 = +greatestFiniteMagnitude
@@ -181,3 +184,5 @@ extension Float80: FloatingPointVectorable {
         return Float80(atan2(Float64(self), Float64(b)))
     }
 }
+
+#endif
