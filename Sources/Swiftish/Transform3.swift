@@ -22,15 +22,15 @@
  SOFTWARE.
  */
 
-public struct Transform3<T: FloatingPointVectorable> : Equatable, CustomStringConvertible {
-    public var t: Vector3<T>
-    public var r: Quaternion<T>
-    public var s: Vector3<T>
+public struct Transform3<T: Vectorable> : Equatable, CustomStringConvertible {
+    public var translation: Vector3<T>
+    public var rotation: Quaternion<T>
+    public var scale: Vector3<T>
     
-    public init(t: Vector3<T> = Vector3<T>(), r: Quaternion<T> = Quaternion<T>(), s: Vector3<T> = Vector3<T>(1)) {
-        self.t = t
-        self.r = r
-        self.s = s
+    public init(translation: Vector3<T> = Vector3<T>(), rotation: Quaternion<T> = Quaternion<T>(), scale: Vector3<T> = Vector3<T>(1)) {
+        self.translation = translation
+        self.rotation = rotation
+        self.scale = scale
     }
     
     public var isIdentity: Bool {
@@ -38,39 +38,39 @@ public struct Transform3<T: FloatingPointVectorable> : Equatable, CustomStringCo
     }
     
     public var hasScale: Bool {
-        return s != Vector3<T>(1)
+        return scale != Vector3<T>(1)
     }
     
     public var hasRotation: Bool {
-        return r != Quaternion<T>()
+        return rotation != Quaternion<T>()
     }
     
     public var hasTranslation: Bool {
-        return t != Vector3<T>()
+        return translation != Vector3<T>()
     }
     
     public var description: String {
-        return "{\(t), \(r), \(s)}"
+        return "{\(translation), \(rotation), \(scale)}"
     }
     
     public var inverse: Transform3<T> {
-        return Transform3<T>(t: -t, r: conjugate(r), s: 1 / s)
+        return Transform3<T>(translation: -translation, rotation: Quaternion<T>.conjugate(rotation), scale: 1 / scale)
     }
     
     public var matrix: Matrix4x4<T> {
-        let rs = r.matrix * Matrix3x3<T>(s)
+        let rs = rotation.matrix * Matrix3x3<T>(scale)
         
         return Matrix4x4<T>(
             Vector4<T>(rs[0]),
             Vector4<T>(rs[1]),
             Vector4<T>(rs[2]),
-            Vector4<T>(t, 1)
+            Vector4<T>(translation, 1)
         )
     }
     
     public var inverseMatrix: Matrix4x4<T> {
-        let sri = Matrix3x3<T>(1 / s) * r.matrix.transpose
-        let ti = sri * -t
+        let sri = Matrix3x3<T>(1 / scale) * rotation.matrix.transpose
+        let ti = sri * -translation
 
         return Matrix4x4<T>(
             Vector4<T>(sri[0]),
@@ -79,55 +79,16 @@ public struct Transform3<T: FloatingPointVectorable> : Equatable, CustomStringCo
             Vector4<T>(ti, 1)
         )
     }
-    
-    public func applyTo(_ vector: Vector3<T>) -> Vector3<T> {
-        return vector * s * r + t
-    }
-    
-    public func applyTo(_ bounds: Bounds3<T>) -> Bounds3<T> {
-        return Bounds3<T>(containingPoints: bounds.corners.map({ applyTo($0) }))
-    }
-    
-    public func applyTo(_ plane: Plane<T>) -> Plane<T> {
-        let pointOnPlane = plane.normal * plane.distance
-        let transformedNormal = plane.normal * r
-        let transformedPoint = applyTo(pointOnPlane)
-        let transformedDistance = dot(transformedNormal, transformedPoint)
-        
-        return Plane(normal: transformedNormal, distance: transformedDistance)
-    }
-    
-    public func applyTo(_ frustum: Frustum<T>) -> Frustum<T> {
-        return Frustum<T>(
-            top: applyTo(frustum.top),
-            bottom: applyTo(frustum.bottom),
-            left: applyTo(frustum.left),
-            right: applyTo(frustum.right),
-            near: applyTo(frustum.near),
-            far: applyTo(frustum.far)
-        )
-    }
-    
-    public func applyTo(_ sphere: Sphere<T>) -> Sphere<T> {
-        return Sphere(
-            center: sphere.center + t,
-            radius: sphere.radius * s.maximum
-        )
-    }
-    
-    public func applyTo(_ ray: Ray3<T>) -> Ray3<T> {
-        return Ray3<T>(origin: applyTo(ray.origin), direction: ray.direction * r)
-    }
 
     public static func ==(a: Transform3<T>, b: Transform3<T>) -> Bool {
-        return a.t == b.t && a.r == b.r && a.s == b.s
+        return a.translation == b.translation && a.rotation == b.rotation && a.scale == b.scale
     }
 
     public static func +(a: Transform3<T>, b: Transform3<T>) -> Transform3<T> {
         return Transform3<T>(
-            t: a.r * b.t * a.s + a.t,
-            r: a.r * b.r,
-            s: a.s * b.s
+            translation: a.rotation * b.translation * a.scale + a.translation,
+            rotation: a.rotation * b.rotation,
+            scale: a.scale * b.scale
         )
     }
 }

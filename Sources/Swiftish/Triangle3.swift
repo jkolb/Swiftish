@@ -49,19 +49,19 @@ public struct Triangle3<T: Vectorable> : CustomStringConvertible {
     public var description: String {
         return "{\n\t\(a),\n\t\(b),\n\t\(c)}"
     }
-}
 
-public func normalOf<T: FloatingPointVectorable>(_ t: Triangle3<T>) -> Vector3<T> {
-    return normalize(cross(t.b - t.a, t.c - t.a))
-}
-
-public func boundsOf<T: SignedVectorable>(_ t: Triangle3<T>) -> Bounds3<T> {
-    return Bounds3<T>(containingPoints: t.points)
-}
-
-public func planeOf<T: FloatingPointVectorable>(_ t: Triangle3<T>) -> Plane<T> {
-    let normal: Vector3<T> = normalOf(t)
-    let distance: T = dot(normal, t.a)
+    public var normal: Vector3<T> {
+        return Vector3<T>.normalize(Vector3<T>.cross(b - a, c - a))
+    }
     
-    return Plane<T>(normal: normal, distance: distance)
+    public var bounds: Bounds3<T> {
+        return Bounds3<T>(containingPoints: points)
+    }
+    
+    public var plane: Plane<T> {
+        let n: Vector3<T> = normal
+        let d: T = Vector3<T>.dot(n, a)
+        
+        return Plane<T>(normal: n, distance: d)
+    }
 }

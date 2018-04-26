@@ -23,14 +23,14 @@
  */
 
 public struct Matrix2x2<T: Vectorable> : Equatable, CustomStringConvertible {
-    fileprivate var col0: Vector2<T>
-    fileprivate var col1: Vector2<T>
+    private var col0: Vector2<T>
+    private var col1: Vector2<T>
     
-    fileprivate var row0: Vector2<T> {
+    private var row0: Vector2<T> {
         return Vector2<T>(col0.x, col1.x)
     }
     
-    fileprivate var row1: Vector2<T> {
+    private var row1: Vector2<T> {
         return Vector2<T>(col0.y, col1.y)
     }
     
@@ -249,67 +249,67 @@ public struct Matrix2x2<T: Vectorable> : Equatable, CustomStringConvertible {
         
         return Matrix2x2<T>(col0, col1)
     }
-}
 
-// MARK: - Division
-
-public func /<T: SignedVectorable>(m: Matrix2x2<T>, v: Vector2<T>) -> Vector2<T> {
-    return invert(m) * v
-}
-
-public func /<T: SignedVectorable>(v: Vector2<T>, m: Matrix2x2<T>) -> Vector2<T> {
-    return v * invert(m)
-}
-
-public func /<T: SignedVectorable>(m1: Matrix2x2<T>, m2: Matrix2x2<T>) -> Matrix2x2<T> {
-    return m1 * invert(m2)
-}
-
-// MARK: - Negation
-
-public prefix func -<T: SignedVectorable>(m: Matrix2x2<T>) -> Matrix2x2<T> {
-    let col0: Vector2<T> = -m.col0
-    let col1: Vector2<T> = -m.col1
+    // MARK: - Division
     
-    return Matrix2x2<T>(col0, col1)
-}
-
-public prefix func +<T: SignedVectorable>(m: Matrix2x2<T>) -> Matrix2x2<T> {
-    let col0: Vector2<T> = +m.col0
-    let col1: Vector2<T> = +m.col1
+    public static func /(m: Matrix2x2<T>, v: Vector2<T>) -> Vector2<T> {
+        return invert(m) * v
+    }
     
-    return Matrix2x2<T>(col0, col1)
-}
-
-// MARK: Approximately Equal
-
-public func approx<T: FloatingPointVectorable>(_ a: Matrix2x2<T>, _ b: Matrix2x2<T>, epsilon: T = T.epsilon) -> Bool {
-    let col0: Bool = approx(a.col0, b.col0, epsilon: epsilon)
-    let col1: Bool = approx(a.col1, b.col1, epsilon: epsilon)
+    public static func /(v: Vector2<T>, m: Matrix2x2<T>) -> Vector2<T> {
+        return v * invert(m)
+    }
     
-    return col0 && col1
-}
-
-// MARK: - Inverse
-
-public func invert<T: SignedVectorable>(_ m: Matrix2x2<T>) -> Matrix2x2<T> {
-    let a: T = m.col0.x
-    let b: T = m.col1.x
-    let c: T = m.col0.y
-    let d: T = m.col1.y
+    public static func /(m1: Matrix2x2<T>, m2: Matrix2x2<T>) -> Matrix2x2<T> {
+        return m1 * invert(m2)
+    }
     
-    let ad: T = a * d
-    let bc: T = b * c
+    // MARK: - Negation
     
-    let oneOverDeterminant = 1 / (ad - bc)
+    public static prefix func -(m: Matrix2x2<T>) -> Matrix2x2<T> {
+        let col0: Vector2<T> = -m.col0
+        let col1: Vector2<T> = -m.col1
+        
+        return Matrix2x2<T>(col0, col1)
+    }
     
-    let x0: T = +d * oneOverDeterminant
-    let x1: T = -b * oneOverDeterminant
-    let y0: T = -c * oneOverDeterminant
-    let y1: T = +a * oneOverDeterminant
+    public static prefix func +(m: Matrix2x2<T>) -> Matrix2x2<T> {
+        let col0: Vector2<T> = +m.col0
+        let col1: Vector2<T> = +m.col1
+        
+        return Matrix2x2<T>(col0, col1)
+    }
     
-    let col0 = Vector2<T>(x0, y0)
-    let col1 = Vector2<T>(x1, y1)
+    // MARK: Approximately Equal
     
-    return Matrix2x2<T>(col0, col1)
+    public static func approx(_ a: Matrix2x2<T>, _ b: Matrix2x2<T>, epsilon: T) -> Bool {
+        let col0: Bool = Vector2<T>.approx(a.col0, b.col0, epsilon: epsilon)
+        let col1: Bool = Vector2<T>.approx(a.col1, b.col1, epsilon: epsilon)
+        
+        return col0 && col1
+    }
+    
+    // MARK: - Inverse
+    
+    public static func invert(_ m: Matrix2x2<T>) -> Matrix2x2<T> {
+        let a: T = m.col0.x
+        let b: T = m.col1.x
+        let c: T = m.col0.y
+        let d: T = m.col1.y
+        
+        let ad: T = a * d
+        let bc: T = b * c
+        
+        let oneOverDeterminant = 1 / (ad - bc)
+        
+        let x0: T = +d * oneOverDeterminant
+        let x1: T = -b * oneOverDeterminant
+        let y0: T = -c * oneOverDeterminant
+        let y1: T = +a * oneOverDeterminant
+        
+        let col0 = Vector2<T>(x0, y0)
+        let col1 = Vector2<T>(x1, y1)
+        
+        return Matrix2x2<T>(col0, col1)
+    }
 }

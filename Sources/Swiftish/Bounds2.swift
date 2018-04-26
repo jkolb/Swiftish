@@ -22,7 +22,7 @@
  SOFTWARE.
  */
 
-public struct Bounds2<T: SignedVectorable> : Equatable {
+public struct Bounds2<T: Vectorable> : Equatable {
     public var center: Vector2<T>
     public var extents: Vector2<T>
     
@@ -64,8 +64,8 @@ public struct Bounds2<T: SignedVectorable> : Equatable {
             return
         }
         
-        var minimum = Vector2<T>(T.max, T.max)
-        var maximum = Vector2<T>(T.min, T.min)
+        var minimum = Vector2<T>(+T.greatestFiniteMagnitude, +T.greatestFiniteMagnitude)
+        var maximum = Vector2<T>(-T.greatestFiniteMagnitude, -T.greatestFiniteMagnitude)
         
         for point in points {
             if point.x < minimum.x {
@@ -186,8 +186,4 @@ public struct Bounds2<T: SignedVectorable> : Equatable {
     public static func ==(a: Bounds2<T>, b: Bounds2<T>) -> Bool {
         return a.center == b.center && a.extents == b.extents
     }
-}
-
-public func circle<T: FloatingPointVectorable>(_ a: Bounds2<T>) -> Circle<T> {
-    return Circle<T>(center: a.center, radius: length(a.extents))
 }

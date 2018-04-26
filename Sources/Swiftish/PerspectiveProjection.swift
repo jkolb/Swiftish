@@ -48,16 +48,16 @@
  |     0     0      -1            0       |
  (                                        )
  */
-public struct PerspectiveProjection<T: FloatingPointVectorable> : Equatable {
-    public var fovx: Angle<T> {
+public struct PerspectiveProjection<T: Vectorable> : Equatable {
+    public var fovx: T {
         get {
-            return 2 * atan(tan(fovy / 2) * aspectRatio)
+            return 2 * T.atan(T.tan(fovy / 2) * aspectRatio)
         }
         set {
-            fovy = 2 * atan(tan(newValue / 2) * inverseAspectRatio)
+            fovy = 2 * T.atan(T.tan(newValue / 2) * inverseAspectRatio)
         }
     }
-    public var fovy: Angle<T>
+    public var fovy: T
     public var aspectRatio: T
     public var inverseAspectRatio: T {
         get {
@@ -70,18 +70,20 @@ public struct PerspectiveProjection<T: FloatingPointVectorable> : Equatable {
     public var zNear: T
     public var zFar: T
     
-    public init(fovx: Angle<T>, aspectRatio: T, zNear: T, zFar: T) {
+    public init(fovx: T, aspectRatio: T, zNear: T, zFar: T) {
+        precondition(fovx > 0)
+        precondition(fovx < T.pi)
         self.init(
-            fovy: 2 * atan(tan(fovx / 2) * (1 / aspectRatio)),
+            fovy: 2 * T.atan(T.tan(fovx / 2) * (1 / aspectRatio)),
             aspectRatio: aspectRatio,
             zNear: zNear,
             zFar: zFar
         )
     }
     
-    public init(fovy: Angle<T>, aspectRatio: T, zNear: T, zFar: T) {
-        precondition(fovy > Angle<T>(radians: 0))
-        precondition(fovy <= Angle<T>(radians: T.pi - T.epsilon))
+    public init(fovy: T, aspectRatio: T, zNear: T, zFar: T) {
+        precondition(fovy > 0)
+        precondition(fovy < T.pi)
         precondition(aspectRatio > 0)
         precondition(zNear > 0)
         precondition(zFar > zNear)
@@ -93,11 +95,11 @@ public struct PerspectiveProjection<T: FloatingPointVectorable> : Equatable {
     
     public var matrix: Matrix4x4<T> {
         let x = fovy / 2
-        let s = sin(x)
-        let c = cos(x)
+        let s = T.sin(x)
+        let c = T.cos(x)
         
         // cotangent(x) = cos(x) / sin(x)
-        let f = c.radians / s.radians
+        let f = c / s
         
         let col0 = Vector4<T>(
             f / aspectRatio,
@@ -128,22 +130,7 @@ public struct PerspectiveProjection<T: FloatingPointVectorable> : Equatable {
     }
     
     public var frustum: Frustum<T> {
-        // Pointing down the -Z axis, camera frustum in world space using a right handed coordinate system
-        let halfFOVY = fovy / 2
-        let halfFOVX = fovx / 2
-        let sy = sin(halfFOVY).radians
-        let cy = cos(halfFOVY).radians
-        let sx = sin(halfFOVX).radians
-        let cx = cos(halfFOVX).radians
-        
-        return Frustum<T>(
-            top:  Plane<T>(normal: Vector3<T>(0, -cy, -sy), distance: 0),
-            bottom: Plane<T>(normal: Vector3<T>(0, +cy, -sy), distance: 0),
-            left: Plane<T>(normal: Vector3<T>(+cx, 0, -sx), distance: 0),
-            right: Plane<T>(normal: Vector3<T>(-cx, 0, -sx), distance: 0),
-            near: Plane<T>(normal: Vector3<T>(0, 0, -1), distance: +zNear),
-            far: Plane<T>(normal: Vector3<T>(0, 0, +1), distance: -zFar)
-        )
+        return Frustum<T>(fovx: fovx, fovy: fovy, zNear: zNear, zFar: zFar)
     }
 
     public static func ==(lhs: PerspectiveProjection<T>, rhs: PerspectiveProjection<T>) -> Bool {

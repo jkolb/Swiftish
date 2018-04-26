@@ -226,103 +226,103 @@ public struct Vector4<T: Vectorable> : Equatable, CustomStringConvertible {
         
         return Vector4<T>(x, y, z, w)
     }
-}
 
-// MARK: - Negation
-
-public prefix func -<T: SignedVectorable>(v: Vector4<T>) -> Vector4<T> {
-    let x: T = -v.x
-    let y: T = -v.y
-    let z: T = -v.z
-    let w: T = -v.w
+    // MARK: - Negation
     
-    return Vector4<T>(x, y, z, w)
-}
-
-public prefix func +<T: SignedVectorable>(v: Vector4<T>) -> Vector4<T> {
-    let x: T = +v.x
-    let y: T = +v.y
-    let z: T = +v.z
-    let w: T = +v.w
+    public static prefix func -(v: Vector4<T>) -> Vector4<T> {
+        let x: T = -v.x
+        let y: T = -v.y
+        let z: T = -v.z
+        let w: T = -v.w
+        
+        return Vector4<T>(x, y, z, w)
+    }
     
-    return Vector4<T>(x, y, z, w)
-}
-
-// MARK: Approximately Equal
-
-public func approx<T: FloatingPointVectorable>(_ a: Vector4<T>, _ b: Vector4<T>, epsilon: T = T.epsilon) -> Bool {
-    let delta: Vector4<T> = b - a
-    let magnitude: Vector4<T> = abs(delta)
+    public static prefix func +(v: Vector4<T>) -> Vector4<T> {
+        let x: T = +v.x
+        let y: T = +v.y
+        let z: T = +v.z
+        let w: T = +v.w
+        
+        return Vector4<T>(x, y, z, w)
+    }
     
-    return magnitude.x <= epsilon && magnitude.y <= epsilon && magnitude.z <= epsilon && magnitude.w <= epsilon
-}
-
-// MARK: Absolute Value
-
-public func abs<T: SignedVectorable>(_ a: Vector4<T>) -> Vector4<T> {
-    let x: T = abs(a.x)
-    let y: T = abs(a.y)
-    let z: T = abs(a.z)
-    let w: T = abs(a.w)
+    // MARK: Approximately Equal
     
-    return Vector4<T>(x, y, z, w)
-}
-
-// MARK: - Sum
-
-public func sum<T>(_ a: Vector4<T>) -> T {
-    return a.x + a.y + a.z + a.w
-}
-
-// MARK: - Geometric
-
-public func length<T: FloatingPointVectorable>(_ a: Vector4<T>) -> T {
-    return length2(a).squareRoot()
-}
-
-public func length2<T>(_ a: Vector4<T>) -> T {
-    let a2: Vector4<T> = a * a
+    public static func approx(_ a: Vector4<T>, _ b: Vector4<T>, epsilon: T) -> Bool {
+        let delta: Vector4<T> = b - a
+        let magnitude: Vector4<T> = abs(delta)
+        
+        return magnitude.x <= epsilon && magnitude.y <= epsilon && magnitude.z <= epsilon && magnitude.w <= epsilon
+    }
     
-    return sum(a2)
-}
-
-public func normalize<T: FloatingPointVectorable>(_ a: Vector4<T>) -> Vector4<T> {
-    return a / length(a)
-}
-
-public func distance<T: FloatingPointVectorable>(_ a: Vector4<T>, _ b: Vector4<T>) -> T {
-    return distance2(a, b).squareRoot()
-}
-
-public func distance2<T>(_ a: Vector4<T>, _ b: Vector4<T>) -> T {
-    let difference: Vector4<T> = b - a
-    let difference2: Vector4<T> = difference * difference
+    // MARK: Absolute Value
     
-    return sum(difference2)
-}
-
-public func dot<T>(_ a: Vector4<T>, _ b: Vector4<T>) -> T {
-    let ab: Vector4<T> = a * b
+    public static func abs(_ a: Vector4<T>) -> Vector4<T> {
+        let x: T = Swift.abs(a.x)
+        let y: T = Swift.abs(a.y)
+        let z: T = Swift.abs(a.z)
+        let w: T = Swift.abs(a.w)
+        
+        return Vector4<T>(x, y, z, w)
+    }
     
-    return sum(ab)
-}
-
-// Trigonometry
-
-public func cos<T: FloatingPointVectorable>(_ a: Vector4<T>) -> Vector4<T> {
-    let x: T = a.x.cosine()
-    let y: T = a.y.cosine()
-    let z: T = a.z.cosine()
-    let w: T = a.w.cosine()
+    // MARK: - Sum
     
-    return Vector4<T>(x, y, z, w)
-}
-
-public func sin<T: FloatingPointVectorable>(_ a: Vector4<T>) -> Vector4<T> {
-    let x: T = a.x.sine()
-    let y: T = a.y.sine()
-    let z: T = a.z.sine()
-    let w: T = a.w.sine()
+    public static func sum(_ a: Vector4<T>) -> T {
+        return a.x + a.y + a.z + a.w
+    }
     
-    return Vector4<T>(x, y, z, w)
+    // MARK: - Geometric
+    
+    public static func length(_ a: Vector4<T>) -> T {
+        return Vector4<T>.length2(a).squareRoot()
+    }
+    
+    public static func length2(_ a: Vector4<T>) -> T {
+        let a2: Vector4<T> = a * a
+        
+        return Vector4<T>.sum(a2)
+    }
+    
+    public static func normalize(_ a: Vector4<T>) -> Vector4<T> {
+        return a / Vector4<T>.length(a)
+    }
+    
+    public static func distance(_ a: Vector4<T>, _ b: Vector4<T>) -> T {
+        return Vector4<T>.distance2(a, b).squareRoot()
+    }
+    
+    public static func distance2(_ a: Vector4<T>, _ b: Vector4<T>) -> T {
+        let difference: Vector4<T> = b - a
+        let difference2: Vector4<T> = difference * difference
+        
+        return Vector4<T>.sum(difference2)
+    }
+    
+    public static func dot(_ a: Vector4<T>, _ b: Vector4<T>) -> T {
+        let ab: Vector4<T> = a * b
+        
+        return Vector4<T>.sum(ab)
+    }
+    
+    // Trigonometry
+    
+    public static func cos(_ a: Vector4<T>) -> Vector4<T> {
+        let x: T = T.cos(a.x)
+        let y: T = T.cos(a.y)
+        let z: T = T.cos(a.z)
+        let w: T = T.cos(a.w)
+        
+        return Vector4<T>(x, y, z, w)
+    }
+    
+    public static func sin(_ a: Vector4<T>) -> Vector4<T> {
+        let x: T = T.sin(a.x)
+        let y: T = T.sin(a.y)
+        let z: T = T.sin(a.z)
+        let w: T = T.sin(a.w)
+        
+        return Vector4<T>(x, y, z, w)
+    }
 }

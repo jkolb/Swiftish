@@ -35,15 +35,15 @@ class Matrix3Tests: XCTestCase {
         let col1 = Vector3<Float>(0.2, 0.7, 0.5)
         let col2 = Vector3<Float>(0.3, 0.5, 0.7)
         let a = Matrix3x3<Float>(col0, col1, col2)
-        let ai = invert(a)
+        let ai = Matrix3x3.invert(a)
         let im = a * ai
         let id = a / a
         let i = Matrix3x3<Float>()
         
         // Multiplication
-        XCTAssertTrue(approx(im, i), "\(im) not identity")
+        XCTAssertTrue(Matrix3x3.approx(im, i, epsilon: 1e-6), "\(im) not identity")
         
         // Division
-        XCTAssertTrue(approx(id, i), "\(id) not identity")
+        XCTAssertTrue(Matrix3x3.approx(id, i, epsilon: 1e-6), "\(id) not identity")
     }
 }

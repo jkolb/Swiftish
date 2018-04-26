@@ -49,8 +49,8 @@ public struct Triangle2<T: Vectorable> : CustomStringConvertible {
     public var description: String {
         return "{\n\t\(a),\n\t\(b),\n\t\(c)}"
     }
-}
 
-public func boundsOf<T: SignedVectorable>(_ t: Triangle2<T>) -> Bounds2<T> {
-    return Bounds2<T>(containingPoints: t.points)
+    public var bounds: Bounds2<T> {
+        return Bounds2<T>(containingPoints: points)
+    }
 }

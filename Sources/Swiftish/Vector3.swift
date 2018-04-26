@@ -219,106 +219,120 @@ public struct Vector3<T: Vectorable> : Equatable, CustomStringConvertible {
         
         return Vector3<T>(x, y, z)
     }
-}
 
-// MARK: - Negation
+    public static func dot(_ a: Vector3<T>, _ b: Vector3<T>) -> T {
+        let ab: Vector3<T> = a * b
+        
+        return sum(ab)
+    }
 
-public prefix func -<T: SignedVectorable>(v: Vector3<T>) -> Vector3<T> {
-    let x: T = -v.x
-    let y: T = -v.y
-    let z: T = -v.z
+    // MARK: - Negation
     
-    return Vector3<T>(x, y, z)
-}
-
-public prefix func +<T: SignedVectorable>(v: Vector3<T>) -> Vector3<T> {
-    let x: T = +v.x
-    let y: T = +v.y
-    let z: T = +v.z
+    public static prefix func -(v: Vector3<T>) -> Vector3<T> {
+        let x: T = -v.x
+        let y: T = -v.y
+        let z: T = -v.z
+        
+        return Vector3<T>(x, y, z)
+    }
     
-    return Vector3<T>(x, y, z)
-}
-
-// MARK: Approximately Equal
-
-public func approx<T: FloatingPointVectorable>(_ a: Vector3<T>, _ b: Vector3<T>, epsilon: T = T.epsilon) -> Bool {
-    let delta: Vector3<T> = b - a
-    let magnitude: Vector3<T> = abs(delta)
+    public static prefix func +(v: Vector3<T>) -> Vector3<T> {
+        let x: T = +v.x
+        let y: T = +v.y
+        let z: T = +v.z
+        
+        return Vector3<T>(x, y, z)
+    }
     
-    return magnitude.x <= epsilon && magnitude.y <= epsilon && magnitude.z <= epsilon
-}
-
-// MARK: Absolute Value
-
-public func abs<T: SignedVectorable>(_ a: Vector3<T>) -> Vector3<T> {
-    let x: T = abs(a.x)
-    let y: T = abs(a.y)
-    let z: T = abs(a.z)
+    // MARK: Approximately Equal
     
-    return Vector3<T>(x, y, z)
-}
-
-// MARK: - Sum
-
-public func sum<T>(_ a: Vector3<T>) -> T {
-    return a.x + a.y + a.z
-}
-
-// MARK: - Geometric
-
-public func length<T: FloatingPointVectorable>(_ a: Vector3<T>) -> T {
-    return length2(a).squareRoot()
-}
-
-public func length2<T>(_ a: Vector3<T>) -> T {
-    let a2: Vector3<T> = a * a
+    public static func approx(_ a: Vector3<T>, _ b: Vector3<T>, epsilon: T) -> Bool {
+        let delta: Vector3<T> = b - a
+        let magnitude: Vector3<T> = Vector3<T>.abs(delta)
+        
+        return magnitude.x <= epsilon && magnitude.y <= epsilon && magnitude.z <= epsilon
+    }
     
-    return sum(a2)
-}
-
-public func normalize<T: FloatingPointVectorable>(_ a: Vector3<T>) -> Vector3<T> {
-    return a / length(a)
-}
-
-public func distance<T: FloatingPointVectorable>(_ a: Vector3<T>, _ b: Vector3<T>) -> T {
-    return distance2(a, b).squareRoot()
-}
-
-public func distance2<T>(_ a: Vector3<T>, _ b: Vector3<T>) -> T {
-    let difference: Vector3<T> = b - a
-    let difference2: Vector3<T> = difference * difference
+    // MARK: Absolute Value
     
-    return sum(difference2)
-}
-
-public func dot<T>(_ a: Vector3<T>, _ b: Vector3<T>) -> T {
-    let ab: Vector3<T> = a * b
+    public static func abs(_ a: Vector3<T>) -> Vector3<T> {
+        let x: T = Swift.abs(a.x)
+        let y: T = Swift.abs(a.y)
+        let z: T = Swift.abs(a.z)
+        
+        return Vector3<T>(x, y, z)
+    }
     
-    return sum(ab)
-}
-
-public func cross<T>(_ a: Vector3<T>, _ b: Vector3<T>) -> Vector3<T> {
-    let x: T = a.y * b.z - b.y * a.z
-    let y: T = a.z * b.x - b.z * a.x
-    let z: T = a.x * b.y - b.x * a.y
+    // MARK: - Sum
     
-    return Vector3<T>(x, y, z)
-}
-
-// Trigonometry
-
-public func cos<T: FloatingPointVectorable>(_ a: Vector3<T>) -> Vector3<T> {
-    let x: T = a.x.cosine()
-    let y: T = a.y.cosine()
-    let z: T = a.z.cosine()
-
-    return Vector3<T>(x, y, z)
-}
-
-public func sin<T: FloatingPointVectorable>(_ a: Vector3<T>) -> Vector3<T> {
-    let x: T = a.x.sine()
-    let y: T = a.y.sine()
-    let z: T = a.z.sine()
+    public static func sum(_ a: Vector3<T>) -> T {
+        return a.x + a.y + a.z
+    }
     
-    return Vector3<T>(x, y, z)
+    // MARK: - Geometric
+    
+    public static func length(_ a: Vector3<T>) -> T {
+        return length2(a).squareRoot()
+    }
+    
+    public static func length2(_ a: Vector3<T>) -> T {
+        let a2: Vector3<T> = a * a
+        
+        return sum(a2)
+    }
+    
+    public static func normalize(_ a: Vector3<T>) -> Vector3<T> {
+        return a / length(a)
+    }
+    
+    public static func distance(_ a: Vector3<T>, _ b: Vector3<T>) -> T {
+        return distance2(a, b).squareRoot()
+    }
+    
+    public static func distance2(_ a: Vector3<T>, _ b: Vector3<T>) -> T {
+        let difference: Vector3<T> = b - a
+        let difference2: Vector3<T> = difference * difference
+        
+        return sum(difference2)
+    }
+    
+    public static func cross(_ a: Vector3<T>, _ b: Vector3<T>) -> Vector3<T> {
+        let x: T = a.y * b.z - b.y * a.z
+        let y: T = a.z * b.x - b.z * a.x
+        let z: T = a.x * b.y - b.x * a.y
+        
+        return Vector3<T>(x, y, z)
+    }
+    
+    // Trigonometry
+    
+    public static func cos(_ a: Vector3<T>) -> Vector3<T> {
+        let x: T = T.cos(a.x)
+        let y: T = T.cos(a.y)
+        let z: T = T.cos(a.z)
+        
+        return Vector3<T>(x, y, z)
+    }
+    
+    public static func sin(_ a: Vector3<T>) -> Vector3<T> {
+        let x: T = T.sin(a.x)
+        let y: T = T.sin(a.y)
+        let z: T = T.sin(a.z)
+        
+        return Vector3<T>(x, y, z)
+    }
+
+    public func inside(_ bounds: Bounds3<T>) -> Bool {
+        let bmin = bounds.minimum
+        let bmax = bounds.maximum
+        let xin = x > bmin.x && x < bmax.x
+        let yin = y > bmin.y && y < bmax.y
+        let zin = z > bmin.z && z < bmax.z
+        
+        return xin && yin && zin
+    }
+    
+    public func transform(_ t: Transform3<T>) -> Vector3<T> {
+        return self * t.scale * t.rotation + t.translation
+    }
 }

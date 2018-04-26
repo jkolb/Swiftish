@@ -22,7 +22,7 @@
  SOFTWARE.
  */
 
-public struct Bounds3<T: SignedVectorable> : Equatable {
+public struct Bounds3<T: Vectorable> : Equatable {
     public var center: Vector3<T>
     public var extents: Vector3<T>
     
@@ -66,8 +66,8 @@ public struct Bounds3<T: SignedVectorable> : Equatable {
             return
         }
         
-        var minimum = Vector3<T>(T.max, T.max, T.max)
-        var maximum = Vector3<T>(T.min, T.min, T.min)
+        var minimum = Vector3<T>(+T.greatestFiniteMagnitude, +T.greatestFiniteMagnitude, +T.greatestFiniteMagnitude)
+        var maximum = Vector3<T>(-T.greatestFiniteMagnitude, -T.greatestFiniteMagnitude, -T.greatestFiniteMagnitude)
         
         for point in points {
             if point.x < minimum.x {
@@ -206,32 +206,72 @@ public struct Bounds3<T: SignedVectorable> : Equatable {
     public static func ==(a: Bounds3<T>, b: Bounds3<T>) -> Bool {
         return a.center == b.center && a.extents == b.extents
     }
-}
 
-public func sphere<T: FloatingPointVectorable>(_ a: Bounds3<T>) -> Sphere<T> {
-    return Sphere<T>(center: a.center, radius: length(a.extents))
-}
-
-public func distance2<T>(_ point: Vector3<T>, _ bounds: Bounds3<T>) -> T {
-    var distanceSquared: T = 0
-    let minimum = bounds.minimum
-    let maximum = bounds.maximum
-    
-    for index in 0..<3 {
-        let p = point[index]
-        let bMin = minimum[index]
-        let bMax = maximum[index]
+    public static func distance2<T>(_ point: Vector3<T>, _ bounds: Bounds3<T>) -> T {
+        var distanceSquared: T = 0
+        let minimum = bounds.minimum
+        let maximum = bounds.maximum
         
-        if p < bMin {
-            let delta = bMin - p
-            distanceSquared = distanceSquared + delta * delta
+        for index in 0..<3 {
+            let p = point[index]
+            let bMin = minimum[index]
+            let bMax = maximum[index]
+            
+            if p < bMin {
+                let delta = bMin - p
+                distanceSquared = distanceSquared + delta * delta
+            }
+            
+            if p > bMax {
+                let delta = p - bMax
+                distanceSquared = distanceSquared + delta * delta
+            }
         }
         
-        if p > bMax {
-            let delta = p - bMax
-            distanceSquared = distanceSquared + delta * delta
+        return distanceSquared
+    }
+
+    public func intersectsOrIsInside(_ plane: Plane<T>) -> Bool {
+        let projectionRadiusOfBox = Vector3<T>.sum(extents * Vector3<T>.abs(plane.normal))
+        let distanceOfBoxCenterFromPlane = Vector3<T>.dot(plane.normal, center) - plane.distance
+        let intersects = abs(distanceOfBoxCenterFromPlane) <= projectionRadiusOfBox
+        let isInside = projectionRadiusOfBox <= distanceOfBoxCenterFromPlane
+        
+        return intersects || isInside
+    }
+
+    public func intersectsOrIsInside(_ frustum: Frustum<T>) -> Bool {
+        if  isNull {
+            return false
         }
+        
+        // In order of most likely to cause early exit
+        if !intersectsOrIsInside(frustum.near) { return false }
+        if !intersectsOrIsInside(frustum.left) { return false }
+        if !intersectsOrIsInside(frustum.right) { return false }
+        if !intersectsOrIsInside(frustum.top) { return false }
+        if !intersectsOrIsInside(frustum.bottom) { return false }
+        if !intersectsOrIsInside(frustum.far) { return false }
+        
+        return true
+    }
+
+    public func intersects(_ plane: Plane<T>) -> Bool {
+        let projectionRadiusOfBox = Vector3<T>.sum(extents * Vector3<T>.abs(plane.normal))
+        let distanceOfBoxCenterFromPlane = Swift.abs(Vector3<T>.dot(plane.normal, center) - plane.distance)
+        
+        return distanceOfBoxCenterFromPlane <= projectionRadiusOfBox
     }
     
-    return distanceSquared
+    public func intersects(_ bounds: Bounds3<T>) -> Bool {
+        if Swift.abs(center.x - bounds.center.x) > (extents.x + bounds.extents.x) { return false }
+        if Swift.abs(center.y - bounds.center.y) > (extents.y + bounds.extents.y) { return false }
+        if Swift.abs(center.z - bounds.center.z) > (extents.z + bounds.extents.z) { return false }
+        
+        return true
+    }
+    
+    public func transform(_ t: Transform3<T>) -> Bounds3<T> {
+        return Bounds3<T>(containingPoints: corners.map({ $0.transform(t) }))
+    }
 }

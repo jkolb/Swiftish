@@ -31,6 +31,11 @@ public struct Circle<T: Vectorable> : Equatable, CustomStringConvertible {
         self.radius = radius
     }
     
+    public init(_ bounds: Bounds2<T>) {
+        self.center = bounds.center
+        self.radius = Vector2<T>.length(bounds.extents)
+    }
+
     public var description: String {
         return "{\(center), \(radius)}"
     }

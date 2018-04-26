@@ -38,4 +38,13 @@ public struct Plane<T: Vectorable> : Equatable, CustomStringConvertible {
     public static func ==(a: Plane<T>, b: Plane<T>) -> Bool {
         return a.normal == b.normal && a.distance == b.distance
     }
+    
+    public func transform(_ t: Transform3<T>) -> Plane<T> {
+        let pointOnPlane = normal * distance
+        let transformedNormal = normal * t.rotation
+        let transformedPoint = pointOnPlane.transform(t)
+        let transformedDistance = Vector3<T>.dot(transformedNormal, transformedPoint)
+        
+        return Plane(normal: transformedNormal, distance: transformedDistance)
+    }
 }

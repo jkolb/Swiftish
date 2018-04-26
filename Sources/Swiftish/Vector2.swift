@@ -23,11 +23,11 @@
  */
 
 public struct Vector2<T: Vectorable> : Equatable, CustomStringConvertible {
-    public static func xAxis() -> Vector2<T> {
+    public static var xAxis: Vector2<T> {
         return Vector2<T>(1, 0)
     }
     
-    public static func yAxis() -> Vector2<T> {
+    public static var yAxis: Vector2<T> {
         return Vector2<T>(0, 1)
     }
     
@@ -192,93 +192,93 @@ public struct Vector2<T: Vectorable> : Equatable, CustomStringConvertible {
         
         return Vector2<T>(x, y)
     }
-}
 
-// MARK: - Negation
-
-public prefix func -<T: SignedVectorable>(v: Vector2<T>) -> Vector2<T> {
-    let x: T = -v.x
-    let y: T = -v.y
+    // MARK: - Negation
     
-    return Vector2<T>(x, y)
-}
-
-public prefix func +<T: SignedVectorable>(v: Vector2<T>) -> Vector2<T> {
-    let x: T = +v.x
-    let y: T = +v.y
+    public static prefix func -(v: Vector2<T>) -> Vector2<T> {
+        let x: T = -v.x
+        let y: T = -v.y
+        
+        return Vector2<T>(x, y)
+    }
     
-    return Vector2<T>(x, y)
-}
-
-// MARK: Approximately Equal
-
-public func approx<T: FloatingPointVectorable>(_ a: Vector2<T>, _ b: Vector2<T>, epsilon: T = T.epsilon) -> Bool {
-    let delta: Vector2<T> = b - a
-    let magnitude: Vector2<T> = abs(delta)
+    public static prefix func +(v: Vector2<T>) -> Vector2<T> {
+        let x: T = +v.x
+        let y: T = +v.y
+        
+        return Vector2<T>(x, y)
+    }
     
-    return magnitude.x <= epsilon && magnitude.y <= epsilon
-}
-
-// MARK: Absolute Value
-
-public func abs<T: SignedVectorable>(_ a: Vector2<T>) -> Vector2<T> {
-    let x: T = abs(a.x)
-    let y: T = abs(a.y)
+    // MARK: Approximately Equal
     
-    return Vector2<T>(x, y)
-}
-
-// MARK: - Sum
-
-public func sum<T>(_ a: Vector2<T>) -> T {
-    return a.x + a.y
-}
-
-// MARK: - Geometric
-
-public func length<T: FloatingPointVectorable>(_ a: Vector2<T>) -> T {
-    return length2(a).squareRoot()
-}
-
-public func length2<T>(_ a: Vector2<T>) -> T {
-    let a2: Vector2<T> = a * a
+    public static func approx(_ a: Vector2<T>, _ b: Vector2<T>, epsilon: T) -> Bool {
+        let delta: Vector2<T> = b - a
+        let magnitude: Vector2<T> = Vector2<T>.abs(delta)
+        
+        return magnitude.x <= epsilon && magnitude.y <= epsilon
+    }
     
-    return sum(a2)
-}
-
-public func normalize<T: FloatingPointVectorable>(_ a: Vector2<T>) -> Vector2<T> {
-    return a / length(a)
-}
-
-public func distance<T: FloatingPointVectorable>(_ a: Vector2<T>, _ b: Vector2<T>) -> T {
-    return distance2(a, b).squareRoot()
-}
-
-public func distance2<T>(_ a: Vector2<T>, _ b: Vector2<T>) -> T {
-    let difference: Vector2<T> = b - a
-    let difference2: Vector2<T> = difference * difference
+    // MARK: Absolute Value
     
-    return sum(difference2)
-}
-
-public func dot<T>(_ a: Vector2<T>, _ b: Vector2<T>) -> T {
-    let ab: Vector2<T> = a * b
+    public static func abs(_ a: Vector2<T>) -> Vector2<T> {
+        let x: T = Swift.abs(a.x)
+        let y: T = Swift.abs(a.y)
+        
+        return Vector2<T>(x, y)
+    }
     
-    return sum(ab)
-}
-
-// Trigonometry
-
-public func cos<T: FloatingPointVectorable>(_ a: Vector2<T>) -> Vector2<T> {
-    let x: T = a.x.cosine()
-    let y: T = a.y.cosine()
+    // MARK: - Sum
     
-    return Vector2<T>(x, y)
-}
-
-public func sin<T: FloatingPointVectorable>(_ a: Vector2<T>) -> Vector2<T> {
-    let x: T = a.x.sine()
-    let y: T = a.y.sine()
+    public static func sum(_ a: Vector2<T>) -> T {
+        return a.x + a.y
+    }
     
-    return Vector2<T>(x, y)
+    // MARK: - Geometric
+    
+    public static func length(_ a: Vector2<T>) -> T {
+        return length2(a).squareRoot()
+    }
+    
+    public static func length2(_ a: Vector2<T>) -> T {
+        let a2: Vector2<T> = a * a
+        
+        return sum(a2)
+    }
+    
+    public static func normalize(_ a: Vector2<T>) -> Vector2<T> {
+        return a / length(a)
+    }
+    
+    public static func distance(_ a: Vector2<T>, _ b: Vector2<T>) -> T {
+        return distance2(a, b).squareRoot()
+    }
+    
+    public static func distance2(_ a: Vector2<T>, _ b: Vector2<T>) -> T {
+        let difference: Vector2<T> = b - a
+        let difference2: Vector2<T> = difference * difference
+        
+        return sum(difference2)
+    }
+    
+    public static func dot(_ a: Vector2<T>, _ b: Vector2<T>) -> T {
+        let ab: Vector2<T> = a * b
+        
+        return sum(ab)
+    }
+    
+    // Trigonometry
+    
+    public static func cos(_ a: Vector2<T>) -> Vector2<T> {
+        let x: T = T.cos(a.x)
+        let y: T = T.cos(a.y)
+        
+        return Vector2<T>(x, y)
+    }
+    
+    public static func sin(_ a: Vector2<T>) -> Vector2<T> {
+        let x: T = T.sin(a.x)
+        let y: T = T.sin(a.y)
+        
+        return Vector2<T>(x, y)
+    }
 }

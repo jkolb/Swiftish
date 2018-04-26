@@ -36,6 +36,11 @@ public struct Sphere<T: Vectorable> : Equatable, CustomStringConvertible {
         self.radius = radius
     }
     
+    public init(_ bounds: Bounds3<T>) {
+        self.center = bounds.center
+        self.radius = Vector3<T>.length(bounds.extents)
+    }
+
     public var isNull: Bool {
         return center == Vector3<T>() && radius == 0
     }
@@ -47,15 +52,50 @@ public struct Sphere<T: Vectorable> : Equatable, CustomStringConvertible {
     public static func ==(a: Sphere<T>, b: Sphere<T>) -> Bool {
         return a.center == b.center && a.radius == b.radius
     }
-}
 
-public func boundsOf<T: SignedVectorable>(_ s: Sphere<T>) -> Bounds3<T> {
-    return Bounds3<T>(center: s.center, extents: Vector3<T>(s.radius))
-}
-
-public func union<T: FloatingPointVectorable>(_ a: Sphere<T>, _ b: Sphere<T>) -> Sphere<T> {
-    let midpoint = (a.center + b.center) / 2
-    let largestRadius = distance(midpoint, a.center) + max(a.radius, b.radius)
+    public var bounds: Bounds3<T> {
+        return Bounds3<T>(center: center, extents: Vector3<T>(radius))
+    }
     
-    return Sphere<T>(center: midpoint, radius: largestRadius)
+    public static func union<T>(_ a: Sphere<T>, _ b: Sphere<T>) -> Sphere<T> {
+        let midpoint = (a.center + b.center) / 2
+        let largestRadius = Vector3<T>.distance(midpoint, a.center) + max(a.radius, b.radius)
+        
+        return Sphere<T>(center: midpoint, radius: largestRadius)
+    }
+
+    public func intersectsOrIsInside(_ plane: Plane<T>) -> Bool {
+        let dist = Vector3<T>.dot(center, plane.normal) - plane.distance
+        let intersects = abs(dist) <= radius
+        let isInside = radius <= dist
+        
+        return intersects || isInside
+    }
+
+    public func intersects(_ plane: Plane<T>) -> Bool {
+        let dist = Vector3<T>.dot(center, plane.normal) - plane.distance
+        
+        return Swift.abs(dist) <= radius
+    }
+    
+    public func intersects(_ bounds: Bounds3<T>) -> Bool {
+        let distanceSquared = Bounds3<T>.distance2(center, bounds)
+        
+        return distanceSquared <= radius * radius
+    }
+    
+    public func intersects(_ sphere: Sphere<T>) -> Bool {
+        let delta = center - sphere.center
+        let distanceSquared = Vector3<T>.dot(delta, delta)
+        let radiusSum = radius + sphere.radius
+        
+        return distanceSquared < radiusSum * radiusSum
+    }
+    
+    public func transform(_ t: Transform3<T>) -> Sphere<T> {
+        return Sphere(
+            center: center + t.translation,
+            radius: radius * t.scale.maximum
+        )
+    }
 }

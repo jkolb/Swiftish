@@ -351,126 +351,126 @@ public struct Matrix4x4<T: Vectorable> : Equatable, CustomStringConvertible {
         
         return Matrix4x4<T>(col0, col1, col2, col3)
     }
-}
 
-// MARK: - Division
-
-public func /<T: SignedVectorable>(m: Matrix4x4<T>, v: Vector4<T>) -> Vector4<T> {
-    return invert(m) * v
-}
-
-public func /<T: SignedVectorable>(v: Vector4<T>, m: Matrix4x4<T>) -> Vector4<T> {
-    return v * invert(m)
-}
-
-public func /<T: SignedVectorable>(m1: Matrix4x4<T>, m2: Matrix4x4<T>) -> Matrix4x4<T> {
-    return m1 * invert(m2)
-}
-
-// MARK: - Negation
-
-public prefix func -<T: SignedVectorable>(m: Matrix4x4<T>) -> Matrix4x4<T> {
-    let col0: Vector4<T> = -m.col0
-    let col1: Vector4<T> = -m.col1
-    let col2: Vector4<T> = -m.col2
-    let col3: Vector4<T> = -m.col3
+    // MARK: - Division
     
-    return Matrix4x4<T>(col0, col1, col2, col3)
-}
-
-public prefix func +<T: SignedVectorable>(m: Matrix4x4<T>) -> Matrix4x4<T> {
-    let col0: Vector4<T> = +m.col0
-    let col1: Vector4<T> = +m.col1
-    let col2: Vector4<T> = +m.col2
-    let col3: Vector4<T> = +m.col3
+    public static func /(m: Matrix4x4<T>, v: Vector4<T>) -> Vector4<T> {
+        return Matrix4x4<T>.invert(m) * v
+    }
     
-    return Matrix4x4<T>(col0, col1, col2, col3)
-}
-
-// MARK: Approximately Equal
-
-public func approx<T: FloatingPointVectorable>(_ a: Matrix4x4<T>, _ b: Matrix4x4<T>, epsilon: T = T.epsilon) -> Bool {
-    let col0: Bool = approx(a.col0, b.col0, epsilon: epsilon)
-    let col1: Bool = approx(a.col1, b.col1, epsilon: epsilon)
-    let col2: Bool = approx(a.col2, b.col2, epsilon: epsilon)
-    let col3: Bool = approx(a.col3, b.col3, epsilon: epsilon)
+    public static func /(v: Vector4<T>, m: Matrix4x4<T>) -> Vector4<T> {
+        return v * Matrix4x4<T>.invert(m)
+    }
     
-    return col0 && col1 && col2 && col3
-}
-
-// MARK: - Inverse
-
-public func invert<T: SignedVectorable>(_ m: Matrix4x4<T>) -> Matrix4x4<T> {
-    let m00: T = m.col0.x
-    let m10: T = m.col1.x
-    let m20: T = m.col2.x
-    let m30: T = m.col3.x
-    let m01: T = m.col0.y
-    let m11: T = m.col1.y
-    let m21: T = m.col2.y
-    let m31: T = m.col3.y
-    let m02: T = m.col0.z
-    let m12: T = m.col1.z
-    let m22: T = m.col2.z
-    let m32: T = m.col3.z
-    let m03: T = m.col0.w
-    let m13: T = m.col1.w
-    let m23: T = m.col2.w
-    let m33: T = m.col3.w
+    public static func /(m1: Matrix4x4<T>, m2: Matrix4x4<T>) -> Matrix4x4<T> {
+        return m1 * Matrix4x4<T>.invert(m2)
+    }
     
-    let c00: T = m22 * m33 - m32 * m23
-    let c02: T = m12 * m33 - m32 * m13
-    let c03: T = m12 * m23 - m22 * m13
+    // MARK: - Negation
     
-    let c04: T = m21 * m33 - m31 * m23
-    let c06: T = m11 * m33 - m31 * m13
-    let c07: T = m11 * m23 - m21 * m13
+    public static prefix func -(m: Matrix4x4<T>) -> Matrix4x4<T> {
+        let col0: Vector4<T> = -m.col0
+        let col1: Vector4<T> = -m.col1
+        let col2: Vector4<T> = -m.col2
+        let col3: Vector4<T> = -m.col3
+        
+        return Matrix4x4<T>(col0, col1, col2, col3)
+    }
     
-    let c08: T = m21 * m32 - m31 * m22
-    let c10: T = m11 * m32 - m31 * m12
-    let c11: T = m11 * m22 - m21 * m12
+    public static prefix func +(m: Matrix4x4<T>) -> Matrix4x4<T> {
+        let col0: Vector4<T> = +m.col0
+        let col1: Vector4<T> = +m.col1
+        let col2: Vector4<T> = +m.col2
+        let col3: Vector4<T> = +m.col3
+        
+        return Matrix4x4<T>(col0, col1, col2, col3)
+    }
     
-    let c12: T = m20 * m33 - m30 * m23
-    let c14: T = m10 * m33 - m30 * m13
-    let c15: T = m10 * m23 - m20 * m13
+    // MARK: Approximately Equal
     
-    let c16: T = m20 * m32 - m30 * m22
-    let c18: T = m10 * m32 - m30 * m12
-    let c19: T = m10 * m22 - m20 * m12
+    public static func approx(_ a: Matrix4x4<T>, _ b: Matrix4x4<T>, epsilon: T) -> Bool {
+        let col0: Bool = Vector4<T>.approx(a.col0, b.col0, epsilon: epsilon)
+        let col1: Bool = Vector4<T>.approx(a.col1, b.col1, epsilon: epsilon)
+        let col2: Bool = Vector4<T>.approx(a.col2, b.col2, epsilon: epsilon)
+        let col3: Bool = Vector4<T>.approx(a.col3, b.col3, epsilon: epsilon)
+        
+        return col0 && col1 && col2 && col3
+    }
     
-    let c20: T = m20 * m31 - m30 * m21
-    let c22: T = m10 * m31 - m30 * m11
-    let c23: T = m10 * m21 - m20 * m11
+    // MARK: - Inverse
     
-    let f0 = Vector4<T>(c00, c00, c02, c03)
-    let f1 = Vector4<T>(c04, c04, c06, c07)
-    let f2 = Vector4<T>(c08, c08, c10, c11)
-    let f3 = Vector4<T>(c12, c12, c14, c15)
-    let f4 = Vector4<T>(c16, c16, c18, c19)
-    let f5 = Vector4<T>(c20, c20, c22, c23)
-    
-    let v0 = Vector4<T>(m10, m00, m00, m00)
-    let v1 = Vector4<T>(m11, m01, m01, m01)
-    let v2 = Vector4<T>(m12, m02, m02, m02)
-    let v3 = Vector4<T>(m13, m03, m03, m03)
-    
-    let i0: Vector4<T> = v1 * f0 - v2 * f1 + v3 * f2
-    let i1: Vector4<T> = v0 * f0 - v2 * f3 + v3 * f4
-    let i2: Vector4<T> = v0 * f1 - v1 * f3 + v3 * f5
-    let i3: Vector4<T> = v0 * f2 - v1 * f4 + v2 * f5
-    
-    let sA = Vector4<T>(+1, -1, +1, -1)
-    let sB = Vector4<T>(-1, +1, -1, +1)
-    
-    let col0: Vector4<T> = i0 * sA
-    let col1: Vector4<T> = i1 * sB
-    let col2: Vector4<T> = i2 * sA
-    let col3: Vector4<T> = i3 * sB
-    
-    let iM = Matrix4x4<T>(col0, col1, col2, col3)
-    
-    let d: T = sum(m.col0 * iM.row0)
-    let oneOverDeterminant = 1 / d
-    
-    return iM * oneOverDeterminant
+    public static func invert(_ m: Matrix4x4<T>) -> Matrix4x4<T> {
+        let m00: T = m.col0.x
+        let m10: T = m.col1.x
+        let m20: T = m.col2.x
+        let m30: T = m.col3.x
+        let m01: T = m.col0.y
+        let m11: T = m.col1.y
+        let m21: T = m.col2.y
+        let m31: T = m.col3.y
+        let m02: T = m.col0.z
+        let m12: T = m.col1.z
+        let m22: T = m.col2.z
+        let m32: T = m.col3.z
+        let m03: T = m.col0.w
+        let m13: T = m.col1.w
+        let m23: T = m.col2.w
+        let m33: T = m.col3.w
+        
+        let c00: T = m22 * m33 - m32 * m23
+        let c02: T = m12 * m33 - m32 * m13
+        let c03: T = m12 * m23 - m22 * m13
+        
+        let c04: T = m21 * m33 - m31 * m23
+        let c06: T = m11 * m33 - m31 * m13
+        let c07: T = m11 * m23 - m21 * m13
+        
+        let c08: T = m21 * m32 - m31 * m22
+        let c10: T = m11 * m32 - m31 * m12
+        let c11: T = m11 * m22 - m21 * m12
+        
+        let c12: T = m20 * m33 - m30 * m23
+        let c14: T = m10 * m33 - m30 * m13
+        let c15: T = m10 * m23 - m20 * m13
+        
+        let c16: T = m20 * m32 - m30 * m22
+        let c18: T = m10 * m32 - m30 * m12
+        let c19: T = m10 * m22 - m20 * m12
+        
+        let c20: T = m20 * m31 - m30 * m21
+        let c22: T = m10 * m31 - m30 * m11
+        let c23: T = m10 * m21 - m20 * m11
+        
+        let f0 = Vector4<T>(c00, c00, c02, c03)
+        let f1 = Vector4<T>(c04, c04, c06, c07)
+        let f2 = Vector4<T>(c08, c08, c10, c11)
+        let f3 = Vector4<T>(c12, c12, c14, c15)
+        let f4 = Vector4<T>(c16, c16, c18, c19)
+        let f5 = Vector4<T>(c20, c20, c22, c23)
+        
+        let v0 = Vector4<T>(m10, m00, m00, m00)
+        let v1 = Vector4<T>(m11, m01, m01, m01)
+        let v2 = Vector4<T>(m12, m02, m02, m02)
+        let v3 = Vector4<T>(m13, m03, m03, m03)
+        
+        let i0: Vector4<T> = v1 * f0 - v2 * f1 + v3 * f2
+        let i1: Vector4<T> = v0 * f0 - v2 * f3 + v3 * f4
+        let i2: Vector4<T> = v0 * f1 - v1 * f3 + v3 * f5
+        let i3: Vector4<T> = v0 * f2 - v1 * f4 + v2 * f5
+        
+        let sA = Vector4<T>(+1, -1, +1, -1)
+        let sB = Vector4<T>(-1, +1, -1, +1)
+        
+        let col0: Vector4<T> = i0 * sA
+        let col1: Vector4<T> = i1 * sB
+        let col2: Vector4<T> = i2 * sA
+        let col3: Vector4<T> = i3 * sB
+        
+        let iM = Matrix4x4<T>(col0, col1, col2, col3)
+        
+        let d: T = Vector4<T>.sum(m.col0 * iM.row0)
+        let oneOverDeterminant = 1 / d
+        
+        return iM * oneOverDeterminant
+    }
 }

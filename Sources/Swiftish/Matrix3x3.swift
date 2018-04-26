@@ -304,82 +304,82 @@ public struct Matrix3x3<T: Vectorable> : Equatable, CustomStringConvertible {
         
         return Matrix3x3<T>(col0, col1, col2)
     }
-}
 
-// MARK: - Division
-
-public func /<T: SignedVectorable>(m: Matrix3x3<T>, v: Vector3<T>) -> Vector3<T> {
-    return invert(m) * v
-}
-
-public func /<T: SignedVectorable>(v: Vector3<T>, m: Matrix3x3<T>) -> Vector3<T> {
-    return v * invert(m)
-}
-
-public func /<T: SignedVectorable>(m1: Matrix3x3<T>, m2: Matrix3x3<T>) -> Matrix3x3<T> {
-    return m1 * invert(m2)
-}
-
-// MARK: - Negation
-
-public prefix func -<T: SignedVectorable>(m: Matrix3x3<T>) -> Matrix3x3<T> {
-    let col0: Vector3<T> = -m.col0
-    let col1: Vector3<T> = -m.col1
-    let col2: Vector3<T> = -m.col2
+    // MARK: - Division
     
-    return Matrix3x3<T>(col0, col1, col2)
-}
-
-public prefix func +<T: SignedVectorable>(m: Matrix3x3<T>) -> Matrix3x3<T> {
-    let col0: Vector3<T> = +m.col0
-    let col1: Vector3<T> = +m.col1
-    let col2: Vector3<T> = +m.col2
+    public static func /(m: Matrix3x3<T>, v: Vector3<T>) -> Vector3<T> {
+        return Matrix3x3<T>.invert(m) * v
+    }
     
-    return Matrix3x3<T>(col0, col1, col2)
-}
-
-// MARK: Approximately Equal
-
-public func approx<T: FloatingPointVectorable>(_ a: Matrix3x3<T>, _ b: Matrix3x3<T>, epsilon: T = T.epsilon) -> Bool {
-    let col0: Bool = approx(a.col0, b.col0, epsilon: epsilon)
-    let col1: Bool = approx(a.col1, b.col1, epsilon: epsilon)
-    let col2: Bool = approx(a.col2, b.col2, epsilon: epsilon)
+    public static func /(v: Vector3<T>, m: Matrix3x3<T>) -> Vector3<T> {
+        return v * Matrix3x3<T>.invert(m)
+    }
     
-    return col0 && col1 && col2
-}
-
-// MARK: - Inverse
-
-public func invert<T: SignedVectorable>(_ m: Matrix3x3<T>) -> Matrix3x3<T> {
-    let m00: T = m.col0.x
-    let m10: T = m.col1.x
-    let m20: T = m.col2.x
-    let m01: T = m.col0.y
-    let m11: T = m.col1.y
-    let m21: T = m.col2.y
-    let m02: T = m.col0.z
-    let m12: T = m.col1.z
-    let m22: T = m.col2.z
+    public static func /(m1: Matrix3x3<T>, m2: Matrix3x3<T>) -> Matrix3x3<T> {
+        return m1 * Matrix3x3<T>.invert(m2)
+    }
     
-    let a: T = +(m00 * (m11 * m22 - m21 * m12))
-    let b: T = -(m10 * (m01 * m22 - m21 * m02))
-    let c: T = +(m20 * (m01 * m12 - m11 * m02))
+    // MARK: - Negation
     
-    let oneOverDeterminant = 1 / (a + b + c)
+    public static prefix func -(m: Matrix3x3<T>) -> Matrix3x3<T> {
+        let col0: Vector3<T> = -m.col0
+        let col1: Vector3<T> = -m.col1
+        let col2: Vector3<T> = -m.col2
+        
+        return Matrix3x3<T>(col0, col1, col2)
+    }
     
-    let x0: T = +(m11 * m22 - m21 * m12) * oneOverDeterminant
-    let y0: T = -(m10 * m22 - m20 * m12) * oneOverDeterminant
-    let z0: T = +(m10 * m21 - m20 * m11) * oneOverDeterminant
-    let x1: T = -(m01 * m22 - m21 * m02) * oneOverDeterminant
-    let y1: T = +(m00 * m22 - m20 * m02) * oneOverDeterminant
-    let z1: T = -(m00 * m21 - m20 * m01) * oneOverDeterminant
-    let x2: T = +(m01 * m12 - m11 * m02) * oneOverDeterminant
-    let y2: T = -(m00 * m12 - m10 * m02) * oneOverDeterminant
-    let z2: T = +(m00 * m11 - m10 * m01) * oneOverDeterminant
-
-    let col0 = Vector3<T>(x0, y0, z0)
-    let col1 = Vector3<T>(x1, y1, z1)
-    let col2 = Vector3<T>(x2, y2, z2)
+    public static prefix func +(m: Matrix3x3<T>) -> Matrix3x3<T> {
+        let col0: Vector3<T> = +m.col0
+        let col1: Vector3<T> = +m.col1
+        let col2: Vector3<T> = +m.col2
+        
+        return Matrix3x3<T>(col0, col1, col2)
+    }
     
-    return Matrix3x3<T>(col0, col1, col2)
+    // MARK: Approximately Equal
+    
+    public static func approx(_ a: Matrix3x3<T>, _ b: Matrix3x3<T>, epsilon: T) -> Bool {
+        let col0: Bool = Vector3<T>.approx(a.col0, b.col0, epsilon: epsilon)
+        let col1: Bool = Vector3<T>.approx(a.col1, b.col1, epsilon: epsilon)
+        let col2: Bool = Vector3<T>.approx(a.col2, b.col2, epsilon: epsilon)
+        
+        return col0 && col1 && col2
+    }
+    
+    // MARK: - Inverse
+    
+    public static func invert(_ m: Matrix3x3<T>) -> Matrix3x3<T> {
+        let m00: T = m.col0.x
+        let m10: T = m.col1.x
+        let m20: T = m.col2.x
+        let m01: T = m.col0.y
+        let m11: T = m.col1.y
+        let m21: T = m.col2.y
+        let m02: T = m.col0.z
+        let m12: T = m.col1.z
+        let m22: T = m.col2.z
+        
+        let a: T = +(m00 * (m11 * m22 - m21 * m12))
+        let b: T = -(m10 * (m01 * m22 - m21 * m02))
+        let c: T = +(m20 * (m01 * m12 - m11 * m02))
+        
+        let oneOverDeterminant = 1 / (a + b + c)
+        
+        let x0: T = +(m11 * m22 - m21 * m12) * oneOverDeterminant
+        let y0: T = -(m10 * m22 - m20 * m12) * oneOverDeterminant
+        let z0: T = +(m10 * m21 - m20 * m11) * oneOverDeterminant
+        let x1: T = -(m01 * m22 - m21 * m02) * oneOverDeterminant
+        let y1: T = +(m00 * m22 - m20 * m02) * oneOverDeterminant
+        let z1: T = -(m00 * m21 - m20 * m01) * oneOverDeterminant
+        let x2: T = +(m01 * m12 - m11 * m02) * oneOverDeterminant
+        let y2: T = -(m00 * m12 - m10 * m02) * oneOverDeterminant
+        let z2: T = +(m00 * m11 - m10 * m01) * oneOverDeterminant
+        
+        let col0 = Vector3<T>(x0, y0, z0)
+        let col1 = Vector3<T>(x1, y1, z1)
+        let col2 = Vector3<T>(x2, y2, z2)
+        
+        return Matrix3x3<T>(col0, col1, col2)
+    }
 }

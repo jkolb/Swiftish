@@ -4,6 +4,12 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 #### Changelog
 
+### Version 4.0.0
+* Simplified API by removing Integer support, most useful functions require trigonometry or not truncating division.
+* Made functions follow Swift conventions better by making them static methods on the type instead of global functions.
+* Removed the Angle type as it made things more complicated than the benefits it may have provided.
+* Removed the Rectangle type as it was not used in any algorithms and was mostly desinged for use with Integers which were removed.
+
 ### Version 3.1.2
 * zubco Make sure Float80 is only compiled for Intel
 

@@ -36,15 +36,15 @@ class Matrix4Tests: XCTestCase {
         let col2 = Vector4<Double>(0.3, 0.5, 0.7, 0.2)
         let col3 = Vector4<Double>(0.4, 0.3, 0.2, 0.6)
         let a = Matrix4x4<Double>(col0, col1, col2, col3)
-        let ai = invert(a)
+        let ai = Matrix4x4.invert(a)
         let im = a * ai
         let id = a / a
         let i = Matrix4x4<Double>()
         
         // Multiplication
-        XCTAssertTrue(approx(im, i), "\(im) not identity")
+        XCTAssertTrue(Matrix4x4.approx(im, i, epsilon: 1e-15), "\(im) not identity")
         
         // Division
-        XCTAssertTrue(approx(id, i), "\(id) not identity")
+        XCTAssertTrue(Matrix4x4.approx(id, i, epsilon: 1e-15), "\(id) not identity")
     }
 }

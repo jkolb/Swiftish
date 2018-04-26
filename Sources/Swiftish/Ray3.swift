@@ -38,15 +38,91 @@ public struct Ray3<T: Vectorable> : Equatable, CustomStringConvertible {
     public static func ==(a: Ray3<T>, b: Ray3<T>) -> Bool {
         return a.origin == b.origin && a.direction == b.direction
     }
-}
 
-public func distance<T: FloatingPointVectorable>(_ r: Ray3<T>, _ t: Triangle3<T>) -> T {
-    let n = normalOf(t)
-    let qp = -r.direction
-    let d = dot(qp, n)
-    let ap = r.origin - t.a
-    let t = dot(ap, n)
-    let ood = t / d
+    public static func distance<T>(_ r: Ray3<T>, _ t: Triangle3<T>) -> T {
+        let n = t.normal
+        let qp = -r.direction
+        let d = Vector3<T>.dot(qp, n)
+        let ap = r.origin - t.a
+        let t = Vector3<T>.dot(ap, n)
+        let ood = t / d
+        
+        return ood
+    }
+
+    public func intersects(_ bounds: Bounds3<T>, epsilon: T) -> Bool {
+        var tmin: T = 0
+        var tmax = T.greatestFiniteMagnitude
+        let amin = bounds.minimum
+        let amax = bounds.maximum
+        
+        for i in 0..<3 {
+            let oi = origin[i]
+            let di = direction[i]
+            
+            if abs(di) < epsilon {
+                if oi < amin[i] || oi > amax[i] {
+                    return false
+                }
+            }
+            else {
+                let ood = 1 / di
+                var t1 = (amin[i] - oi) * ood
+                var t2 = (amax[i] - oi) * ood
+                
+                if t1 > t2 {
+                    swap(&t1, &t2)
+                }
+                
+                tmin = max(tmin, t1)
+                tmax = min(tmax, t2)
+                
+                if tmin > tmax {
+                    return false
+                }
+            }
+        }
+        
+        return true
+    }
     
-    return ood
+    public func intersects(_ triangle: Triangle3<T>) -> Bool {
+        let ab = triangle.b - triangle.a
+        let ac = triangle.c - triangle.a
+        let qp = -direction
+        
+        let n = Vector3<T>.cross(ab, ac)
+        
+        let d = Vector3<T>.dot(qp, n)
+        
+        if d <= 0 {
+            return false
+        }
+        
+        let ap = origin - triangle.a
+        let t = Vector3<T>.dot(ap, n)
+        
+        if t < 0 {
+            return false
+        }
+        
+        let e = Vector3<T>.cross(qp, ap)
+        let v = Vector3<T>.dot(ac, e)
+        
+        if v < 0 || v > d {
+            return false
+        }
+        
+        let w = -Vector3<T>.dot(ab, e)
+        
+        if w < 0 || v + w > d {
+            return false
+        }
+        
+        return true
+    }
+    
+    public func transform(_ t: Transform3<T>) -> Ray3<T> {
+        return Ray3<T>(origin: origin.transform(t), direction: direction * t.rotation)
+    }
 }

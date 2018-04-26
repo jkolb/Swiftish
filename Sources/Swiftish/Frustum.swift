@@ -30,7 +30,32 @@ public struct Frustum<T: Vectorable> : Equatable, CustomStringConvertible {
     public let near: Plane<T>
     public let far: Plane<T>
     
-    public init(top: Plane<T>, bottom: Plane<T>, left: Plane<T>, right: Plane<T>, near: Plane<T>, far: Plane<T>) {
+    public init(fovx: T, fovy: T, zNear: T, zFar: T) {
+        precondition(fovx > 0)
+        precondition(fovx < T.pi)
+        precondition(fovy > 0)
+        precondition(fovy < T.pi)
+        precondition(zNear > 0)
+        precondition(zFar > zNear)
+        // Pointing down the -Z axis, camera frustum in world space using a right handed coordinate system
+        let halfFOVY = fovy / 2
+        let halfFOVX = fovx / 2
+        let sy = T.sin(halfFOVY)
+        let cy = T.cos(halfFOVY)
+        let sx = T.sin(halfFOVX)
+        let cx = T.cos(halfFOVX)
+        
+        self.init(
+            top:  Plane<T>(normal: Vector3<T>(0, -cy, -sy), distance: 0),
+            bottom: Plane<T>(normal: Vector3<T>(0, +cy, -sy), distance: 0),
+            left: Plane<T>(normal: Vector3<T>(+cx, 0, -sx), distance: 0),
+            right: Plane<T>(normal: Vector3<T>(-cx, 0, -sx), distance: 0),
+            near: Plane<T>(normal: Vector3<T>(0, 0, -1), distance: +zNear),
+            far: Plane<T>(normal: Vector3<T>(0, 0, +1), distance: -zFar)
+        )
+    }
+    
+    private init(top: Plane<T>, bottom: Plane<T>, left: Plane<T>, right: Plane<T>, near: Plane<T>, far: Plane<T>) {
         self.top = top
         self.bottom = bottom
         self.left = left
@@ -45,5 +70,16 @@ public struct Frustum<T: Vectorable> : Equatable, CustomStringConvertible {
 
     public static func ==(lhs: Frustum<T>, rhs: Frustum<T>) -> Bool {
         return lhs.top == rhs.top && lhs.bottom == rhs.bottom && lhs.left == rhs.left && lhs.right == rhs.right && lhs.near == rhs.near && lhs.far == rhs.far
+    }
+    
+    public func transform(_ t: Transform3<T>) -> Frustum<T> {
+        return Frustum<T>(
+            top: top.transform(t),
+            bottom: bottom.transform(t),
+            left: left.transform(t),
+            right: right.transform(t),
+            near: near.transform(t),
+            far: far.transform(t)
+        )
     }
 }
