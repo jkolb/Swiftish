@@ -41,7 +41,7 @@ public struct Vector2<T: Vectorable> : Equatable, CustomStringConvertible {
     public init(_ v: T) {
         self.init(v, v)
     }
-    
+
     public init(_ x: T, _ y: T) {
         self.x = x
         self.y = y
@@ -280,5 +280,89 @@ public struct Vector2<T: Vectorable> : Equatable, CustomStringConvertible {
         let y: T = T.sin(a.y)
         
         return Vector2<T>(x, y)
+    }
+}
+
+extension Vector2 where T == Float {
+    public init(_ vf: IntVector2<UInt8>) {
+        self.init(Float(vf.x), Float(vf.y))
+    }
+    
+    public init(_ vf: IntVector2<Int8>) {
+        self.init(Float(vf.x), Float(vf.y))
+    }
+    
+    public init(_ vf: IntVector2<UInt16>) {
+        self.init(Float(vf.x), Float(vf.y))
+    }
+    
+    public init(_ vf: IntVector2<Int16>) {
+        self.init(Float(vf.x), Float(vf.y))
+    }
+    
+    public init(_ vf: IntVector2<UInt32>) {
+        self.init(Float(vf.x), Float(vf.y))
+    }
+    
+    public init(_ vf: IntVector2<Int32>) {
+        self.init(Float(vf.x), Float(vf.y))
+    }
+    
+    public init(_ vf: IntVector2<UInt64>) {
+        self.init(Float(vf.x), Float(vf.y))
+    }
+    
+    public init(_ vf: IntVector2<Int64>) {
+        self.init(Float(vf.x), Float(vf.y))
+    }
+    
+    public init(_ vf: IntVector2<UInt>) {
+        self.init(Float(vf.x), Float(vf.y))
+    }
+    
+    public init(_ vf: IntVector2<Int>) {
+        self.init(Float(vf.x), Float(vf.y))
+    }
+}
+
+extension Vector2 where T == Double {
+    public init(_ vf: IntVector2<UInt8>) {
+        self.init(Double(vf.x), Double(vf.y))
+    }
+    
+    public init(_ vf: IntVector2<Int8>) {
+        self.init(Double(vf.x), Double(vf.y))
+    }
+    
+    public init(_ vf: IntVector2<UInt16>) {
+        self.init(Double(vf.x), Double(vf.y))
+    }
+    
+    public init(_ vf: IntVector2<Int16>) {
+        self.init(Double(vf.x), Double(vf.y))
+    }
+    
+    public init(_ vf: IntVector2<UInt32>) {
+        self.init(Double(vf.x), Double(vf.y))
+    }
+    
+    public init(_ vf: IntVector2<Int32>) {
+        self.init(Double(vf.x), Double(vf.y))
+    }
+    
+    public init(_ vf: IntVector2<UInt64>) {
+        self.init(Double(vf.x), Double(vf.y))
+    }
+    
+    public init(_ vf: IntVector2<Int64>) {
+        self.init(Double(vf.x), Double(vf.y))
+    }
+    
+    public init(_ vf: IntVector2<UInt>) {
+        self.init(Double(vf.x), Double(vf.y))
+    }
+    
+    public init(_ vf: IntVector2<Int>) {
+        self.init(Double(vf.x), Double(vf.y))
     }
 }

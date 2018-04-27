@@ -336,3 +336,87 @@ public struct Vector3<T: Vectorable> : Equatable, CustomStringConvertible {
         return self * t.scale * t.rotation + t.translation
     }
 }
+
+extension Vector3 where T == Float {
+    public init(_ vf: IntVector3<UInt8>) {
+        self.init(Float(vf.x), Float(vf.y), Float(vf.z))
+    }
+    
+    public init(_ vf: IntVector3<Int8>) {
+        self.init(Float(vf.x), Float(vf.y), Float(vf.z))
+    }
+    
+    public init(_ vf: IntVector3<UInt16>) {
+        self.init(Float(vf.x), Float(vf.y), Float(vf.z))
+    }
+    
+    public init(_ vf: IntVector3<Int16>) {
+        self.init(Float(vf.x), Float(vf.y), Float(vf.z))
+    }
+    
+    public init(_ vf: IntVector3<UInt32>) {
+        self.init(Float(vf.x), Float(vf.y), Float(vf.z))
+    }
+    
+    public init(_ vf: IntVector3<Int32>) {
+        self.init(Float(vf.x), Float(vf.y), Float(vf.z))
+    }
+    
+    public init(_ vf: IntVector3<UInt64>) {
+        self.init(Float(vf.x), Float(vf.y), Float(vf.z))
+    }
+    
+    public init(_ vf: IntVector3<Int64>) {
+        self.init(Float(vf.x), Float(vf.y), Float(vf.z))
+    }
+    
+    public init(_ vf: IntVector3<UInt>) {
+        self.init(Float(vf.x), Float(vf.y), Float(vf.z))
+    }
+    
+    public init(_ vf: IntVector3<Int>) {
+        self.init(Float(vf.x), Float(vf.y), Float(vf.z))
+    }
+}
+
+extension Vector3 where T == Double {
+    public init(_ vf: IntVector3<UInt8>) {
+        self.init(Double(vf.x), Double(vf.y), Double(vf.z))
+    }
+    
+    public init(_ vf: IntVector3<Int8>) {
+        self.init(Double(vf.x), Double(vf.y), Double(vf.z))
+    }
+    
+    public init(_ vf: IntVector3<UInt16>) {
+        self.init(Double(vf.x), Double(vf.y), Double(vf.z))
+    }
+    
+    public init(_ vf: IntVector3<Int16>) {
+        self.init(Double(vf.x), Double(vf.y), Double(vf.z))
+    }
+    
+    public init(_ vf: IntVector3<UInt32>) {
+        self.init(Double(vf.x), Double(vf.y), Double(vf.z))
+    }
+    
+    public init(_ vf: IntVector3<Int32>) {
+        self.init(Double(vf.x), Double(vf.y), Double(vf.z))
+    }
+    
+    public init(_ vf: IntVector3<UInt64>) {
+        self.init(Double(vf.x), Double(vf.y), Double(vf.z))
+    }
+    
+    public init(_ vf: IntVector3<Int64>) {
+        self.init(Double(vf.x), Double(vf.y), Double(vf.z))
+    }
+    
+    public init(_ vf: IntVector3<UInt>) {
+        self.init(Double(vf.x), Double(vf.y), Double(vf.z))
+    }
+    
+    public init(_ vf: IntVector3<Int>) {
+        self.init(Double(vf.x), Double(vf.y), Double(vf.z))
+    }
+}

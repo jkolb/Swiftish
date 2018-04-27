@@ -39,7 +39,7 @@ public struct Vector4<T: Vectorable> : Equatable, CustomStringConvertible {
     public init(_ v: Vector3<T>, _ c: T = 0) {
         self.init(v.x, v.y, v.z, c)
     }
-    
+
     public init(_ x: T, _ y: T, _ z: T, _ w: T) {
         self.x = x
         self.y = y
@@ -324,5 +324,89 @@ public struct Vector4<T: Vectorable> : Equatable, CustomStringConvertible {
         let w: T = T.sin(a.w)
         
         return Vector4<T>(x, y, z, w)
+    }
+}
+
+extension Vector4 where T == Float {
+    public init(_ vf: IntVector4<UInt8>) {
+        self.init(Float(vf.x), Float(vf.y), Float(vf.z), Float(vf.w))
+    }
+    
+    public init(_ vf: IntVector4<Int8>) {
+        self.init(Float(vf.x), Float(vf.y), Float(vf.z), Float(vf.w))
+    }
+    
+    public init(_ vf: IntVector4<UInt16>) {
+        self.init(Float(vf.x), Float(vf.y), Float(vf.z), Float(vf.w))
+    }
+    
+    public init(_ vf: IntVector4<Int16>) {
+        self.init(Float(vf.x), Float(vf.y), Float(vf.z), Float(vf.w))
+    }
+    
+    public init(_ vf: IntVector4<UInt32>) {
+        self.init(Float(vf.x), Float(vf.y), Float(vf.z), Float(vf.w))
+    }
+    
+    public init(_ vf: IntVector4<Int32>) {
+        self.init(Float(vf.x), Float(vf.y), Float(vf.z), Float(vf.w))
+    }
+    
+    public init(_ vf: IntVector4<UInt64>) {
+        self.init(Float(vf.x), Float(vf.y), Float(vf.z), Float(vf.w))
+    }
+    
+    public init(_ vf: IntVector4<Int64>) {
+        self.init(Float(vf.x), Float(vf.y), Float(vf.z), Float(vf.w))
+    }
+    
+    public init(_ vf: IntVector4<UInt>) {
+        self.init(Float(vf.x), Float(vf.y), Float(vf.z), Float(vf.w))
+    }
+    
+    public init(_ vf: IntVector4<Int>) {
+        self.init(Float(vf.x), Float(vf.y), Float(vf.z), Float(vf.w))
+    }
+}
+
+extension Vector4 where T == Double {
+    public init(_ vf: IntVector4<UInt8>) {
+        self.init(Double(vf.x), Double(vf.y), Double(vf.z), Double(vf.w))
+    }
+    
+    public init(_ vf: IntVector4<Int8>) {
+        self.init(Double(vf.x), Double(vf.y), Double(vf.z), Double(vf.w))
+    }
+    
+    public init(_ vf: IntVector4<UInt16>) {
+        self.init(Double(vf.x), Double(vf.y), Double(vf.z), Double(vf.w))
+    }
+    
+    public init(_ vf: IntVector4<Int16>) {
+        self.init(Double(vf.x), Double(vf.y), Double(vf.z), Double(vf.w))
+    }
+    
+    public init(_ vf: IntVector4<UInt32>) {
+        self.init(Double(vf.x), Double(vf.y), Double(vf.z), Double(vf.w))
+    }
+    
+    public init(_ vf: IntVector4<Int32>) {
+        self.init(Double(vf.x), Double(vf.y), Double(vf.z), Double(vf.w))
+    }
+    
+    public init(_ vf: IntVector4<UInt64>) {
+        self.init(Double(vf.x), Double(vf.y), Double(vf.z), Double(vf.w))
+    }
+    
+    public init(_ vf: IntVector4<Int64>) {
+        self.init(Double(vf.x), Double(vf.y), Double(vf.z), Double(vf.w))
+    }
+    
+    public init(_ vf: IntVector4<UInt>) {
+        self.init(Double(vf.x), Double(vf.y), Double(vf.z), Double(vf.w))
+    }
+    
+    public init(_ vf: IntVector4<Int>) {
+        self.init(Double(vf.x), Double(vf.y), Double(vf.z), Double(vf.w))
     }
 }
