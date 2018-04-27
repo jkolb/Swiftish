@@ -4,6 +4,12 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 #### Changelog
 
+### Version 4.1.0
+* Added IntVector 2, 3, and 4
+* Added bitwise shifts to IntVector
+* Added overflow and underflow operators to IntVector
+* Added conversion initializers between Int and Float vectors
+
 ### Version 4.0.0
 * Simplified API by removing Integer support, most useful functions require trigonometry or not truncating division.
 * Made functions follow Swift conventions better by making them static methods on the type instead of global functions.
