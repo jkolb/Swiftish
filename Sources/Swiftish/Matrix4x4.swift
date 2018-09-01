@@ -22,7 +22,7 @@
  SOFTWARE.
  */
 
-public struct Matrix4x4<T: Vectorable> : Equatable, CustomStringConvertible {
+public struct Matrix4x4<T: Vectorable> : Hashable, CustomStringConvertible {
     fileprivate var col0: Vector4<T>
     fileprivate var col1: Vector4<T>
     fileprivate var col2: Vector4<T>
@@ -175,12 +175,6 @@ public struct Matrix4x4<T: Vectorable> : Equatable, CustomStringConvertible {
 
     public var description: String {
         return "{\n\t\(row0),\n\t\(row1),\n\t\(row2),\n\t\(row3)}"
-    }
-
-    // MARK: - Equatable
-
-    public static func ==(a: Matrix4x4<T>, b: Matrix4x4<T>) -> Bool {
-        return a.col0 == b.col0 && a.col1 == b.col1 && a.col2 == b.col2 && a.col3 == b.col3
     }
 
     // MARK: - Addition

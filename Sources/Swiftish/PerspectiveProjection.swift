@@ -48,7 +48,7 @@
  |     0     0      -1            0       |
  (                                        )
  */
-public struct PerspectiveProjection<T: Vectorable> : Equatable {
+public struct PerspectiveProjection<T: Vectorable> : Hashable {
     public var fovx: T {
         get {
             return 2 * T.atan(T.tan(fovy / 2) * aspectRatio)
@@ -131,9 +131,5 @@ public struct PerspectiveProjection<T: Vectorable> : Equatable {
     
     public var frustum: Frustum<T> {
         return Frustum<T>(fovx: fovx, fovy: fovy, zNear: zNear, zFar: zFar)
-    }
-
-    public static func ==(lhs: PerspectiveProjection<T>, rhs: PerspectiveProjection<T>) -> Bool {
-        return lhs.fovy == rhs.fovy && lhs.aspectRatio == rhs.aspectRatio && lhs.zNear == rhs.zNear && lhs.zFar == rhs.zFar
     }
 }

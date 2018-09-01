@@ -22,7 +22,7 @@
  SOFTWARE.
  */
 
-public struct Vector2<T: Vectorable> : Equatable, CustomStringConvertible {
+public struct Vector2<T: Vectorable> : Hashable, CustomStringConvertible {
     public static var xAxis: Vector2<T> {
         return Vector2<T>(1, 0)
     }
@@ -33,7 +33,23 @@ public struct Vector2<T: Vectorable> : Equatable, CustomStringConvertible {
     
     public var x: T
     public var y: T
+
+    @_transparent public var u: T {
+        return x
+    }
     
+    @_transparent public var v: T {
+        return y
+    }
+
+    @_transparent public var width: T {
+        return x
+    }
+    
+    @_transparent public var height: T {
+        return y
+    }
+
     public init() {
         self.init(0, 0)
     }
@@ -93,12 +109,6 @@ public struct Vector2<T: Vectorable> : Equatable, CustomStringConvertible {
     
     public var description: String {
         return "{\(x), \(y)}"
-    }
-
-    // MARK: - Equatable
-
-    public static func ==(a: Vector2<T>, b: Vector2<T>) -> Bool {
-        return a.x == b.x && a.y == b.y
     }
 
     // MARK: - Addition

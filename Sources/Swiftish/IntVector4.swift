@@ -22,12 +22,28 @@
  SOFTWARE.
  */
 
-public struct IntVector4<T: FixedWidthInteger> : Equatable, CustomStringConvertible {
+public struct IntVector4<T: FixedWidthInteger> : Hashable, CustomStringConvertible {
     public var x: T
     public var y: T
     public var z: T
     public var w: T
     
+    @_transparent public var r: T {
+        return x
+    }
+    
+    @_transparent public var g: T {
+        return y
+    }
+    
+    @_transparent public var b: T {
+        return z
+    }
+    
+    @_transparent public var a: T {
+        return w
+    }
+
     public init() {
         self.init(0, 0, 0, 0)
     }
@@ -47,6 +63,10 @@ public struct IntVector4<T: FixedWidthInteger> : Equatable, CustomStringConverti
     public init(_ vf: Vector4<Double>) {
         self.init(T(vf.x), T(vf.y), T(vf.z), T(vf.w))
     }
+    
+    public init<I: FixedWidthInteger>(_ v: IntVector4<I>) {
+        self.init(T(v.x), T(v.y), T(v.z), T(v.w))
+    }
 
     public init(_ x: T, _ y: T, _ z: T, _ w: T) {
         self.x = x
@@ -54,7 +74,7 @@ public struct IntVector4<T: FixedWidthInteger> : Equatable, CustomStringConverti
         self.z = z
         self.w = w
     }
-    
+
     public var components: [T] {
         get {
             return [x, y, z, w]
@@ -111,12 +131,6 @@ public struct IntVector4<T: FixedWidthInteger> : Equatable, CustomStringConverti
     
     public var description: String {
         return "{\(x), \(y), \(z), \(w)}"
-    }
-    
-    // MARK: - Equatable
-    
-    public static func ==(a: IntVector4<T>, b: IntVector4<T>) -> Bool {
-        return a.x == b.x && a.y == b.y && a.z == b.z && a.w == b.w
     }
     
     // MARK: - Addition

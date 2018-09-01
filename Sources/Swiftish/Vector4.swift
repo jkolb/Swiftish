@@ -22,12 +22,28 @@
  SOFTWARE.
  */
 
-public struct Vector4<T: Vectorable> : Equatable, CustomStringConvertible {
+public struct Vector4<T: Vectorable> : Hashable, CustomStringConvertible {
     public var x: T
     public var y: T
     public var z: T
     public var w: T
     
+    @_transparent public var r: T {
+        return x
+    }
+    
+    @_transparent public var g: T {
+        return y
+    }
+    
+    @_transparent public var b: T {
+        return z
+    }
+    
+    @_transparent public var a: T {
+        return w
+    }
+
     public init() {
         self.init(0, 0, 0, 0)
     }
@@ -103,12 +119,6 @@ public struct Vector4<T: Vectorable> : Equatable, CustomStringConvertible {
 
     public var description: String {
         return "{\(x), \(y), \(z), \(w)}"
-    }
-
-    // MARK: - Equatable
-
-    public static func ==(a: Vector4<T>, b: Vector4<T>) -> Bool {
-        return a.x == b.x && a.y == b.y && a.z == b.z && a.w == b.w
     }
 
     // MARK: - Addition

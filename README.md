@@ -4,6 +4,11 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 #### Changelog
 
+### Version 4.2.0
+* Default conformance to Hashable
+* Conversion between different types of IntVectors
+* Common aliases for x, y, z, w. For example r, g, b, a.
+
 ### Version 4.1.0
 * Added IntVector 2, 3, and 4
 * Added bitwise shifts to IntVector

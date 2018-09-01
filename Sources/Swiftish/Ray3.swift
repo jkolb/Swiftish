@@ -22,7 +22,7 @@
  SOFTWARE.
  */
 
-public struct Ray3<T: Vectorable> : Equatable, CustomStringConvertible {
+public struct Ray3<T: Vectorable> : Hashable, CustomStringConvertible {
     public var origin: Vector3<T>
     public var direction: Vector3<T>
     
@@ -33,10 +33,6 @@ public struct Ray3<T: Vectorable> : Equatable, CustomStringConvertible {
     
     public var description: String {
         return "{\(origin), \(direction)}"
-    }
-
-    public static func ==(a: Ray3<T>, b: Ray3<T>) -> Bool {
-        return a.origin == b.origin && a.direction == b.direction
     }
 
     public static func distance<T>(_ r: Ray3<T>, _ t: Triangle3<T>) -> T {

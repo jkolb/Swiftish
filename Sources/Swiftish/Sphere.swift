@@ -22,7 +22,7 @@
  SOFTWARE.
  */
 
-public struct Sphere<T: Vectorable> : Equatable, CustomStringConvertible {
+public struct Sphere<T: Vectorable> : Hashable, CustomStringConvertible {
     public let center: Vector3<T>
     public let radius: T
     
@@ -47,10 +47,6 @@ public struct Sphere<T: Vectorable> : Equatable, CustomStringConvertible {
     
     public var description: String {
         return "{\(center), \(radius)}"
-    }
-
-    public static func ==(a: Sphere<T>, b: Sphere<T>) -> Bool {
-        return a.center == b.center && a.radius == b.radius
     }
 
     public var bounds: Bounds3<T> {

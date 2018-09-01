@@ -22,7 +22,7 @@
  SOFTWARE.
  */
 
-public struct IntVector3<T: FixedWidthInteger> : Equatable, CustomStringConvertible {
+public struct IntVector3<T: FixedWidthInteger> : Hashable, CustomStringConvertible {
     public static var xAxis: IntVector3<T> {
         return IntVector3<T>(1, 0, 0)
     }
@@ -39,6 +39,30 @@ public struct IntVector3<T: FixedWidthInteger> : Equatable, CustomStringConverti
     public var y: T
     public var z: T
     
+    @_transparent public var width: T {
+        return x
+    }
+    
+    @_transparent public var height: T {
+        return y
+    }
+    
+    @_transparent public var depth: T {
+        return z
+    }
+    
+    @_transparent public var r: T {
+        return x
+    }
+    
+    @_transparent public var g: T {
+        return y
+    }
+    
+    @_transparent public var b: T {
+        return z
+    }
+
     public init() {
         self.init(0, 0, 0)
     }
@@ -58,13 +82,17 @@ public struct IntVector3<T: FixedWidthInteger> : Equatable, CustomStringConverti
     public init(_ vf: Vector3<Double>) {
         self.init(T(vf.x), T(vf.y), T(vf.z))
     }
+    
+    public init<I: FixedWidthInteger>(_ v: IntVector3<I>) {
+        self.init(T(v.x), T(v.y), T(v.z))
+    }
 
     public init(_ x: T, _ y: T, _ z: T) {
         self.x = x
         self.y = y
         self.z = z
     }
-    
+
     public var components: [T] {
         get {
             return [x, y, z]
@@ -116,12 +144,6 @@ public struct IntVector3<T: FixedWidthInteger> : Equatable, CustomStringConverti
     
     public var description: String {
         return "{\(x), \(y), \(z)}"
-    }
-    
-    // MARK: - Equatable
-    
-    public static func ==(a: IntVector3<T>, b: IntVector3<T>) -> Bool {
-        return a.x == b.x && a.y == b.y && a.z == b.z
     }
     
     // MARK: - Addition

@@ -22,7 +22,7 @@
  SOFTWARE.
  */
 
-public struct IntVector2<T: FixedWidthInteger> : Equatable, CustomStringConvertible {
+public struct IntVector2<T: FixedWidthInteger> : Hashable, CustomStringConvertible {
     public static var xAxis: IntVector2<T> {
         return IntVector2<T>(1, 0)
     }
@@ -33,6 +33,30 @@ public struct IntVector2<T: FixedWidthInteger> : Equatable, CustomStringConverti
     
     public var x: T
     public var y: T
+    
+    @_transparent public var column: T {
+        return x
+    }
+    
+    @_transparent public var row: T {
+        return y
+    }
+
+    @_transparent public var columns: T {
+        return x
+    }
+    
+    @_transparent public var rows: T {
+        return y
+    }
+    
+    @_transparent public var width: T {
+        return x
+    }
+    
+    @_transparent public var height: T {
+        return y
+    }
     
     public init() {
         self.init(0, 0)
@@ -48,6 +72,10 @@ public struct IntVector2<T: FixedWidthInteger> : Equatable, CustomStringConverti
     
     public init(_ vf: Vector2<Double>) {
         self.init(T(vf.x), T(vf.y))
+    }
+    
+    public init<I: FixedWidthInteger>(_ v: IntVector2<I>) {
+        self.init(T(v.x), T(v.y))
     }
 
     public init(_ x: T, _ y: T) {
@@ -101,12 +129,6 @@ public struct IntVector2<T: FixedWidthInteger> : Equatable, CustomStringConverti
     
     public var description: String {
         return "{\(x), \(y)}"
-    }
-    
-    // MARK: - Equatable
-    
-    public static func ==(a: IntVector2<T>, b: IntVector2<T>) -> Bool {
-        return a.x == b.x && a.y == b.y
     }
     
     // MARK: - Addition

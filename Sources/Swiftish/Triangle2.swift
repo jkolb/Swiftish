@@ -22,7 +22,7 @@
  SOFTWARE.
  */
 
-public struct Triangle2<T: Vectorable> : CustomStringConvertible {
+public struct Triangle2<T: Vectorable> : Hashable, CustomStringConvertible {
     public var a: Vector2<T>
     public var b: Vector2<T>
     public var c: Vector2<T>

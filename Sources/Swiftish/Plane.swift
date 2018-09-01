@@ -22,7 +22,7 @@
  SOFTWARE.
  */
 
-public struct Plane<T: Vectorable> : Equatable, CustomStringConvertible {
+public struct Plane<T: Vectorable> : Hashable, CustomStringConvertible {
     public let normal: Vector3<T>
     public let distance: T
     
@@ -33,10 +33,6 @@ public struct Plane<T: Vectorable> : Equatable, CustomStringConvertible {
     
     public var description: String {
         return "{\(normal), \(distance)}"
-    }
-
-    public static func ==(a: Plane<T>, b: Plane<T>) -> Bool {
-        return a.normal == b.normal && a.distance == b.distance
     }
     
     public func transform(_ t: Transform3<T>) -> Plane<T> {

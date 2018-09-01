@@ -22,7 +22,7 @@
  SOFTWARE.
  */
 
-public struct Quaternion<T: Vectorable> : Equatable, CustomStringConvertible {
+public struct Quaternion<T: Vectorable> : Hashable, CustomStringConvertible {
     public var w: T
     public var xyz: Vector3<T>
     
@@ -231,12 +231,6 @@ public struct Quaternion<T: Vectorable> : Equatable, CustomStringConvertible {
         let col2 = Vector3<T>(twoXZ + twoWV.y, twoYZ - twoWV.x, 1 - twoV2.x - twoV2.y)
         
         return Matrix3x3<T>(col0, col1, col2)
-    }
-
-    // MARK: - Equatable
-
-    public static func ==(a: Quaternion<T>, b: Quaternion<T>) -> Bool {
-        return a.w == b.w && a.xyz == b.xyz
     }
 
     // MARK: - Addition

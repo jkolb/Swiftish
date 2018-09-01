@@ -22,7 +22,7 @@
  SOFTWARE.
  */
 
-public struct Transform3<T: Vectorable> : Equatable, CustomStringConvertible {
+public struct Transform3<T: Vectorable> : Hashable, CustomStringConvertible {
     public var translation: Vector3<T>
     public var rotation: Quaternion<T>
     public var scale: Vector3<T>
@@ -78,10 +78,6 @@ public struct Transform3<T: Vectorable> : Equatable, CustomStringConvertible {
             Vector4<T>(sri[2]),
             Vector4<T>(ti, 1)
         )
-    }
-
-    public static func ==(a: Transform3<T>, b: Transform3<T>) -> Bool {
-        return a.translation == b.translation && a.rotation == b.rotation && a.scale == b.scale
     }
 
     public static func +(a: Transform3<T>, b: Transform3<T>) -> Transform3<T> {

@@ -22,7 +22,7 @@
  SOFTWARE.
  */
 
-public struct Bounds3<T: Vectorable> : Equatable {
+public struct Bounds3<T: Vectorable> : Hashable {
     public var center: Vector3<T>
     public var extents: Vector3<T>
     
@@ -201,10 +201,6 @@ public struct Bounds3<T: Vectorable> : Equatable {
             corner0, corner1, corner2, corner3,
             corner4, corner5, corner6, corner7,
         ]
-    }
-
-    public static func ==(a: Bounds3<T>, b: Bounds3<T>) -> Bool {
-        return a.center == b.center && a.extents == b.extents
     }
 
     public static func distance2<T>(_ point: Vector3<T>, _ bounds: Bounds3<T>) -> T {

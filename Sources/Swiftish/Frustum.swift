@@ -22,7 +22,7 @@
  SOFTWARE.
  */
 
-public struct Frustum<T: Vectorable> : Equatable, CustomStringConvertible {
+public struct Frustum<T: Vectorable> : Hashable, CustomStringConvertible {
     public let top: Plane<T>
     public let bottom: Plane<T>
     public let left: Plane<T>
@@ -66,10 +66,6 @@ public struct Frustum<T: Vectorable> : Equatable, CustomStringConvertible {
     
     public var description: String {
         return "{\n\tT: \(top)\n\tB: \(bottom)\n\tL: \(left)\n\tR: \(right)\n\tN: \(near)\n\tF: \(far)}"
-    }
-
-    public static func ==(lhs: Frustum<T>, rhs: Frustum<T>) -> Bool {
-        return lhs.top == rhs.top && lhs.bottom == rhs.bottom && lhs.left == rhs.left && lhs.right == rhs.right && lhs.near == rhs.near && lhs.far == rhs.far
     }
     
     public func transform(_ t: Transform3<T>) -> Frustum<T> {

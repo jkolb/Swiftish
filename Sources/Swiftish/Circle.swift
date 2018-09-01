@@ -22,7 +22,7 @@
  SOFTWARE.
  */
 
-public struct Circle<T: Vectorable> : Equatable, CustomStringConvertible {
+public struct Circle<T: Vectorable> : Hashable, CustomStringConvertible {
     public var center: Vector2<T>
     public var radius: T
     
@@ -38,9 +38,5 @@ public struct Circle<T: Vectorable> : Equatable, CustomStringConvertible {
 
     public var description: String {
         return "{\(center), \(radius)}"
-    }
-
-    public static func ==(a: Circle<T>, b: Circle<T>) -> Bool {
-        return a.center == b.center && a.radius == b.radius
     }
 }

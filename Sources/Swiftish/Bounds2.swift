@@ -22,7 +22,7 @@
  SOFTWARE.
  */
 
-public struct Bounds2<T: Vectorable> : Equatable {
+public struct Bounds2<T: Vectorable> : Hashable {
     public var center: Vector2<T>
     public var extents: Vector2<T>
     
@@ -181,9 +181,5 @@ public struct Bounds2<T: Vectorable> : Equatable {
         let corner3: Vector2<T> = max * Vector2<T>(-1, -1)
 
         return [corner0, corner1, corner2, corner3]
-    }
-
-    public static func ==(a: Bounds2<T>, b: Bounds2<T>) -> Bool {
-        return a.center == b.center && a.extents == b.extents
     }
 }
